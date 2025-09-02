@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JADE — 服飾專賣電商平台</title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+  <style>
+    .hero-section {
+      background: linear-gradient(135deg, #98ddd2 0%, #1e4619 100%);
+      color: white;
+      padding: 60px 0;
+    }
+    .project-header {
+      margin-bottom: 1.5rem;
+    }
+    .tech-badges .badge {
+      margin-right: 0.4rem;
+      margin-bottom: 0.4rem;
+    }
+    .project-card img {
+      object-fit: cover;
+      height: 100%;
+    }
+    pre code {
+      background: #0d1117;
+      color: #d1f5e3;
+      padding: 1rem;
+      display: block;
+      border-radius: 8px;
+      overflow-x: auto;
+    }
+    .back-link {
+      color: white;
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="navbar navbar-dark bg-dark">
+    <div class="container">
+      <a class="navbar-brand" href="../index.html">← 回到作品集</a>
+      <div>
+        <a class="btn btn-outline-light btn-sm" href="../index.html">首頁</a>
+      </div>
+    </div>
+  </nav>
+
+  <section class="hero-section text-center">
+    <div class="container">
+      <h1 class="display-5 fw-bold project-header">JADE — 服飾專賣電商平台</h1>
+      <p class="lead">完整的電商解決方案，整合會員、金流、社群與即時通訊功能，專注服飾零售體驗。</p>
+    </div>
+  </section>
+
+  <main class="py-5">
+    <div class="container">
+      <div class="row g-4">
+        <div class="col-lg-6">
+          <div class="card project-card h-100">
+            <img src="https://res.cloudinary.com/depkrkqig/image/upload/v1756777873/logo_knmw5u.png" class="card-img-top" alt="JADE 標誌">
+            <div class="card-body">
+              <h5 class="card-title">專案簡介</h5>
+              <p class="card-text">JADE 為服飾專賣店打造，用戶可以瀏覽分類精準的商品、進行社群互動、並透過完整的會員等級及金流服務完成交易。</p>
+              <div class="tech-badges mb-3">
+                <span class="badge bg-primary">Vue.js</span>
+                <span class="badge bg-success">ASP.NET Core</span>
+                <span class="badge bg-info text-dark">Azure SQL</span>
+                <span class="badge bg-warning text-dark">SignalR</span>
+              </div>
+              <div class="d-flex gap-2">
+                <a href="#features" class="btn btn-primary">查看亮點</a>
+                <a href="https://github.com/yourusername/jade" class="btn btn-outline-secondary" target="_blank">
+                  <i class="fab fa-github"></i> 原始碼
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-6">
+          <h4 id="features">專案亮點</h4>
+          <ul>
+            <li><strong>團隊領導：</strong>帶領6人開發團隊，2個月完成主要 MVP。</li>
+            <li><strong>全端開發：</strong>前後端分離架構，RESTful API 設計與實作。</li>
+            <li><strong>系統整合：</strong>整合綠界金流、Cloudinary 圖床、OpenAI 等服務。</li>
+            <li><strong>創新功能：</strong>社群電商融合、AI 客服、即時通訊。</li>
+          </ul>
+
+          <h5 class="mt-4">範例程式碼</h5>
+          <pre><code>// ASP.NET Controller 範例
+public class BannerController : Controller {
+  public async Task<IActionResult> GetActiveBanners(string position) {
+    var banners = await _bannerService.GetActiveBannersByPosition(position);
+    return Json(banners.OrderBy(b => b.DisplayOrder));
+  }
+}
+          </code></pre>
+
+          <h5 class="mt-4">部署與效能</h5>
+          <p>圖片經由 Cloudinary 加速與壓縮；資料庫使用 Azure SQL，針對核心查詢建立索引以提升效能。</p>
+        </div>
+      </div>
+
+      <section class="mt-5">
+        <h4>成果與影響</h4>
+        <div class="row">
+          <div class="col-md-4">
+            <div class="p-3 bg-light rounded">完整電商生態：端到端商品與金流整合</div>
+          </div>
+          <div class="col-md-4">
+            <div class="p-3 bg-light rounded">多角色系統：管理者 / 買家 / 賣家</div>
+          </div>
+          <div class="col-md-4">
+            <div class="p-3 bg-light rounded">社群電商：穿搭分享與商品推薦整合</div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <footer class="py-4 bg-dark text-white text-center">
+    <div class="container">© 2025 劉冠彤 • JADE 專案</div>
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

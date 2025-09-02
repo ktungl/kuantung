@@ -8,9 +8,43 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     <style>
         .hero-section {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #98ddd2 0%, #1e4619 100%);
             color: white;
             padding: 100px 0;
+        }
+        /* 自訂輪播箭頭顏色 */
+        .carousel-control-prev-icon,
+        .carousel-control-next-icon {
+            filter: none;
+            background-image: none;
+            background-color: #fff;
+            border-radius: 50%;
+            box-shadow: 0 2px 8px rgba(30,70,25,0.08);
+            width: 2.5rem;
+            height: 2.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+        .carousel-control-prev-icon::after,
+        .carousel-control-next-icon::after {
+            content: '';
+            display: block;
+            width: 1.2rem;
+            height: 1.2rem;
+            border-bottom: 0.25rem solid #1e4619;
+            border-left: 0.25rem solid #1e4619;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) rotate(45deg);
+        }
+        .carousel-control-next-icon::after {
+            border-bottom: 0.25rem solid #1e4619;
+            border-left: none;
+            border-right: 0.25rem solid #1e4619;
+            transform: translate(-50%, -50%) rotate(-45deg);
         }
         .tech-stack img {
             width: 40px;
@@ -33,6 +67,10 @@
             max-width: 100%;
             border-radius: 10px;
             box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+
+        .btn.btn-primary {
+            background-color: #7bbeb3;
         }
     </style>
 </head>
@@ -66,7 +104,7 @@
             </div>
             <div>
                 <a href="#projects" class="btn btn-light btn-lg me-3">查看作品</a>
-                <a href="https://github.com/yourusername" class="btn btn-outline-light btn-lg" target="_blank">
+                <a href="https://github.com/ktungl" class="btn btn-outline-light btn-lg" target="_blank">
                     <i class="fab fa-github"></i> GitHub
                 </a>
             </div>
@@ -89,7 +127,7 @@
                     </ul>
                 </div>
                 <div class="col-md-6">
-                    <img src="your-photo.jpg" alt="劉冠彤" class="img-fluid rounded-circle mx-auto d-block" style="max-width: 300px;">
+                    <img src="https://res.cloudinary.com/depkrkqig/image/upload/v1756777678/S__14254086_nnvlj9.jpg" alt="劉冠彤" class="img-fluid mx-auto d-block" style="width: 400px; height: 400px; object-fit: cover; border-radius: 16px;">
                 </div>
             </div>
         </div>
@@ -99,42 +137,92 @@
     <section id="projects" class="py-5 bg-light">
         <div class="container">
             <h2 class="text-center mb-5">專案作品</h2>
-            
-            <!-- JADE Project -->
-            <div class="row mb-5">
-                <div class="col-lg-6">
-                    <div class="card project-card">
-                        <img src="jade-screenshot.jpg" class="card-img-top" alt="JADE電商平台">
-                        <div class="card-body">
-                            <h5 class="card-title">JADE 服飾專賣電商平台</h5>
-                            <p class="card-text">完整的電商解決方案，整合社群分享、會員系統、金流物流等功能。</p>
-                            <div class="tech-badges mb-3">
-                                <span class="badge bg-primary">Vue.js</span>
-                                <span class="badge bg-success">ASP.NET Core</span>
-                                <span class="badge bg-info">Azure SQL</span>
-                                <span class="badge bg-warning">SignalR</span>
+            <div id="projectCarousel" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                    <!-- JADE Project -->
+                    <div class="carousel-item active">
+                        <div class="row mb-5 align-items-center">
+                            <div class="col-lg-6">
+                                <div class="card project-card">
+                                    <img src="https://res.cloudinary.com/depkrkqig/image/upload/v1756777873/logo_knmw5u.png" class="card-img-top" alt="JADE電商平台">
+                                    <div class="card-body">
+                                        <h5 class="card-title">JADE 服飾專賣電商平台</h5>
+                                        <p class="card-text">完整的電商解決方案，整合社群分享、會員系統、金流物流等功能。</p>
+                                        <div class="tech-badges mb-3">
+                                            <span class="badge bg-primary">Vue.js</span>
+                                            <span class="badge bg-success">ASP.NET Core</span>
+                                            <span class="badge bg-info">Azure SQL</span>
+                                            <span class="badge bg-warning">SignalR</span>
+                                        </div>
+                                        <div class="d-flex gap-2">
+                                            <a href="projects/jade-detail.html" class="btn btn-primary" target="_blank">詳細介紹</a>
+                                            <a href="https://github.com/yourusername/jade" class="btn btn-outline-secondary" target="_blank">
+                                                <i class="fab fa-github"></i> 原始碼
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="d-flex gap-2">
-                                <a href="#jade-detail" class="btn btn-primary">詳細介紹</a>
-                                <a href="https://github.com/yourusername/jade" class="btn btn-outline-secondary" target="_blank">
-                                    <i class="fab fa-github"></i> 原始碼
-                                </a>
+                            <div class="col-lg-6">
+                                <h4>專案亮點</h4>
+                                <ul>
+                                    <li><strong>團隊領導：</strong>帶領6人開發團隊，2個月完成開發</li>
+                                    <li><strong>全端開發：</strong>前後端分離架構，RESTful API設計</li>
+                                    <li><strong>系統整合：</strong>整合綠界金流、Cloudinary、OpenAI等服務</li>
+                                    <li><strong>創新功能：</strong>社群電商融合、AI客服、即時通訊</li>
+                                </ul>
+                                <div class="mt-4">
+                                    <img src="jade-demo.gif" alt="JADE Demo" class="demo-gif">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 第二個專案範例 -->
+                    <div class="carousel-item">
+                        <div class="row mb-5 align-items-center">
+                            <div class="col-lg-6">
+                                <div class="card project-card">
+                                    <img src="https://res.cloudinary.com/depkrkqig/image/upload/v1756783249/Dream_Bookstore_wd7dqa.png" class="card-img-top" alt="書店管理系統">
+                                    <div class="card-body">
+                                        <h5 class="card-title">書店管理系統</h5>
+                                        <p class="card-text">這裡是第二個專案的簡介，可以描述專案的主要功能與特色。</p>
+                                        <div class="tech-badges mb-3">
+                                            <span class="badge bg-primary">React</span>
+                                            <span class="badge bg-success">Node.js</span>
+                                            <span class="badge bg-info">MongoDB</span>
+                                        </div>
+                                        <div class="d-flex gap-2">
+                                            <a href="#demo-detail" class="btn btn-primary">詳細介紹</a>
+                                            <a href="https://github.com/yourusername/demo" class="btn btn-outline-secondary" target="_blank">
+                                                <i class="fab fa-github"></i> 原始碼
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <h4>專案亮點</h4>
+                                <ul>
+                                    <li><strong>敏捷開發：</strong>兩週內完成 MVC</li>
+                                    <li><strong>全端技術：</strong>React + Node.js + MongoDB</li>
+                                    <li><strong>雲端部署：</strong>Heroku 自動化部署</li>
+                                    <li><strong>即時功能：</strong>WebSocket 即時通訊</li>
+                                </ul>
+                                <div class="mt-4">
+                                    <img src="https://via.placeholder.com/400x250?text=Demo+GIF" alt="Demo 專案 Demo" class="demo-gif">
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-6">
-                    <h4>專案亮點</h4>
-                    <ul>
-                        <li><strong>團隊領導：</strong>帶領6人開發團隊，2個月完成開發</li>
-                        <li><strong>全端開發：</strong>前後端分離架構，RESTful API設計</li>
-                        <li><strong>系統整合：</strong>整合綠界金流、Cloudinary、OpenAI等服務</li>
-                        <li><strong>創新功能：</strong>社群電商融合、AI客服、即時通訊</li>
-                    </ul>
-                    <div class="mt-4">
-                        <img src="jade-demo.gif" alt="JADE Demo" class="demo-gif">
-                    </div>
-                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#projectCarousel" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#projectCarousel" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
             </div>
         </div>
     </section>
@@ -171,10 +259,10 @@
                         <a href="mailto:liukuantung@gmail.com" class="text-white">
                             <i class="fas fa-envelope fa-2x"></i>
                         </a>
-                        <a href="https://linkedin.com/in/yourprofile" class="text-white" target="_blank">
+                        <a href="https://www.linkedin.com/in/liukuantung/" class="text-white" target="_blank">
                             <i class="fab fa-linkedin fa-2x"></i>
                         </a>
-                        <a href="https://github.com/yourusername" class="text-white" target="_blank">
+                        <a href="https://github.com/ktungl" class="text-white" target="_blank">
                             <i class="fab fa-github fa-2x"></i>
                         </a>
                     </div>
