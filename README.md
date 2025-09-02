@@ -1,2 +1,0 @@
-# kuantung
-Self-Introduction

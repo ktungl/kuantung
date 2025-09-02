@@ -12,7 +12,17 @@
             color: white;
             padding: 100px 0;
         }
-        /* 自訂輪播箭頭顏色 */
+        /* 自訂輪播箭頭顏色和位置 */
+        .carousel-control-prev,
+        .carousel-control-next {
+            width: 5%;
+        }
+        .carousel-control-prev {
+            left: -50px;
+        }
+        .carousel-control-next {
+            right: -50px;
+        }
         .carousel-control-prev-icon,
         .carousel-control-next-icon {
             filter: none;
@@ -71,6 +81,20 @@
 
         .btn.btn-primary {
             background-color: #7bbeb3;
+            position: relative;
+            z-index: 10;
+            padding: 0.5rem 1.5rem;
+            font-weight: 500;
+        }
+        .carousel-item .btn {
+            position: relative;
+            z-index: 10;
+            margin: 0.50rem;
+            margin-left: 10px;
+        }
+        .card-title a:hover {
+            color: #7bbeb3 !important;
+            transition: color 0.3s ease;
         }
     </style>
 </head>
@@ -144,9 +168,15 @@
                         <div class="row mb-5 align-items-center">
                             <div class="col-lg-6">
                                 <div class="card project-card">
-                                    <img src="https://res.cloudinary.com/depkrkqig/image/upload/v1756777873/logo_knmw5u.png" class="card-img-top" alt="JADE電商平台">
+                                    <a href="projects/jade-detail.html" style="text-decoration: none; color: inherit;">
+                                        <img src="https://res.cloudinary.com/depkrkqig/image/upload/v1756777873/logo_knmw5u.png" class="card-img-top" alt="JADE電商平台" style="cursor: pointer;">
+                                    </a>
                                     <div class="card-body">
-                                        <h5 class="card-title">JADE 服飾專賣電商平台</h5>
+                                        <h5 class="card-title">
+                                            <a href="projects/jade-detail.html" style="text-decoration: none; color: inherit;">
+                                                JADE 服飾專賣電商平台
+                                            </a>
+                                        </h5>
                                         <p class="card-text">完整的電商解決方案，整合社群分享、會員系統、金流物流等功能。</p>
                                         <div class="tech-badges mb-3">
                                             <span class="badge bg-primary">Vue.js</span>
@@ -155,7 +185,7 @@
                                             <span class="badge bg-warning">SignalR</span>
                                         </div>
                                         <div class="d-flex gap-2">
-                                            <a href="/kuantung/projects/jade-detail.html" class="btn btn-primary" target="_blank">詳細介紹</a>
+                                            <a href="projects/jade-detail.html" class="btn btn-primary">詳細介紹</a>
                                             <a href="https://github.com/yourusername/jade" class="btn btn-outline-secondary" target="_blank">
                                                 <i class="fab fa-github"></i> 原始碼
                                             </a>
@@ -182,9 +212,15 @@
                         <div class="row mb-5 align-items-center">
                             <div class="col-lg-6">
                                 <div class="card project-card">
-                                    <img src="https://res.cloudinary.com/depkrkqig/image/upload/v1756783249/Dream_Bookstore_wd7dqa.png" class="card-img-top" alt="書店管理系統">
+                                    <a href="projects/book-detail.html" style="text-decoration: none; color: inherit;">
+                                        <img src="https://res.cloudinary.com/depkrkqig/image/upload/v1756783249/Dream_Bookstore_wd7dqa.png" class="card-img-top" alt="書店管理系統" style="cursor: pointer;">
+                                    </a>
                                     <div class="card-body">
-                                        <h5 class="card-title">Dream Bookstore 書店管理系統</h5>
+                                        <h5 class="card-title">
+                                            <a href="projects/book-detail.html" style="text-decoration: none; color: inherit;">
+                                                Dream Bookstore 書店管理系統
+                                            </a>
+                                        </h5>
                                         <p class="card-text">獨立開發的桌面應用程式，為獨立書店提供完整的營運管理解決方案，包含庫存、會員、訂單管理等功能。</p>
                                         <div class="tech-badges mb-3">
                                             <span class="badge bg-primary">C# WinForms</span>
@@ -192,7 +228,7 @@
                                             <span class="badge bg-info">ADO.NET</span>
                                         </div>
                                         <div class="d-flex gap-2">
-                                            <a href="/kuantung/projects/book-detail.html" class="btn btn-primary" target="_blank">詳細介紹</a>
+                                            <a href="projects/book-detail.html" class="btn btn-primary">詳細介紹</a>
                                             <a href="https://github.com/yourusername/bookstore" class="btn btn-outline-secondary" target="_blank">
                                                 <i class="fab fa-github"></i> 原始碼
                                             </a>
@@ -272,5 +308,13 @@
     </section>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // 防止輪播阻止連結點擊
+        document.querySelectorAll('.carousel .btn').forEach(function(btn) {
+            btn.addEventListener('click', function(e) {
+                e.stopPropagation();
+            });
+        });
+    </script>
 </body>
 </html>
