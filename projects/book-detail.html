@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="zh-TW">
 <head>
@@ -6,118 +7,592 @@
     <title>Dream Bookstore — 書店管理系統</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&family=Noto+Serif+TC:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
+        :root {
+            --dream-sage: #7a8471;
+            --dream-orange: #d2875c;
+            --dream-cream: #f7f3f0;
+            --dream-beige: #ede8e3;
+            --dream-brown: #8b6f47;
+            --dream-dark-green: #5d6856;
+            --dream-light-sage: #9ba592;
+            --dream-warm-white: #faf8f5;
+        }
+
+        * {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Noto Serif TC', serif;
+            line-height: 1.7;
+            background: var(--dream-cream);
+            color: #333;
+        }
+
+        /* 導航列黑白設計（與首頁一致） */
+        .navbar {
+            background: #212529 !important;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+            padding: 1rem 0;
+        }
+
+        .navbar .navbar-brand {
+            font-family: 'Dancing Script', cursive;
+            color: #fff !important;
+            font-weight: 600;
+            font-size: 1.8rem;
+            letter-spacing: 0.5px;
+        }
+
+        .navbar .navbar-brand:hover {
+            color: #7bbeb3 !important;
+            transform: translateX(-3px);
+            transition: all 0.3s ease;
+        }
+
+        .btn-outline-light {
+            border-color: #fff;
+            color: #fff;
+            border-radius: 25px;
+            padding: 0.5rem 1.5rem;
+            font-weight: 500;
+        }
+
+        .btn-outline-light:hover {
+            background: #fff;
+            color: #212529;
+            border-color: #fff;
+        }
+
+                /* 回到頂部懸浮按鈕 */
+        #backToTopBtn {
+            display: none;
+            position: fixed;
+            bottom: 40px;
+            right: 30px;
+            z-index: 9999;
+            background: #212529;
+            color: #fff;
+            border: none;
+            border-radius: 50%;
+            width: 48px;
+            height: 48px;
+            font-size: 1.5rem;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.18);
+            cursor: pointer;
+            transition: background 0.2s, box-shadow 0.2s;
+        }
+        #backToTopBtn:hover {
+            background: #7bbeb3;
+            color: #212529;
+            box-shadow: 0 8px 32px rgba(123,190,179,0.18);
+        }
+
+        /* Hero區域設計 */
         .hero-section {
-            background: linear-gradient(135deg, #98ddd2 0%, #1e4619 100%);
+            background: linear-gradient(135deg, var(--dream-sage) 0%, var(--dream-dark-green) 100%);
+            padding: 120px 0 80px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: -20%;
+            right: -10%;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(210, 135, 92, 0.2) 0%, transparent 70%);
+            border-radius: 50%;
+            animation: float 8s ease-in-out infinite;
+        }
+
+        .hero-section::after {
+            content: '';
+            position: absolute;
+            bottom: -15%;
+            left: -5%;
+            width: 250px;
+            height: 250px;
+            background: radial-gradient(circle, rgba(155, 165, 146, 0.15) 0%, transparent 70%);
+            border-radius: 50%;
+            animation: float 10s ease-in-out infinite reverse;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) translateX(0px); }
+            25% { transform: translateY(-20px) translateX(10px); }
+            50% { transform: translateY(-10px) translateX(-15px); }
+            75% { transform: translateY(-25px) translateX(5px); }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
             color: white;
-            padding: 60px 0;
         }
-        pre {
-            background: #f8f9fa;
-            border: 1px solid #e9ecef;
-            border-radius: 8px;
-            padding: 1rem;
-            overflow-x: auto;
+
+        .dream-logo {
+            font-family: 'Dancing Script', cursive;
+            font-size: 4.5rem;
+            font-weight: 700;
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            margin-bottom: 1rem;
+            letter-spacing: 1px;
         }
-        .tech-badge {
-            background: #e3f2fd;
-            color: #1976d2;
-            padding: 0.25rem 0.5rem;
-            border-radius: 4px;
-            font-size: 0.875rem;
-            margin-right: 0.5rem;
-            margin-bottom: 0.5rem;
-            display: inline-block;
+
+        .hero-subtitle {
+            font-size: 1.4rem;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 2rem;
+            font-weight: 300;
         }
+
+        .hero-stats {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(15px);
+            border-radius: 25px;
+            padding: 2.5rem;
+            margin-top: 3rem;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 1.5rem;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .stat-item:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-5px);
+        }
+
+        .stat-number {
+            font-size: 2rem;
+            font-weight: 600;
+            color: white;
+            display: block;
+        }
+
+        .stat-label {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 0.9rem;
+            margin-top: 0.5rem;
+        }
+
+        /* 主要內容區 */
+        .main-content {
+            background: var(--dream-warm-white);
+            margin-top: -50px;
+            position: relative;
+            z-index: 3;
+            border-radius: 30px 30px 0 0;
+            box-shadow: 0 -10px 40px rgba(0,0,0,0.08);
+        }
+
         .section-card {
             border: none;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-            margin-bottom: 2rem;
+            border-radius: 25px;
+            background: white;
+            box-shadow: 0 8px 30px rgba(122, 132, 113, 0.08);
+            margin-bottom: 3rem;
+            overflow: hidden;
+            transition: all 0.3s ease;
         }
+
+        .section-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 45px rgba(122, 132, 113, 0.15);
+        }
+
         .section-header {
-            background: linear-gradient(45deg, #f8f9fa, #e9ecef);
-            border-bottom: 1px solid #dee2e6;
-            padding: 1.5rem;
+            background: linear-gradient(135deg, var(--dream-sage), var(--dream-light-sage));
+            color: white;
+            padding: 2rem 2.5rem;
+            position: relative;
+        }
+
+        .section-header::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: var(--dream-orange);
+        }
+
+        .section-header h2 {
             margin: 0;
+            font-weight: 600;
+            font-size: 1.5rem;
         }
-        .achievement-item {
-            background: #f8f9fa;
-            border-left: 4px solid #28a745;
-            padding: 1rem;
-            margin-bottom: 1rem;
+
+        .section-header i {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 8px;
+            border-radius: 50%;
+            margin-right: 12px;
+            font-size: 0.9rem;
         }
-        .challenge-item {
-            background: #fff3cd;
-            border-left: 4px solid #ffc107;
-            padding: 1rem;
-            margin-bottom: 1rem;
+
+        .card-body {
+            padding: 2.5rem;
         }
+
+        /* 技術標籤 */
+        .tech-badge {
+            background: linear-gradient(135deg, var(--dream-beige), var(--dream-cream));
+            color: var(--dream-brown);
+            border: 1px solid rgba(139, 111, 71, 0.2);
+            padding: 0.4rem 1rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            margin-right: 0.5rem;
+            margin-bottom: 0.8rem;
+            display: inline-block;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+
+        .tech-badge:hover {
+            background: var(--dream-brown);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(139, 111, 71, 0.3);
+        }
+
+        /* 特色亮點 */
         .feature-highlight {
-            background: #e8f5e8;
-            border-left: 4px solid #20c997;
-            padding: 1rem;
+            background: linear-gradient(135deg, rgba(210, 135, 92, 0.08), rgba(210, 135, 92, 0.15));
+            border-left: 4px solid var(--dream-orange);
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            border-radius: 0 15px 15px 0;
+            transition: all 0.3s ease;
+        }
+
+        .feature-highlight:hover {
+            transform: translateX(8px);
+            box-shadow: 0 5px 20px rgba(210, 135, 92, 0.2);
+        }
+
+        /* 成就項目 */
+        .achievement-item {
+            background: linear-gradient(135deg, rgba(155, 165, 146, 0.08), rgba(155, 165, 146, 0.15));
+            border-left: 4px solid var(--dream-light-sage);
+            padding: 1.5rem;
+            margin-bottom: 1.2rem;
+            border-radius: 0 15px 15px 0;
+            transition: all 0.3s ease;
+        }
+
+        .achievement-item:hover {
+            transform: translateX(8px);
+            box-shadow: 0 5px 20px rgba(155, 165, 146, 0.2);
+        }
+
+        .challenge-item {
+            background: linear-gradient(135deg, rgba(210, 135, 92, 0.08), rgba(210, 135, 92, 0.15));
+            border-left: 4px solid var(--dream-orange);
+            padding: 1.5rem;
+            margin-bottom: 1.2rem;
+            border-radius: 0 15px 15px 0;
+            transition: all 0.3s ease;
+        }
+
+        .challenge-item:hover {
+            transform: translateX(8px);
+            box-shadow: 0 5px 20px rgba(210, 135, 92, 0.2);
+        }
+
+        /* 程式碼區塊 */
+        pre {
+            background: linear-gradient(135deg, var(--dream-dark-green), var(--dream-sage));
+            color: #f0f8f0;
+            border-radius: 20px;
+            padding: 2rem;
+            overflow-x: auto;
+            border: none;
+            box-shadow: 0 8px 25px rgba(93, 104, 86, 0.2);
+            position: relative;
+            font-family: 'Consolas', 'Monaco', monospace;
+        }
+
+        pre::before {
+            content: '';
+            position: absolute;
+            top: 15px;
+            left: 20px;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: #ff6b6b;
+            box-shadow: 20px 0 0 #ffd93d, 40px 0 0 #51cf66;
+        }
+
+        pre code {
+            margin-top: 25px;
+            display: block;
+            line-height: 1.6;
+        }
+
+        /* 提示框 */
+        .alert {
+            border: none;
+            border-radius: 20px;
+            padding: 1.8rem;
+            border-left: 5px solid;
+        }
+
+        .alert-success {
+            background: linear-gradient(135deg, rgba(155, 165, 146, 0.08), rgba(155, 165, 146, 0.15));
+            color: var(--dream-dark-green);
+            border-left-color: var(--dream-light-sage);
+        }
+
+        /* 按鈕設計 */
+        .btn-dream {
+            background: linear-gradient(135deg, var(--dream-sage), var(--dream-light-sage));
+            border: none;
+            color: white;
+            padding: 0.8rem 2.5rem;
+            border-radius: 30px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-dream:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(122, 132, 113, 0.3);
+            color: white;
+            background: linear-gradient(135deg, var(--dream-orange), #e09366);
+        }
+
+        /* 植物裝飾元素 */
+        .leaf-decoration {
+            position: absolute;
+            opacity: 0.1;
+            pointer-events: none;
+        }
+
+        .leaf-decoration.leaf-1 {
+            top: 15%;
+            right: 8%;
+            width: 60px;
+            height: 120px;
+            background: var(--dream-light-sage);
+            border-radius: 50% 10% 50% 50%;
+            transform: rotate(15deg);
+            animation: leafSway1 6s ease-in-out infinite;
+        }
+
+        .leaf-decoration.leaf-2 {
+            bottom: 25%;
+            left: 5%;
+            width: 40px;
+            height: 80px;
+            background: var(--dream-orange);
+            border-radius: 50% 50% 50% 10%;
+            transform: rotate(-20deg);
+            animation: leafSway2 8s ease-in-out infinite;
+        }
+
+        .leaf-decoration.leaf-3 {
+            top: 60%;
+            right: 15%;
+            width: 35px;
+            height: 70px;
+            background: var(--dream-sage);
+            border-radius: 10% 50% 50% 50%;
+            transform: rotate(45deg);
+            animation: leafSway1 7s ease-in-out infinite reverse;
+        }
+
+        @keyframes leafSway1 {
+            0%, 100% { transform: rotate(15deg) translateY(0px); }
+            50% { transform: rotate(25deg) translateY(-10px); }
+        }
+
+        @keyframes leafSway2 {
+            0%, 100% { transform: rotate(-20deg) translateX(0px); }
+            50% { transform: rotate(-30deg) translateX(8px); }
+        }
+
+        /* Footer */
+        footer {
+            background: linear-gradient(135deg, var(--dream-dark-green), var(--dream-sage));
+            color: white;
+            padding: 3rem 0;
+            margin-top: 5rem;
+        }
+
+        /* 滾動指示器 */
+        .scroll-indicator {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--dream-sage), var(--dream-orange));
+            z-index: 1000;
+            transition: width 0.3s ease;
+        }
+
+        /* 響應式設計 */
+        @media (max-width: 768px) {
+            .dream-logo { font-size: 3rem; }
+            .hero-section { padding: 80px 0 60px; }
+            .section-header { padding: 1.5rem; }
+            .card-body { padding: 1.8rem; }
+            .hero-stats { padding: 1.8rem; }
+        }
+
+        /* 數據可視化樣式 */
+        .data-viz {
+            background: white;
+            border-radius: 15px;
+            padding: 1.5rem;
+            margin: 1rem 0;
+            box-shadow: 0 4px 15px rgba(122, 132, 113, 0.1);
+        }
+
+        .progress-bar-dream {
+            background: linear-gradient(90deg, var(--dream-sage), var(--dream-orange));
+            height: 8px;
+            border-radius: 10px;
+        }
+
+        /* 特殊卡片樣式 */
+        .value-card {
+            background: white;
+            border: 2px solid var(--dream-beige);
+            border-radius: 20px;
+            padding: 1.5rem;
+            text-align: center;
+            transition: all 0.3s ease;
+            height: 100%;
+        }
+
+        .value-card:hover {
+            border-color: var(--dream-sage);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(122, 132, 113, 0.15);
+        }
+
+        .value-icon {
+            font-size: 3rem;
             margin-bottom: 1rem;
         }
     </style>
 </head>
 <body>
+    <div class="scroll-indicator" id="scrollIndicator"></div>
+    
+    <div class="leaf-decoration leaf-1"></div>
+    <div class="leaf-decoration leaf-2"></div>
+    <div class="leaf-decoration leaf-3"></div>
 
-    <nav class="navbar navbar-dark bg-dark">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
         <div class="container">
-            <a class="navbar-brand" href="../index.html">← 回到作品集</a>
+            <a class="navbar-brand" href="../index.html">
+                <i class="fas fa-arrow-left me-2"></i>回到作品集
+            </a>
             <div>
                 <a class="btn btn-outline-light btn-sm" href="../index.html">首頁</a>
             </div>
         </div>
     </nav>
 
-    <section class="hero-section text-center">
-        <div class="container">
-            <h1 class="display-4 fw-bold mb-3">Dream Bookstore 書店管理系統</h1>
-            <div class="row justify-content-center mt-4">
-                <div class="col-md-8">
-                    <div class="row text-start">
-                        <div class="col-md-6">
-                            <p><strong>開發模式：</strong> 獨力開發（個人專案）</p>
-                            <p><strong>專案類型：</strong> 桌面應用程式（Windows Forms）</p>
-                        </div>
-                        <div class="col-md-6">
-                            <p><strong>技術架構：</strong> C# WinForms + SQL Server</p>
-                            <p><strong>開發目標：</strong> 為獨立書店提供完整的營運管理解決方案</p>
-                        </div>
+    <section class="hero-section">
+        <div class="container hero-content">
+            <div class="text-center" data-aos="fade-up">
+                <div class="dream-logo">Dream Bookstore</div>
+                <p class="hero-subtitle">夢想書店管理系統</p>
+                <a href="#main-content" class="btn btn-dream btn-lg">
+                    <i class="fas fa-book-open me-2"></i>探索專案詳情
+                </a>
+            </div>
+            
+            <div class="hero-stats" data-aos="fade-up" data-aos-delay="200">
+                <div class="stats-grid">
+                    <div class="stat-item">
+                        <span class="stat-number">獨力開發</span>
+                        <div class="stat-label">個人專案</div>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">桌面應用</span>
+                        <div class="stat-label">Windows Forms</div>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">完整系統</span>
+                        <div class="stat-label">營運管理解決方案</div>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">C# + SQL</span>
+                        <div class="stat-label">技術架構</div>
+                    </div>
+                </div>
+                <div class="row text-start mt-4">
+                    <div class="col-md-6">
+                        <p><i class="fas fa-user-circle me-2" style="color: var(--dream-orange);"></i><strong>開發模式：</strong> 獨力開發（個人專案）</p>
+                        <p><i class="fas fa-desktop me-2" style="color: var(--dream-orange);"></i><strong>專案類型：</strong> 桌面應用程式（Windows Forms）</p>
+                    </div>
+                    <div class="col-md-6">
+                        <p><i class="fas fa-cogs me-2" style="color: var(--dream-orange);"></i><strong>技術架構：</strong> C# WinForms + SQL Server</p>
+                        <p><i class="fas fa-target me-2" style="color: var(--dream-orange);"></i><strong>開發目標：</strong> 為獨立書店提供完整的營運管理解決方案</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <main class="py-5">
+    <main class="main-content py-5" id="main-content">
         <div class="container">
             
             <!-- 專案背景與價值定位 -->
-            <div class="card section-card">
+            <div class="card section-card" data-aos="fade-up">
                 <div class="section-header">
-                    <h2><i class="fas fa-book me-2"></i>專案背景與價值定位</h2>
+                    <h2><i class="fas fa-book"></i>專案背景與價值定位</h2>
                 </div>
                 <div class="card-body">
-                    <h4>解決的實際問題</h4>
-                    <div class="row">
+                    <h4><i class="fas fa-lightbulb me-2" style="color: var(--dream-orange);"></i>解決的實際問題</h4>
+                    <div class="row mt-4">
                         <div class="col-md-4">
-                            <div class="feature-highlight">
+                            <div class="value-card">
+                                <i class="fas fa-store-alt value-icon" style="color: var(--dream-sage);"></i>
                                 <h6>目標客群</h6>
-                                <p>缺乏網路商店系統的獨立書店</p>
+                                <p class="mb-0">缺乏網路商店系統的獨立書店</p>
                             </div>
                         </div>
                         <div class="col-md-4">
-                            <div class="feature-highlight">
+                            <div class="value-card">
+                                <i class="fas fa-exclamation-triangle value-icon" style="color: var(--dream-orange);"></i>
                                 <h6>市場痛點</h6>
-                                <p>傳統書店缺乏數位化管理工具，難以有效管理庫存、會員和訂單</p>
+                                <p class="mb-0">傳統書店缺乏數位化管理工具，難以有效管理庫存、會員和訂單</p>
                             </div>
                         </div>
                         <div class="col-md-4">
-                            <div class="feature-highlight">
+                            <div class="value-card">
+                                <i class="fas fa-chart-line value-icon" style="color: var(--dream-light-sage);"></i>
                                 <h6>商業價值</h6>
-                                <p>提供小型書店負擔得起的管理系統，協助傳統書店數位轉型</p>
+                                <p class="mb-0">提供小型書店負擔得起的管理系統，協助傳統書店數位轉型</p>
                             </div>
                         </div>
                     </div>
@@ -125,90 +600,95 @@
             </div>
 
             <!-- 技術架構 -->
-            <div class="card section-card">
+            <div class="card section-card" data-aos="fade-up" data-aos-delay="100">
                 <div class="section-header">
-                    <h2><i class="fas fa-cogs me-2"></i>獨立開發的技術亮點</h2>
+                    <h2><i class="fas fa-cogs"></i>獨立開發的技術亮點</h2>
                 </div>
                 <div class="card-body">
-                    <h4>完整的系統架構設計</h4>
-                    <div class="row">
+                    <h4><i class="fas fa-sitemap me-2" style="color: var(--dream-sage);"></i>完整的系統架構設計</h4>
+                    <div class="row mt-3">
                         <div class="col-md-6">
-                            <h6>技術棧</h6>
-                            <span class="tech-badge">C# WinForms</span>
-                            <span class="tech-badge">SQL Server</span>
-                            <span class="tech-badge">ADO.NET</span>
+                            <h6><i class="fas fa-layer-group me-2" style="color: var(--dream-orange);"></i>技術棧</h6>
+                            <div class="mb-3">
+                                <span class="tech-badge">C# WinForms</span>
+                                <span class="tech-badge">SQL Server</span>
+                                <span class="tech-badge">ADO.NET</span>
+                            </div>
                         </div>
                         <div class="col-md-6">
-                            <h6>核心實體</h6>
-                            <span class="tech-badge">Admin（管理員）</span>
-                            <span class="tech-badge">Books（書籍）</span>
-                            <span class="tech-badge">Customer（會員）</span>
-                            <span class="tech-badge">Orders（訂單）</span>
-                            <span class="tech-badge">OrderDetails（訂單明細）</span>
+                            <h6><i class="fas fa-database me-2" style="color: var(--dream-orange);"></i>核心實體</h6>
+                            <div class="mb-3">
+                                <span class="tech-badge">Admin（管理員）</span>
+                                <span class="tech-badge">Books（書籍）</span>
+                                <span class="tech-badge">Customer（會員）</span>
+                                <span class="tech-badge">Orders（訂單）</span>
+                                <span class="tech-badge">OrderDetails（訂單明細）</span>
+                            </div>
                         </div>
                     </div>
                     
                     <hr class="my-4">
                     
-                    <h4>全功能模組開發</h4>
+                    <h4><i class="fas fa-puzzle-piece me-2" style="color: var(--dream-sage);"></i>全功能模組開發</h4>
                     <pre><code>// 展示核心功能架構
-- 用戶認證系統：登入驗證、密碼重設、權限管理
-- 書籍管理：CRUD 操作、庫存追蹤、自動更新機制  
-- 會員管理：客戶資料維護、消費統計分析
-- 訂單處理：複雜的訂單建立流程、庫存自動扣減
-- 員工管理：角色權限控制、多層級授權</code></pre>
+📚 用戶認證系統：登入驗證、密碼重設、權限管理
+📖 書籍管理：CRUD 操作、庫存追蹤、自動更新機制  
+👥 會員管理：客戶資料維護、消費統計分析
+🛒 訂單處理：複雜的訂單建立流程、庫存自動扣減
+👨‍💼 員工管理：角色權限控制、多層級授權</code></pre>
                     
-                    <h4>用戶體驗設計</h4>
-                    <ul>
-                        <li><strong>直觀介面：</strong> 設計溫馨的書店風格界面，符合使用者情境</li>
-                        <li><strong>操作流程：</strong> 簡化複雜的書店日常作業流程</li>
-                        <li><strong>資料呈現：</strong> 多分頁設計，清楚區分訂單管理和統計分析</li>
+                    <h4 class="mt-4"><i class="fas fa-heart me-2" style="color: var(--dream-orange);"></i>用戶體驗設計</h4>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><i class="fas fa-palette me-2" style="color: var(--dream-sage);"></i><strong>直觀介面：</strong> 設計溫馨的書店風格界面，符合使用者情境</li>
+                        <li class="mb-2"><i class="fas fa-route me-2" style="color: var(--dream-sage);"></i><strong>操作流程：</strong> 簡化複雜的書店日常作業流程</li>
+                        <li class="mb-2"><i class="fas fa-chart-bar me-2" style="color: var(--dream-sage);"></i><strong>資料呈現：</strong> 多分頁設計，清楚區分訂單管理和統計分析</li>
                     </ul>
                 </div>
             </div>
 
             <!-- 技術成就 -->
-            <div class="card section-card">
+            <div class="card section-card" data-aos="fade-up" data-aos-delay="200">
                 <div class="section-header">
-                    <h2><i class="fas fa-trophy me-2"></i>獨力開發的技術成就</h2>
+                    <h2><i class="fas fa-trophy"></i>獨力開發的技術成就</h2>
                 </div>
                 <div class="card-body">
-                    <h4>複雜業務邏輯實現</h4>
+                    <h4><i class="fas fa-brain me-2" style="color: var(--dream-orange);"></i>複雜業務邏輯實現</h4>
                     
-                    <h5>訂單管理邏輯</h5>
-                    <ul>
-                        <li>支援單一客戶多本書籍的複合訂單</li>
-                        <li>訂單取消時自動回復庫存數量</li>
-                        <li>個人消費統計和總額計算</li>
-                    </ul>
+                    <div class="row mt-4">
+                        <div class="col-md-6">
+                            <h5><i class="fas fa-shopping-cart me-2" style="color: var(--dream-sage);"></i>訂單管理邏輯</h5>
+                            <ul class="list-unstyled">
+                                <li class="mb-2"><i class="fas fa-check me-2" style="color: var(--dream-light-sage);"></i>支援單一客戶多本書籍的複合訂單</li>
+                                <li class="mb-2"><i class="fas fa-check me-2" style="color: var(--dream-light-sage);"></i>訂單取消時自動回復庫存數量</li>
+                                <li class="mb-2"><i class="fas fa-check me-2" style="color: var(--dream-light-sage);"></i>個人消費統計和總額計算</li>
+                            </ul>
+                        </div>
+                        <div class="col-md-6">
+                            <h5><i class="fas fa-shield-alt me-2" style="color: var(--dream-sage);"></i>權限控制系統</h5>
+                            <ul class="list-unstyled">
+                                <li class="mb-2"><i class="fas fa-check me-2" style="color: var(--dream-light-sage);"></i>管理員和員工的差異化權限</li>
+                                <li class="mb-2"><i class="fas fa-check me-2" style="color: var(--dream-light-sage);"></i>員工管理頁面僅限管理員存取</li>
+                                <li class="mb-2"><i class="fas fa-check me-2" style="color: var(--dream-light-sage);"></i>多層級安全驗證機制</li>
+                            </ul>
+                        </div>
+                    </div>
 
-                    <h5>權限控制系統</h5>
-                    <ul>
-                        <li>管理員和員工的差異化權限</li>
-                        <li>員工管理頁面僅限管理員存取</li>
-                        <li>多層級安全驗證機制</li>
-                    </ul>
+                    <hr class="my-4">
 
-                    <hr>
-
-                    <h4>資料處理能力</h4>
+                    <h4><i class="fas fa-database me-2" style="color: var(--dream-orange);"></i>資料處理能力</h4>
                     <div class="row">
                         <div class="col-md-4">
                             <div class="achievement-item">
-                                <strong>即時庫存更新</strong><br>
-                                訂單建立時自動扣減，取消時自動回復
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="achievement-item">
+                                <i class="fas fa-chart-pie me-2" style="color: var(--dream-light-sage);"></i>
                                 <strong>統計分析功能</strong><br>
-                                個人消費統計、總銷售額計算
+                                <small>個人消費統計、總銷售額計算</small>
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="achievement-item">
+                                <i class="fas fa-search me-2" style="color: var(--dream-light-sage);"></i>
                                 <strong>搜尋功能</strong><br>
-                                客戶和書籍的快速查詢機制
+                                <small>客戶和書籍的快速查詢機制</small>
                             </div>
                         </div>
                     </div>
@@ -216,117 +696,173 @@
             </div>
 
             <!-- 技術挑戰 -->
-            <div class="card section-card">
+            <div class="card section-card" data-aos="fade-up" data-aos-delay="300">
                 <div class="section-header">
-                    <h2><i class="fas fa-lightbulb me-2"></i>自主解決的技術挑戰</h2>
+                    <h2><i class="fas fa-lightbulb"></i>自主解決的技術挑戰</h2>
                 </div>
                 <div class="card-body">
                     <div class="challenge-item">
-                        <h5>複雜表單設計</h5>
-                        <ul>
-                            <li><strong>多窗格布局：</strong> 新增訂單頁面的雙欄設計（客戶選擇 + 書籍資訊）</li>
-                            <li><strong>動態資料綁定：</strong> 即時更新價格計算和庫存狀態</li>
-                            <li><strong>用戶互動：</strong> 流暢的資料輸入和驗證流程</li>
+                        <h5><i class="fas fa-window-maximize me-2" style="color: var(--dream-orange);"></i>複雜表單設計</h5>
+                        <ul class="list-unstyled">
+                            <li class="mb-2"><i class="fas fa-columns me-1" style="color: var(--dream-sage);"></i><strong>多窗格布局：</strong> 新增訂單頁面的雙欄設計（客戶選擇 + 書籍資訊）</li>
+                            <li class="mb-2"><i class="fas fa-sync me-1" style="color: var(--dream-sage);"></i><strong>動態資料綁定：</strong> 即時更新價格計算和庫存狀態</li>
+                            <li class="mb-2"><i class="fas fa-mouse-pointer me-1" style="color: var(--dream-sage);"></i><strong>用戶互動：</strong> 流暢的資料輸入和驗證流程</li>
                         </ul>
                     </div>
                     
                     <div class="challenge-item">
-                        <h5>資料一致性保證</h5>
-                        <ul>
-                            <li><strong>事務處理：</strong> 確保訂單建立過程中的資料完整性</li>
-                            <li><strong>併發控制：</strong> 防止庫存資料的競爭條件</li>
-                            <li><strong>錯誤處理：</strong> 完善的異常處理和用戶提示機制</li>
+                        <h5><i class="fas fa-database me-2" style="color: var(--dream-orange);"></i>資料一致性保證</h5>
+                        <ul class="list-unstyled">
+                            <li class="mb-2"><i class="fas fa-exchange-alt me-1" style="color: var(--dream-sage);"></i><strong>事務處理：</strong> 確保訂單建立過程中的資料完整性</li>
+                            <li class="mb-2"><i class="fas fa-lock me-1" style="color: var(--dream-sage);"></i><strong>併發控制：</strong> 防止庫存資料的競爭條件</li>
+                            <li class="mb-2"><i class="fas fa-exclamation-circle me-1" style="color: var(--dream-sage);"></i><strong>錯誤處理：</strong> 完善的異常處理和用戶提示機制</li>
                         </ul>
                     </div>
 
                     <div class="challenge-item">
-                        <h5>系統擴展性設計</h5>
-                        <ul>
-                            <li><strong>模組化架構：</strong> 各功能模組獨立設計，便於維護和擴展</li>
-                            <li><strong>未來優化預留：</strong> 書封面自動更新機制（待實現）、會員折扣優惠系統（擴展計畫）</li>
+                        <h5><i class="fas fa-expand-arrows-alt me-2" style="color: var(--dream-orange);"></i>系統擴展性設計</h5>
+                        <ul class="list-unstyled">
+                            <li class="mb-2"><i class="fas fa-puzzle-piece me-1" style="color: var(--dream-sage);"></i><strong>模組化架構：</strong> 各功能模組獨立設計，便於維護和擴展</li>
+                            <li class="mb-2"><i class="fas fa-road me-1" style="color: var(--dream-sage);"></i><strong>未來優化預留：</strong> 書封面自動更新機制（待實現）、會員折扣優惠系統（擴展計畫）</li>
                         </ul>
                     </div>
                 </div>
             </div>
 
             <!-- 全方位能力展現 -->
-            <div class="card section-card">
+            <div class="card section-card" data-aos="fade-up" data-aos-delay="400">
                 <div class="section-header">
-                    <h2><i class="fas fa-user-graduate me-2"></i>獨立開發者的全方位能力展現</h2>
+                    <h2><i class="fas fa-user-graduate"></i>獨立開發者的全方位能力展現</h2>
                 </div>
                 <div class="card-body">
                     <div class="row">
                         <div class="col-md-4">
-                            <h5>需求分析能力</h5>
-                            <ul>
-                                <li>深入了解獨立書店的營運需求</li>
-                                <li>從零開始設計完整的功能架構</li>
-                                <li>識別核心功能與擴展功能的優先順序</li>
-                            </ul>
+                            <div class="data-viz">
+                                <h5><i class="fas fa-search me-2" style="color: var(--dream-orange);"></i>需求分析能力</h5>
+                                <ul class="list-unstyled">
+                                    <li class="mb-2"><i class="fas fa-eye me-1" style="color: var(--dream-sage);"></i>深入了解獨立書店的營運需求</li>
+                                    <li class="mb-2"><i class="fas fa-drafting-compass me-1" style="color: var(--dream-sage);"></i>從零開始設計完整的功能架構</li>
+                                    <li class="mb-2"><i class="fas fa-sort-amount-up me-1" style="color: var(--dream-sage);"></i>識別核心功能與擴展功能的優先順序</li>
+                                </ul>
+                            </div>
                         </div>
                         <div class="col-md-4">
-                            <h5>技術實現能力</h5>
-                            <ul>
-                                <li>Windows Forms 界面設計與用戶體驗優化</li>
-                                <li>C# 業務邏輯實現與資料處理</li>
-                                <li>SQL Server 資料庫架構設計與優化</li>
-                            </ul>
+                            <div class="data-viz">
+                                <h5><i class="fas fa-code me-2" style="color: var(--dream-orange);"></i>技術實現能力</h5>
+                                <ul class="list-unstyled">
+                                    <li class="mb-2"><i class="fas fa-desktop me-1" style="color: var(--dream-sage);"></i>Windows Forms 界面設計與用戶體驗優化</li>
+                                    <li class="mb-2"><i class="fas fa-cog me-1" style="color: var(--dream-sage);"></i>C# 業務邏輯實現與資料處理</li>
+                                    <li class="mb-2"><i class="fas fa-database me-1" style="color: var(--dream-sage);"></i>SQL Server 資料庫架構設計與優化</li>
+                                </ul>
+                            </div>
                         </div>
                         <div class="col-md-4">
-                            <h5>專案管理能力</h5>
-                            <ul>
-                                <li>獨立制定開發計畫和里程碑</li>
-                                <li>自主測試和問題修復</li>
-                                <li>完整的系統說明和架構文檔</li>
-                            </ul>
+                            <div class="data-viz">
+                                <h5><i class="fas fa-tasks me-2" style="color: var(--dream-orange);"></i>專案管理能力</h5>
+                                <ul class="list-unstyled">
+                                    <li class="mb-2"><i class="fas fa-calendar-check me-1" style="color: var(--dream-sage);"></i>獨立制定開發計畫和里程碑</li>
+                                    <li class="mb-2"><i class="fas fa-bug me-1" style="color: var(--dream-sage);"></i>自主測試和問題修復</li>
+                                    <li class="mb-2"><i class="fas fa-file-alt me-1" style="color: var(--dream-sage);"></i>完整的系統說明和架構文檔</li>
+                                </ul>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
 
             <!-- 技術深度 -->
-            <div class="card section-card">
+            <div class="card section-card" data-aos="fade-up" data-aos-delay="500">
                 <div class="section-header">
-                    <h2><i class="fas fa-code me-2"></i>技術深度體現</h2>
+                    <h2><i class="fas fa-code"></i>技術深度體現</h2>
                 </div>
                 <div class="card-body">
-                    <h4>資料庫設計精髓</h4>
+                    <h4><i class="fas fa-sitemap me-2" style="color: var(--dream-orange);"></i>資料庫設計精髓</h4>
                     <pre><code>// 展示複雜的關聯設計思維
-Orders (訂單主表)
-├── Customer (客戶資訊) - 多對一關係
-├── OrderDetails (訂單明細) - 一對多關係  
-└── Books (書籍資訊) - 透過明細表多對多關係</code></pre>
+📋 Orders (訂單主表)
+├── 👤 Customer (客戶資訊) - 多對一關係
+├── 📝 OrderDetails (訂單明細) - 一對多關係  
+└── 📚 Books (書籍資訊) - 透過明細表多對多關係
 
-                    <h4>業務邏輯複雜度</h4>
-                    <ul>
-                        <li><strong>動態價格計算：</strong> 支援多書籍訂單的自動總價計算</li>
-                        <li><strong>庫存管理：</strong> 即時庫存檢查和自動更新機制</li>
-                        <li><strong>統計報表：</strong> 客戶消費行為分析和營收統計</li>
-                    </ul>
+💡 核心設計理念：
+• 正規化設計避免資料冗餘
+• 外鍵關聯確保參照完整性
+• 索引優化提升查詢效能</code></pre>
+
+                    <h4 class="mt-4"><i class="fas fa-brain me-2" style="color: var(--dream-orange);"></i>業務邏輯複雜度</h4>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="feature-highlight">
+                                <i class="fas fa-calculator me-2" style="color: var(--dream-orange);"></i>
+                                <strong>動態價格計算</strong><br>
+                                <small>支援多書籍訂單的自動總價計算</small>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="feature-highlight">
+                                <i class="fas fa-warehouse me-2" style="color: var(--dream-orange);"></i>
+                                <strong>庫存管理</strong><br>
+                                <small>即時庫存檢查和自動更新機制</small>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="feature-highlight">
+                                <i class="fas fa-chart-line me-2" style="color: var(--dream-orange);"></i>
+                                <strong>統計報表</strong><br>
+                                <small>客戶消費行為分析和營收統計</small>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
 
             <!-- 成長與學習 -->
-            <div class="card section-card">
+            <div class="card section-card" data-aos="fade-up" data-aos-delay="600">
                 <div class="section-header">
-                    <h2><i class="fas fa-graduation-cap me-2"></i>個人成長與學習成果</h2>
+                    <h2><i class="fas fa-graduation-cap"></i>個人成長與學習成果</h2>
                 </div>
                 <div class="card-body">
                     <div class="row">
                         <div class="col-md-6">
-                            <h5>技術能力提升</h5>
-                            <ul>
-                                <li><strong>從零開始：</strong> 完整掌握 Windows Forms 應用程式開發</li>
-                                <li><strong>資料庫技能：</strong> 深入理解關聯式資料庫設計原理</li>
-                                <li><strong>問題解決：</strong> 獨立面對和解決複雜技術問題的能力</li>
-                            </ul>
+                            <h5><i class="fas fa-rocket me-2" style="color: var(--dream-orange);"></i>技術能力提升</h5>
+                            <div class="data-viz">
+                                <div class="d-flex justify-content-between mb-2">
+                                    <span><strong>Windows Forms 開發</strong></span>
+                                    <span class="fw-bold" style="color: var(--dream-sage);">95%</span>
+                                </div>
+                                <div class="progress mb-3">
+                                    <div class="progress-bar progress-bar-dream" style="width: 95%"></div>
+                                </div>
+                                <div class="d-flex justify-content-between mb-2">
+                                    <span><strong>資料庫設計</strong></span>
+                                    <span class="fw-bold" style="color: var(--dream-sage);">92%</span>
+                                </div>
+                                <div class="progress mb-3">
+                                    <div class="progress-bar progress-bar-dream" style="width: 92%"></div>
+                                </div>
+                                <div class="d-flex justify-content-between mb-2">
+                                    <span><strong>問題解決能力</strong></span>
+                                    <span class="fw-bold" style="color: var(--dream-sage);">90%</span>
+                                </div>
+                                <div class="progress">
+                                    <div class="progress-bar progress-bar-dream" style="width: 90%"></div>
+                                </div>
+                            </div>
                         </div>
                         <div class="col-md-6">
-                            <h5>軟體工程素養</h5>
-                            <ul>
-                                <li><strong>系統思維：</strong> 從整體角度設計和實現複雜系統</li>
-                                <li><strong>代碼品質：</strong> 注重程式碼的可讀性和維護性</li>
-                                <li><strong>用戶導向：</strong> 站在終端用戶角度思考功能設計</li>
+                            <h5><i class="fas fa-tools me-2" style="color: var(--dream-orange);"></i>軟體工程素養</h5>
+                            <ul class="list-unstyled">
+                                <li class="mb-3">
+                                    <i class="fas fa-project-diagram me-2" style="color: var(--dream-sage);"></i>
+                                    <strong>系統思維：</strong> 從整體角度設計和實現複雜系統
+                                </li>
+                                <li class="mb-3">
+                                    <i class="fas fa-code-branch me-2" style="color: var(--dream-sage);"></i>
+                                    <strong>代碼品質：</strong> 注重程式碼的可讀性和維護性
+                                </li>
+                                <li class="mb-3">
+                                    <i class="fas fa-users me-2" style="color: var(--dream-sage);"></i>
+                                    <strong>用戶導向：</strong> 站在終端用戶角度思考功能設計
+                                </li>
                             </ul>
                         </div>
                     </div>
@@ -334,46 +870,86 @@ Orders (訂單主表)
             </div>
 
             <!-- 專案價值與影響 -->
-            <div class="card section-card">
+            <div class="card section-card" data-aos="fade-up" data-aos-delay="700">
                 <div class="section-header">
-                    <h2><i class="fas fa-chart-line me-2"></i>專案價值與影響</h2>
+                    <h2><i class="fas fa-chart-line"></i>專案價值與影響</h2>
                 </div>
                 <div class="card-body">
                     <div class="row">
                         <div class="col-md-6">
-                            <h4>商業價值</h4>
+                            <h4><i class="fas fa-business-time me-2" style="color: var(--dream-orange);"></i>商業價值</h4>
                             <div class="achievement-item">
-                                <i class="fas fa-store text-success me-2"></i>
+                                <i class="fas fa-store me-2" style="color: var(--dream-light-sage);"></i>
                                 <strong>實用性：</strong> 直接解決獨立書店的實際營運需求
                             </div>
                             <div class="achievement-item">
-                                <i class="fas fa-dollar-sign text-success me-2"></i>
+                                <i class="fas fa-dollar-sign me-2" style="color: var(--dream-light-sage);"></i>
                                 <strong>成本效益：</strong> 為小型書店提供可負擔的管理解決方案
                             </div>
                             <div class="achievement-item">
-                                <i class="fas fa-digital-tachograph text-success me-2"></i>
+                                <i class="fas fa-digital-tachograph me-2" style="color: var(--dream-light-sage);"></i>
                                 <strong>數位轉型：</strong> 協助傳統書店邁向數位化管理
                             </div>
                         </div>
                         <div class="col-md-6">
-                            <h4>技術價值</h4>
+                            <h4><i class="fas fa-microchip me-2" style="color: var(--dream-orange);"></i>技術價值</h4>
                             <div class="achievement-item">
-                                <i class="fas fa-puzzle-piece text-success me-2"></i>
+                                <i class="fas fa-puzzle-piece me-2" style="color: var(--dream-light-sage);"></i>
                                 <strong>完整性：</strong> 涵蓋完整的書店管理業務流程
                             </div>
                             <div class="achievement-item">
-                                <i class="fas fa-shield-alt text-success me-2"></i>
+                                <i class="fas fa-shield-alt me-2" style="color: var(--dream-light-sage);"></i>
                                 <strong>穩定性：</strong> 通過實際測試驗證的穩定系統
                             </div>
                             <div class="achievement-item">
-                                <i class="fas fa-expand-arrows-alt text-success me-2"></i>
+                                <i class="fas fa-expand-arrows-alt me-2" style="color: var(--dream-light-sage);"></i>
                                 <strong>擴展性：</strong> 為未來功能擴展奠定良好基礎
                             </div>
                         </div>
                     </div>
                     
                     <div class="alert alert-success mt-4">
+                        <i class="fas fa-star me-2"></i>
                         這個專案充分展現了我作為獨立開發者的綜合能力，從需求分析、系統設計到程式實現的完整軟體開發生命週期掌握，以及面對複雜業務邏輯時的獨立思考和解決能力。
+                    </div>
+                </div>
+            </div>
+
+            <!-- 專案亮點總結 -->
+            <div class="card section-card" data-aos="fade-up" data-aos-delay="800">
+                <div class="section-header">
+                    <h2><i class="fas fa-gem"></i>專案亮點總結</h2>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="value-card mb-4">
+                                <i class="fas fa-user-circle value-icon" style="color: var(--dream-orange);"></i>
+                                <h5>獨立開發能力</h5>
+                                <p class="mb-0">從零開始獨力完成完整系統開發，展現全方位的軟體開發技能和自主學習能力。</p>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="value-card mb-4">
+                                <i class="fas fa-heart value-icon" style="color: var(--dream-sage);"></i>
+                                <h5>用戶體驗設計</h5>
+                                <p class="mb-0">深入思考書店經營者的實際需求，設計直觀溫馨的使用者介面。</p>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="value-card mb-4">
+                                <i class="fas fa-cogs value-icon" style="color: var(--dream-light-sage);"></i>
+                                <h5>系統架構設計</h5>
+                                <p class="mb-0">建立完整的資料庫關聯結構，實現複雜的業務邏輯和權限控制。</p>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="value-card mb-4">
+                                <i class="fas fa-seedling value-icon" style="color: var(--dream-orange);"></i>
+                                <h5>持續成長精神</h5>
+                                <p class="mb-0">通過實際專案不斷學習新技術，培養解決實際問題的能力。</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -381,12 +957,147 @@ Orders (訂單主表)
         </div>
     </main>
 
-    <footer class="py-4 bg-dark text-white text-center">
+    <button id="backToTopBtn" title="回到頂部"><i class="fas fa-arrow-up"></i></button>
+    <footer class="text-center">
         <div class="container">
-            <p>&copy; 2025 劉冠彤 • Dream Bookstore 專案詳細介紹</p>
+            <div class="row">
+                <div class="col-md-6 text-md-start">
+                    <h5><i class="fas fa-user-circle me-2"></i>劉冠彤</h5>
+                    <p class="mb-0">獨立開發者 • 系統架構師 • 問題解決者</p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <h5><i class="fas fa-envelope me-2"></i>聯絡方式</h5>
+                    <p class="mb-0">歡迎透過作品集主頁聯繫我</p>
+                </div>
+            </div>
+            <hr style="border-color: rgba(255,255,255,0.2); margin: 2rem 0;">
+            <p class="mb-0">&copy; 2025 劉冠彤 • Dream Bookstore 專案詳細介紹 • 展現獨立開發實力</p>
         </div>
     </footer>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <script>
+        // 回到頂部按鈕顯示與滾動
+        const backToTopBtn = document.getElementById('backToTopBtn');
+        window.addEventListener('scroll', function() {
+            if (window.scrollY > 200) {
+                backToTopBtn.style.display = 'block';
+            } else {
+                backToTopBtn.style.display = 'none';
+            }
+        });
+        backToTopBtn.addEventListener('click', function() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+        // 初始化 AOS 動畫
+        AOS.init({
+            duration: 1000,
+            easing: 'ease-out-cubic',
+            once: true,
+            mirror: false
+        });
+
+        // 滾動指示器
+        window.addEventListener('scroll', () => {
+            const scrolled = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
+            document.getElementById('scrollIndicator').style.width = scrolled + '%';
+        });
+
+        // 平滑滾動
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    const offsetTop = target.offsetTop - 80;
+                    window.scrollTo({
+                        top: offsetTop,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // 進度條動畫
+        const progressObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const progressBars = entry.target.querySelectorAll('.progress-bar');
+                    progressBars.forEach((bar, index) => {
+                        const width = bar.style.width;
+                        bar.style.width = '0%';
+                        setTimeout(() => {
+                            bar.style.transition = 'width 2.5s ease-out';
+                            bar.style.width = width;
+                        }, index * 300);
+                    });
+                }
+            });
+        }, { threshold: 0.3 });
+
+        document.querySelectorAll('.data-viz').forEach(viz => {
+            progressObserver.observe(viz);
+        });
+
+        // 導航欄滾動效果
+        let lastScrollTop = 0;
+        const navbar = document.querySelector('.navbar');
+        
+        window.addEventListener('scroll', () => {
+            let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            
+            if (scrollTop > lastScrollTop && scrollTop > 100) {
+                navbar.style.transform = 'translateY(-100%)';
+                navbar.style.transition = 'transform 0.3s ease-in-out';
+            } else {
+                navbar.style.transform = 'translateY(0)';
+                navbar.style.transition = 'transform 0.3s ease-in-out';
+            }
+            
+            // 背景透明度變化
+            if (scrollTop > 50) {
+                navbar.style.background = 'rgba(250, 248, 245, 0.98)';
+                navbar.style.boxShadow = '0 2px 25px rgba(0,0,0,0.12)';
+            } else {
+                navbar.style.background = 'rgba(250, 248, 245, 0.95)';
+                navbar.style.boxShadow = '0 2px 20px rgba(0,0,0,0.08)';
+            }
+            
+            lastScrollTop = scrollTop;
+        });
+
+        // 技術標籤互動效果
+        document.querySelectorAll('.tech-badge').forEach(badge => {
+            badge.addEventListener('mouseenter', () => {
+                badge.style.transform = 'translateY(-3px) scale(1.05)';
+                badge.style.transition = 'all 0.3s ease';
+            });
+
+            badge.addEventListener('mouseleave', () => {
+                badge.style.transform = 'translateY(0) scale(1)';
+            });
+        });
+
+        // 卡片懸停效果
+        document.querySelectorAll('.value-card').forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                card.style.transition = 'all 0.3s ease';
+            });
+        });
+
+        // 葉子動畫增強
+        document.querySelectorAll('.leaf-decoration').forEach(leaf => {
+            leaf.addEventListener('mouseenter', () => {
+                leaf.style.opacity = '0.2';
+                leaf.style.transform = 'scale(1.1)';
+            });
+            
+            leaf.addEventListener('mouseleave', () => {
+                leaf.style.opacity = '0.1';
+                leaf.style.transform = 'scale(1)';
+            });
+        });
+    </script>
 </body>
-</html>
+</html> 
