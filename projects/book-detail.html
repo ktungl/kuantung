@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dream Bookstore — 書店管理系統</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        .hero-section {
+            background: linear-gradient(135deg, #98ddd2 0%, #1e4619 100%);
+            color: white;
+            padding: 60px 0;
+        }
+        pre {
+            background: #f8f9fa;
+            border: 1px solid #e9ecef;
+            border-radius: 8px;
+            padding: 1rem;
+            overflow-x: auto;
+        }
+        .tech-badge {
+            background: #e3f2fd;
+            color: #1976d2;
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+            font-size: 0.875rem;
+            margin-right: 0.5rem;
+            margin-bottom: 0.5rem;
+            display: inline-block;
+        }
+        .section-card {
+            border: none;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            margin-bottom: 2rem;
+        }
+        .section-header {
+            background: linear-gradient(45deg, #f8f9fa, #e9ecef);
+            border-bottom: 1px solid #dee2e6;
+            padding: 1.5rem;
+            margin: 0;
+        }
+        .achievement-item {
+            background: #f8f9fa;
+            border-left: 4px solid #28a745;
+            padding: 1rem;
+            margin-bottom: 1rem;
+        }
+        .challenge-item {
+            background: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 1rem;
+            margin-bottom: 1rem;
+        }
+        .feature-highlight {
+            background: #e8f5e8;
+            border-left: 4px solid #20c997;
+            padding: 1rem;
+            margin-bottom: 1rem;
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand" href="/kuantung/">← 回到作品集</a>
+            <div>
+                <a class="btn btn-outline-light btn-sm" href="/kuantung/">首頁</a>
+            </div>
+        </div>
+    </nav>
+
+    <section class="hero-section text-center">
+        <div class="container">
+            <h1 class="display-4 fw-bold mb-3">Dream Bookstore 書店管理系統</h1>
+            <div class="row justify-content-center mt-4">
+                <div class="col-md-8">
+                    <div class="row text-start">
+                        <div class="col-md-6">
+                            <p><strong>開發模式：</strong> 獨力開發（個人專案）</p>
+                            <p><strong>專案類型：</strong> 桌面應用程式（Windows Forms）</p>
+                        </div>
+                        <div class="col-md-6">
+                            <p><strong>技術架構：</strong> C# WinForms + SQL Server</p>
+                            <p><strong>開發目標：</strong> 為獨立書店提供完整的營運管理解決方案</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <main class="py-5">
+        <div class="container">
+            
+            <!-- 專案背景與價值定位 -->
+            <div class="card section-card">
+                <div class="section-header">
+                    <h2><i class="fas fa-book me-2"></i>專案背景與價值定位</h2>
+                </div>
+                <div class="card-body">
+                    <h4>解決的實際問題</h4>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="feature-highlight">
+                                <h6>目標客群</h6>
+                                <p>缺乏網路商店系統的獨立書店</p>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="feature-highlight">
+                                <h6>市場痛點</h6>
+                                <p>傳統書店缺乏數位化管理工具，難以有效管理庫存、會員和訂單</p>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="feature-highlight">
+                                <h6>商業價值</h6>
+                                <p>提供小型書店負擔得起的管理系統，協助傳統書店數位轉型</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 技術架構 -->
+            <div class="card section-card">
+                <div class="section-header">
+                    <h2><i class="fas fa-cogs me-2"></i>獨立開發的技術亮點</h2>
+                </div>
+                <div class="card-body">
+                    <h4>完整的系統架構設計</h4>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h6>技術棧</h6>
+                            <span class="tech-badge">C# WinForms</span>
+                            <span class="tech-badge">SQL Server</span>
+                            <span class="tech-badge">ADO.NET</span>
+                        </div>
+                        <div class="col-md-6">
+                            <h6>核心實體</h6>
+                            <span class="tech-badge">Admin（管理員）</span>
+                            <span class="tech-badge">Books（書籍）</span>
+                            <span class="tech-badge">Customer（會員）</span>
+                            <span class="tech-badge">Orders（訂單）</span>
+                            <span class="tech-badge">OrderDetails（訂單明細）</span>
+                        </div>
+                    </div>
+                    
+                    <hr class="my-4">
+                    
+                    <h4>全功能模組開發</h4>
+                    <pre><code>// 展示核心功能架構
+- 用戶認證系統：登入驗證、密碼重設、權限管理
+- 書籍管理：CRUD 操作、庫存追蹤、自動更新機制  
+- 會員管理：客戶資料維護、消費統計分析
+- 訂單處理：複雜的訂單建立流程、庫存自動扣減
+- 員工管理：角色權限控制、多層級授權</code></pre>
+                    
+                    <h4>用戶體驗設計</h4>
+                    <ul>
+                        <li><strong>直觀介面：</strong> 設計溫馨的書店風格界面，符合使用者情境</li>
+                        <li><strong>操作流程：</strong> 簡化複雜的書店日常作業流程</li>
+                        <li><strong>資料呈現：</strong> 多分頁設計，清楚區分訂單管理和統計分析</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- 技術成就 -->
+            <div class="card section-card">
+                <div class="section-header">
+                    <h2><i class="fas fa-trophy me-2"></i>獨力開發的技術成就</h2>
+                </div>
+                <div class="card-body">
+                    <h4>複雜業務邏輯實現</h4>
+                    
+                    <h5>訂單管理邏輯</h5>
+                    <ul>
+                        <li>支援單一客戶多本書籍的複合訂單</li>
+                        <li>訂單取消時自動回復庫存數量</li>
+                        <li>個人消費統計和總額計算</li>
+                    </ul>
+
+                    <h5>權限控制系統</h5>
+                    <ul>
+                        <li>管理員和員工的差異化權限</li>
+                        <li>員工管理頁面僅限管理員存取</li>
+                        <li>多層級安全驗證機制</li>
+                    </ul>
+
+                    <hr>
+
+                    <h4>資料處理能力</h4>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="achievement-item">
+                                <strong>即時庫存更新</strong><br>
+                                訂單建立時自動扣減，取消時自動回復
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="achievement-item">
+                                <strong>統計分析功能</strong><br>
+                                個人消費統計、總銷售額計算
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="achievement-item">
+                                <strong>搜尋功能</strong><br>
+                                客戶和書籍的快速查詢機制
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 技術挑戰 -->
+            <div class="card section-card">
+                <div class="section-header">
+                    <h2><i class="fas fa-lightbulb me-2"></i>自主解決的技術挑戰</h2>
+                </div>
+                <div class="card-body">
+                    <div class="challenge-item">
+                        <h5>複雜表單設計</h5>
+                        <ul>
+                            <li><strong>多窗格布局：</strong> 新增訂單頁面的雙欄設計（客戶選擇 + 書籍資訊）</li>
+                            <li><strong>動態資料綁定：</strong> 即時更新價格計算和庫存狀態</li>
+                            <li><strong>用戶互動：</strong> 流暢的資料輸入和驗證流程</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="challenge-item">
+                        <h5>資料一致性保證</h5>
+                        <ul>
+                            <li><strong>事務處理：</strong> 確保訂單建立過程中的資料完整性</li>
+                            <li><strong>併發控制：</strong> 防止庫存資料的競爭條件</li>
+                            <li><strong>錯誤處理：</strong> 完善的異常處理和用戶提示機制</li>
+                        </ul>
+                    </div>
+
+                    <div class="challenge-item">
+                        <h5>系統擴展性設計</h5>
+                        <ul>
+                            <li><strong>模組化架構：</strong> 各功能模組獨立設計，便於維護和擴展</li>
+                            <li><strong>未來優化預留：</strong> 書封面自動更新機制（待實現）、會員折扣優惠系統（擴展計畫）</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 全方位能力展現 -->
+            <div class="card section-card">
+                <div class="section-header">
+                    <h2><i class="fas fa-user-graduate me-2"></i>獨立開發者的全方位能力展現</h2>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <h5>需求分析能力</h5>
+                            <ul>
+                                <li>深入了解獨立書店的營運需求</li>
+                                <li>從零開始設計完整的功能架構</li>
+                                <li>識別核心功能與擴展功能的優先順序</li>
+                            </ul>
+                        </div>
+                        <div class="col-md-4">
+                            <h5>技術實現能力</h5>
+                            <ul>
+                                <li>Windows Forms 界面設計與用戶體驗優化</li>
+                                <li>C# 業務邏輯實現與資料處理</li>
+                                <li>SQL Server 資料庫架構設計與優化</li>
+                            </ul>
+                        </div>
+                        <div class="col-md-4">
+                            <h5>專案管理能力</h5>
+                            <ul>
+                                <li>獨立制定開發計畫和里程碑</li>
+                                <li>自主測試和問題修復</li>
+                                <li>完整的系統說明和架構文檔</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 技術深度 -->
+            <div class="card section-card">
+                <div class="section-header">
+                    <h2><i class="fas fa-code me-2"></i>技術深度體現</h2>
+                </div>
+                <div class="card-body">
+                    <h4>資料庫設計精髓</h4>
+                    <pre><code>// 展示複雜的關聯設計思維
+Orders (訂單主表)
+├── Customer (客戶資訊) - 多對一關係
+├── OrderDetails (訂單明細) - 一對多關係  
+└── Books (書籍資訊) - 透過明細表多對多關係</code></pre>
+
+                    <h4>業務邏輯複雜度</h4>
+                    <ul>
+                        <li><strong>動態價格計算：</strong> 支援多書籍訂單的自動總價計算</li>
+                        <li><strong>庫存管理：</strong> 即時庫存檢查和自動更新機制</li>
+                        <li><strong>統計報表：</strong> 客戶消費行為分析和營收統計</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- 成長與學習 -->
+            <div class="card section-card">
+                <div class="section-header">
+                    <h2><i class="fas fa-graduation-cap me-2"></i>個人成長與學習成果</h2>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h5>技術能力提升</h5>
+                            <ul>
+                                <li><strong>從零開始：</strong> 完整掌握 Windows Forms 應用程式開發</li>
+                                <li><strong>資料庫技能：</strong> 深入理解關聯式資料庫設計原理</li>
+                                <li><strong>問題解決：</strong> 獨立面對和解決複雜技術問題的能力</li>
+                            </ul>
+                        </div>
+                        <div class="col-md-6">
+                            <h5>軟體工程素養</h5>
+                            <ul>
+                                <li><strong>系統思維：</strong> 從整體角度設計和實現複雜系統</li>
+                                <li><strong>代碼品質：</strong> 注重程式碼的可讀性和維護性</li>
+                                <li><strong>用戶導向：</strong> 站在終端用戶角度思考功能設計</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 專案價值與影響 -->
+            <div class="card section-card">
+                <div class="section-header">
+                    <h2><i class="fas fa-chart-line me-2"></i>專案價值與影響</h2>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h4>商業價值</h4>
+                            <div class="achievement-item">
+                                <i class="fas fa-store text-success me-2"></i>
+                                <strong>實用性：</strong> 直接解決獨立書店的實際營運需求
+                            </div>
+                            <div class="achievement-item">
+                                <i class="fas fa-dollar-sign text-success me-2"></i>
+                                <strong>成本效益：</strong> 為小型書店提供可負擔的管理解決方案
+                            </div>
+                            <div class="achievement-item">
+                                <i class="fas fa-digital-tachograph text-success me-2"></i>
+                                <strong>數位轉型：</strong> 協助傳統書店邁向數位化管理
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <h4>技術價值</h4>
+                            <div class="achievement-item">
+                                <i class="fas fa-puzzle-piece text-success me-2"></i>
+                                <strong>完整性：</strong> 涵蓋完整的書店管理業務流程
+                            </div>
+                            <div class="achievement-item">
+                                <i class="fas fa-shield-alt text-success me-2"></i>
+                                <strong>穩定性：</strong> 通過實際測試驗證的穩定系統
+                            </div>
+                            <div class="achievement-item">
+                                <i class="fas fa-expand-arrows-alt text-success me-2"></i>
+                                <strong>擴展性：</strong> 為未來功能擴展奠定良好基礎
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="alert alert-success mt-4">
+                        這個專案充分展現了我作為獨立開發者的綜合能力，從需求分析、系統設計到程式實現的完整軟體開發生命週期掌握，以及面對複雜業務邏輯時的獨立思考和解決能力。
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <footer class="py-4 bg-dark text-white text-center">
+        <div class="container">
+            <p>&copy; 2025 劉冠彤 • Dream Bookstore 專案詳細介紹</p>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

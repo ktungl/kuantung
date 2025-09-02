@@ -1,41 +1,58 @@
 <!DOCTYPE html>
 <html lang="zh-TW">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>JADE — 服飾專賣電商平台</title>
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
-  <style>
-    .hero-section {
-      background: linear-gradient(135deg, #98ddd2 0%, #1e4619 100%);
-      color: white;
-      padding: 60px 0;
-    }
-    .project-header {
-      margin-bottom: 1.5rem;
-    }
-    .tech-badges .badge {
-      margin-right: 0.4rem;
-      margin-bottom: 0.4rem;
-    }
-    .project-card img {
-      object-fit: cover;
-      height: 100%;
-    }
-    pre code {
-      background: #0d1117;
-      color: #d1f5e3;
-      padding: 1rem;
-      display: block;
-      border-radius: 8px;
-      overflow-x: auto;
-    }
-    .back-link {
-      color: white;
-      text-decoration: underline;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JADE — 服飾專賣電商平台</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        .hero-section {
+            background: linear-gradient(135deg, #98ddd2 0%, #1e4619 100%);
+            color: white;
+            padding: 60px 0;
+        }
+        pre {
+            background: #f8f9fa;
+            border: 1px solid #e9ecef;
+            border-radius: 8px;
+            padding: 1rem;
+            overflow-x: auto;
+        }
+        .tech-badge {
+            background: #e3f2fd;
+            color: #1976d2;
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+            font-size: 0.875rem;
+            margin-right: 0.5rem;
+            margin-bottom: 0.5rem;
+            display: inline-block;
+        }
+        .section-card {
+            border: none;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            margin-bottom: 2rem;
+        }
+        .section-header {
+            background: linear-gradient(45deg, #f8f9fa, #e9ecef);
+            border-bottom: 1px solid #dee2e6;
+            padding: 1.5rem;
+            margin: 0;
+        }
+        .achievement-item {
+            background: #f8f9fa;
+            border-left: 4px solid #28a745;
+            padding: 1rem;
+            margin-bottom: 1rem;
+        }
+        .challenge-item {
+            background: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 1rem;
+            margin-bottom: 1rem;
+        }
+    </style>
 </head>
 <body>
 
@@ -46,83 +63,312 @@
                 <a class="btn btn-outline-light btn-sm" href="/kuantung/">首頁</a>
             </div>
         </div>
-    </nav>  <section class="hero-section text-center">
-    <div class="container">
-      <h1 class="display-5 fw-bold project-header">JADE — 服飾專賣電商平台</h1>
-      <p class="lead">完整的電商解決方案，整合會員、金流、社群與即時通訊功能，專注服飾零售體驗。</p>
-    </div>
-  </section>
+    </nav>
 
-  <main class="py-5">
-    <div class="container">
-      <div class="row g-4">
-        <div class="col-lg-6">
-          <div class="card project-card h-100">
-            <img src="https://res.cloudinary.com/depkrkqig/image/upload/v1756777873/logo_knmw5u.png" class="card-img-top" alt="JADE 標誌">
-            <div class="card-body">
-              <h5 class="card-title">專案簡介</h5>
-              <p class="card-text">JADE 為服飾專賣店打造，用戶可以瀏覽分類精準的商品、進行社群互動、並透過完整的會員等級及金流服務完成交易。</p>
-              <div class="tech-badges mb-3">
-                <span class="badge bg-primary">Vue.js</span>
-                <span class="badge bg-success">ASP.NET Core</span>
-                <span class="badge bg-info text-dark">Azure SQL</span>
-                <span class="badge bg-warning text-dark">SignalR</span>
-              </div>
-              <div class="d-flex gap-2">
-                <a href="#features" class="btn btn-primary">查看亮點</a>
-                <a href="https://github.com/yourusername/jade" class="btn btn-outline-secondary" target="_blank">
-                  <i class="fab fa-github"></i> 原始碼
-                </a>
-              </div>
+    <section class="hero-section text-center">
+        <div class="container">
+            <h1 class="display-4 fw-bold mb-3">JADE 服飾專賣電商平台開發專案</h1>
+            <div class="row justify-content-center mt-4">
+                <div class="col-md-8">
+                    <div class="row text-start">
+                        <div class="col-md-6">
+                            <p><strong>開發期間：</strong> 2025年6月 - 2025年8月（3個月）</p>
+                            <p><strong>團隊規模：</strong> 6人全端開發團隊</p>
+                        </div>
+                        <div class="col-md-6">
+                            <p><strong>我的角色：</strong> 專案組長兼全端工程師</p>
+                            <p><strong>專案網站：</strong> www.jadetaiwan.com</p>
+                        </div>
+                    </div>
+                </div>
             </div>
-          </div>
         </div>
+    </section>
 
-        <div class="col-lg-6">
-          <h4 id="features">專案亮點</h4>
-          <ul>
-            <li><strong>團隊領導：</strong>帶領6人開發團隊，2個月完成主要 MVP。</li>
-            <li><strong>全端開發：</strong>前後端分離架構，RESTful API 設計與實作。</li>
-            <li><strong>系統整合：</strong>整合綠界金流、Cloudinary 圖床、OpenAI 等服務。</li>
-            <li><strong>創新功能：</strong>社群電商融合、AI 客服、即時通訊。</li>
-          </ul>
+    <main class="py-5">
+        <div class="container">
+            
+            <!-- 專案背景與目標 -->
+            <div class="card section-card">
+                <div class="section-header">
+                    <h2><i class="fas fa-target me-2"></i>專案背景與目標</h2>
+                </div>
+                <div class="card-body">
+                    <p class="lead">針對現有電商平台痛點，開發專注服飾領域的精準定位電商平台：</p>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h5>解決問題</h5>
+                            <ul>
+                                <li>商品分類過於廣泛</li>
+                                <li>缺乏社群互動</li>
+                                <li>賣家開店門檻高</li>
+                                <li>會員忠誠度機制不完善</li>
+                            </ul>
+                        </div>
+                        <div class="col-md-6">
+                            <h5>核心特色</h5>
+                            <ul>
+                                <li>六大風格分類</li>
+                                <li>社群整合</li>
+                                <li>低門檻開店</li>
+                                <li>完整會員等級制度</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="alert alert-info">
+                        <strong>技術創新：</strong> 整合管理、購物、社群與客服功能，建立以使用者體驗為核心的服飾電商平台
+                    </div>
+                </div>
+            </div>
 
-          <h5 class="mt-4">範例程式碼</h5>
-          <pre><code>// ASP.NET Controller 範例
-public class BannerController : Controller {
-  public async Task<IActionResult> GetActiveBanners(string position) {
-    var banners = await _bannerService.GetActiveBannersByPosition(position);
-    return Json(banners.OrderBy(b => b.DisplayOrder));
+            <!-- 技術架構 -->
+            <div class="card section-card">
+                <div class="section-header">
+                    <h2><i class="fas fa-cogs me-2"></i>技術架構與實現</h2>
+                </div>
+                <div class="card-body">
+                    <h4>系統架構</h4>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <h6>前端技術</h6>
+                            <span class="tech-badge">Vue.js 3</span>
+                            <span class="tech-badge">HTML5</span>
+                            <span class="tech-badge">CSS3</span>
+                            <span class="tech-badge">Bootstrap</span>
+                        </div>
+                        <div class="col-md-4">
+                            <h6>後端技術</h6>
+                            <span class="tech-badge">ASP.NET Core MVC</span>
+                            <span class="tech-badge">Web API</span>
+                            <span class="tech-badge">Entity Framework Core</span>
+                        </div>
+                        <div class="col-md-4">
+                            <h6>雲端與整合</h6>
+                            <span class="tech-badge">Azure SQL Server</span>
+                            <span class="tech-badge">Cloudinary</span>
+                            <span class="tech-badge">綠界金流</span>
+                            <span class="tech-badge">OpenAI API</span>
+                            <span class="tech-badge">Google OAuth 2.0</span>
+                            <span class="tech-badge">SignalR</span>
+                            <span class="tech-badge">Hangfire</span>
+                            <span class="tech-badge">MailKit</span>
+                        </div>
+                    </div>
+                    
+                    <hr class="my-4">
+                    
+                    <h4>資料庫設計</h4>
+                    <ul>
+                        <li>設計完整的ER圖，包含60+資料表</li>
+                        <li>涵蓋會員系統、商品管理、訂單流程、優惠券系統、社群功能等完整電商業務邏輯</li>
+                        <li>採用 Database First 方法，確保資料一致性和完整性</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- 主要職責與技術實現 -->
+            <div class="card section-card">
+                <div class="section-header">
+                    <h2><i class="fas fa-code me-2"></i>我的主要職責與技術實現</h2>
+                </div>
+                <div class="card-body">
+                    
+                    <h4>1. 專案管理與系統整合</h4>
+                    <ul>
+                        <li><strong>團隊領導：</strong> 帶領6人開發團隊，負責任務分配、進度管控和模組整合</li>
+                        <li><strong>架構設計：</strong> 統籌整體系統架構，制定開發規範和API設計標準</li>
+                        <li><strong>模組整合：</strong> 協調前後端開發，解決模組間依賴問題，確保系統穩定運行</li>
+                    </ul>
+
+                    <hr>
+
+                    <h4>2. 核心功能開發</h4>
+                    
+                    <h5>首頁管理系統</h5>
+                    <pre><code>// 實現廣告輪播系統，支援彈出式和橫幅式廣告
+public class BannerController : Controller 
+{
+    public async Task&lt;IActionResult&gt; GetActiveBanners(string position)
+    {
+        var banners = await _bannerService.GetActiveBannersByPosition(position);
+        return Json(banners.OrderBy(b =&gt; b.DisplayOrder));
+    }
+}</code></pre>
+                    <ul>
+                        <li>開發響應式首頁布局，整合廣告彈出及輪播系統</li>
+                        <li>實現活動推廣區塊，支援多種展示方式和排序功能</li>
+                        <li>前端使用Vue.js實現動態內容載入和用戶互動效果</li>
+                    </ul>
+
+                    <h5>部落格內容管理系統</h5>
+                    <pre><code>// 使用Hangfire實現文章排程發布
+[BackgroundJob]
+public async Task PublishScheduledPost(int postId)
+{
+    var post = await _postService.GetByIdAsync(postId);
+    if (post != null && post.ScheduledTime &lt;= DateTime.Now)
+    {
+        await _postService.PublishPostAsync(postId);
+    }
+}</code></pre>
+                    <ul>
+                        <li>建立完整的CMS系統，支援官方文章的排程和即時發布</li>
+                        <li>實現文章分類管理、SEO優化設定和閱讀時間計算</li>
+                        <li>整合Hangfire背景服務，實現自動化內容發布</li>
+                    </ul>
+
+                    <h5>社群互動功能</h5>
+                    <ul>
+                        <li>開發會員貼文系統，支援穿搭照片分享和互動</li>
+                        <li>實現貼文審核機制，包含敏感詞過濾和管理員審核流程</li>
+                        <li>建立按讚、留言、追蹤等社群互動功能</li>
+                    </ul>
+
+                    <hr>
+
+                    <h4>3. 前後端整合與API設計</h4>
+                    <pre><code>// Vue.js 前端API呼叫範例
+const bannerApi = {
+  async getBanners(position) {
+    try {
+      const response = await axios.get(`/api/banners/${position}`);
+      return response.data;
+    } catch (error) {
+      console.error('獲取廣告資料失敗:', error);
+    }
   }
-}
-          </code></pre>
+};</code></pre>
+                    <ul>
+                        <li>設計RESTful API架構，確保前後端資料傳輸效率</li>
+                        <li>實現前端狀態管理，優化用戶體驗和頁面響應速度</li>
+                        <li>建立統一的錯誤處理機制和資料驗證流程</li>
+                    </ul>
 
-          <h5 class="mt-4">部署與效能</h5>
-          <p>圖片經由 Cloudinary 加速與壓縮；資料庫使用 Azure SQL，針對核心查詢建立索引以提升效能。</p>
+                    <hr>
+
+                    <h4>4. 效能優化與部署</h4>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <ul>
+                                <li><strong>圖片處理：</strong> 整合Cloudinary CDN，實現圖片自動壓縮和全球加速</li>
+                                <li><strong>資料庫優化：</strong> 針對核心查詢建立索引，優化EF Core查詢效能</li>
+                            </ul>
+                        </div>
+                        <div class="col-md-6">
+                            <ul>
+                                <li><strong>快取策略：</strong> 實現應用程式層快取，減少資料庫查詢負載</li>
+                                <li><strong>響應時間：</strong> 平均API響應時間控制在200-500ms</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 專案成果與影響 -->
+            <div class="card section-card">
+                <div class="section-header">
+                    <h2><i class="fas fa-trophy me-2"></i>專案成果與影響</h2>
+                </div>
+                <div class="card-body">
+                    <h4>技術成就</h4>
+                    <div class="achievement-item">
+                        <i class="fas fa-check-circle text-success me-2"></i>
+                        <strong>完整電商生態：</strong> 實現從商品管理到金流物流的端到端解決方案
+                    </div>
+                    <div class="achievement-item">
+                        <i class="fas fa-check-circle text-success me-2"></i>
+                        <strong>多角色系統：</strong> 支援管理者、買家、賣家三套完整後台管理系統
+                    </div>
+                    <div class="achievement-item">
+                        <i class="fas fa-check-circle text-success me-2"></i>
+                        <strong>社群電商融合：</strong> 創新整合穿搭分享與商品推薦功能
+                    </div>
+                    <div class="achievement-item">
+                        <i class="fas fa-check-circle text-success me-2"></i>
+                        <strong>智能化管理：</strong> 整合AI客服、自動排程、即時通知等自動化功能
+                    </div>
+
+                    <h4>業務價值</h4>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <h6>會員體系</h6>
+                            <p>建立J幣點數系統與自動等級升級機制，提升用戶黏性</p>
+                        </div>
+                        <div class="col-md-4">
+                            <h6>賣家生態</h6>
+                            <p>提供低門檻開店機制，支援中小型賣家快速上線</p>
+                        </div>
+                        <div class="col-md-4">
+                            <h6>營運效率</h6>
+                            <p>後台儀表板與財務報表即時更新，提升營運決策效率</p>
+                        </div>
+                    </div>
+
+                    <h4>技術創新</h4>
+                    <ul>
+                        <li><strong>前後端分離：</strong> Vue.js + ASP.NET Core現代化架構</li>
+                        <li><strong>微服務整合：</strong> 綠界金流、Cloudinary圖床、OpenAI客服等第三方服務無縫整合</li>
+                        <li><strong>即時通訊：</strong> SignalR實現買家賣家實時溝通</li>
+                        <li><strong>自動化流程：</strong> Hangfire實現內容排程、優惠券發放等自動化作業</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- 解決的技術挑戰 -->
+            <div class="card section-card">
+                <div class="section-header">
+                    <h2><i class="fas fa-lightbulb me-2"></i>解決的技術挑戰</h2>
+                </div>
+                <div class="card-body">
+                    <div class="challenge-item">
+                        <h5>團隊協作優化</h5>
+                        <p><strong>問題：</strong> 不同模組間資料依賴、開發不同步、整合階段bug頻發</p>
+                        <p><strong>解決：</strong> 建立統一資料傳輸格式、每日溝通機制、分階段整合測試流程</p>
+                    </div>
+                    <div class="challenge-item">
+                        <h5>效能與擴展性</h5>
+                        <p><strong>現況：</strong> 通過EF Core最佳化實現高效資料庫查詢</p>
+                        <p><strong>規劃：</strong> Redis快取、CDN全球部署、核心查詢索引優化</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 學習與成長 -->
+            <div class="card section-card">
+                <div class="section-header">
+                    <h2><i class="fas fa-graduation-cap me-2"></i>學習與成長</h2>
+                </div>
+                <div class="card-body">
+                    <p class="lead">通過這個專案，我深度掌握了：</p>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <ul>
+                                <li><strong>全端開發能力：</strong> 從資料庫設計到前端UI的完整開發流程</li>
+                                <li><strong>專案管理經驗：</strong> 團隊協作、進度控制、風險管理的實戰經驗</li>
+                            </ul>
+                        </div>
+                        <div class="col-md-6">
+                            <ul>
+                                <li><strong>系統整合能力：</strong> 多個第三方服務整合和API設計的最佳實踐</li>
+                                <li><strong>效能優化技術：</strong> 從資料庫查詢到前端載入的全面效能調優</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="alert alert-success">
+                        這個專案不僅展現了我的技術實力，更體現了我在複雜系統設計、團隊領導和問題解決方面的能力，為我成為一名優秀的全端工程師奠定了堅實基礎。
+                    </div>
+                </div>
+            </div>
+
         </div>
-      </div>
+    </main>
 
-      <section class="mt-5">
-        <h4>成果與影響</h4>
-        <div class="row">
-          <div class="col-md-4">
-            <div class="p-3 bg-light rounded">完整電商生態：端到端商品與金流整合</div>
-          </div>
-          <div class="col-md-4">
-            <div class="p-3 bg-light rounded">多角色系統：管理者 / 買家 / 賣家</div>
-          </div>
-          <div class="col-md-4">
-            <div class="p-3 bg-light rounded">社群電商：穿搭分享與商品推薦整合</div>
-          </div>
+    <footer class="py-4 bg-dark text-white text-center">
+        <div class="container">
+            <p>&copy; 2025 劉冠彤 • JADE 專案詳細介紹</p>
         </div>
-      </section>
-    </div>
-  </main>
+    </footer>
 
-  <footer class="py-4 bg-dark text-white text-center">
-    <div class="container">© 2025 劉冠彤 • JADE 專案</div>
-  </footer>
-
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
