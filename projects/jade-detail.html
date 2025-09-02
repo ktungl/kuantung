@@ -6,174 +6,587 @@
     <title>JADE — 服飾專賣電商平台</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet">
     <style>
+        :root {
+            --jade-primary: #ff6b6b;
+            --jade-secondary: #ffd93d;
+            --jade-accent: #6bcf7f;
+            --jade-pink: #f8e8e8;
+            --jade-cream: #faf7f2;
+            --jade-gray: #6c757d;
+            --jade-dark: #2c2c2c;
+            --jade-light-gray: #f5f5f5;
+        }
+
+        * {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Microsoft JhengHei', '微軟正黑體', sans-serif;
+            line-height: 1.6;
+            background: var(--jade-cream);
+            color: var(--jade-dark);
+        }
+
+        /* 導航列黑白設計（與首頁一致） */
+        .navbar {
+            background: #212529 !important;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+            padding: 0.8rem 0;
+        }
+
+        .navbar .navbar-brand {
+            color: #fff !important;
+            font-weight: 700;
+            font-size: 1.5rem;
+            letter-spacing: 0.5px;
+        }
+
+        .navbar .navbar-brand:hover {
+            color: #7bbeb3 !important;
+            transform: translateX(-3px);
+            transition: all 0.3s ease;
+        }
+
+        .btn-outline-light {
+            border-color: #fff;
+            color: #fff;
+            border-radius: 25px;
+            padding: 0.5rem 1.5rem;
+            font-weight: 500;
+        }
+
+        .btn-outline-light:hover {
+            background: #fff;
+            color: #212529;
+            border-color: #fff;
+        }
+
+        /* Hero區域 - JADE風格設計 */
         .hero-section {
-            background: linear-gradient(135deg, #98ddd2 0%, #1e4619 100%);
-            color: white;
-            padding: 60px 0;
+            background: linear-gradient(135deg, var(--jade-pink) 0%, var(--jade-cream) 50%, #fff 100%);
+            padding: 120px 0 80px;
+            position: relative;
+            overflow: hidden;
         }
-        pre {
-            background: #f8f9fa;
-            border: 1px solid #e9ecef;
-            border-radius: 8px;
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: 60px;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://res.cloudinary.com/depkrkqig/image/upload/v1756823280/%E8%9E%A2%E5%B9%95%E6%93%B7%E5%8F%96%E7%95%AB%E9%9D%A2_2025-09-02_222526_lbklmf.png') center center/cover no-repeat;
+            opacity: 0.18;
+            z-index: 1;
+        }
+        .hero-section .container.hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
+            background: transparent;
+        }
+
+
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .jade-logo {
+            font-size: 4rem;
+            font-weight: 900;
+            color: var(--jade-primary);
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+            margin-bottom: 1rem;
+            letter-spacing: 2px;
+        }
+
+        .hero-subtitle {
+            font-size: 1.3rem;
+            color: var(--jade-gray);
+            margin-bottom: 2rem;
+            font-weight: 300;
+        }
+
+        .hero-stats {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 2.5rem;
+            margin-top: 3rem;
+            border: 1px solid rgba(255, 107, 107, 0.1);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .stat-item {
+            text-align: center;
             padding: 1rem;
-            overflow-x: auto;
+            background: linear-gradient(135deg, rgba(255, 107, 107, 0.05), rgba(107, 207, 127, 0.05));
+            border-radius: 15px;
+            transition: all 0.3s ease;
         }
-        .tech-badge {
-            background: #e3f2fd;
-            color: #1976d2;
-            padding: 0.25rem 0.5rem;
-            border-radius: 4px;
-            font-size: 0.875rem;
-            margin-right: 0.5rem;
-            margin-bottom: 0.5rem;
-            display: inline-block;
+
+        .stat-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
         }
+
+        .stat-number {
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: var(--jade-primary);
+            display: block;
+        }
+
+        .stat-label {
+            color: var(--jade-gray);
+            font-size: 0.9rem;
+            margin-top: 0.5rem;
+        }
+
+        /* 主要內容區 */
+        .main-content {
+            background: white;
+            margin-top: -40px;
+            position: relative;
+            z-index: 3;
+            border-radius: 30px 30px 0 0;
+            box-shadow: 0 -8px 30px rgba(0,0,0,0.05);
+        }
+
         .section-card {
             border: none;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-            margin-bottom: 2rem;
+            border-radius: 25px;
+            background: white;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+            margin-bottom: 2.5rem;
+            overflow: hidden;
+            transition: all 0.3s ease;
         }
+
+        .section-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.12);
+        }
+
         .section-header {
-            background: linear-gradient(45deg, #f8f9fa, #e9ecef);
-            border-bottom: 1px solid #dee2e6;
-            padding: 1.5rem;
+            background: linear-gradient(135deg, var(--jade-primary), #ff8a80);
+            color: white;
+            padding: 2rem 2.5rem;
+            position: relative;
+        }
+
+        .section-header h2 {
             margin: 0;
+            font-weight: 600;
+            font-size: 1.4rem;
         }
+
+        .section-header i {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 8px;
+            border-radius: 50%;
+            margin-right: 12px;
+            font-size: 0.9rem;
+        }
+
+        .card-body {
+            padding: 2.5rem;
+        }
+
+        /* 技術標籤 - JADE風格 */
+        .tech-badge {
+            background: linear-gradient(135deg, var(--jade-cream), var(--jade-pink));
+            color: var(--jade-primary);
+            border: 1px solid rgba(255, 107, 107, 0.2);
+            padding: 0.4rem 1rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            margin-right: 0.5rem;
+            margin-bottom: 0.8rem;
+            display: inline-block;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+
+        .tech-badge:hover {
+            background: var(--jade-primary);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(255, 107, 107, 0.3);
+        }
+
+        /* 成就項目 */
         .achievement-item {
-            background: #f8f9fa;
-            border-left: 4px solid #28a745;
-            padding: 1rem;
-            margin-bottom: 1rem;
+            background: linear-gradient(135deg, rgba(107, 207, 127, 0.08), rgba(107, 207, 127, 0.15));
+            border-left: 4px solid var(--jade-accent);
+            padding: 1.5rem;
+            margin-bottom: 1.2rem;
+            border-radius: 0 15px 15px 0;
+            transition: all 0.3s ease;
         }
+
+        .achievement-item:hover {
+            transform: translateX(8px);
+            box-shadow: 0 5px 20px rgba(107, 207, 127, 0.2);
+        }
+
         .challenge-item {
-            background: #fff3cd;
-            border-left: 4px solid #ffc107;
-            padding: 1rem;
-            margin-bottom: 1rem;
+            background: linear-gradient(135deg, rgba(255, 217, 61, 0.08), rgba(255, 217, 61, 0.15));
+            border-left: 4px solid var(--jade-secondary);
+            padding: 1.5rem;
+            margin-bottom: 1.2rem;
+            border-radius: 0 15px 15px 0;
+            transition: all 0.3s ease;
+        }
+
+        .challenge-item:hover {
+            transform: translateX(8px);
+            box-shadow: 0 5px 20px rgba(255, 217, 61, 0.2);
+        }
+
+        /* 程式碼區塊 */
+        pre {
+            background: linear-gradient(135deg, #2c3e50, #34495e);
+            color: #ecf0f1;
+            border-radius: 15px;
+            padding: 1.5rem;
+            overflow-x: auto;
+            border: none;
+            box-shadow: 0 8px 25px rgba(44, 62, 80, 0.15);
+            position: relative;
+        }
+
+        pre::before {
+            content: '';
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: #e74c3c;
+            box-shadow: 20px 0 0 #f39c12, 40px 0 0 #27ae60;
+        }
+
+        pre code {
+            margin-top: 25px;
+            display: block;
+            font-family: 'Consolas', 'Monaco', monospace;
+        }
+
+        /* 提示框 */
+        .alert {
+            border: none;
+            border-radius: 15px;
+            padding: 1.5rem;
+            border-left: 4px solid;
+        }
+
+        .alert-info {
+            background: linear-gradient(135deg, rgba(52, 152, 219, 0.08), rgba(52, 152, 219, 0.15));
+            color: #2980b9;
+            border-left-color: #3498db;
+        }
+
+        .alert-success {
+            background: linear-gradient(135deg, rgba(107, 207, 127, 0.08), rgba(107, 207, 127, 0.15));
+            color: #27ae60;
+            border-left-color: var(--jade-accent);
+        }
+
+        /* 按鈕設計 */
+        .btn-jade {
+            background: linear-gradient(135deg, var(--jade-primary), #ff8a80);
+            border: none;
+            color: white;
+            padding: 0.8rem 2rem;
+            border-radius: 25px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-jade:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(255, 107, 107, 0.3);
+            color: white;
+        }
+
+        /* 技能進度條 */
+        .skill-item {
+            margin-bottom: 1.5rem;
+        }
+
+        .progress {
+            height: 8px;
+            border-radius: 10px;
+            background: var(--jade-light-gray);
+        }
+
+        .progress-bar {
+            background: linear-gradient(90deg, var(--jade-primary), var(--jade-accent));
+            border-radius: 10px;
+        }
+
+        /* 亮點卡片 */
+        .highlight-box {
+            background: white;
+            border: 2px solid var(--jade-pink);
+            border-radius: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .highlight-box:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 30px rgba(255, 107, 107, 0.15);
+            border-color: var(--jade-primary);
+        }
+
+        /* Footer */
+        footer {
+            background: linear-gradient(135deg, var(--jade-dark), #434343);
+            color: white;
+            padding: 3rem 0;
+            margin-top: 5rem;
+        }
+
+        /* 滾動指示器 */
+        .scroll-indicator {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--jade-primary), var(--jade-accent));
+            z-index: 1000;
+            transition: width 0.3s ease;
+        }
+
+        /* 浮動裝飾元素 */
+        .floating-decor {
+            position: absolute;
+            opacity: 0.05;
+            pointer-events: none;
+        }
+
+        .floating-decor.decor-1 {
+            top: 10%;
+            right: 10%;
+            width: 100px;
+            height: 100px;
+            background: var(--jade-primary);
+            border-radius: 50%;
+            animation: float1 6s ease-in-out infinite;
+        }
+
+        .floating-decor.decor-2 {
+            bottom: 20%;
+            left: 5%;
+            width: 80px;
+            height: 80px;
+            background: var(--jade-accent);
+            clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+            animation: float2 8s ease-in-out infinite;
+        }
+
+        @keyframes float1 {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(180deg); }
+        }
+
+        @keyframes float2 {
+            0%, 100% { transform: translateX(0px) rotate(0deg); }
+            50% { transform: translateX(20px) rotate(120deg); }
+        }
+
+        /* 響應式設計 */
+        @media (max-width: 768px) {
+            .jade-logo { font-size: 2.8rem; }
+            .hero-section { padding: 80px 0 60px; }
+            .section-header { padding: 1.5rem; }
+            .card-body { padding: 1.8rem; }
+            .hero-stats { padding: 1.8rem; }
         }
     </style>
 </head>
 <body>
-
-    <nav class="navbar navbar-dark bg-dark">
+    <div class="scroll-indicator" id="scrollIndicator"></div>
+    
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
         <div class="container">
-            <a class="navbar-brand" href="../index.html">← 回到作品集</a>
+            <a class="navbar-brand" href="../index.html">
+                <i class="fas fa-arrow-left me-2"></i>回到作品集
+            </a>
             <div>
                 <a class="btn btn-outline-light btn-sm" href="../index.html">首頁</a>
             </div>
         </div>
     </nav>
 
-    <section class="hero-section text-center">
-        <div class="container">
-            <h1 class="display-4 fw-bold mb-3">JADE 服飾專賣電商平台開發專案</h1>
-            <div class="row justify-content-center mt-4">
-                <div class="col-md-8">
-                    <div class="row text-start">
-                        <div class="col-md-6">
-                            <p><strong>開發期間：</strong> 2025年6月 - 2025年8月（3個月）</p>
-                            <p><strong>團隊規模：</strong> 6人全端開發團隊</p>
-                        </div>
-                        <div class="col-md-6">
-                            <p><strong>我的角色：</strong> 專案組長兼全端工程師</p>
-                            <p><strong>專案網站：</strong> www.jadetaiwan.com</p>
-                        </div>
+    <section class="hero-section">
+        <div class="floating-decor decor-1"></div>
+        <div class="floating-decor decor-2"></div>
+        
+        <div class="container hero-content">
+            <div class="text-center" data-aos="fade-up">
+                <div class="jade-logo">JADE</div>
+                <p class="hero-subtitle">服飾專賣電商平台開發專案</p>
+                <a href="#main-content" class="btn btn-jade btn-lg">
+                    <i class="fas fa-chevron-down me-2"></i>查看專案詳情
+                </a>
+            </div>
+            
+            <div class="hero-stats" data-aos="fade-up" data-aos-delay="200">
+                <div class="stats-grid">
+                    <div class="stat-item">
+                        <span class="stat-number">3個月</span>
+                        <div class="stat-label">開發週期</div>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">6人</span>
+                        <div class="stat-label">開發團隊</div>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">60+</span>
+                        <div class="stat-label">資料庫表格</div>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">全端</span>
+                        <div class="stat-label">系統整合</div>
+                    </div>
+                </div>
+                <div class="row text-start mt-4">
+                    <div class="col-md-6">
+                        <p><i class="fas fa-calendar-alt me-2 text-danger"></i><strong>開發期間：</strong> 2025年6月 - 2025年8月</p>
+                        <p><i class="fas fa-users me-2 text-danger"></i><strong>團隊規模：</strong> 6人全端開發團隊</p>
+                    </div>
+                    <div class="col-md-6">
+                        <p><i class="fas fa-user-tie me-2 text-danger"></i><strong>我的角色：</strong> 專案組長兼全端工程師</p>
+                        <p><i class="fas fa-globe me-2 text-danger"></i><strong>專案網站：</strong> www.jadetaiwan.com</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <main class="py-5">
+    <main class="main-content py-5" id="main-content">
         <div class="container">
             
             <!-- 專案背景與目標 -->
-            <div class="card section-card">
+            <div class="card section-card" data-aos="fade-up">
                 <div class="section-header">
-                    <h2><i class="fas fa-target me-2"></i>專案背景與目標</h2>
+                    <h2><i class="fas fa-target"></i>專案背景與目標</h2>
                 </div>
                 <div class="card-body">
                     <p class="lead">針對現有電商平台痛點，開發專注服飾領域的精準定位電商平台：</p>
-                    <div class="row">
+                    <div class="row mt-4">
                         <div class="col-md-6">
-                            <h5>解決問題</h5>
-                            <ul>
-                                <li>商品分類過於廣泛</li>
-                                <li>缺乏社群互動</li>
-                                <li>賣家開店門檻高</li>
-                                <li>會員忠誠度機制不完善</li>
+                            <h5><i class="fas fa-exclamation-triangle me-2" style="color: var(--jade-secondary);"></i>解決問題</h5>
+                            <ul class="list-unstyled">
+                                <li class="mb-2"><i class="fas fa-times-circle me-2" style="color: var(--jade-primary);"></i>商品分類過於廣泛</li>
+                                <li class="mb-2"><i class="fas fa-times-circle me-2" style="color: var(--jade-primary);"></i>缺乏社群互動</li>
+                                <li class="mb-2"><i class="fas fa-times-circle me-2" style="color: var(--jade-primary);"></i>賣家開店門檻高</li>
+                                <li class="mb-2"><i class="fas fa-times-circle me-2" style="color: var(--jade-primary);"></i>會員忠誠度機制不完善</li>
                             </ul>
                         </div>
                         <div class="col-md-6">
-                            <h5>核心特色</h5>
-                            <ul>
-                                <li>六大風格分類</li>
-                                <li>社群整合</li>
-                                <li>低門檻開店</li>
-                                <li>完整會員等級制度</li>
+                            <h5><i class="fas fa-star me-2" style="color: var(--jade-accent);"></i>核心特色</h5>
+                            <ul class="list-unstyled">
+                                <li class="mb-2"><i class="fas fa-check-circle me-2" style="color: var(--jade-accent);"></i>六大風格分類</li>
+                                <li class="mb-2"><i class="fas fa-check-circle me-2" style="color: var(--jade-accent);"></i>社群整合</li>
+                                <li class="mb-2"><i class="fas fa-check-circle me-2" style="color: var(--jade-accent);"></i>低門檻開店</li>
+                                <li class="mb-2"><i class="fas fa-check-circle me-2" style="color: var(--jade-accent);"></i>完整會員等級制度</li>
                             </ul>
                         </div>
                     </div>
-                    <div class="alert alert-info">
+                    <div class="alert alert-info mt-4">
+                        <i class="fas fa-lightbulb me-2"></i>
                         <strong>技術創新：</strong> 整合管理、購物、社群與客服功能，建立以使用者體驗為核心的服飾電商平台
                     </div>
                 </div>
             </div>
 
             <!-- 技術架構 -->
-            <div class="card section-card">
+            <div class="card section-card" data-aos="fade-up" data-aos-delay="100">
                 <div class="section-header">
-                    <h2><i class="fas fa-cogs me-2"></i>技術架構與實現</h2>
+                    <h2><i class="fas fa-cogs"></i>技術架構與實現</h2>
                 </div>
                 <div class="card-body">
-                    <h4>系統架構</h4>
-                    <div class="row">
+                    <h4><i class="fas fa-sitemap me-2" style="color: var(--jade-primary);"></i>系統架構</h4>
+                    <div class="row mt-3">
                         <div class="col-md-4">
-                            <h6>前端技術</h6>
-                            <span class="tech-badge">Vue.js 3</span>
-                            <span class="tech-badge">HTML5</span>
-                            <span class="tech-badge">CSS3</span>
-                            <span class="tech-badge">Bootstrap</span>
+                            <h6><i class="fab fa-html5 me-2" style="color: var(--jade-primary);"></i>前端技術</h6>
+                            <div class="mb-3">
+                                <span class="tech-badge">Vue.js 3</span>
+                                <span class="tech-badge">HTML5</span>
+                                <span class="tech-badge">CSS3</span>
+                                <span class="tech-badge">Bootstrap</span>
+                            </div>
                         </div>
                         <div class="col-md-4">
-                            <h6>後端技術</h6>
-                            <span class="tech-badge">ASP.NET Core MVC</span>
-                            <span class="tech-badge">Web API</span>
-                            <span class="tech-badge">Entity Framework Core</span>
+                            <h6><i class="fas fa-server me-2" style="color: var(--jade-primary);"></i>後端技術</h6>
+                            <div class="mb-3">
+                                <span class="tech-badge">ASP.NET Core MVC</span>
+                                <span class="tech-badge">Web API</span>
+                                <span class="tech-badge">Entity Framework Core</span>
+                            </div>
                         </div>
                         <div class="col-md-4">
-                            <h6>雲端與整合</h6>
-                            <span class="tech-badge">Azure SQL Server</span>
-                            <span class="tech-badge">Cloudinary</span>
-                            <span class="tech-badge">綠界金流</span>
-                            <span class="tech-badge">OpenAI API</span>
-                            <span class="tech-badge">Google OAuth 2.0</span>
-                            <span class="tech-badge">SignalR</span>
-                            <span class="tech-badge">Hangfire</span>
-                            <span class="tech-badge">MailKit</span>
+                            <h6><i class="fas fa-cloud me-2" style="color: var(--jade-primary);"></i>雲端與整合</h6>
+                            <div class="mb-3">
+                                <span class="tech-badge">Azure SQL Server</span>
+                                <span class="tech-badge">Cloudinary</span>
+                                <span class="tech-badge">綠界金流</span>
+                                <span class="tech-badge">OpenAI API</span>
+                                <span class="tech-badge">Google OAuth 2.0</span>
+                                <span class="tech-badge">SignalR</span>
+                                <span class="tech-badge">Hangfire</span>
+                                <span class="tech-badge">MailKit</span>
+                            </div>
                         </div>
                     </div>
                     
                     <hr class="my-4">
                     
-                    <h4>資料庫設計</h4>
-                    <ul>
-                        <li>設計完整的ER圖，包含60+資料表</li>
-                        <li>涵蓋會員系統、商品管理、訂單流程、優惠券系統、社群功能等完整電商業務邏輯</li>
-                        <li>採用 Database First 方法，確保資料一致性和完整性</li>
-                    </ul>
+                    <h4><i class="fas fa-database me-2" style="color: var(--jade-primary);"></i>資料庫設計</h4>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <ul class="list-unstyled">
+                                <li class="mb-2"><i class="fas fa-check me-2" style="color: var(--jade-accent);"></i>設計完整的ER圖，包含60+資料表</li>
+                                <li class="mb-2"><i class="fas fa-check me-2" style="color: var(--jade-accent);"></i>涵蓋會員系統、商品管理、訂單流程</li>
+                            </ul>
+                        </div>
+                        <div class="col-md-6">
+                            <ul class="list-unstyled">
+                                <li class="mb-2"><i class="fas fa-check me-2" style="color: var(--jade-accent);"></i>優惠券系統、社群功能等完整電商業務邏輯</li>
+                                <li class="mb-2"><i class="fas fa-check me-2" style="color: var(--jade-accent);"></i>採用 Database First 方法，確保資料一致性</li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
             </div>
 
             <!-- 主要職責與技術實現 -->
-            <div class="card section-card">
+            <div class="card section-card" data-aos="fade-up" data-aos-delay="200">
                 <div class="section-header">
-                    <h2><i class="fas fa-code me-2"></i>我的主要職責與技術實現</h2>
+                    <h2><i class="fas fa-code"></i>我的主要職責與技術實現</h2>
                 </div>
                 <div class="card-body">
                     
-                    <h4>1. 專案管理與系統整合</h4>
+                    <h4><i class="fas fa-users-cog me-2" style="color: var(--jade-primary);"></i>1. 專案管理與系統整合</h4>
                     <ul>
                         <li><strong>團隊領導：</strong> 帶領6人開發團隊，負責任務分配、進度管控和模組整合</li>
                         <li><strong>架構設計：</strong> 統籌整體系統架構，制定開發規範和API設計標準</li>
@@ -182,9 +595,9 @@
 
                     <hr>
 
-                    <h4>2. 核心功能開發</h4>
+                    <h4><i class="fas fa-tools me-2" style="color: var(--jade-primary);"></i>2. 核心功能開發</h4>
                     
-                    <h5>首頁管理系統</h5>
+                    <h5><i class="fas fa-home me-2" style="color: var(--jade-accent);"></i>首頁管理系統</h5>
                     <pre><code>// 實現廣告輪播系統，支援彈出式和橫幅式廣告
 public class BannerController : Controller 
 {
@@ -200,7 +613,7 @@ public class BannerController : Controller
                         <li>前端使用Vue.js實現動態內容載入和用戶互動效果</li>
                     </ul>
 
-                    <h5>部落格內容管理系統</h5>
+                    <h5><i class="fas fa-blog me-2" style="color: var(--jade-accent);"></i>部落格內容管理系統</h5>
                     <pre><code>// 使用Hangfire實現文章排程發布
 [BackgroundJob]
 public async Task PublishScheduledPost(int postId)
@@ -217,16 +630,16 @@ public async Task PublishScheduledPost(int postId)
                         <li>整合Hangfire背景服務，實現自動化內容發布</li>
                     </ul>
 
-                    <h5>社群互動功能</h5>
+                    <h5><i class="fas fa-users me-2" style="color: var(--jade-accent);"></i>社群互動功能</h5>
                     <ul>
                         <li>開發會員貼文系統，支援穿搭照片分享和互動</li>
                         <li>實現貼文審核機制，包含敏感詞過濾和管理員審核流程</li>
-                        <li>建立按讚、留言、追蹤等社群互動功能</li>
+                        <li>建立按讚等社群互動功能</li>
                     </ul>
 
                     <hr>
 
-                    <h4>3. 前後端整合與API設計</h4>
+                    <h4><i class="fas fa-exchange-alt me-2" style="color: var(--jade-primary);"></i>3. 前後端整合與API設計</h4>
                     <pre><code>// Vue.js 前端API呼叫範例
 const bannerApi = {
   async getBanners(position) {
@@ -246,7 +659,7 @@ const bannerApi = {
 
                     <hr>
 
-                    <h4>4. 效能優化與部署</h4>
+                    <h4><i class="fas fa-tachometer-alt me-2" style="color: var(--jade-primary);"></i>4. 效能優化與部署</h4>
                     <div class="row">
                         <div class="col-md-6">
                             <ul>
@@ -265,97 +678,182 @@ const bannerApi = {
             </div>
 
             <!-- 專案成果與影響 -->
-            <div class="card section-card">
+            <div class="card section-card" data-aos="fade-up" data-aos-delay="300">
                 <div class="section-header">
-                    <h2><i class="fas fa-trophy me-2"></i>專案成果與影響</h2>
+                    <h2><i class="fas fa-trophy"></i>專案成果與影響</h2>
                 </div>
                 <div class="card-body">
-                    <h4>技術成就</h4>
+                    <h4><i class="fas fa-medal me-2" style="color: var(--jade-secondary);"></i>技術成就</h4>
                     <div class="achievement-item">
-                        <i class="fas fa-check-circle text-success me-2"></i>
+                        <i class="fas fa-check-circle me-2" style="color: var(--jade-accent);"></i>
                         <strong>完整電商生態：</strong> 實現從商品管理到金流物流的端到端解決方案
                     </div>
                     <div class="achievement-item">
-                        <i class="fas fa-check-circle text-success me-2"></i>
+                        <i class="fas fa-check-circle me-2" style="color: var(--jade-accent);"></i>
                         <strong>多角色系統：</strong> 支援管理者、買家、賣家三套完整後台管理系統
                     </div>
                     <div class="achievement-item">
-                        <i class="fas fa-check-circle text-success me-2"></i>
+                        <i class="fas fa-check-circle me-2" style="color: var(--jade-accent);"></i>
                         <strong>社群電商融合：</strong> 創新整合穿搭分享與商品推薦功能
                     </div>
                     <div class="achievement-item">
-                        <i class="fas fa-check-circle text-success me-2"></i>
+                        <i class="fas fa-check-circle me-2" style="color: var(--jade-accent);"></i>
                         <strong>智能化管理：</strong> 整合AI客服、自動排程、即時通知等自動化功能
                     </div>
 
-                    <h4>業務價值</h4>
+                    <h4 class="mt-5"><i class="fas fa-chart-line me-2" style="color: var(--jade-primary);"></i>業務價值</h4>
                     <div class="row">
                         <div class="col-md-4">
-                            <h6>會員體系</h6>
-                            <p>建立J幣點數系統與自動等級升級機制，提升用戶黏性</p>
+                            <div class="text-center p-4 rounded-4 mb-3" style="background: linear-gradient(135deg, rgba(255, 217, 61, 0.1), rgba(255, 217, 61, 0.2));">
+                                <i class="fas fa-coins fa-3x mb-3" style="color: var(--jade-secondary);"></i>
+                                <h6 style="color: var(--jade-dark);">會員體系</h6>
+                                <p class="small text-muted">建立J幣點數系統與自動等級升級機制，提升用戶黏性</p>
+                            </div>
                         </div>
                         <div class="col-md-4">
-                            <h6>賣家生態</h6>
-                            <p>提供低門檻開店機制，支援中小型賣家快速上線</p>
+                            <div class="text-center p-4 rounded-4 mb-3" style="background: linear-gradient(135deg, rgba(107, 207, 127, 0.1), rgba(107, 207, 127, 0.2));">
+                                <i class="fas fa-store fa-3x mb-3" style="color: var(--jade-accent);"></i>
+                                <h6 style="color: var(--jade-dark);">賣家生態</h6>
+                                <p class="small text-muted">提供低門檻開店機制，支援中小型賣家快速上線</p>
+                            </div>
                         </div>
                         <div class="col-md-4">
-                            <h6>營運效率</h6>
-                            <p>後台儀表板與財務報表即時更新，提升營運決策效率</p>
+                            <div class="text-center p-4 rounded-4 mb-3" style="background: linear-gradient(135deg, rgba(255, 107, 107, 0.1), rgba(255, 107, 107, 0.2));">
+                                <i class="fas fa-chart-bar fa-3x mb-3" style="color: var(--jade-primary);"></i>
+                                <h6 style="color: var(--jade-dark);">營運效率</h6>
+                                <p class="small text-muted">後台儀表板與財務報表即時更新，提升營運決策效率</p>
+                            </div>
                         </div>
                     </div>
 
-                    <h4>技術創新</h4>
-                    <ul>
-                        <li><strong>前後端分離：</strong> Vue.js + ASP.NET Core現代化架構</li>
-                        <li><strong>微服務整合：</strong> 綠界金流、Cloudinary圖床、OpenAI客服等第三方服務無縫整合</li>
-                        <li><strong>即時通訊：</strong> SignalR實現買家賣家實時溝通</li>
-                        <li><strong>自動化流程：</strong> Hangfire實現內容排程、優惠券發放等自動化作業</li>
-                    </ul>
+                    <h4 class="mt-5"><i class="fas fa-rocket me-2" style="color: var(--jade-primary);"></i>技術創新</h4>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <ul class="list-unstyled">
+                                <li class="mb-3"><i class="fab fa-vuejs me-2" style="color: var(--jade-accent);"></i><strong>前後端分離：</strong> Vue.js + ASP.NET Core現代化架構</li>
+                                <li class="mb-3"><i class="fas fa-puzzle-piece me-2" style="color: var(--jade-primary);"></i><strong>微服務整合：</strong> 綠界金流、Cloudinary圖床、OpenAI客服等第三方服務無縫整合</li>
+                            </ul>
+                        </div>
+                        <div class="col-md-6">
+                            <ul class="list-unstyled">
+                                <li class="mb-3"><i class="fas fa-comments me-2" style="color: var(--jade-secondary);"></i><strong>即時通訊：</strong> SignalR實現買家賣家實時溝通</li>
+                                <li class="mb-3"><i class="fas fa-cog me-2" style="color: var(--jade-accent);"></i><strong>自動化流程：</strong> Hangfire實現內容排程、優惠券發放等自動化作業</li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
             </div>
 
             <!-- 解決的技術挑戰 -->
-            <div class="card section-card">
+            <div class="card section-card" data-aos="fade-up" data-aos-delay="400">
                 <div class="section-header">
-                    <h2><i class="fas fa-lightbulb me-2"></i>解決的技術挑戰</h2>
+                    <h2><i class="fas fa-lightbulb"></i>解決的技術挑戰</h2>
                 </div>
                 <div class="card-body">
                     <div class="challenge-item">
-                        <h5>團隊協作優化</h5>
-                        <p><strong>問題：</strong> 不同模組間資料依賴、開發不同步、整合階段bug頻發</p>
-                        <p><strong>解決：</strong> 建立統一資料傳輸格式、每日溝通機制、分階段整合測試流程</p>
+                        <h5><i class="fas fa-users-cog me-2" style="color: var(--jade-secondary);"></i>團隊協作優化</h5>
+                        <p><strong><i class="fas fa-exclamation-triangle me-1" style="color: var(--jade-primary);"></i> 問題：</strong> 不同模組間資料依賴、開發不同步、整合階段bug頻發</p>
+                        <p><strong><i class="fas fa-check-circle me-1" style="color: var(--jade-accent);"></i> 解決：</strong> 建立統一資料傳輸格式、每日溝通機制、分階段整合測試流程</p>
                     </div>
                     <div class="challenge-item">
-                        <h5>效能與擴展性</h5>
-                        <p><strong>現況：</strong> 通過EF Core最佳化實現高效資料庫查詢</p>
-                        <p><strong>規劃：</strong> Redis快取、CDN全球部署、核心查詢索引優化</p>
+                        <h5><i class="fas fa-tachometer-alt me-2" style="color: var(--jade-secondary);"></i>效能與擴展性</h5>
+                        <p><strong><i class="fas fa-info-circle me-1" style="color: var(--jade-primary);"></i> 現況：</strong> 通過EF Core最佳化實現高效資料庫查詢</p>
+                        <p><strong><i class="fas fa-road me-1" style="color: var(--jade-accent);"></i> 規劃：</strong> Redis快取、CDN全球部署、核心查詢索引優化</p>
                     </div>
                 </div>
             </div>
 
             <!-- 學習與成長 -->
-            <div class="card section-card">
+            <div class="card section-card" data-aos="fade-up" data-aos-delay="500">
                 <div class="section-header">
-                    <h2><i class="fas fa-graduation-cap me-2"></i>學習與成長</h2>
+                    <h2><i class="fas fa-graduation-cap"></i>學習與成長</h2>
                 </div>
                 <div class="card-body">
                     <p class="lead">通過這個專案，我深度掌握了：</p>
-                    <div class="row">
+                    <div class="row mt-4">
                         <div class="col-md-6">
-                            <ul>
-                                <li><strong>全端開發能力：</strong> 從資料庫設計到前端UI的完整開發流程</li>
-                                <li><strong>專案管理經驗：</strong> 團隊協作、進度控制、風險管理的實戰經驗</li>
-                            </ul>
+                            <div class="skill-item">
+                                <div class="d-flex justify-content-between mb-2">
+                                    <span><i class="fas fa-layer-group me-2" style="color: var(--jade-primary);"></i><strong>全端開發能力</strong></span>
+                                    <span class="fw-bold" style="color: var(--jade-primary);">95%</span>
+                                </div>
+                                <div class="progress mb-2">
+                                    <div class="progress-bar" role="progressbar" style="width: 95%"></div>
+                                </div>
+                                <small class="text-muted">從資料庫設計到前端UI的完整開發流程</small>
+                            </div>
+                            <div class="skill-item">
+                                <div class="d-flex justify-content-between mb-2">
+                                    <span><i class="fas fa-project-diagram me-2" style="color: var(--jade-primary);"></i><strong>專案管理經驗</strong></span>
+                                    <span class="fw-bold" style="color: var(--jade-primary);">90%</span>
+                                </div>
+                                <div class="progress mb-2">
+                                    <div class="progress-bar" role="progressbar" style="width: 90%"></div>
+                                </div>
+                                <small class="text-muted">團隊協作、進度控制、風險管理的實戰經驗</small>
+                            </div>
                         </div>
                         <div class="col-md-6">
-                            <ul>
-                                <li><strong>系統整合能力：</strong> 多個第三方服務整合和API設計的最佳實踐</li>
-                                <li><strong>效能優化技術：</strong> 從資料庫查詢到前端載入的全面效能調優</li>
-                            </ul>
+                            <div class="skill-item">
+                                <div class="d-flex justify-content-between mb-2">
+                                    <span><i class="fas fa-plug me-2" style="color: var(--jade-primary);"></i><strong>系統整合能力</strong></span>
+                                    <span class="fw-bold" style="color: var(--jade-primary);">92%</span>
+                                </div>
+                                <div class="progress mb-2">
+                                    <div class="progress-bar" role="progressbar" style="width: 92%"></div>
+                                </div>
+                                <small class="text-muted">多個第三方服務整合和API設計的最佳實踐</small>
+                            </div>
+                            <div class="skill-item">
+                                <div class="d-flex justify-content-between mb-2">
+                                    <span><i class="fas fa-bolt me-2" style="color: var(--jade-primary);"></i><strong>效能優化技術</strong></span>
+                                    <span class="fw-bold" style="color: var(--jade-primary);">88%</span>
+                                </div>
+                                <div class="progress mb-2">
+                                    <div class="progress-bar" role="progressbar" style="width: 88%"></div>
+                                </div>
+                                <small class="text-muted">從資料庫查詢到前端載入的全面效能調優</small>
+                            </div>
                         </div>
                     </div>
-                    <div class="alert alert-success">
+                    <div class="alert alert-success mt-4">
+                        <i class="fas fa-star me-2"></i>
                         這個專案不僅展現了我的技術實力，更體現了我在複雜系統設計、團隊領導和問題解決方面的能力，為我成為一名優秀的全端工程師奠定了堅實基礎。
+                    </div>
+                </div>
+            </div>
+
+            <!-- 專案亮點總結 -->
+            <div class="card section-card" data-aos="fade-up" data-aos-delay="600">
+                <div class="section-header">
+                    <h2><i class="fas fa-gem"></i>專案亮點總結</h2>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="highlight-box p-4 mb-4">
+                                <h5><i class="fas fa-crown me-2" style="color: var(--jade-secondary);"></i>技術領導力</h5>
+                                <p class="mb-0">作為專案組長，成功帶領6人團隊完成複雜電商平台開發，展現出色的技術領導和團隊管理能力。</p>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="highlight-box p-4 mb-4">
+                                <h5><i class="fas fa-code-branch me-2" style="color: var(--jade-accent);"></i>全端整合</h5>
+                                <p class="mb-0">深度參與前後端開發，熟練運用現代Web技術棧，實現高效的系統整合和API設計。</p>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="highlight-box p-4 mb-4">
+                                <h5><i class="fas fa-brain me-2" style="color: var(--jade-primary);"></i>創新思維</h5>
+                                <p class="mb-0">創新整合社群與電商功能，打造差異化的服飾購物體驗，體現出色的產品思維。</p>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="highlight-box p-4 mb-4">
+                                <h5><i class="fas fa-rocket me-2" style="color: var(--jade-accent);"></i>技術深度</h5>
+                                <p class="mb-0">掌握從資料庫設計、後端API到前端互動的完整技術棧，具備解決複雜技術問題的能力。</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -363,12 +861,166 @@ const bannerApi = {
         </div>
     </main>
 
-    <footer class="py-4 bg-dark text-white text-center">
+    <footer class="text-center">
         <div class="container">
-            <p>&copy; 2025 劉冠彤 • JADE 專案詳細介紹</p>
+            <div class="row">
+                <div class="col-md-6 text-md-start">
+                    <h5><i class="fas fa-user-circle me-2"></i>劉冠彤</h5>
+                    <p class="mb-0">全端工程師 • 專案管理者 • 技術創新者</p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <h5><i class="fas fa-envelope me-2"></i>聯絡方式</h5>
+                    <p class="mb-0">歡迎透過作品集主頁聯繫我</p>
+                </div>
+            </div>
+            <hr style="border-color: rgba(255,255,255,0.2); margin: 2rem 0;">
+            <p class="mb-0">&copy; 2025 劉冠彤 • JADE 專案詳細介紹 • 展現技術實力與創新能力</p>
         </div>
     </footer>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <script>
+        // 初始化 AOS 動畫
+        AOS.init({
+            duration: 1000,
+            easing: 'ease-out-cubic',
+            once: true,
+            mirror: false
+        });
+
+        // 滾動指示器
+        window.addEventListener('scroll', () => {
+            const scrolled = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
+            document.getElementById('scrollIndicator').style.width = scrolled + '%';
+        });
+
+        // 平滑滾動
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    const offsetTop = target.offsetTop - 80;
+                    window.scrollTo({
+                        top: offsetTop,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // 技能進度條動畫
+        const observerOptions = {
+            threshold: 0.3,
+            rootMargin: '0px'
+        };
+
+        const progressObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const progressBars = entry.target.querySelectorAll('.progress-bar');
+                    progressBars.forEach((bar, index) => {
+                        const width = bar.style.width;
+                        bar.style.width = '0%';
+                        setTimeout(() => {
+                            bar.style.transition = 'width 2s ease-out';
+                            bar.style.width = width;
+                        }, index * 200);
+                    });
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.skill-item').forEach(skill => {
+            progressObserver.observe(skill.closest('.card'));
+        });
+
+        // 導航欄滾動效果
+        let lastScrollTop = 0;
+        const navbar = document.querySelector('.navbar');
+        
+        window.addEventListener('scroll', () => {
+            let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            
+            if (scrollTop > lastScrollTop && scrollTop > 100) {
+                navbar.style.transform = 'translateY(-100%)';
+                navbar.style.transition = 'transform 0.3s ease-in-out';
+            } else {
+                navbar.style.transform = 'translateY(0)';
+                navbar.style.transition = 'transform 0.3s ease-in-out';
+            }
+            
+            // 添加背景透明度變化
+            if (scrollTop > 50) {
+                navbar.style.background = 'rgba(255, 255, 255, 0.98)';
+                navbar.style.boxShadow = '0 2px 20px rgba(0,0,0,0.12)';
+            } else {
+                navbar.style.background = 'rgba(255, 255, 255, 0.95)';
+                navbar.style.boxShadow = '0 2px 15px rgba(0,0,0,0.08)';
+            }
+            
+            lastScrollTop = scrollTop;
+        });
+
+        // 技術標籤互動效果
+        document.querySelectorAll('.tech-badge').forEach(badge => {
+            badge.addEventListener('mouseenter', () => {
+                badge.style.transform = 'translateY(-3px) scale(1.05)';
+                badge.style.transition = 'all 0.3s ease';
+            });
+
+            badge.addEventListener('mouseleave', () => {
+                badge.style.transform = 'translateY(0) scale(1)';
+            });
+        });
+
+        // 卡片懸停效果增強
+        document.querySelectorAll('.section-card').forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                card.style.transition = 'all 0.3s ease';
+            });
+        });
+
+        // 統計數字動畫
+        const animateNumbers = () => {
+            document.querySelectorAll('.stat-number').forEach(stat => {
+                const text = stat.textContent;
+                if (text.includes('個月') || text.includes('人') || text.includes('+') || text === '全端') {
+                    return; // 跳過非純數字
+                }
+                
+                const finalNumber = parseInt(text);
+                if (!isNaN(finalNumber)) {
+                    let currentNumber = 0;
+                    const increment = finalNumber / 50;
+                    const timer = setInterval(() => {
+                        currentNumber += increment;
+                        if (currentNumber >= finalNumber) {
+                            stat.textContent = finalNumber;
+                            clearInterval(timer);
+                        } else {
+                            stat.textContent = Math.floor(currentNumber);
+                        }
+                    }, 30);
+                }
+            });
+        };
+
+        // 當統計區域進入視野時啟動數字動畫
+        const statsObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    animateNumbers();
+                    statsObserver.unobserve(entry.target);
+                }
+            });
+        });
+
+        const statsSection = document.querySelector('.hero-stats');
+        if (statsSection) {
+            statsObserver.observe(statsSection);
+        }
+    </script>
 </body>
 </html>
