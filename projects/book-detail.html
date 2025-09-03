@@ -93,7 +93,12 @@
 
         /* Hero區域設計 */
         .hero-section {
-            background: linear-gradient(135deg, var(--dream-sage) 0%, var(--dream-dark-green) 100%);
+            background: 
+                linear-gradient(135deg, rgba(122, 132, 113, 0.85) 0%, rgba(93, 104, 86, 0.85) 100%),
+                url('https://res.cloudinary.com/depkrkqig/image/upload/v1756862366/%E6%9B%B8%E5%BA%97%E6%93%B7%E5%8F%96_l2rbko.png');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
             padding: 120px 0 80px;
             position: relative;
             overflow: hidden;
@@ -455,13 +460,139 @@
             transition: width 0.3s ease;
         }
 
+        /* 觸控優化 */
+        @media (hover: none) and (pointer: coarse) {
+            .btn, .nav-link, .card {
+                touch-action: manipulation;
+            }
+            
+            .card:hover {
+                transform: none;
+                box-shadow: 0 4px 15px rgba(122, 132, 113, 0.1);
+            }
+        }
+
         /* 響應式設計 */
         @media (max-width: 768px) {
-            .dream-logo { font-size: 3rem; }
-            .hero-section { padding: 80px 0 60px; }
-            .section-header { padding: 1.5rem; }
-            .card-body { padding: 1.8rem; }
-            .hero-stats { padding: 1.8rem; }
+            .dream-logo { 
+                font-size: 3rem; 
+            }
+            .hero-section { 
+                padding: 80px 0 60px;
+                background-attachment: scroll; /* 修復手機滾動問題 */
+            }
+            .section-header { 
+                padding: 1.5rem;
+                font-size: 1.8rem;
+            }
+            .card-body { 
+                padding: 1.8rem; 
+            }
+            .hero-stats { 
+                padding: 1.8rem;
+                margin: 0 10px;
+            }
+            
+            /* 導航列手機版 */
+            .navbar .navbar-brand {
+                font-size: 1.4rem;
+            }
+            
+            /* Hero 統計區塊手機版 */
+            .hero-stats .row > div {
+                margin-bottom: 1rem;
+            }
+            
+            /* 技術標籤手機版 */
+            .tech-badge {
+                font-size: 0.8rem;
+                padding: 0.3rem 0.7rem;
+                margin: 0.2rem;
+            }
+            
+            /* 卡片標題手機版 */
+            .section-header h2 {
+                font-size: 1.8rem;
+            }
+            
+            /* 數據可視化手機版 */
+            .data-viz {
+                padding: 1rem;
+                margin: 0.5rem 0;
+            }
+            
+            /* 圖片手機版 */
+            .card img {
+                max-height: 200px;
+                object-fit: cover;
+            }
+            
+            /* 容器間距手機版 */
+            .container {
+                padding: 0 15px;
+            }
+            
+            section {
+                padding: 2rem 0;
+            }
+            
+            /* 按鈕手機版 */
+            .btn {
+                font-size: 0.9rem;
+                padding: 0.5rem 1.2rem;
+                min-height: 44px; /* iOS 觸控最小尺寸 */
+            }
+            
+            /* 價值卡片手機版 */
+            .value-card {
+                margin-bottom: 1rem;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .dream-logo { 
+                font-size: 2.5rem; 
+            }
+            
+            .hero-section { 
+                padding: 60px 0 40px;
+            }
+            
+            .section-header { 
+                padding: 1rem;
+                font-size: 1.5rem;
+            }
+            
+            .card-body { 
+                padding: 1.2rem; 
+            }
+            
+            .hero-stats { 
+                padding: 1.2rem;
+                margin: 0 5px;
+            }
+            
+            .hero-subtitle {
+                font-size: 1rem;
+            }
+            
+            .navbar .navbar-brand {
+                font-size: 1.2rem;
+            }
+            
+            .tech-badge {
+                font-size: 0.7rem;
+                padding: 0.2rem 0.5rem;
+            }
+            
+            .data-viz {
+                padding: 0.8rem;
+            }
+            
+            /* 表格手機版 */
+            .table-responsive {
+                font-size: 0.8rem;
+            }
         }
 
         /* 數據可視化樣式 */

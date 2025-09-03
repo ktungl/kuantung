@@ -96,6 +96,130 @@
             color: #7bbeb3 !important;
             transition: color 0.3s ease;
         }
+
+        /* 觸控優化 */
+        @media (hover: none) and (pointer: coarse) {
+            .btn, .nav-link, .card, .carousel-control-prev, .carousel-control-next {
+                touch-action: manipulation;
+            }
+            
+            .card:hover, .project-card:hover {
+                transform: none;
+                box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            }
+        }
+
+        /* 手機響應式設計 */
+        @media (max-width: 768px) {
+            .hero-section {
+                padding: 60px 0;
+                text-align: center;
+            }
+            
+            .hero-section h1 {
+                font-size: 2rem;
+            }
+            
+            .hero-section p {
+                font-size: 1rem;
+            }
+            
+            /* 輪播箭頭手機版調整 */
+            .carousel-control-prev,
+            .carousel-control-next {
+                width: 8%;
+            }
+            
+            .carousel-control-prev {
+                left: -10px;
+            }
+            
+            .carousel-control-next {
+                right: -10px;
+            }
+            
+            .carousel-control-prev-icon,
+            .carousel-control-next-icon {
+                width: 2rem;
+                height: 2rem;
+            }
+            
+            /* 個人照片手機版 */
+            .col-md-6 img {
+                width: 280px !important;
+                height: 280px !important;
+                margin-bottom: 2rem;
+            }
+            
+            /* 技能圖標手機版 */
+            .tech-stack img {
+                width: 35px;
+                height: 35px;
+                margin: 8px;
+            }
+            
+            /* 輪播內容手機版 */
+            .carousel-item .card {
+                margin: 0 10px;
+            }
+            
+            .carousel-item h5 {
+                font-size: 1.1rem;
+            }
+            
+            .carousel-item p {
+                font-size: 0.9rem;
+            }
+            
+            /* 按鈕手機版 */
+            .btn {
+                font-size: 0.9rem;
+                padding: 0.4rem 1rem;
+                min-height: 44px; /* iOS 觸控最小尺寸 */
+            }
+            
+            /* 容器手機版間距 */
+            .container {
+                padding: 0 15px;
+            }
+            
+            section {
+                padding: 3rem 0;
+            }
+            
+            /* 導航列手機版 */
+            .navbar-nav .nav-link {
+                padding: 0.7rem 1rem;
+                font-size: 1rem;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .hero-section h1 {
+                font-size: 1.8rem;
+            }
+            
+            .col-md-6 img {
+                width: 250px !important;
+                height: 250px !important;
+            }
+            
+            .carousel-control-prev-icon,
+            .carousel-control-next-icon {
+                width: 1.8rem;
+                height: 1.8rem;
+            }
+            
+            .tech-stack img {
+                width: 30px;
+                height: 30px;
+                margin: 5px;
+            }
+            
+            section {
+                padding: 2rem 0;
+            }
+        }
     </style>
 </head>
 <body>
