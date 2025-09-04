@@ -109,10 +109,49 @@
             }
         }
 
+        /* 導航列優化 */
+        .navbar {
+            padding: 0.5rem 0;
+        }
+        
+        .navbar-brand {
+            font-size: 1.5rem;
+            font-weight: 600;
+        }
+        
+        .navbar-toggler {
+            border: none;
+            padding: 0.25rem 0.5rem;
+        }
+        
+        .navbar-toggler:focus {
+            box-shadow: none;
+        }
+
         /* 手機響應式設計 */
         @media (max-width: 768px) {
+            /* 導航列手機版調整 */
+            .navbar {
+                padding: 0.3rem 0;
+            }
+            
+            .navbar-brand {
+                font-size: 1.3rem;
+            }
+            
+            .navbar-collapse {
+                margin-top: 0.5rem;
+            }
+            
+            .navbar-nav .nav-link {
+                padding: 0.5rem 1rem;
+                font-size: 1rem;
+                text-align: center;
+            }
+            
+            /* Hero 區域調整 - 減少 top padding 避免被導航列遮擋 */
             .hero-section {
-                padding: 60px 0;
+                padding: 80px 0 60px; /* 減少 top padding */
                 text-align: center;
             }
             
@@ -186,15 +225,19 @@
             section {
                 padding: 3rem 0;
             }
-            
-            /* 導航列手機版 */
-            .navbar-nav .nav-link {
-                padding: 0.7rem 1rem;
-                font-size: 1rem;
-            }
         }
         
         @media (max-width: 576px) {
+            /* 導航列超小螢幕版 */
+            .navbar-brand {
+                font-size: 1.1rem;
+            }
+            
+            /* Hero 區域超小螢幕 */
+            .hero-section {
+                padding: 70px 0 50px; /* 進一步減少 padding */
+            }
+            
             .hero-section h1 {
                 font-size: 1.8rem;
             }
@@ -227,11 +270,16 @@
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
         <div class="container">
             <a class="navbar-brand" href="#">劉冠彤 Portfolio</a>
-            <div class="navbar-nav ms-auto">
-                <a class="nav-link" href="#about">關於我</a>
-                <a class="nav-link" href="#projects">專案作品</a>
-                <a class="nav-link" href="#skills">技術技能</a>
-                <a class="nav-link" href="#contact">聯絡方式</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <div class="navbar-nav ms-auto">
+                    <a class="nav-link" href="#about">關於我</a>
+                    <a class="nav-link" href="#projects">專案作品</a>
+                    <a class="nav-link" href="#skills">技術技能</a>
+                    <a class="nav-link" href="#contact">聯絡方式</a>
+                </div>
             </div>
         </div>
     </nav>
@@ -437,6 +485,17 @@
         document.querySelectorAll('.carousel .btn').forEach(function(btn) {
             btn.addEventListener('click', function(e) {
                 e.stopPropagation();
+            });
+        });
+
+        // 點擊導航連結後自動關閉手機版選單
+        document.querySelectorAll('.navbar-nav .nav-link').forEach(function(navLink) {
+            navLink.addEventListener('click', function() {
+                const navbarCollapse = document.querySelector('.navbar-collapse');
+                if (navbarCollapse.classList.contains('show')) {
+                    const bsCollapse = new bootstrap.Collapse(navbarCollapse);
+                    bsCollapse.hide();
+                }
             });
         });
     </script>
