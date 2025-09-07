@@ -3,494 +3,668 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>劉冠彤 - 全端工程師作品集</title>
+    <title>劉冠彤 - 全端工程師</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/ font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        .hero-section {
-            background: linear-gradient(135deg, #98ddd2 0%, #1e4619 100%);
-            color: white;
-            padding: 100px 0;
-        }
-        /* 自訂輪播箭頭顏色和位置 */
-        .carousel-control-prev,
-        .carousel-control-next {
-            width: 5%;
-        }
-        .carousel-control-prev {
-            left: -50px;
-        }
-        .carousel-control-next {
-            right: -50px;
-        }
-        .carousel-control-prev-icon,
-        .carousel-control-next-icon {
-            filter: none;
-            background-image: none;
-            background-color: #fff;
-            border-radius: 50%;
-            box-shadow: 0 2px 8px rgba(30,70,25,0.08);
-            width: 2.5rem;
-            height: 2.5rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-        }
-        .carousel-control-prev-icon::after,
-        .carousel-control-next-icon::after {
-            content: '';
-            display: block;
-            width: 1.2rem;
-            height: 1.2rem;
-            border-bottom: 0.25rem solid #1e4619;
-            border-left: 0.25rem solid #1e4619;
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%) rotate(45deg);
-        }
-        .carousel-control-next-icon::after {
-            border-bottom: 0.25rem solid #1e4619;
-            border-left: none;
-            border-right: 0.25rem solid #1e4619;
-            transform: translate(-50%, -50%) rotate(-45deg);
-        }
-        .tech-stack img {
-            width: 40px;
-            height: 40px;
-            margin: 10px;
-            transition: transform 0.3s;
-        }
-        .tech-stack img:hover {
-            transform: scale(1.2);
-        }
-        .project-card {
-            transition: transform 0.3s, box-shadow 0.3s;
-            height: 100%;
-        }
-        .project-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-        }
-        .demo-gif {
-            max-width: 100%;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
 
-        .btn.btn-primary {
-            background-color: #7bbeb3;
-            position: relative;
-            z-index: 10;
-            padding: 0.5rem 1.5rem;
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.6;
+            color: #2c3e50;
+            overflow-x: hidden;
+        }
+
+        /* 導航列 */
+        .navbar {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+            padding: 1rem 0;
+            transition: all 0.3s ease;
+        }
+
+        .navbar-brand {
+            font-weight: 700;
+            font-size: 1.5rem;
+            color: #2c3e50 !important;
+        }
+
+        .navbar-nav .nav-link {
+            color: #2c3e50 !important;
             font-weight: 500;
-        }
-        .carousel-item .btn {
-            position: relative;
-            z-index: 10;
-            margin: 0.50rem;
-            margin-left: 10px;
-        }
-        .card-title a:hover {
-            color: #7bbeb3 !important;
+            margin: 0 0.5rem;
             transition: color 0.3s ease;
         }
 
-        /* 觸控優化 */
-        @media (hover: none) and (pointer: coarse) {
-            .btn, .nav-link, .card, .carousel-control-prev, .carousel-control-next {
-                touch-action: manipulation;
-            }
-            
-            .card:hover, .project-card:hover {
-                transform: none;
-                box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            }
+        .navbar-nav .nav-link:hover {
+            color: #3498db !important;
         }
 
-        /* 導航列優化 */
-        .navbar {
-            padding: 0.5rem 0;
+        /* Hero 區域 */
+        .hero-section {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            position: relative;
         }
-        
-        .navbar-brand {
+        .hero-image {
+            margin-top: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+            min-height: 450px;
+        }
+
+        .hero-content {
+            max-width: 600px;
+        }
+
+        .hero-title {
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: #2c3e50;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+
+        .hero-subtitle {
             font-size: 1.5rem;
-            font-weight: 600;
-        }
-        
-        .navbar-toggler {
-            border: none;
-            padding: 0.25rem 0.5rem;
-        }
-        
-        .navbar-toggler:focus {
-            box-shadow: none;
+            color: #7f8c8d;
+            margin-bottom: 2rem;
+            font-weight: 300;
         }
 
-        /* 手機響應式設計 */
+        .hero-description {
+            font-size: 1.1rem;
+            color: #6c757d;
+            margin-bottom: 3rem;
+            line-height: 1.7;
+        }
+
+        .hero-image {
+            position: relative;
+        }
+
+        .hero-image img {
+            width: 450px;
+            height: 450px;
+            object-fit: cover;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.1);
+        }
+
+        /* 按鈕樣式 */
+        .btn-primary-custom {
+            background: #3498db;
+            border: none;
+            padding: 0.75rem 2rem;
+            font-weight: 600;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            color: white;
+            display: inline-block;
+        }
+
+        .btn-primary-custom:hover {
+            background: #2980b9;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(52, 152, 219, 0.3);
+            color: white;
+        }
+
+        .btn-outline-custom {
+            border: 2px solid #3498db;
+            color: #3498db;
+            padding: 0.75rem 2rem;
+            font-weight: 600;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-outline-custom:hover {
+            background: #3498db;
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        /* 關於我區域 */
+        .about-section {
+            padding: 6rem 0;
+            background: white;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #2c3e50;
+            margin-bottom: 3rem;
+            text-align: center;
+        }
+
+        .about-content {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #5a6c7d;
+        }
+
+        .about-highlight {
+            background: #f8f9fa;
+            border-left: 4px solid #3498db;
+            padding: 1.5rem;
+            margin: 2rem 0;
+            border-radius: 0 10px 10px 0;
+        }
+
+        /* 技能區域 */
+        .skills-section {
+            padding: 6rem 0;
+            background: #f8f9fa;
+        }
+
+        .skill-item {
+            text-align: center;
+            padding: 2rem;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            transition: transform 0.3s ease;
+            margin-bottom: 2rem;
+        }
+
+        .skill-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .skill-icon {
+            font-size: 3rem;
+            color: #3498db;
+            margin-bottom: 1.5rem;
+        }
+
+        .skill-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 1rem;
+        }
+
+        .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            justify-content: center;
+            margin: 2rem 0;
+        }
+
+        .tech-item {
+            background: white;
+            padding: 0.8rem 1.5rem;
+            border-radius: 25px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            font-weight: 500;
+            color: #2c3e50;
+            transition: all 0.3s ease;
+        }
+
+        .tech-item:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+        }
+
+        /* 專案區域 */
+        .projects-section {
+            padding: 6rem 0;
+            background: white;
+        }
+
+        .project-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            margin-bottom: 3rem;
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+        }
+
+        .project-image {
+            height: 250px;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+
+        .project-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.7);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .project-card:hover .project-overlay {
+            opacity: 1;
+        }
+
+        .project-content {
+            padding: 2rem;
+        }
+
+        .project-title {
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 1rem;
+        }
+
+        .project-description {
+            color: #6c757d;
+            margin-bottom: 1.5rem;
+            line-height: 1.7;
+        }
+
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .project-tag {
+            background: #e8f4f8;
+            color: #3498db;
+            padding: 0.3rem 0.8rem;
+            border-radius: 15px;
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+
+        /* 聯絡區域 */
+        .contact-section {
+            padding: 6rem 0;
+            background: #2c3e50;
+            color: white;
+            text-align: center;
+        }
+
+        .contact-section .section-title {
+            color: white;
+        }
+
+        .contact-description {
+            font-size: 1.2rem;
+            margin-bottom: 3rem;
+            opacity: 0.9;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+        }
+
+        .social-link {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 60px;
+            height: 60px;
+            background: rgba(255,255,255,0.1);
+            color: white;
+            border-radius: 50%;
+            font-size: 1.5rem;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .social-link:hover {
+            background: #3498db;
+            transform: translateY(-3px);
+            color: white;
+        }
+
+        /* 響應式設計 */
         @media (max-width: 768px) {
-            /* 導航列手機版調整 */
-            .navbar {
-                padding: 0.3rem 0;
+            .hero-title {
+                font-size: 2.5rem;
             }
-            
-            .navbar-brand {
-                font-size: 1.3rem;
+
+            .hero-subtitle {
+                font-size: 1.2rem;
             }
-            
-            .navbar-collapse {
-                margin-top: 0.5rem;
+
+            .hero-image img {
+                width: 300px;
+                height: 300px;
             }
-            
-            .navbar-nav .nav-link {
-                padding: 0.5rem 1rem;
-                font-size: 1rem;
-                text-align: center;
-            }
-            
-            /* Hero 區域調整 - 減少 top padding 避免被導航列遮擋 */
-            .hero-section {
-                padding: 80px 0 60px; /* 減少 top padding */
-                text-align: center;
-            }
-            
-            .hero-section h1 {
+
+            .section-title {
                 font-size: 2rem;
             }
-            
-            .hero-section p {
-                font-size: 1rem;
+
+            .tech-stack {
+                justify-content: center;
             }
-            
-            /* 輪播箭頭手機版調整 */
-            .carousel-control-prev,
-            .carousel-control-next {
-                width: 8%;
+
+            .social-links {
+                gap: 1rem;
             }
-            
-            .carousel-control-prev {
-                left: -10px;
+
+            .hero-section {
+                text-align: center;
             }
-            
-            .carousel-control-next {
-                right: -10px;
-            }
-            
-            .carousel-control-prev-icon,
-            .carousel-control-next-icon {
-                width: 2rem;
-                height: 2rem;
-            }
-            
-            /* 個人照片手機版 */
-            .col-md-6 img {
-                width: 280px !important;
-                height: 280px !important;
-                margin-bottom: 2rem;
-            }
-            
-            /* 技能圖標手機版 */
-            .tech-stack img {
-                width: 35px;
-                height: 35px;
-                margin: 8px;
-            }
-            
-            /* 輪播內容手機版 */
-            .carousel-item .card {
-                margin: 0 10px;
-            }
-            
-            .carousel-item h5 {
-                font-size: 1.1rem;
-            }
-            
-            .carousel-item p {
-                font-size: 0.9rem;
-            }
-            
-            /* 按鈕手機版 */
-            .btn {
-                font-size: 0.9rem;
-                padding: 0.4rem 1rem;
-                min-height: 44px; /* iOS 觸控最小尺寸 */
-            }
-            
-            /* 容器手機版間距 */
-            .container {
-                padding: 0 15px;
-            }
-            
-            section {
-                padding: 3rem 0;
+
+            .hero-content {
+                margin-bottom: 3rem;
             }
         }
-        
+
         @media (max-width: 576px) {
-            /* 導航列超小螢幕版 */
-            .navbar-brand {
-                font-size: 1.1rem;
+            .hero-title {
+                font-size: 2rem;
             }
-            
-            /* Hero 區域超小螢幕 */
-            .hero-section {
-                padding: 70px 0 50px; /* 進一步減少 padding */
+
+            .hero-image img {
+                width: 250px;
+                height: 250px;
             }
-            
-            .hero-section h1 {
-                font-size: 1.8rem;
+
+            .btn-primary-custom,
+            .btn-outline-custom {
+                padding: 0.6rem 1.5rem;
+                font-size: 0.9rem;
+                margin: 0.5rem 0;
+                display: block;
+                text-align: center;
             }
-            
-            .col-md-6 img {
-                width: 250px !important;
-                height: 250px !important;
-            }
-            
-            .carousel-control-prev-icon,
-            .carousel-control-next-icon {
-                width: 1.8rem;
-                height: 1.8rem;
-            }
-            
-            .tech-stack img {
-                width: 30px;
-                height: 30px;
-                margin: 5px;
-            }
-            
-            section {
-                padding: 2rem 0;
-            }
+        }
+
+        /* 滾動動畫 */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
         }
     </style>
 </head>
 <body>
     <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+    <nav class="navbar navbar-expand-lg fixed-top">
         <div class="container">
-            <a class="navbar-brand" href="#">劉冠彤 Portfolio</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <a class="navbar-brand" href="#">劉冠彤</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <div class="navbar-nav ms-auto">
                     <a class="nav-link" href="#about">關於我</a>
-                    <a class="nav-link" href="#projects">專案作品</a>
-                    <a class="nav-link" href="#skills">技術技能</a>
-                    <a class="nav-link" href="#contact">聯絡方式</a>
+                    <a class="nav-link" href="#skills">技能</a>
+                    <a class="nav-link" href="#projects">作品</a>
+                    <a class="nav-link" href="#contact">聯絡</a>
                 </div>
             </div>
         </div>
     </nav>
 
     <!-- Hero Section -->
-    <section class="hero-section text-center">
+    <section class="hero-section">
         <div class="container">
-            <h1 class="display-4 fw-bold mb-4">劉冠彤</h1>
-            <p class="lead mb-4">全端工程師 | 專案管理 | 國際商務背景</p>
-            <p class="mb-4">結合商務思維與技術實作，打造創新的數位解決方案</p>
-            <div class="tech-stack mb-4">
-                <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/csharp/csharp-original.svg" alt="C#">
-                <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/dot-net/dot-net-original.svg" alt="ASP.NET">
-                <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/vuejs/vuejs-original.svg" alt="Vue.js">
-                <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/javascript/javascript-original.svg" alt="JavaScript">
-                <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/html5/html5-original.svg" alt="HTML5">
-                <img src="https://www.svgrepo.com/show/303229/microsoft-sql-server-logo.svg" alt="SQL Server">
-            </div>
-            <div>
-                <a href="#projects" class="btn btn-light btn-lg me-3">查看作品</a>
-                <a href="https://github.com/ktungl" class="btn btn-outline-light btn-lg" target="_blank">
-                    <i class="fab fa-github"></i> GitHub
-                </a>
+            <div class="row align-items-center">
+                <div class="col-lg-6">
+                    <div class="hero-content fade-in">
+                        <h1 class="hero-title">您好，我是劉冠彤</h1>
+                        <p class="hero-subtitle">全端工程師 × 專案管理師</p>
+                        <p class="hero-description">
+                            結合國際商務背景與技術實作能力，致力於打造創新的數位解決方案。
+                            擁有跨國企業工作經驗，熟悉現代 Web 開發技術棧。
+                        </p>
+                        <div class="hero-buttons">
+                            <a href="#projects" class="btn-primary-custom me-3">查看作品</a>
+                            <a href="#contact" class="btn-outline-custom">聯絡我</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 d-flex align-items-center justify-content-center">
+                    <div class="hero-image fade-in">
+                        <img src="https://res.cloudinary.com/depkrkqig/image/upload/v1756777678/S__14254086_nnvlj9.jpg" alt="劉冠彤">
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
     <!-- About Section -->
-    <section id="about" class="py-5">
+    <section id="about" class="about-section">
         <div class="container">
-            <div class="row align-items-center">
-                <div class="col-md-6">
-                    <h2 class="mb-4">關於我</h2>
-                    <p class="lead">擁有三年跨國企業工作經驗，專精於專案管理、跨部門協調。</p>
-                    <p>目前完成全端工程師培訓，熟悉現代 Web 開發技術棧。結合商務背景與技術實作能力，致力於成為具備業務思維的全端工程師。</p>
-                    <ul class="list-unstyled">
-                        <li><i class="fas fa-check text-success"></i> 國際政治碩士，具備政策分析能力</li>
-                        <li><i class="fas fa-check text-success"></i> 跨國企業工作經驗（台灣、越南）</li>
-                        <li><i class="fas fa-check text-success"></i> 精通中英德三語，越語基礎</li>
-                        <li><i class="fas fa-check text-success"></i> 全端開發實戰經驗</li>
-                    </ul>
-                </div>
-                <div class="col-md-6">
-                    <img src="https://res.cloudinary.com/depkrkqig/image/upload/v1756777678/S__14254086_nnvlj9.jpg" alt="劉冠彤" class="img-fluid mx-auto d-block" style="width: 400px; height: 400px; object-fit: cover; border-radius: 16px;">
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Projects Section -->
-    <section id="projects" class="py-5 bg-light">
-        <div class="container">
-            <h2 class="text-center mb-5">專案作品</h2>
-            <div id="projectCarousel" class="carousel slide" data-bs-ride="carousel">
-                <div class="carousel-inner">
-                    <!-- JADE Project -->
-                    <div class="carousel-item active">
-                        <div class="row mb-5 align-items-center">
-                            <div class="col-lg-6">
-                                <div class="card project-card">
-                                    <a href="projects/jade-detail.html" style="text-decoration: none; color: inherit;">
-                                        <img src="https://res.cloudinary.com/depkrkqig/image/upload/v1756777873/logo_knmw5u.png" class="card-img-top" alt="JADE電商平台" style="cursor: pointer;">
-                                    </a>
-                                    <div class="card-body">
-                                        <h5 class="card-title">
-                                            <a href="projects/jade-detail.html" style="text-decoration: none; color: inherit;">
-                                                JADE 服飾專賣電商平台
-                                            </a>
-                                        </h5>
-                                        <p class="card-text">完整的電商解決方案，整合社群分享、會員系統、金流物流等功能。</p>
-                                        <div class="tech-badges mb-3">
-                                            <span class="badge bg-primary">Vue.js</span>
-                                            <span class="badge bg-success">ASP.NET Core</span>
-                                            <span class="badge bg-info">Azure SQL</span>
-                                            <span class="badge bg-warning">SignalR</span>
-                                        </div>
-                                        <div class="d-flex gap-2">
-                                            <a href="projects/jade-detail.html" class="btn btn-primary">詳細介紹</a>
-                                            <a href="https://github.com/yourusername/jade" class="btn btn-outline-secondary" target="_blank">
-                                                <i class="fab fa-github"></i> 原始碼
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-6">
-                                <h4>專案亮點</h4>
-                                <ul>
-                                    <li><strong>團隊領導：</strong>帶領5人開發團隊，2個月完成開發</li>
-                                    <li><strong>全端開發：</strong>前後端分離架構，RESTful API設計</li>
-                                    <li><strong>系統整合：</strong>整合綠界金流、Cloudinary、OpenAI等服務</li>
-                                    <li><strong>創新功能：</strong>社群電商融合、AI客服、即時通訊</li>
-                                </ul>
-                                <div class="mt-4">
-                                    <img src="https://res.cloudinary.com/depkrkqig/image/upload/v1756904251/JADE_%E5%80%8B%E4%BA%BA%E7%89%88_1_lxq4gh.gif" alt="JADE Demo" class="demo-gif">
-                                </div>
-                            </div>
+            <h2 class="section-title fade-in">關於我</h2>
+            <div class="row">
+                <div class="col-lg-8 mx-auto">
+                    <div class="about-content fade-in">
+                        <p>
+                            我是一位具有國際視野的全端工程師，擁有三年跨國企業工作經驗。在完成全端工程師培訓後，
+                            我將商務思維與技術實作完美結合，致力於成為具備業務洞察力的技術專家。
+                        </p>
+                        
+                        <div class="about-highlight">
+                            <strong>核心優勢</strong><br>
+                            • 國際政治碩士背景，具備政策分析與邏輯思維能力<br>
+                            • 跨國企業實戰經驗（台灣、越南），熟悉國際商務運作<br>
+                            • 精通中英德三語，越語基礎，具備跨文化溝通能力<br>
+                            • 專案管理與跨部門協調經驗豐富
                         </div>
-                    </div>
-                    <!-- 第二個專案範例 -->
-                    <div class="carousel-item">
-                        <div class="row mb-5 align-items-center">
-                            <div class="col-lg-6">
-                                <div class="card project-card">
-                                    <a href="projects/book-detail.html" style="text-decoration: none; color: inherit;">
-                                        <img src="https://res.cloudinary.com/depkrkqig/image/upload/v1756783249/Dream_Bookstore_wd7dqa.png" class="card-img-top" alt="書店管理系統" style="cursor: pointer;">
-                                    </a>
-                                    <div class="card-body">
-                                        <h5 class="card-title">
-                                            <a href="projects/book-detail.html" style="text-decoration: none; color: inherit;">
-                                                Dream Bookstore 書店管理系統
-                                            </a>
-                                        </h5>
-                                        <p class="card-text">獨立開發的桌面應用程式，為獨立書店提供完整的營運管理解決方案，包含庫存、會員、訂單管理等功能。</p>
-                                        <div class="tech-badges mb-3">
-                                            <span class="badge bg-primary">C# WinForms</span>
-                                            <span class="badge bg-success">SQL Server</span>
-                                            <span class="badge bg-info">ADO.NET</span>
-                                        </div>
-                                        <div class="d-flex gap-2">
-                                            <a href="projects/book-detail.html" class="btn btn-primary">詳細介紹</a>
-                                            <a href="https://github.com/ktungl/Book-Inventory-System.git" class="btn btn-outline-secondary" target="_blank">
-                                                <i class="fab fa-github"></i> 原始碼
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-6">
-                                <h4>專案亮點</h4>
-                                <ul>
-                                    <li><strong>獨立開發：</strong>個人專案，從需求分析到實現完整負責</li>
-                                    <li><strong>桌面應用：</strong>C# WinForms + SQL Server 傳統架構</li>
-                                    <li><strong>業務邏輯：</strong>複雜的庫存管理與訂單處理系統</li>
-                                    <li><strong>用戶導向：</strong>專為獨立書店設計的直觀介面</li>
-                                </ul>
-                                <div class="mt-4">
-                                    <img src="https://res.cloudinary.com/depkrkqig/image/upload/v1756869116/Dream_Bookstore_i2wnic.gif" alt="Dream Bookstore Demo" class="demo-gif">
-                                </div>
-                            </div>
-                        </div>
+                        
+                        <p>
+                          我深信優秀的技術方案必須建立在對商業需求的透徹理解之上。結合我的商務經驗與技術背景，我習慣探索「問題背後的問題」，提出既符合用戶需求又具技術可行性的解決方案。
+                        </p>
                     </div>
                 </div>
-                <button class="carousel-control-prev" type="button" data-bs-target="#projectCarousel" data-bs-slide="prev">
-                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Previous</span>
-                </button>
-                <button class="carousel-control-next" type="button" data-bs-target="#projectCarousel" data-bs-slide="next">
-                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Next</span>
-                </button>
             </div>
         </div>
     </section>
 
     <!-- Skills Section -->
-    <section id="skills" class="py-5">
+    <section id="skills" class="skills-section">
         <div class="container">
-            <h2 class="text-center mb-5">技術技能</h2>
+            <h2 class="section-title fade-in">技術技能</h2>
             <div class="row">
-                <div class="col-md-4 mb-4">
-                    <h5><i class="fas fa-server text-primary"></i> 後端開發</h5>
-                    <p>C#, ASP.NET Core, RESTful API, Entity Framework</p>
+                <div class="col-lg-4 col-md-6">
+                    <div class="skill-item fade-in">
+                        <div class="skill-icon">
+                            <i class="fas fa-code"></i>
+                        </div>
+                        <h3 class="skill-title">前端開發</h3>
+                        <p>打造直觀且響應式的用戶介面</p>
+                    </div>
                 </div>
-                <div class="col-md-4 mb-4">
-                    <h5><i class="fas fa-desktop text-success"></i> 前端開發</h5>
-                    <p>JavaScript, Vue.js, HTML5, CSS3, Bootstrap</p>
+                <div class="col-lg-4 col-md-6">
+                    <div class="skill-item fade-in">
+                        <div class="skill-icon">
+                            <i class="fas fa-server"></i>
+                        </div>
+                        <h3 class="skill-title">後端開發</h3>
+                        <p>構建穩定且可擴展的服務架構</p>
+                    </div>
                 </div>
-                <div class="col-md-4 mb-4">
-                    <h5><i class="fas fa-database text-info"></i> 資料庫</h5>
-                    <p>SQL Server, 資料庫設計, 效能優化</p>
+                <div class="col-lg-4 col-md-6">
+                    <div class="skill-item fade-in">
+                        <div class="skill-icon">
+                            <i class="fas fa-project-diagram"></i>
+                        </div>
+                        <h3 class="skill-title">專案管理</h3>
+                        <p>敏捷開發與跨團隊協作領導</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="tech-stack fade-in">
+                <div class="tech-item">Vue.js</div>
+                <div class="tech-item">JavaScript</div>
+                <div class="tech-item">C#</div>
+                <div class="tech-item">ASP.NET Core</div>
+                <div class="tech-item">SQL Server</div>
+                <div class="tech-item">Azure</div>
+                <div class="tech-item">Git</div>
+                <div class="tech-item">Bootstrap</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="projects-section">
+        <div class="container">
+            <h2 class="section-title fade-in">精選作品</h2>
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="project-card fade-in">
+                        <div class="project-image" style="background-image: url('https://res.cloudinary.com/depkrkqig/image/upload/v1756777873/logo_knmw5u.png'); background-size: contain; background-repeat: no-repeat; background-color: #f8f9fa;">
+                            <div class="project-overlay">
+                                <a href="projects/jade-detail.html" class="btn-primary-custom">查看詳情</a>
+                            </div>
+                        </div>
+                        <div class="project-content">
+                            <h3 class="project-title">JADE 服飾電商平台</h3>
+                            <p class="project-description">
+                                完整的電商解決方案，整合社群分享、會員系統、金流物流等功能。
+                                擔任團隊領導，帶領5人團隊完成前後端分離架構設計與實現。
+                            </p>
+                            <div class="project-tags">
+                                <span class="project-tag">Vue.js</span>
+                                <span class="project-tag">ASP.NET Core</span>
+                                <span class="project-tag">Azure SQL</span>
+                                <span class="project-tag">SignalR</span>
+                            </div>
+                            <!-- <a href="https://github.com/yourusername/jade" class="btn-outline-custom" target="_blank">
+                                <i class="fab fa-github"></i> 查看原始碼
+                            </a> -->
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="project-card fade-in">
+                        <div class="project-image" style="background-image: url('https://res.cloudinary.com/depkrkqig/image/upload/v1756783249/Dream_Bookstore_wd7dqa.png'); background-size: contain; background-repeat: no-repeat; background-color: #f8f9fa;">
+                            <div class="project-overlay">
+                                <a href="projects/book-detail.html" class="btn-primary-custom">查看詳情</a>
+                            </div>
+                        </div>
+                        <div class="project-content">
+                            <h3 class="project-title">Dream Bookstore 管理系統</h3>
+                            <p class="project-description">
+                                為獨立書店設計的桌面應用程式，提供完整的營運管理解決方案，
+                                包含庫存管理、會員系統、訂單處理等核心功能。
+                            </p>
+                            <div class="project-tags">
+                                <span class="project-tag">C# WinForms</span>
+                                <span class="project-tag">SQL Server</span>
+                                <span class="project-tag">ADO.NET</span>
+                            </div>
+                            <a href="https://github.com/ktungl/Book-Inventory-System.git" class="btn-outline-custom" target="_blank">
+                                <i class="fab fa-github"></i> 查看原始碼
+                            </a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Contact Section -->
-    <section id="contact" class="py-5 bg-dark text-white">
-        <div class="container text-center">
-            <h2 class="mb-4">聯絡我</h2>
-            <p class="lead mb-4">歡迎討論工作機會或技術交流</p>
-            <div class="row justify-content-center">
-                <div class="col-md-6">
-                    <div class="d-flex justify-content-center gap-4">
-                        <a href="mailto:liukuantung@gmail.com" class="text-white">
-                            <i class="fas fa-envelope fa-2x"></i>
-                        </a>
-                        <a href="https://www.linkedin.com/in/liukuantung/" class="text-white" target="_blank">
-                            <i class="fab fa-linkedin fa-2x"></i>
-                        </a>
-                        <a href="https://github.com/ktungl" class="text-white" target="_blank">
-                            <i class="fab fa-github fa-2x"></i>
-                        </a>
-                    </div>
-                </div>
+    <section id="contact" class="contact-section">
+        <div class="container">
+            <h2 class="section-title fade-in">聯絡我</h2>
+            <p class="contact-description fade-in">
+                期待與您討論合作機會或進行技術交流
+            </p>
+            <div class="social-links fade-in">
+                <a href="mailto:liukuantung@gmail.com" class="social-link">
+                    <i class="fas fa-envelope"></i>
+                </a>
+                <a href="https://www.linkedin.com/in/liukuantung/" class="social-link" target="_blank">
+                    <i class="fab fa-linkedin"></i>
+                </a>
+                <a href="https://github.com/ktungl" class="social-link" target="_blank">
+                    <i class="fab fa-github"></i>
+                </a>
             </div>
         </div>
     </section>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
     <script>
-        // 防止輪播阻止連結點擊
-        document.querySelectorAll('.carousel .btn').forEach(function(btn) {
-            btn.addEventListener('click', function(e) {
-                e.stopPropagation();
+        // 滾動動畫
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        // 觀察所有需要動畫的元素
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        // 導航列滾動效果
+        window.addEventListener('scroll', () => {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                navbar.style.background = 'rgba(255, 255, 255, 0.98)';
+                navbar.style.boxShadow = '0 2px 20px rgba(0,0,0,0.1)';
+            } else {
+                navbar.style.background = 'rgba(255, 255, 255, 0.95)';
+                navbar.style.boxShadow = 'none';
+            }
+        });
+
+        // 平滑滾動
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
             });
         });
 
-        // 點擊導航連結後自動關閉手機版選單
-        document.querySelectorAll('.navbar-nav .nav-link').forEach(function(navLink) {
-            navLink.addEventListener('click', function() {
+        // 關閉移動版導航選單
+        document.querySelectorAll('.navbar-nav .nav-link').forEach(link => {
+            link.addEventListener('click', () => {
                 const navbarCollapse = document.querySelector('.navbar-collapse');
                 if (navbarCollapse.classList.contains('show')) {
                     const bsCollapse = new bootstrap.Collapse(navbarCollapse);
