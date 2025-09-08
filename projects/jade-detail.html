@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>JADE — 服飾專賣電商平台</title>
+    <title data-zh="JADE — 服飾專賣電商平台" data-en="JADE — Fashion E-commerce Platform">JADE — 服飾專賣電商平台</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet">
@@ -561,10 +561,19 @@
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
         <div class="container">
             <a class="navbar-brand" href="../index.html">
-                <i class="fas fa-arrow-left me-2"></i>回到作品集
+                <i class="fas fa-arrow-left me-2"></i><span data-zh="回到作品集" data-en="Back to Portfolio">回到作品集</span>
             </a>
-            <div>
-                <a class="btn btn-outline-light btn-sm" href="../index.html">首頁</a>
+            <div class="d-flex align-items-center">
+                <div class="dropdown me-3">
+                    <button class="btn btn-outline-light btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown">
+                        <i class="fas fa-globe me-1"></i><span id="current-lang">中文</span>
+                    </button>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="#" onclick="switchLanguage('zh')">中文</a></li>
+                        <li><a class="dropdown-item" href="#" onclick="switchLanguage('en')">English</a></li>
+                    </ul>
+                </div>
+                <a class="btn btn-outline-light btn-sm" href="../index.html" data-zh="首頁" data-en="Home">首頁</a>
             </div>
         </div>
     </nav>
@@ -576,40 +585,40 @@
         <div class="container hero-content">
             <div class="text-center" data-aos="fade-up">
                 <div class="jade-logo">JADE</div>
-                <p class="hero-subtitle">服飾專賣電商平台開發專案</p>
+                <p class="hero-subtitle" data-zh="服飾專賣電商平台開發專案" data-en="Fashion E-commerce Platform Development Project">服飾專賣電商平台開發專案</p>
                 <a href="#main-content" class="btn btn-jade btn-lg">
-                    <i class="fas fa-chevron-down me-2"></i>查看專案詳情
+                    <i class="fas fa-chevron-down me-2"></i><span data-zh="查看專案詳情" data-en="View Project Details">查看專案詳情</span>
                 </a>
             </div>
             
             <div class="hero-stats" data-aos="fade-up" data-aos-delay="200">
                 <div class="stats-grid">
                     <div class="stat-item">
-                        <span class="stat-number">3個月</span>
-                        <div class="stat-label">開發週期</div>
+                        <span class="stat-number" data-zh="3個月" data-en="3 Months">3個月</span>
+                        <div class="stat-label" data-zh="開發週期" data-en="Development Period">開發週期</div>
                     </div>
                     <div class="stat-item">
-                        <span class="stat-number">6人</span>
-                        <div class="stat-label">開發團隊</div>
+                        <span class="stat-number" data-zh="6人" data-en="6 Members">6人</span>
+                        <div class="stat-label" data-zh="開發團隊" data-en="Development Team">開發團隊</div>
                     </div>
                     <div class="stat-item">
                         <span class="stat-number">60+</span>
-                        <div class="stat-label">資料庫表格</div>
+                        <div class="stat-label" data-zh="資料庫表格" data-en="Database Tables">資料庫表格</div>
                     </div>
                     <div class="stat-item">
-                        <span class="stat-number">全端</span>
-                        <div class="stat-label">系統整合</div>
+                        <span class="stat-number" data-zh="全端" data-en="Full-Stack">全端</span>
+                        <div class="stat-label" data-zh="系統整合" data-en="System Integration">系統整合</div>
                     </div>
                 </div>
                 <div class="row text-start mt-4">
                     <div class="col-md-6">
-                        <p><i class="fas fa-calendar-alt me-2 text-danger"></i><strong>開發期間：</strong> 2025年6月 - 2025年8月</p>
-                        <p><i class="fas fa-users me-2 text-danger"></i><strong>團隊規模：</strong> 6人全端開發團隊</p>
+                        <p><i class="fas fa-calendar-alt me-2 text-danger"></i><strong data-zh="開發期間：" data-en="Development Period: ">開發期間：</strong> <span data-zh="2025年6月 - 2025年8月" data-en="June 2025 - August 2025">2025年6月 - 2025年8月</span></p>
+                        <p><i class="fas fa-users me-2 text-danger"></i><strong data-zh="團隊規模：" data-en="Team Size: ">團隊規模：</strong> <span data-zh="6人全端開發團隊" data-en="6-member full-stack development team">6人全端開發團隊</span></p>
                     </div>
                     <div class="col-md-6">
-                        <p><i class="fas fa-user-tie me-2 text-danger"></i><strong>我的角色：</strong> 專案組長兼全端工程師</p>
-                        <p><i class="fas fa-globe me-2 text-danger"></i><strong>專案網站：</strong> https://moonlit-klepon-a78f8c.netlify.app/</p>
-                        <p><i class="fas fa-code me-2 text-danger"></i><strong>專案管理員後台：</strong> https://teambackend20250902150501-aug0dra8gmhucyhs.eastasia-01.azurewebsites.net</p>
+                        <p><i class="fas fa-user-tie me-2 text-danger"></i><strong data-zh="我的角色：" data-en="My Role: ">我的角色：</strong> <span data-zh="專案組長兼全端工程師" data-en="Project Leader & Full-Stack Engineer">專案組長兼全端工程師</span></p>
+                        <p><i class="fas fa-globe me-2 text-danger"></i><strong data-zh="專案網站：" data-en="Project Website: ">專案網站：</strong> https://moonlit-klepon-a78f8c.netlify.app/</p>
+                        <p><i class="fas fa-code me-2 text-danger"></i><strong data-zh="專案管理員後台：" data-en="Admin Dashboard: ">專案管理員後台：</strong> https://teambackend20250902150501-aug0dra8gmhucyhs.eastasia-01.azurewebsites.net</p>
                     </div>
                 </div>
             </div>
@@ -622,33 +631,33 @@
             <!-- 專案背景與目標 -->
             <div class="card section-card" data-aos="fade-up">
                 <div class="section-header">
-                    <h2><i class="fas fa-target"></i>專案背景與目標</h2>
+                    <h2><i class="fas fa-target"></i><span data-zh="專案背景與目標" data-en="Project Background & Objectives">專案背景與目標</span></h2>
                 </div>
                 <div class="card-body">
-                    <p class="lead">針對現有電商平台痛點，開發專注服飾領域的精準定位電商平台：</p>
+                    <p class="lead" data-zh="針對現有電商平台痛點，開發專注服飾領域的精準定位電商平台：" data-en="Addressing pain points of existing e-commerce platforms by developing a precisely positioned fashion-focused e-commerce platform:">針對現有電商平台痛點，開發專注服飾領域的精準定位電商平台：</p>
                     <div class="row mt-4">
                         <div class="col-md-6">
-                            <h5><i class="fas fa-exclamation-triangle me-2" style="color: var(--jade-secondary);"></i>解決問題</h5>
+                            <h5><i class="fas fa-exclamation-triangle me-2" style="color: var(--jade-secondary);"></i><span data-zh="解決問題" data-en="Problems Solved">解決問題</span></h5>
                             <ul class="list-unstyled">
-                                <li class="mb-2"><i class="fas fa-times-circle me-2" style="color: var(--jade-primary);"></i>商品分類過於廣泛</li>
-                                <li class="mb-2"><i class="fas fa-times-circle me-2" style="color: var(--jade-primary);"></i>缺乏社群互動</li>
-                                <li class="mb-2"><i class="fas fa-times-circle me-2" style="color: var(--jade-primary);"></i>賣家開店門檻高</li>
-                                <li class="mb-2"><i class="fas fa-times-circle me-2" style="color: var(--jade-primary);"></i>會員忠誠度機制不完善</li>
+                                <li class="mb-2"><i class="fas fa-times-circle me-2" style="color: var(--jade-primary);"></i><span data-zh="商品分類過於廣泛" data-en="Over-broad product categories">商品分類過於廣泛</span></li>
+                                <li class="mb-2"><i class="fas fa-times-circle me-2" style="color: var(--jade-primary);"></i><span data-zh="缺乏社群互動" data-en="Lack of social interaction">缺乏社群互動</span></li>
+                                <li class="mb-2"><i class="fas fa-times-circle me-2" style="color: var(--jade-primary);"></i><span data-zh="賣家開店門檻高" data-en="High barriers for seller onboarding">賣家開店門檻高</span></li>
+                                <li class="mb-2"><i class="fas fa-times-circle me-2" style="color: var(--jade-primary);"></i><span data-zh="會員忠誠度機制不完善" data-en="Incomplete member loyalty system">會員忠誠度機制不完善</span></li>
                             </ul>
                         </div>
                         <div class="col-md-6">
-                            <h5><i class="fas fa-star me-2" style="color: var(--jade-accent);"></i>核心特色</h5>
+                            <h5><i class="fas fa-star me-2" style="color: var(--jade-accent);"></i><span data-zh="核心特色" data-en="Core Features">核心特色</span></h5>
                             <ul class="list-unstyled">
-                                <li class="mb-2"><i class="fas fa-check-circle me-2" style="color: var(--jade-accent);"></i>六大風格分類</li>
-                                <li class="mb-2"><i class="fas fa-check-circle me-2" style="color: var(--jade-accent);"></i>社群整合</li>
-                                <li class="mb-2"><i class="fas fa-check-circle me-2" style="color: var(--jade-accent);"></i>低門檻開店</li>
-                                <li class="mb-2"><i class="fas fa-check-circle me-2" style="color: var(--jade-accent);"></i>完整會員等級制度</li>
+                                <li class="mb-2"><i class="fas fa-check-circle me-2" style="color: var(--jade-accent);"></i><span data-zh="六大風格分類" data-en="Six major style categories">六大風格分類</span></li>
+                                <li class="mb-2"><i class="fas fa-check-circle me-2" style="color: var(--jade-accent);"></i><span data-zh="社群整合" data-en="Social integration">社群整合</span></li>
+                                <li class="mb-2"><i class="fas fa-check-circle me-2" style="color: var(--jade-accent);"></i><span data-zh="低門檻開店" data-en="Low-barrier store setup">低門檻開店</span></li>
+                                <li class="mb-2"><i class="fas fa-check-circle me-2" style="color: var(--jade-accent);"></i><span data-zh="完整會員等級制度" data-en="Complete member tier system">完整會員等級制度</span></li>
                             </ul>
                         </div>
                     </div>
                     <div class="alert alert-info mt-4">
                         <i class="fas fa-lightbulb me-2"></i>
-                        <strong>技術創新：</strong> 整合管理、購物、社群與客服功能，建立以使用者體驗為核心的服飾電商平台
+                        <strong data-zh="技術創新：" data-en="Technical Innovation: ">技術創新：</strong> <span data-zh="整合管理、購物、社群與客服功能，建立以使用者體驗為核心的服飾電商平台" data-en="Integrating management, shopping, social, and customer service functions to create a user experience-centered fashion e-commerce platform">整合管理、購物、社群與客服功能，建立以使用者體驗為核心的服飾電商平台</span>
                     </div>
                 </div>
             </div>
@@ -656,13 +665,13 @@
             <!-- 技術架構 -->
             <div class="card section-card" data-aos="fade-up" data-aos-delay="100">
                 <div class="section-header">
-                    <h2><i class="fas fa-cogs"></i>技術架構與實現</h2>
+                    <h2><i class="fas fa-cogs"></i><span data-zh="技術架構與實現" data-en="Technical Architecture & Implementation">技術架構與實現</span></h2>
                 </div>
                 <div class="card-body">
-                    <h4><i class="fas fa-sitemap me-2" style="color: var(--jade-primary);"></i>系統架構</h4>
+                    <h4><i class="fas fa-sitemap me-2" style="color: var(--jade-primary);"></i><span data-zh="系統架構" data-en="System Architecture">系統架構</span></h4>
                     <div class="row mt-3">
                         <div class="col-md-4">
-                            <h6><i class="fab fa-html5 me-2" style="color: var(--jade-primary);"></i>前端技術</h6>
+                            <h6><i class="fab fa-html5 me-2" style="color: var(--jade-primary);"></i><span data-zh="前端技術" data-en="Frontend Technologies">前端技術</span></h6>
                             <div class="mb-3">
                                 <span class="tech-badge">Vue.js 3</span>
                                 <span class="tech-badge">HTML5</span>
@@ -671,7 +680,7 @@
                             </div>
                         </div>
                         <div class="col-md-4">
-                            <h6><i class="fas fa-server me-2" style="color: var(--jade-primary);"></i>後端技術</h6>
+                            <h6><i class="fas fa-server me-2" style="color: var(--jade-primary);"></i><span data-zh="後端技術" data-en="Backend Technologies">後端技術</span></h6>
                             <div class="mb-3">
                                 <span class="tech-badge">ASP.NET Core MVC</span>
                                 <span class="tech-badge">Web API</span>
@@ -679,7 +688,7 @@
                             </div>
                         </div>
                         <div class="col-md-4">
-                            <h6><i class="fas fa-cloud me-2" style="color: var(--jade-primary);"></i>雲端與整合</h6>
+                            <h6><i class="fas fa-cloud me-2" style="color: var(--jade-primary);"></i><span data-zh="雲端與整合" data-en="Cloud & Integration">雲端與整合</span></h6>
                             <div class="mb-3">
                                 <span class="tech-badge">Azure SQL Server</span>
                                 <span class="tech-badge">Cloudinary</span>
@@ -695,18 +704,18 @@
                     
                     <hr class="my-4">
                     
-                    <h4><i class="fas fa-database me-2" style="color: var(--jade-primary);"></i>資料庫設計</h4>
+                    <h4><i class="fas fa-database me-2" style="color: var(--jade-primary);"></i><span data-zh="資料庫設計" data-en="Database Design">資料庫設計</span></h4>
                     <div class="row">
                         <div class="col-md-6">
                             <ul class="list-unstyled">
-                                <li class="mb-2"><i class="fas fa-check me-2" style="color: var(--jade-accent);"></i>設計完整的ER圖，包含60+資料表</li>
-                                <li class="mb-2"><i class="fas fa-check me-2" style="color: var(--jade-accent);"></i>涵蓋會員系統、商品管理、訂單流程</li>
+                                <li class="mb-2"><i class="fas fa-check me-2" style="color: var(--jade-accent);"></i><span data-zh="設計完整的ER圖，包含60+資料表" data-en="Designed comprehensive ER diagram with 60+ tables">設計完整的ER圖，包含60+資料表</span></li>
+                                <li class="mb-2"><i class="fas fa-check me-2" style="color: var(--jade-accent);"></i><span data-zh="涵蓋會員系統、商品管理、訂單流程" data-en="Covering member system, product management, order flow">涵蓋會員系統、商品管理、訂單流程</span></li>
                             </ul>
                         </div>
                         <div class="col-md-6">
                             <ul class="list-unstyled">
-                                <li class="mb-2"><i class="fas fa-check me-2" style="color: var(--jade-accent);"></i>優惠券系統、社群功能等完整電商業務邏輯</li>
-                                <li class="mb-2"><i class="fas fa-check me-2" style="color: var(--jade-accent);"></i>採用 Database First 方法，確保資料一致性</li>
+                                <li class="mb-2"><i class="fas fa-check me-2" style="color: var(--jade-accent);"></i><span data-zh="優惠券系統、社群功能等完整電商業務邏輯" data-en="Complete e-commerce business logic including coupon system and social features">優惠券系統、社群功能等完整電商業務邏輯</span></li>
+                                <li class="mb-2"><i class="fas fa-check me-2" style="color: var(--jade-accent);"></i><span data-zh="採用 Database First 方法，確保資料一致性" data-en="Adopted Database First approach ensuring data consistency">採用 Database First 方法，確保資料一致性</span></li>
                             </ul>
                         </div>
                     </div>
@@ -716,22 +725,22 @@
             <!-- 主要職責與技術實現 -->
             <div class="card section-card" data-aos="fade-up" data-aos-delay="200">
                 <div class="section-header">
-                    <h2><i class="fas fa-code"></i>我的主要職責與技術實現</h2>
+                    <h2><i class="fas fa-code"></i><span data-zh="我的主要職責與技術實現" data-en="My Key Responsibilities & Technical Implementation">我的主要職責與技術實現</span></h2>
                 </div>
                 <div class="card-body">
                     
-                    <h4><i class="fas fa-users-cog me-2" style="color: var(--jade-primary);"></i>1. 專案管理與系統整合</h4>
+                    <h4><i class="fas fa-users-cog me-2" style="color: var(--jade-primary);"></i><span data-zh="1. 專案管理與系統整合" data-en="1. Project Management & System Integration">1. 專案管理與系統整合</span></h4>
                     <ul>
-                        <li><strong>團隊領導：</strong> 帶領6人開發團隊，負責任務分配、進度管控和模組整合</li>
-                        <li><strong>架構設計：</strong> 統籌整體系統架構，制定開發規範和API設計標準</li>
-                        <li><strong>模組整合：</strong> 協調前後端開發，解決模組間依賴問題，確保系統穩定運行</li>
+                        <li><strong data-zh="團隊領導：" data-en="Team Leadership: ">團隊領導：</strong> <span data-zh="帶領6人開發團隊，負責任務分配、進度管控和模組整合" data-en="Led a 6-member development team, responsible for task allocation, progress control, and module integration">帶領6人開發團隊，負責任務分配、進度管控和模組整合</span></li>
+                        <li><strong data-zh="架構設計：" data-en="Architecture Design: ">架構設計：</strong> <span data-zh="統籌整體系統架構，制定開發規範和API設計標準" data-en="Coordinated overall system architecture, established development standards and API design guidelines">統籌整體系統架構，制定開發規範和API設計標準</span></li>
+                        <li><strong data-zh="模組整合：" data-en="Module Integration: ">模組整合：</strong> <span data-zh="協調前後端開發，解決模組間依賴問題，確保系統穩定運行" data-en="Coordinated frontend and backend development, resolved inter-module dependencies, ensured system stability">協調前後端開發，解決模組間依賴問題，確保系統穩定運行</span></li>
                     </ul>
 
                     <hr>
 
-                    <h4><i class="fas fa-tools me-2" style="color: var(--jade-primary);"></i>2. 核心功能開發</h4>
+                    <h4><i class="fas fa-tools me-2" style="color: var(--jade-primary);"></i><span data-zh="2. 核心功能開發" data-en="2. Core Feature Development">2. 核心功能開發</span></h4>
                     
-                    <h5><i class="fas fa-home me-2" style="color: var(--jade-accent);"></i>首頁管理系統</h5>
+                    <h5><i class="fas fa-home me-2" style="color: var(--jade-accent);"></i><span data-zh="首頁管理系統" data-en="Homepage Management System">首頁管理系統</span></h5>
                     <pre><code>// 實現廣告輪播系統，支援彈出式和橫幅式廣告
 public class BannerController : Controller 
 {
@@ -742,12 +751,12 @@ public class BannerController : Controller
     }
 }</code></pre>
                     <ul>
-                        <li>開發響應式首頁布局，整合廣告彈出及輪播系統</li>
-                        <li>實現活動推廣區塊，支援多種展示方式和排序功能</li>
-                        <li>前端使用Vue.js實現動態內容載入和用戶互動效果</li>
+                        <li data-zh="開發響應式首頁布局，整合廣告彈出及輪播系統" data-en="Developed responsive homepage layout with integrated ad popup and carousel system">開發響應式首頁布局，整合廣告彈出及輪播系統</li>
+                        <li data-zh="實現活動推廣區塊，支援多種展示方式和排序功能" data-en="Implemented promotional sections with multiple display modes and sorting features">實現活動推廣區塊，支援多種展示方式和排序功能</li>
+                        <li data-zh="前端使用Vue.js實現動態內容載入和用戶互動效果" data-en="Frontend implementation using Vue.js for dynamic content loading and user interactions">前端使用Vue.js實現動態內容載入和用戶互動效果</li>
                     </ul>
 
-                    <h5><i class="fas fa-blog me-2" style="color: var(--jade-accent);"></i>部落格內容管理系統</h5>
+                    <h5><i class="fas fa-blog me-2" style="color: var(--jade-accent);"></i><span data-zh="部落格內容管理系統" data-en="Blog Content Management System">部落格內容管理系統</span></h5>
                     <pre><code>// 使用Hangfire實現文章排程發布
 [BackgroundJob]
 public async Task PublishScheduledPost(int postId)
@@ -759,21 +768,21 @@ public async Task PublishScheduledPost(int postId)
     }
 }</code></pre>
                     <ul>
-                        <li>建立完整的CMS系統，支援官方文章的排程和即時發布</li>
-                        <li>實現文章分類管理、SEO優化設定和閱讀時間計算</li>
-                        <li>整合Hangfire背景服務，實現自動化內容發布</li>
+                        <li data-zh="建立完整的CMS系統，支援官方文章的排程和即時發布" data-en="Built comprehensive CMS system supporting scheduled and real-time publishing of official articles">建立完整的CMS系統，支援官方文章的排程和即時發布</li>
+                        <li data-zh="實現文章分類管理、SEO優化設定和閱讀時間計算" data-en="Implemented article categorization, SEO optimization settings, and reading time calculation">實現文章分類管理、SEO優化設定和閱讀時間計算</li>
+                        <li data-zh="整合Hangfire背景服務，實現自動化內容發布" data-en="Integrated Hangfire background service for automated content publishing">整合Hangfire背景服務，實現自動化內容發布</li>
                     </ul>
 
-                    <h5><i class="fas fa-users me-2" style="color: var(--jade-accent);"></i>社群互動功能</h5>
+                    <h5><i class="fas fa-users me-2" style="color: var(--jade-accent);"></i><span data-zh="社群互動功能" data-en="Social Interaction Features">社群互動功能</span></h5>
                     <ul>
-                        <li>開發會員貼文系統，支援穿搭照片分享和互動</li>
-                        <li>實現貼文審核機制，包含敏感詞過濾和管理員審核流程</li>
-                        <li>建立按讚等社群互動功能</li>
+                        <li data-zh="開發會員貼文系統，支援穿搭照片分享和互動" data-en="Developed member posting system supporting outfit photo sharing and interactions">開發會員貼文系統，支援穿搭照片分享和互動</li>
+                        <li data-zh="實現貼文審核機制，包含敏感詞過濾和管理員審核流程" data-en="Implemented post moderation system with sensitive word filtering and admin review process">實現貼文審核機制，包含敏感詞過濾和管理員審核流程</li>
+                        <li data-zh="建立按讚等社群互動功能" data-en="Built social interaction features including likes">建立按讚等社群互動功能</li>
                     </ul>
 
                     <hr>
 
-                    <h4><i class="fas fa-exchange-alt me-2" style="color: var(--jade-primary);"></i>3. 前後端整合與API設計</h4>
+                    <h4><i class="fas fa-exchange-alt me-2" style="color: var(--jade-primary);"></i><span data-zh="3. 前後端整合與API設計" data-en="3. Frontend-Backend Integration & API Design">3. 前後端整合與API設計</span></h4>
                     <pre><code>// Vue.js 前端API呼叫範例
 const bannerApi = {
   async getBanners(position) {
@@ -786,25 +795,25 @@ const bannerApi = {
   }
 };</code></pre>
                     <ul>
-                        <li>設計RESTful API架構，確保前後端資料傳輸效率</li>
-                        <li>實現前端狀態管理，優化用戶體驗和頁面響應速度</li>
-                        <li>建立統一的錯誤處理機制和資料驗證流程</li>
+                        <li data-zh="設計RESTful API架構，確保前後端資料傳輸效率" data-en="Designed RESTful API architecture ensuring efficient frontend-backend data transmission">設計RESTful API架構，確保前後端資料傳輸效率</li>
+                        <li data-zh="實現前端狀態管理，優化用戶體驗和頁面響應速度" data-en="Implemented frontend state management, optimizing user experience and page response speed">實現前端狀態管理，優化用戶體驗和頁面響應速度</li>
+                        <li data-zh="建立統一的錯誤處理機制和資料驗證流程" data-en="Established unified error handling mechanism and data validation process">建立統一的錯誤處理機制和資料驗證流程</li>
                     </ul>
 
                     <hr>
 
-                    <h4><i class="fas fa-tachometer-alt me-2" style="color: var(--jade-primary);"></i>4. 效能優化與部署</h4>
+                    <h4><i class="fas fa-tachometer-alt me-2" style="color: var(--jade-primary);"></i><span data-zh="4. 效能優化與部署" data-en="4. Performance Optimization & Deployment">4. 效能優化與部署</span></h4>
                     <div class="row">
                         <div class="col-md-6">
                             <ul>
-                                <li><strong>圖片處理：</strong> 整合Cloudinary CDN，實現圖片自動壓縮和全球加速</li>
-                                <li><strong>資料庫優化：</strong> 針對核心查詢建立索引，優化EF Core查詢效能</li>
+                                <li><strong data-zh="圖片處理：" data-en="Image Processing: ">圖片處理：</strong> <span data-zh="整合Cloudinary CDN，實現圖片自動壓縮和全球加速" data-en="Integrated Cloudinary CDN for automatic image compression and global acceleration">整合Cloudinary CDN，實現圖片自動壓縮和全球加速</span></li>
+                                <li><strong data-zh="資料庫優化：" data-en="Database Optimization: ">資料庫優化：</strong> <span data-zh="針對核心查詢建立索引，優化EF Core查詢效能" data-en="Created indexes for core queries, optimized EF Core query performance">針對核心查詢建立索引，優化EF Core查詢效能</span></li>
                             </ul>
                         </div>
                         <div class="col-md-6">
                             <ul>
-                                <li><strong>快取策略：</strong> 實現應用程式層快取，減少資料庫查詢負載</li>
-                                <li><strong>響應時間：</strong> 平均API響應時間控制在200-500ms</li>
+                                <li><strong data-zh="快取策略：" data-en="Caching Strategy: ">快取策略：</strong> <span data-zh="實現應用程式層快取，減少資料庫查詢負載" data-en="Implemented application-level caching to reduce database query load">實現應用程式層快取，減少資料庫查詢負載</span></li>
+                                <li><strong data-zh="響應時間：" data-en="Response Time: ">響應時間：</strong> <span data-zh="平均API響應時間控制在200-500ms" data-en="Average API response time controlled within 200-500ms">平均API響應時間控制在200-500ms</span></li>
                             </ul>
                         </div>
                     </div>
@@ -814,64 +823,64 @@ const bannerApi = {
             <!-- 專案成果與影響 -->
             <div class="card section-card" data-aos="fade-up" data-aos-delay="300">
                 <div class="section-header">
-                    <h2><i class="fas fa-trophy"></i>專案成果與影響</h2>
+                    <h2><i class="fas fa-trophy"></i><span data-zh="專案成果與影響" data-en="Project Results & Impact">專案成果與影響</span></h2>
                 </div>
                 <div class="card-body">
-                    <h4><i class="fas fa-medal me-2" style="color: var(--jade-secondary);"></i>技術成就</h4>
+                    <h4><i class="fas fa-medal me-2" style="color: var(--jade-secondary);"></i><span data-zh="技術成就" data-en="Technical Achievements">技術成就</span></h4>
                     <div class="achievement-item">
                         <i class="fas fa-check-circle me-2" style="color: var(--jade-accent);"></i>
-                        <strong>完整電商生態：</strong> 實現從商品管理到金流物流的端到端解決方案
+                        <strong data-zh="完整電商生態：" data-en="Complete E-commerce Ecosystem: ">完整電商生態：</strong> <span data-zh="實現從商品管理到金流物流的端到端解決方案" data-en="End-to-end solution from product management to payment and logistics">實現從商品管理到金流物流的端到端解決方案</span>
                     </div>
                     <div class="achievement-item">
                         <i class="fas fa-check-circle me-2" style="color: var(--jade-accent);"></i>
-                        <strong>多角色系統：</strong> 支援管理者、買家、賣家三套完整後台管理系統
+                        <strong data-zh="多角色系統：" data-en="Multi-role System: ">多角色系統：</strong> <span data-zh="支援管理者、買家、賣家三套完整後台管理系統" data-en="Supporting complete backend management systems for administrators, buyers, and sellers">支援管理者、買家、賣家三套完整後台管理系統</span>
                     </div>
                     <div class="achievement-item">
                         <i class="fas fa-check-circle me-2" style="color: var(--jade-accent);"></i>
-                        <strong>社群電商融合：</strong> 創新整合穿搭分享與商品推薦功能
+                        <strong data-zh="社群電商融合：" data-en="Social Commerce Integration: ">社群電商融合：</strong> <span data-zh="創新整合穿搭分享與商品推薦功能" data-en="Innovative integration of outfit sharing and product recommendation features">創新整合穿搭分享與商品推薦功能</span>
                     </div>
                     <div class="achievement-item">
                         <i class="fas fa-check-circle me-2" style="color: var(--jade-accent);"></i>
-                        <strong>智能化管理：</strong> 整合AI客服、自動排程、即時通知等自動化功能
+                        <strong data-zh="智能化管理：" data-en="Intelligent Management: ">智能化管理：</strong> <span data-zh="整合AI客服、自動排程、即時通知等自動化功能" data-en="Integration of AI customer service, automated scheduling, real-time notifications">整合AI客服、自動排程、即時通知等自動化功能</span>
                     </div>
 
-                    <h4 class="mt-5"><i class="fas fa-chart-line me-2" style="color: var(--jade-primary);"></i>業務價值</h4>
+                    <h4 class="mt-5"><i class="fas fa-chart-line me-2" style="color: var(--jade-primary);"></i><span data-zh="業務價值" data-en="Business Value">業務價值</span></h4>
                     <div class="row">
                         <div class="col-md-4">
                             <div class="text-center p-4 rounded-4 mb-3" style="background: linear-gradient(135deg, rgba(255, 217, 61, 0.1), rgba(255, 217, 61, 0.2));">
                                 <i class="fas fa-coins fa-3x mb-3" style="color: var(--jade-secondary);"></i>
-                                <h6 style="color: var(--jade-dark);">會員體系</h6>
-                                <p class="small text-muted">建立J幣點數系統與自動等級升級機制，提升用戶黏性</p>
+                                <h6 style="color: var(--jade-dark);" data-zh="會員體系" data-en="Membership System">會員體系</h6>
+                                <p class="small text-muted" data-zh="建立J幣點數系統與自動等級升級機制，提升用戶黏性" data-en="Established J-coin point system and automatic tier upgrade mechanism to enhance user retention">建立J幣點數系統與自動等級升級機制，提升用戶黏性</p>
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="text-center p-4 rounded-4 mb-3" style="background: linear-gradient(135deg, rgba(107, 207, 127, 0.1), rgba(107, 207, 127, 0.2));">
                                 <i class="fas fa-store fa-3x mb-3" style="color: var(--jade-accent);"></i>
-                                <h6 style="color: var(--jade-dark);">賣家生態</h6>
-                                <p class="small text-muted">提供低門檻開店機制，支援中小型賣家快速上線</p>
+                                <h6 style="color: var(--jade-dark);" data-zh="賣家生態" data-en="Seller Ecosystem">賣家生態</h6>
+                                <p class="small text-muted" data-zh="提供低門檻開店機制，支援中小型賣家快速上線" data-en="Providing low-barrier store setup mechanism, supporting quick onboarding for SME sellers">提供低門檻開店機制，支援中小型賣家快速上線</p>
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="text-center p-4 rounded-4 mb-3" style="background: linear-gradient(135deg, rgba(255, 107, 107, 0.1), rgba(255, 107, 107, 0.2));">
                                 <i class="fas fa-chart-bar fa-3x mb-3" style="color: var(--jade-primary);"></i>
-                                <h6 style="color: var(--jade-dark);">營運效率</h6>
-                                <p class="small text-muted">後台儀表板與財務報表即時更新，提升營運決策效率</p>
+                                <h6 style="color: var(--jade-dark);" data-zh="營運效率" data-en="Operational Efficiency">營運效率</h6>
+                                <p class="small text-muted" data-zh="後台儀表板與財務報表即時更新，提升營運決策效率" data-en="Real-time dashboard and financial reports update, improving operational decision efficiency">後台儀表板與財務報表即時更新，提升營運決策效率</p>
                             </div>
                         </div>
                     </div>
 
-                    <h4 class="mt-5"><i class="fas fa-rocket me-2" style="color: var(--jade-primary);"></i>技術創新</h4>
+                    <h4 class="mt-5"><i class="fas fa-rocket me-2" style="color: var(--jade-primary);"></i><span data-zh="技術創新" data-en="Technical Innovation">技術創新</span></h4>
                     <div class="row">
                         <div class="col-md-6">
                             <ul class="list-unstyled">
-                                <li class="mb-3"><i class="fab fa-vuejs me-2" style="color: var(--jade-accent);"></i><strong>前後端分離：</strong> Vue.js + ASP.NET Core現代化架構</li>
-                                <li class="mb-3"><i class="fas fa-puzzle-piece me-2" style="color: var(--jade-primary);"></i><strong>微服務整合：</strong> 綠界金流、Cloudinary圖床、OpenAI客服等第三方服務無縫整合</li>
+                                <li class="mb-3"><i class="fab fa-vuejs me-2" style="color: var(--jade-accent);"></i><strong data-zh="前後端分離：" data-en="Frontend-Backend Separation: ">前後端分離：</strong> <span data-zh="Vue.js + ASP.NET Core現代化架構" data-en="Modern architecture with Vue.js + ASP.NET Core">Vue.js + ASP.NET Core現代化架構</span></li>
+                                <li class="mb-3"><i class="fas fa-puzzle-piece me-2" style="color: var(--jade-primary);"></i><strong data-zh="微服務整合：" data-en="Microservice Integration: ">微服務整合：</strong> <span data-zh="綠界金流、Cloudinary圖床、OpenAI客服等第三方服務無縫整合" data-en="Seamless integration of ECPay, Cloudinary, OpenAI customer service and other third-party services">綠界金流、Cloudinary圖床、OpenAI客服等第三方服務無縫整合</span></li>
                             </ul>
                         </div>
                         <div class="col-md-6">
                             <ul class="list-unstyled">
-                                <li class="mb-3"><i class="fas fa-comments me-2" style="color: var(--jade-secondary);"></i><strong>即時通訊：</strong> SignalR實現買家賣家實時溝通</li>
-                                <li class="mb-3"><i class="fas fa-cog me-2" style="color: var(--jade-accent);"></i><strong>自動化流程：</strong> Hangfire實現內容排程、優惠券發放等自動化作業</li>
+                                <li class="mb-3"><i class="fas fa-comments me-2" style="color: var(--jade-secondary);"></i><strong data-zh="即時通訊：" data-en="Real-time Communication: ">即時通訊：</strong> <span data-zh="SignalR實現買家賣家實時溝通" data-en="SignalR implementation for real-time buyer-seller communication">SignalR實現買家賣家實時溝通</span></li>
+                                <li class="mb-3"><i class="fas fa-cog me-2" style="color: var(--jade-accent);"></i><strong data-zh="自動化流程：" data-en="Automated Workflows: ">自動化流程：</strong> <span data-zh="Hangfire實現內容排程、優惠券發放等自動化作業" data-en="Hangfire implementation for content scheduling, coupon distribution and other automated operations">Hangfire實現內容排程、優惠券發放等自動化作業</span></li>
                             </ul>
                         </div>
                     </div>
@@ -881,18 +890,18 @@ const bannerApi = {
             <!-- 解決的技術挑戰 -->
             <div class="card section-card" data-aos="fade-up" data-aos-delay="400">
                 <div class="section-header">
-                    <h2><i class="fas fa-lightbulb"></i>解決的技術挑戰</h2>
+                    <h2><i class="fas fa-lightbulb"></i><span data-zh="解決的技術挑戰" data-en="Technical Challenges Solved">解決的技術挑戰</span></h2>
                 </div>
                 <div class="card-body">
                     <div class="challenge-item">
-                        <h5><i class="fas fa-users-cog me-2" style="color: var(--jade-secondary);"></i>團隊協作優化</h5>
-                        <p><strong><i class="fas fa-exclamation-triangle me-1" style="color: var(--jade-primary);"></i> 問題：</strong> 不同模組間資料依賴、開發不同步、整合階段bug頻發</p>
-                        <p><strong><i class="fas fa-check-circle me-1" style="color: var(--jade-accent);"></i> 解決：</strong> 建立統一資料傳輸格式、每日溝通機制、分階段整合測試流程</p>
+                        <h5><i class="fas fa-users-cog me-2" style="color: var(--jade-secondary);"></i><span data-zh="團隊協作優化" data-en="Team Collaboration Optimization">團隊協作優化</span></h5>
+                        <p><strong><i class="fas fa-exclamation-triangle me-1" style="color: var(--jade-primary);"></i> <span data-zh="問題：" data-en="Problem: ">問題：</span></strong> <span data-zh="不同模組間資料依賴、開發不同步、整合階段bug頻發" data-en="Data dependencies between modules, unsynchronized development, frequent bugs during integration">不同模組間資料依賴、開發不同步、整合階段bug頻發</span></p>
+                        <p><strong><i class="fas fa-check-circle me-1" style="color: var(--jade-accent);"></i> <span data-zh="解決：" data-en="Solution: ">解決：</span></strong> <span data-zh="建立統一資料傳輸格式、每日溝通機制、分階段整合測試流程" data-en="Established unified data transfer format, daily communication mechanism, staged integration testing process">建立統一資料傳輸格式、每日溝通機制、分階段整合測試流程</span></p>
                     </div>
                     <div class="challenge-item">
-                        <h5><i class="fas fa-tachometer-alt me-2" style="color: var(--jade-secondary);"></i>效能與擴展性</h5>
-                        <p><strong><i class="fas fa-info-circle me-1" style="color: var(--jade-primary);"></i> 現況：</strong> 通過EF Core最佳化實現高效資料庫查詢</p>
-                        <p><strong><i class="fas fa-road me-1" style="color: var(--jade-accent);"></i> 規劃：</strong> Redis快取、CDN全球部署、核心查詢索引優化</p>
+                        <h5><i class="fas fa-tachometer-alt me-2" style="color: var(--jade-secondary);"></i><span data-zh="效能與擴展性" data-en="Performance & Scalability">效能與擴展性</span></h5>
+                        <p><strong><i class="fas fa-info-circle me-1" style="color: var(--jade-primary);"></i> <span data-zh="現況：" data-en="Current Status: ">現況：</span></strong> <span data-zh="通過EF Core最佳化實現高效資料庫查詢" data-en="Achieved efficient database queries through EF Core optimization">通過EF Core最佳化實現高效資料庫查詢</span></p>
+                        <p><strong><i class="fas fa-road me-1" style="color: var(--jade-accent);"></i> <span data-zh="規劃：" data-en="Planning: ">規劃：</span></strong> <span data-zh="Redis快取、CDN全球部署、核心查詢索引優化" data-en="Redis caching, global CDN deployment, core query index optimization">Redis快取、CDN全球部署、核心查詢索引優化</span></p>
                     </div>
                 </div>
             </div>
@@ -900,59 +909,59 @@ const bannerApi = {
             <!-- 學習與成長 -->
             <div class="card section-card" data-aos="fade-up" data-aos-delay="500">
                 <div class="section-header">
-                    <h2><i class="fas fa-graduation-cap"></i>學習與成長</h2>
+                    <h2><i class="fas fa-graduation-cap"></i><span data-zh="學習與成長" data-en="Learning & Growth">學習與成長</span></h2>
                 </div>
                 <div class="card-body">
-                    <p class="lead">通過這個專案，我深度掌握了：</p>
+                    <p class="lead" data-zh="通過這個專案，我深度掌握了：" data-en="Through this project, I gained in-depth mastery of:">通過這個專案，我深度掌握了：</p>
                     <div class="row mt-4">
                         <div class="col-md-6">
                             <div class="skill-item">
                                 <div class="d-flex justify-content-between mb-2">
-                                    <span><i class="fas fa-layer-group me-2" style="color: var(--jade-primary);"></i><strong>全端開發能力</strong></span>
+                                    <span><i class="fas fa-layer-group me-2" style="color: var(--jade-primary);"></i><strong data-zh="全端開發能力" data-en="Full-Stack Development">全端開發能力</strong></span>
                                     <span class="fw-bold" style="color: var(--jade-primary);">95%</span>
                                 </div>
                                 <div class="progress mb-2">
                                     <div class="progress-bar" role="progressbar" style="width: 95%"></div>
                                 </div>
-                                <small class="text-muted">從資料庫設計到前端UI的完整開發流程</small>
+                                <small class="text-muted" data-zh="從資料庫設計到前端UI的完整開發流程" data-en="Complete development process from database design to frontend UI">從資料庫設計到前端UI的完整開發流程</small>
                             </div>
                             <div class="skill-item">
                                 <div class="d-flex justify-content-between mb-2">
-                                    <span><i class="fas fa-project-diagram me-2" style="color: var(--jade-primary);"></i><strong>專案管理經驗</strong></span>
+                                    <span><i class="fas fa-project-diagram me-2" style="color: var(--jade-primary);"></i><strong data-zh="專案管理經驗" data-en="Project Management Experience">專案管理經驗</strong></span>
                                     <span class="fw-bold" style="color: var(--jade-primary);">90%</span>
                                 </div>
                                 <div class="progress mb-2">
                                     <div class="progress-bar" role="progressbar" style="width: 90%"></div>
                                 </div>
-                                <small class="text-muted">團隊協作、進度控制、風險管理的實戰經驗</small>
+                                <small class="text-muted" data-zh="團隊協作、進度控制、風險管理的實戰經驗" data-en="Practical experience in team collaboration, progress control, and risk management">團隊協作、進度控制、風險管理的實戰經驗</small>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="skill-item">
                                 <div class="d-flex justify-content-between mb-2">
-                                    <span><i class="fas fa-plug me-2" style="color: var(--jade-primary);"></i><strong>系統整合能力</strong></span>
+                                    <span><i class="fas fa-plug me-2" style="color: var(--jade-primary);"></i><strong data-zh="系統整合能力" data-en="System Integration">系統整合能力</strong></span>
                                     <span class="fw-bold" style="color: var(--jade-primary);">92%</span>
                                 </div>
                                 <div class="progress mb-2">
                                     <div class="progress-bar" role="progressbar" style="width: 92%"></div>
                                 </div>
-                                <small class="text-muted">多個第三方服務整合和API設計的最佳實踐</small>
+                                <small class="text-muted" data-zh="多個第三方服務整合和API設計的最佳實踐" data-en="Best practices in multiple third-party service integration and API design">多個第三方服務整合和API設計的最佳實踐</small>
                             </div>
                             <div class="skill-item">
                                 <div class="d-flex justify-content-between mb-2">
-                                    <span><i class="fas fa-bolt me-2" style="color: var(--jade-primary);"></i><strong>效能優化技術</strong></span>
+                                    <span><i class="fas fa-bolt me-2" style="color: var(--jade-primary);"></i><strong data-zh="效能優化技術" data-en="Performance Optimization">效能優化技術</strong></span>
                                     <span class="fw-bold" style="color: var(--jade-primary);">88%</span>
                                 </div>
                                 <div class="progress mb-2">
                                     <div class="progress-bar" role="progressbar" style="width: 88%"></div>
                                 </div>
-                                <small class="text-muted">從資料庫查詢到前端載入的全面效能調優</small>
+                                <small class="text-muted" data-zh="從資料庫查詢到前端載入的全面效能調優" data-en="Comprehensive performance tuning from database queries to frontend loading">從資料庫查詢到前端載入的全面效能調優</small>
                             </div>
                         </div>
                     </div>
                     <div class="alert alert-success mt-4">
                         <i class="fas fa-star me-2"></i>
-                        這個專案不僅展現了我的技術實力，更體現了我在複雜系統設計、團隊領導和問題解決方面的能力，為我成為一名優秀的全端工程師奠定了堅實基礎。
+                        <span data-zh="這個專案不僅展現了我的技術實力，更體現了我在複雜系統設計、團隊領導和問題解決方面的能力，為我成為一名優秀的全端工程師奠定了堅實基礎。" data-en="This project not only showcased my technical expertise but also demonstrated my capabilities in complex system design, team leadership, and problem-solving, laying a solid foundation for becoming an excellent full-stack engineer.">這個專案不僅展現了我的技術實力，更體現了我在複雜系統設計、團隊領導和問題解決方面的能力，為我成為一名優秀的全端工程師奠定了堅實基礎。</span>
                     </div>
                 </div>
             </div>
@@ -960,32 +969,32 @@ const bannerApi = {
             <!-- 專案亮點總結 -->
             <div class="card section-card" data-aos="fade-up" data-aos-delay="600">
                 <div class="section-header">
-                    <h2><i class="fas fa-gem"></i>專案亮點總結</h2>
+                    <h2><i class="fas fa-gem"></i><span data-zh="專案亮點總結" data-en="Project Highlights Summary">專案亮點總結</span></h2>
                 </div>
                 <div class="card-body">
                     <div class="row">
                         <div class="col-md-6">
                             <div class="highlight-box p-4 mb-4">
-                                <h5><i class="fas fa-crown me-2" style="color: var(--jade-secondary);"></i>技術領導力</h5>
-                                <p class="mb-0">作為專案組長，成功帶領6人團隊完成複雜電商平台開發，展現出色的技術領導和團隊管理能力。</p>
+                                <h5><i class="fas fa-crown me-2" style="color: var(--jade-secondary);"></i><span data-zh="技術領導力" data-en="Technical Leadership">技術領導力</span></h5>
+                                <p class="mb-0" data-zh="作為專案組長，成功帶領6人團隊完成複雜電商平台開發，展現出色的技術領導和團隊管理能力。" data-en="As project leader, successfully led a 6-member team to complete complex e-commerce platform development, demonstrating excellent technical leadership and team management skills.">作為專案組長，成功帶領6人團隊完成複雜電商平台開發，展現出色的技術領導和團隊管理能力。</p>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="highlight-box p-4 mb-4">
-                                <h5><i class="fas fa-code-branch me-2" style="color: var(--jade-accent);"></i>全端整合</h5>
-                                <p class="mb-0">深度參與前後端開發，熟練運用現代Web技術棧，實現高效的系統整合和API設計。</p>
+                                <h5><i class="fas fa-code-branch me-2" style="color: var(--jade-accent);"></i><span data-zh="全端整合" data-en="Full-Stack Integration">全端整合</span></h5>
+                                <p class="mb-0" data-zh="深度參與前後端開發，熟練運用現代Web技術棧，實現高效的系統整合和API設計。" data-en="Deeply involved in frontend and backend development, skillfully utilizing modern web technology stack, achieving efficient system integration and API design.">深度參與前後端開發，熟練運用現代Web技術棧，實現高效的系統整合和API設計。</p>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="highlight-box p-4 mb-4">
-                                <h5><i class="fas fa-brain me-2" style="color: var(--jade-primary);"></i>創新思維</h5>
-                                <p class="mb-0">創新整合社群與電商功能，打造差異化的服飾購物體驗，體現出色的產品思維。</p>
+                                <h5><i class="fas fa-brain me-2" style="color: var(--jade-primary);"></i><span data-zh="創新思維" data-en="Innovative Thinking">創新思維</span></h5>
+                                <p class="mb-0" data-zh="創新整合社群與電商功能，打造差異化的服飾購物體驗，體現出色的產品思維。" data-en="Innovatively integrated social and e-commerce functions, creating differentiated fashion shopping experience, demonstrating excellent product thinking.">創新整合社群與電商功能，打造差異化的服飾購物體驗，體現出色的產品思維。</p>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="highlight-box p-4 mb-4">
-                                <h5><i class="fas fa-rocket me-2" style="color: var(--jade-accent);"></i>技術深度</h5>
-                                <p class="mb-0">掌握從資料庫設計、後端API到前端互動的完整技術棧，具備解決複雜技術問題的能力。</p>
+                                <h5><i class="fas fa-rocket me-2" style="color: var(--jade-accent);"></i><span data-zh="技術深度" data-en="Technical Depth">技術深度</span></h5>
+                                <p class="mb-0" data-zh="掌握從資料庫設計、後端API到前端互動的完整技術棧，具備解決複雜技術問題的能力。" data-en="Mastered complete technology stack from database design, backend API to frontend interaction, with capability to solve complex technical problems.">掌握從資料庫設計、後端API到前端互動的完整技術棧，具備解決複雜技術問題的能力。</p>
                             </div>
                         </div>
                     </div>
@@ -1000,22 +1009,59 @@ const bannerApi = {
         <div class="container">
             <div class="row">
                 <div class="col-md-6 text-md-start">
-                    <h5><i class="fas fa-user-circle me-2"></i>劉冠彤</h5>
-                    <p class="mb-0">全端工程師 • 專案管理者 • 技術創新者</p>
+                    <h5><i class="fas fa-user-circle me-2"></i><span data-zh="劉冠彤" data-en="Liu Kuan-Tung">劉冠彤</span></h5>
+                    <p class="mb-0" data-zh="全端工程師 • 專案管理者 • 技術創新者" data-en="Full-Stack Engineer • Project Manager • Tech Innovator">全端工程師 • 專案管理者 • 技術創新者</p>
                 </div>
                 <div class="col-md-6 text-md-end">
-                    <h5><i class="fas fa-envelope me-2"></i>聯絡方式</h5>
-                    <p class="mb-0">歡迎透過作品集主頁聯繫我</p>
+                    <h5><i class="fas fa-envelope me-2"></i><span data-zh="聯絡方式" data-en="Contact">聯絡方式</span></h5>
+                    <p class="mb-0" data-zh="歡迎透過作品集主頁聯繫我" data-en="Feel free to contact me through the portfolio homepage">歡迎透過作品集主頁聯繫我</p>
                 </div>
             </div>
             <hr style="border-color: rgba(255,255,255,0.2); margin: 2rem 0;">
-            <p class="mb-0">&copy; 2025 劉冠彤 • JADE 專案詳細介紹 • 展現技術實力與創新能力</p>
+            <p class="mb-0" data-zh="© 2025 劉冠彤 • JADE 專案詳細介紹 • 展現技術實力與創新能力" data-en="© 2025 Liu Kuan-Tung • JADE Project Details • Demonstrating Technical Excellence & Innovation">&copy; 2025 劉冠彤 • JADE 專案詳細介紹 • 展現技術實力與創新能力</p>
         </div>
     </footer>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
     <script>
+        // 語言切換功能
+        function switchLanguage(lang) {
+            const elements = document.querySelectorAll('[data-zh], [data-en]');
+            elements.forEach(element => {
+                if (lang === 'zh' && element.hasAttribute('data-zh')) {
+                    element.textContent = element.getAttribute('data-zh');
+                } else if (lang === 'en' && element.hasAttribute('data-en')) {
+                    element.textContent = element.getAttribute('data-en');
+                }
+            });
+            
+            // 更新語言顯示
+            const currentLangElement = document.getElementById('current-lang');
+            if (currentLangElement) {
+                currentLangElement.textContent = lang === 'zh' ? '中文' : 'English';
+            }
+            
+            // 更新頁面標題
+            const titleElement = document.querySelector('title');
+            if (titleElement) {
+                if (lang === 'zh' && titleElement.hasAttribute('data-zh')) {
+                    titleElement.textContent = titleElement.getAttribute('data-zh');
+                } else if (lang === 'en' && titleElement.hasAttribute('data-en')) {
+                    titleElement.textContent = titleElement.getAttribute('data-en');
+                }
+            }
+            
+            // 儲存語言設定
+            localStorage.setItem('preferred-language', lang);
+        }
+        
+        // 載入頁面時檢查語言設定
+        document.addEventListener('DOMContentLoaded', function() {
+            const savedLanguage = localStorage.getItem('preferred-language') || 'zh';
+            switchLanguage(savedLanguage);
+        });
+
         // 回到頂部按鈕顯示與滾動
         const backToTopBtn = document.getElementById('backToTopBtn');
         window.addEventListener('scroll', function() {

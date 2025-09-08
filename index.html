@@ -31,7 +31,7 @@
         }
 
         .navbar-brand {
-            font-weight: 700;
+            font-weight: 650;
             font-size: 1.5rem;
             color: #2c3e50 !important;
         }
@@ -401,6 +401,30 @@
             }
         }
 
+        /* 回到頂部懸浮按鈕 */
+        #backToTopBtn {
+            display: none;
+            position: fixed;
+            bottom: 40px;
+            right: 30px;
+            z-index: 9999;
+            background: #3498db;
+            color: #fff;
+            border: none;
+            border-radius: 50%;
+            width: 48px;
+            height: 48px;
+            font-size: 1.5rem;
+            box-shadow: 0 4px 16px rgba(52, 152, 219, 0.18);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        #backToTopBtn:hover {
+            background: #2980b9;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 32px rgba(52, 152, 219, 0.25);
+        }
+
         /* 滾動動畫 */
         .fade-in {
             opacity: 0;
@@ -418,16 +442,25 @@
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg fixed-top">
         <div class="container">
-            <a class="navbar-brand" href="#">劉冠彤</a>
+            <a class="navbar-brand" href="#" data-zh="劉冠彤" data-en="Kuan-Tung Liu">劉冠彤</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <div class="navbar-nav ms-auto">
-                    <a class="nav-link" href="#about">關於我</a>
-                    <a class="nav-link" href="#skills">技能</a>
-                    <a class="nav-link" href="#projects">作品</a>
-                    <a class="nav-link" href="#contact">聯絡</a>
+                    <a class="nav-link" href="#about" data-zh="關於我" data-en="About">關於我</a>
+                    <a class="nav-link" href="#skills" data-zh="技能" data-en="Skills">技能</a>
+                    <a class="nav-link" href="#projects" data-zh="作品" data-en="Projects">作品</a>
+                    <a class="nav-link" href="#contact" data-zh="聯絡" data-en="Contact">聯絡</a>
+                    <div class="nav-item dropdown ms-3">
+                        <button class="btn btn-outline-secondary btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown">
+                            <i class="fas fa-globe me-1"></i><span id="current-lang">中文</span>
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#" onclick="switchLanguage('zh')">中文</a></li>
+                            <li><a class="dropdown-item" href="#" onclick="switchLanguage('en')">English</a></li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>
@@ -439,15 +472,15 @@
             <div class="row align-items-center">
                 <div class="col-lg-6">
                     <div class="hero-content fade-in">
-                        <h1 class="hero-title">您好，我是劉冠彤</h1>
-                        <p class="hero-subtitle">全端工程師 × 專案管理師</p>
-                        <p class="hero-description">
+                        <h1 class="hero-title" data-zh="您好，我是劉冠彤" data-en="Hello, I'm Kuan-Tung Liu">您好，我是劉冠彤</h1>
+                        <p class="hero-subtitle" data-zh="全端工程師 × 專案管理師" data-en="Full-Stack Developer × Project Manager">全端工程師 × 專案管理師</p>
+                        <p class="hero-description" data-zh="結合國際商務背景與技術實作能力，致力於打造創新的數位解決方案。擁有跨國企業工作經驗，熟悉現代 Web 開發技術棧。" data-en="Combining international business background with technical implementation skills, dedicated to creating innovative digital solutions. With multinational corporate experience and expertise in modern web development stack.">
                             結合國際商務背景與技術實作能力，致力於打造創新的數位解決方案。
                             擁有跨國企業工作經驗，熟悉現代 Web 開發技術棧。
                         </p>
                         <div class="hero-buttons">
-                            <a href="#projects" class="btn-primary-custom me-3">查看作品</a>
-                            <a href="#contact" class="btn-outline-custom">聯絡我</a>
+                            <a href="#projects" class="btn-primary-custom me-3" data-zh="查看作品" data-en="View Projects">查看作品</a>
+                            <a href="#contact" class="btn-outline-custom" data-zh="聯絡我" data-en="Contact Me">聯絡我</a>
                         </div>
                     </div>
                 </div>
@@ -463,24 +496,24 @@
     <!-- About Section -->
     <section id="about" class="about-section">
         <div class="container">
-            <h2 class="section-title fade-in">關於我</h2>
+            <h2 class="section-title fade-in" data-zh="關於我" data-en="About Me">關於我</h2>
             <div class="row">
                 <div class="col-lg-8 mx-auto">
                     <div class="about-content fade-in">
-                        <p>
+                        <p data-zh="我是一位具有國際視野的全端工程師，擁有三年跨國企業工作經驗。在完成全端工程師培訓後，我將商務思維與技術實作完美結合，致力於成為具備業務洞察力的技術專家。" data-en="I am a full-stack developer with global perspective, possessing three years of multinational corporate experience. After completing full-stack development training, I perfectly combine business thinking with technical implementation, striving to become a technical expert with business insight.">
                             我是一位具有國際視野的全端工程師，擁有三年跨國企業工作經驗。在完成全端工程師培訓後，
                             我將商務思維與技術實作完美結合，致力於成為具備業務洞察力的技術專家。
                         </p>
                         
                         <div class="about-highlight">
-                            <strong>核心優勢</strong><br>
-                            • 國際政治碩士背景，具備政策分析與邏輯思維能力<br>
-                            • 跨國企業實戰經驗（台灣、越南），熟悉國際商務運作<br>
-                            • 精通中英德三語，越語基礎，具備跨文化溝通能力<br>
-                            • 專案管理與跨部門協調經驗豐富
+                            <strong data-zh="核心優勢" data-en="Core Strengths">核心優勢</strong><br>
+                            <span data-zh="• 國際政治碩士背景，具備政策分析與邏輯思維能力" data-en="• Master's degree in International Politics with policy analysis and logical thinking capabilities">• 國際政治碩士背景，具備政策分析與邏輯思維能力</span><br>
+                            <span data-zh="• 跨國企業實戰經驗（台灣、越南），熟悉國際商務運作" data-en="• Practical experience in multinational corporations (Taiwan, Vietnam), familiar with international business operations">• 跨國企業實戰經驗（台灣、越南），熟悉國際商務運作</span><br>
+                            <span data-zh="• 精通中英德三語，越語基礎，具備跨文化溝通能力" data-en="• Fluent in Chinese, English, and German, with basic Vietnamese and cross-cultural communication skills">• 精通中英德三語，越語基礎，具備跨文化溝通能力</span><br>
+                            <span data-zh="• 專案管理與跨部門協調經驗豐富" data-en="• Rich experience in project management and cross-departmental coordination">• 專案管理與跨部門協調經驗豐富</span>
                         </div>
                         
-                        <p>
+                        <p data-zh="我深信優秀的技術方案必須建立在對商業需求的透徹理解之上。結合我的商務經驗與技術背景，我習慣探索「問題背後的問題」，提出既符合用戶需求又具技術可行性的解決方案。" data-en="I firmly believe that excellent technical solutions must be built on thorough understanding of business requirements. Combining my business experience with technical background, I'm accustomed to exploring 'the problem behind the problem' and proposing solutions that meet user needs while being technically feasible.">
                           我深信優秀的技術方案必須建立在對商業需求的透徹理解之上。結合我的商務經驗與技術背景，我習慣探索「問題背後的問題」，提出既符合用戶需求又具技術可行性的解決方案。
                         </p>
                     </div>
@@ -492,15 +525,15 @@
     <!-- Skills Section -->
     <section id="skills" class="skills-section">
         <div class="container">
-            <h2 class="section-title fade-in">技術技能</h2>
+            <h2 class="section-title fade-in" data-zh="技術技能" data-en="Technical Skills">技術技能</h2>
             <div class="row">
                 <div class="col-lg-4 col-md-6">
                     <div class="skill-item fade-in">
                         <div class="skill-icon">
                             <i class="fas fa-code"></i>
                         </div>
-                        <h3 class="skill-title">前端開發</h3>
-                        <p>打造直觀且響應式的用戶介面</p>
+                        <h3 class="skill-title" data-zh="前端開發" data-en="Frontend Development">前端開發</h3>
+                        <p data-zh="打造直觀且響應式的用戶介面" data-en="Creating intuitive and responsive user interfaces">打造直觀且響應式的用戶介面</p>
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-6">
@@ -508,8 +541,8 @@
                         <div class="skill-icon">
                             <i class="fas fa-server"></i>
                         </div>
-                        <h3 class="skill-title">後端開發</h3>
-                        <p>構建穩定且可擴展的服務架構</p>
+                        <h3 class="skill-title" data-zh="後端開發" data-en="Backend Development">後端開發</h3>
+                        <p data-zh="構建穩定且可擴展的服務架構" data-en="Building stable and scalable service architecture">構建穩定且可擴展的服務架構</p>
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-6">
@@ -517,8 +550,8 @@
                         <div class="skill-icon">
                             <i class="fas fa-project-diagram"></i>
                         </div>
-                        <h3 class="skill-title">專案管理</h3>
-                        <p>敏捷開發與跨團隊協作領導</p>
+                        <h3 class="skill-title" data-zh="專案管理" data-en="Project Management">專案管理</h3>
+                        <p data-zh="敏捷開發與跨團隊協作領導" data-en="Agile development and cross-team collaboration leadership">敏捷開發與跨團隊協作領導</p>
                     </div>
                 </div>
             </div>
@@ -539,18 +572,18 @@
     <!-- Projects Section -->
     <section id="projects" class="projects-section">
         <div class="container">
-            <h2 class="section-title fade-in">精選作品</h2>
+            <h2 class="section-title fade-in" data-zh="精選作品" data-en="Featured Projects">精選作品</h2>
             <div class="row">
                 <div class="col-lg-6">
                     <div class="project-card fade-in">
                         <div class="project-image" style="background-image: url('https://res.cloudinary.com/depkrkqig/image/upload/v1756777873/logo_knmw5u.png'); background-size: contain; background-repeat: no-repeat; background-color: #f8f9fa;">
                             <div class="project-overlay">
-                                <a href="projects/jade-detail.html" class="btn-primary-custom">查看詳情</a>
+                                <a href="projects/jade-detail.html" class="btn-primary-custom" data-zh="查看詳情" data-en="View Details">查看詳情</a>
                             </div>
                         </div>
                         <div class="project-content">
-                            <h3 class="project-title">JADE 服飾電商平台</h3>
-                            <p class="project-description">
+                            <h3 class="project-title" data-zh="JADE 服飾電商平台" data-en="JADE Fashion E-commerce Platform">JADE 服飾電商平台</h3>
+                            <p class="project-description" data-zh="完整的電商解決方案，整合社群分享、會員系統、金流物流等功能。擔任團隊領導，帶領5人團隊完成前後端分離架構設計與實現。" data-en="Complete e-commerce solution integrating social sharing, membership system, payment and logistics functions. Led a team of 5 to complete frontend-backend separation architecture design and implementation.">
                                 完整的電商解決方案，整合社群分享、會員系統、金流物流等功能。
                                 擔任團隊領導，帶領5人團隊完成前後端分離架構設計與實現。
                             </p>
@@ -560,9 +593,6 @@
                                 <span class="project-tag">Azure SQL</span>
                                 <span class="project-tag">SignalR</span>
                             </div>
-                            <!-- <a href="https://github.com/yourusername/jade" class="btn-outline-custom" target="_blank">
-                                <i class="fab fa-github"></i> 查看原始碼
-                            </a> -->
                         </div>
                     </div>
                 </div>
@@ -570,12 +600,12 @@
                     <div class="project-card fade-in">
                         <div class="project-image" style="background-image: url('https://res.cloudinary.com/depkrkqig/image/upload/v1756783249/Dream_Bookstore_wd7dqa.png'); background-size: contain; background-repeat: no-repeat; background-color: #f8f9fa;">
                             <div class="project-overlay">
-                                <a href="projects/book-detail.html" class="btn-primary-custom">查看詳情</a>
+                                <a href="projects/book-detail.html" class="btn-primary-custom" data-zh="查看詳情" data-en="View Details">查看詳情</a>
                             </div>
                         </div>
                         <div class="project-content">
-                            <h3 class="project-title">Dream Bookstore 管理系統</h3>
-                            <p class="project-description">
+                            <h3 class="project-title" data-zh="Dream Bookstore 管理系統" data-en="Dream Bookstore Management System">Dream Bookstore 管理系統</h3>
+                            <p class="project-description" data-zh="為獨立書店設計的桌面應用程式，提供完整的營運管理解決方案，包含庫存管理、會員系統、訂單處理等核心功能。" data-en="Desktop application designed for independent bookstores, providing complete operational management solutions including inventory management, membership system, and order processing core functions.">
                                 為獨立書店設計的桌面應用程式，提供完整的營運管理解決方案，
                                 包含庫存管理、會員系統、訂單處理等核心功能。
                             </p>
@@ -585,7 +615,7 @@
                                 <span class="project-tag">ADO.NET</span>
                             </div>
                             <a href="https://github.com/ktungl/Book-Inventory-System.git" class="btn-outline-custom" target="_blank">
-                                <i class="fab fa-github"></i> 查看原始碼
+                                <i class="fab fa-github"></i> <span data-zh="查看原始碼" data-en="View Source Code">查看原始碼</span>
                             </a>
                         </div>
                     </div>
@@ -597,8 +627,8 @@
     <!-- Contact Section -->
     <section id="contact" class="contact-section">
         <div class="container">
-            <h2 class="section-title fade-in">聯絡我</h2>
-            <p class="contact-description fade-in">
+            <h2 class="section-title fade-in" data-zh="聯絡我" data-en="Contact Me">聯絡我</h2>
+            <p class="contact-description fade-in" data-zh="期待與您討論合作機會或進行技術交流" data-en="Looking forward to discussing collaboration opportunities or technical exchange with you">
                 期待與您討論合作機會或進行技術交流
             </p>
             <div class="social-links fade-in">
@@ -615,8 +645,53 @@
         </div>
     </section>
 
+    <button id="backToTopBtn" title="回到頂部"><i class="fas fa-arrow-up"></i></button>
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
     <script>
+        // 語言切換功能
+        let currentLanguage = 'zh';
+        
+        function switchLanguage(lang) {
+            currentLanguage = lang;
+            const elements = document.querySelectorAll('[data-zh][data-en]');
+            
+            elements.forEach(element => {
+                const text = element.getAttribute('data-' + lang);
+                if (text) {
+                    element.textContent = text;
+                }
+            });
+            
+            // 更新語言選擇器顯示
+            const langDisplay = document.getElementById('current-lang');
+            langDisplay.textContent = lang === 'zh' ? '中文' : 'English';
+            
+            // 儲存語言偏好
+            localStorage.setItem('preferred-language', lang);
+        }
+        
+        // 頁面載入時檢查儲存的語言偏好
+        document.addEventListener('DOMContentLoaded', function() {
+            const savedLang = localStorage.getItem('preferred-language');
+            if (savedLang && savedLang !== 'zh') {
+                switchLanguage(savedLang);
+            }
+        });
+
+        // 回到頂部按鈕功能
+        const backToTopBtn = document.getElementById('backToTopBtn');
+        window.addEventListener('scroll', function() {
+            if (window.scrollY > 200) {
+                backToTopBtn.style.display = 'block';
+            } else {
+                backToTopBtn.style.display = 'none';
+            }
+        });
+        backToTopBtn.addEventListener('click', function() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
         // 滾動動畫
         const observerOptions = {
             threshold: 0.1,

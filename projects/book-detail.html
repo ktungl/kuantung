@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dream Bookstore — 書店管理系統</title>
+    <title data-zh="Dream Bookstore — 書店管理系統" data-en="Dream Bookstore — Bookstore Management System">Dream Bookstore — 書店管理系統</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet">
@@ -643,10 +643,19 @@
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
         <div class="container">
             <a class="navbar-brand" href="../index.html">
-                <i class="fas fa-arrow-left me-2"></i>回到作品集
+                <i class="fas fa-arrow-left me-2"></i><span data-zh="回到作品集" data-en="Back to Portfolio">回到作品集</span>
             </a>
-            <div>
-                <a class="btn btn-outline-light btn-sm" href="../index.html">首頁</a>
+            <div class="d-flex align-items-center">
+                <div class="dropdown me-3">
+                    <button class="btn btn-outline-light btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown">
+                        <i class="fas fa-globe me-1"></i><span id="current-lang">中文</span>
+                    </button>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="#" onclick="switchLanguage('zh')">中文</a></li>
+                        <li><a class="dropdown-item" href="#" onclick="switchLanguage('en')">English</a></li>
+                    </ul>
+                </div>
+                <a class="btn btn-outline-light btn-sm" href="../index.html" data-zh="首頁" data-en="Home">首頁</a>
             </div>
         </div>
     </nav>
@@ -655,39 +664,39 @@
         <div class="container hero-content">
             <div class="text-center" data-aos="fade-up">
                 <div class="dream-logo">Dream Bookstore</div>
-                <p class="hero-subtitle">夢想書店管理系統</p>
+                <p class="hero-subtitle" data-zh="夢想書店管理系統" data-en="Dream Bookstore Management System">夢想書店管理系統</p>
                 <a href="#main-content" class="btn btn-dream btn-lg">
-                    <i class="fas fa-book-open me-2"></i>探索專案詳情
+                    <i class="fas fa-book-open me-2"></i><span data-zh="探索專案詳情" data-en="Explore Project Details">探索專案詳情</span>
                 </a>
             </div>
             
             <div class="hero-stats" data-aos="fade-up" data-aos-delay="200">
                 <div class="stats-grid">
                     <div class="stat-item">
-                        <span class="stat-number">獨力開發</span>
-                        <div class="stat-label">個人專案</div>
+                        <span class="stat-number" data-zh="獨力開發" data-en="Solo Development">獨力開發</span>
+                        <div class="stat-label" data-zh="個人專案" data-en="Personal Project">個人專案</div>
                     </div>
                     <div class="stat-item">
-                        <span class="stat-number">桌面應用</span>
+                        <span class="stat-number" data-zh="桌面應用" data-en="Desktop App">桌面應用</span>
                         <div class="stat-label">Windows Forms</div>
                     </div>
                     <div class="stat-item">
-                        <span class="stat-number">完整系統</span>
-                        <div class="stat-label">營運管理解決方案</div>
+                        <span class="stat-number" data-zh="完整系統" data-en="Complete System">完整系統</span>
+                        <div class="stat-label" data-zh="營運管理解決方案" data-en="Business Management Solution">營運管理解決方案</div>
                     </div>
                     <div class="stat-item">
                         <span class="stat-number">C# + SQL</span>
-                        <div class="stat-label">技術架構</div>
+                        <div class="stat-label" data-zh="技術架構" data-en="Tech Stack">技術架構</div>
                     </div>
                 </div>
                 <div class="row text-start mt-4">
                     <div class="col-md-6">
-                        <p><i class="fas fa-user-circle me-2" style="color: var(--dream-orange);"></i><strong>開發模式：</strong> 獨力開發（個人專案）</p>
-                        <p><i class="fas fa-desktop me-2" style="color: var(--dream-orange);"></i><strong>專案類型：</strong> 桌面應用程式（Windows Forms）</p>
+                        <p><i class="fas fa-user-circle me-2" style="color: var(--dream-orange);"></i><strong data-zh="開發模式：" data-en="Development Mode: ">開發模式：</strong> <span data-zh="獨力開發（個人專案）" data-en="Solo Development (Personal Project)">獨力開發（個人專案）</span></p>
+                        <p><i class="fas fa-desktop me-2" style="color: var(--dream-orange);"></i><strong data-zh="專案類型：" data-en="Project Type: ">專案類型：</strong> <span data-zh="桌面應用程式（Windows Forms）" data-en="Desktop Application (Windows Forms)">桌面應用程式（Windows Forms）</span></p>
                     </div>
                     <div class="col-md-6">
-                        <p><i class="fas fa-cogs me-2" style="color: var(--dream-orange);"></i><strong>技術架構：</strong> C# WinForms + SQL Server</p>
-                        <p><i class="fas fa-target me-2" style="color: var(--dream-orange);"></i><strong>開發目標：</strong> 為獨立書店提供完整的營運管理解決方案</p>
+                        <p><i class="fas fa-cogs me-2" style="color: var(--dream-orange);"></i><strong data-zh="技術架構：" data-en="Tech Stack: ">技術架構：</strong> C# WinForms + SQL Server</p>
+                        <p><i class="fas fa-target me-2" style="color: var(--dream-orange);"></i><strong data-zh="開發目標：" data-en="Development Goal: ">開發目標：</strong> <span data-zh="為獨立書店提供完整的營運管理解決方案" data-en="Provide comprehensive business management solution for independent bookstores">為獨立書店提供完整的營運管理解決方案</span></p>
                     </div>
                 </div>
             </div>
@@ -700,30 +709,30 @@
             <!-- 專案背景與價值定位 -->
             <div class="card section-card" data-aos="fade-up">
                 <div class="section-header">
-                    <h2><i class="fas fa-book"></i>專案背景與價值定位</h2>
+                    <h2><i class="fas fa-book"></i><span data-zh="專案背景與價值定位" data-en="Project Background & Value Proposition">專案背景與價值定位</span></h2>
                 </div>
                 <div class="card-body">
-                    <h4><i class="fas fa-lightbulb me-2" style="color: var(--dream-orange);"></i>解決的實際問題</h4>
+                    <h4><i class="fas fa-lightbulb me-2" style="color: var(--dream-orange);"></i><span data-zh="解決的實際問題" data-en="Real Problems Solved">解決的實際問題</span></h4>
                     <div class="row mt-4">
                         <div class="col-md-4">
                             <div class="value-card">
                                 <i class="fas fa-store-alt value-icon" style="color: var(--dream-sage);"></i>
-                                <h6>目標客群</h6>
-                                <p class="mb-0">缺乏網路商店系統的獨立書店</p>
+                                <h6 data-zh="目標客群" data-en="Target Audience">目標客群</h6>
+                                <p class="mb-0" data-zh="缺乏網路商店系統的獨立書店" data-en="Independent bookstores lacking online systems">缺乏網路商店系統的獨立書店</p>
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="value-card">
                                 <i class="fas fa-exclamation-triangle value-icon" style="color: var(--dream-orange);"></i>
-                                <h6>市場痛點</h6>
-                                <p class="mb-0">傳統書店缺乏數位化管理工具，難以有效管理庫存、會員和訂單</p>
+                                <h6 data-zh="市場痛點" data-en="Market Pain Points">市場痛點</h6>
+                                <p class="mb-0" data-zh="傳統書店缺乏數位化管理工具，難以有效管理庫存、會員和訂單" data-en="Traditional bookstores lack digital management tools for effective inventory, member, and order management">傳統書店缺乏數位化管理工具，難以有效管理庫存、會員和訂單</p>
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="value-card">
                                 <i class="fas fa-chart-line value-icon" style="color: var(--dream-light-sage);"></i>
-                                <h6>商業價值</h6>
-                                <p class="mb-0">提供小型書店負擔得起的管理系統，協助傳統書店數位轉型</p>
+                                <h6 data-zh="商業價值" data-en="Business Value">商業價值</h6>
+                                <p class="mb-0" data-zh="提供小型書店負擔得起的管理系統，協助傳統書店數位轉型" data-en="Provide affordable management system for small bookstores, assisting digital transformation">提供小型書店負擔得起的管理系統，協助傳統書店數位轉型</p>
                             </div>
                         </div>
                     </div>
@@ -733,13 +742,13 @@
             <!-- 技術架構 -->
             <div class="card section-card" data-aos="fade-up" data-aos-delay="100">
                 <div class="section-header">
-                    <h2><i class="fas fa-cogs"></i>獨立開發的技術亮點</h2>
+                    <h2><i class="fas fa-cogs"></i><span data-zh="獨立開發的技術亮點" data-en="Technical Highlights of Independent Development">獨立開發的技術亮點</span></h2>
                 </div>
                 <div class="card-body">
-                    <h4><i class="fas fa-sitemap me-2" style="color: var(--dream-sage);"></i>完整的系統架構設計</h4>
+                    <h4><i class="fas fa-sitemap me-2" style="color: var(--dream-sage);"></i><span data-zh="完整的系統架構設計" data-en="Complete System Architecture Design">完整的系統架構設計</span></h4>
                     <div class="row mt-3">
                         <div class="col-md-6">
-                            <h6><i class="fas fa-layer-group me-2" style="color: var(--dream-orange);"></i>技術棧</h6>
+                            <h6><i class="fas fa-layer-group me-2" style="color: var(--dream-orange);"></i><span data-zh="技術棧" data-en="Technology Stack">技術棧</span></h6>
                             <div class="mb-3">
                                 <span class="tech-badge">C# WinForms</span>
                                 <span class="tech-badge">SQL Server</span>
@@ -747,32 +756,32 @@
                             </div>
                         </div>
                         <div class="col-md-6">
-                            <h6><i class="fas fa-database me-2" style="color: var(--dream-orange);"></i>核心實體</h6>
+                            <h6><i class="fas fa-database me-2" style="color: var(--dream-orange);"></i><span data-zh="核心實體" data-en="Core Entities">核心實體</span></h6>
                             <div class="mb-3">
-                                <span class="tech-badge">Admin（管理員）</span>
-                                <span class="tech-badge">Books（書籍）</span>
-                                <span class="tech-badge">Customer（會員）</span>
-                                <span class="tech-badge">Orders（訂單）</span>
-                                <span class="tech-badge">OrderDetails（訂單明細）</span>
+                                <span class="tech-badge" data-zh="Admin（管理員）" data-en="Admin (Administrator)">Admin（管理員）</span>
+                                <span class="tech-badge" data-zh="Books（書籍）" data-en="Books">Books（書籍）</span>
+                                <span class="tech-badge" data-zh="Customer（會員）" data-en="Customer (Member)">Customer（會員）</span>
+                                <span class="tech-badge" data-zh="Orders（訂單）" data-en="Orders">Orders（訂單）</span>
+                                <span class="tech-badge" data-zh="OrderDetails（訂單明細）" data-en="OrderDetails">OrderDetails（訂單明細）</span>
                             </div>
                         </div>
                     </div>
                     
                     <hr class="my-4">
                     
-                    <h4><i class="fas fa-puzzle-piece me-2" style="color: var(--dream-sage);"></i>全功能模組開發</h4>
+                    <h4><i class="fas fa-puzzle-piece me-2" style="color: var(--dream-sage);"></i><span data-zh="全功能模組開發" data-en="Full-Featured Module Development">全功能模組開發</span></h4>
                     <pre><code>// 展示核心功能架構
-📚 用戶認證系統：登入驗證、密碼重設、權限管理
-📖 書籍管理：CRUD 操作、庫存追蹤、自動更新機制  
-👥 會員管理：客戶資料維護、消費統計分析
-🛒 訂單處理：複雜的訂單建立流程、庫存自動扣減
-👨‍💼 員工管理：角色權限控制、多層級授權</code></pre>
+📚 <span data-zh="用戶認證系統：登入驗證、密碼重設、權限管理" data-en="User Authentication System: Login verification, password reset, permission management">用戶認證系統：登入驗證、密碼重設、權限管理</span>
+📖 <span data-zh="書籍管理：CRUD 操作、庫存追蹤、自動更新機制" data-en="Book Management: CRUD operations, inventory tracking, automatic update mechanism">書籍管理：CRUD 操作、庫存追蹤、自動更新機制</span>  
+👥 <span data-zh="會員管理：客戶資料維護、消費統計分析" data-en="Member Management: Customer data maintenance, consumption statistical analysis">會員管理：客戶資料維護、消費統計分析</span>
+🛒 <span data-zh="訂單處理：複雜的訂單建立流程、庫存自動扣減" data-en="Order Processing: Complex order creation process, automatic inventory deduction">訂單處理：複雜的訂單建立流程、庫存自動扣減</span>
+👨‍💼 <span data-zh="員工管理：角色權限控制、多層級授權" data-en="Staff Management: Role permission control, multi-level authorization">員工管理：角色權限控制、多層級授權</span></code></pre>
                     
-                    <h4 class="mt-4"><i class="fas fa-heart me-2" style="color: var(--dream-orange);"></i>用戶體驗設計</h4>
+                    <h4 class="mt-4"><i class="fas fa-heart me-2" style="color: var(--dream-orange);"></i><span data-zh="用戶體驗設計" data-en="User Experience Design">用戶體驗設計</span></h4>
                     <ul class="list-unstyled">
-                        <li class="mb-2"><i class="fas fa-palette me-2" style="color: var(--dream-sage);"></i><strong>直觀介面：</strong> 設計溫馨的書店風格界面，符合使用者情境</li>
-                        <li class="mb-2"><i class="fas fa-route me-2" style="color: var(--dream-sage);"></i><strong>操作流程：</strong> 簡化複雜的書店日常作業流程</li>
-                        <li class="mb-2"><i class="fas fa-chart-bar me-2" style="color: var(--dream-sage);"></i><strong>資料呈現：</strong> 多分頁設計，清楚區分訂單管理和統計分析</li>
+                        <li class="mb-2"><i class="fas fa-palette me-2" style="color: var(--dream-sage);"></i><strong data-zh="直觀介面：" data-en="Intuitive Interface: ">直觀介面：</strong> <span data-zh="設計溫馨的書店風格界面，符合使用者情境" data-en="Designed warm bookstore-style interface that fits user context">設計溫馨的書店風格界面，符合使用者情境</span></li>
+                        <li class="mb-2"><i class="fas fa-route me-2" style="color: var(--dream-sage);"></i><strong data-zh="操作流程：" data-en="Operation Flow: ">操作流程：</strong> <span data-zh="簡化複雜的書店日常作業流程" data-en="Simplified complex daily bookstore operation procedures">簡化複雜的書店日常作業流程</span></li>
+                        <li class="mb-2"><i class="fas fa-chart-bar me-2" style="color: var(--dream-sage);"></i><strong data-zh="資料呈現：" data-en="Data Presentation: ">資料呈現：</strong> <span data-zh="多分頁設計，清楚區分訂單管理和統計分析" data-en="Multi-tab design clearly separating order management and statistical analysis">多分頁設計，清楚區分訂單管理和統計分析</span></li>
                     </ul>
                 </div>
             </div>
@@ -780,46 +789,46 @@
             <!-- 技術成就 -->
             <div class="card section-card" data-aos="fade-up" data-aos-delay="200">
                 <div class="section-header">
-                    <h2><i class="fas fa-trophy"></i>獨力開發的技術成就</h2>
+                    <h2><i class="fas fa-trophy"></i><span data-zh="獨力開發的技術成就" data-en="Technical Achievements of Solo Development">獨力開發的技術成就</span></h2>
                 </div>
                 <div class="card-body">
-                    <h4><i class="fas fa-brain me-2" style="color: var(--dream-orange);"></i>複雜業務邏輯實現</h4>
+                    <h4><i class="fas fa-brain me-2" style="color: var(--dream-orange);"></i><span data-zh="複雜業務邏輯實現" data-en="Complex Business Logic Implementation">複雜業務邏輯實現</span></h4>
                     
                     <div class="row mt-4">
                         <div class="col-md-6">
-                            <h5><i class="fas fa-shopping-cart me-2" style="color: var(--dream-sage);"></i>訂單管理邏輯</h5>
+                            <h5><i class="fas fa-shopping-cart me-2" style="color: var(--dream-sage);"></i><span data-zh="訂單管理邏輯" data-en="Order Management Logic">訂單管理邏輯</span></h5>
                             <ul class="list-unstyled">
-                                <li class="mb-2"><i class="fas fa-check me-2" style="color: var(--dream-light-sage);"></i>支援單一客戶多本書籍的複合訂單</li>
-                                <li class="mb-2"><i class="fas fa-check me-2" style="color: var(--dream-light-sage);"></i>訂單取消時自動回復庫存數量</li>
-                                <li class="mb-2"><i class="fas fa-check me-2" style="color: var(--dream-light-sage);"></i>個人消費統計和總額計算</li>
+                                <li class="mb-2"><i class="fas fa-check me-2" style="color: var(--dream-light-sage);"></i><span data-zh="支援單一客戶多本書籍的複合訂單" data-en="Support for composite orders with multiple books per customer">支援單一客戶多本書籍的複合訂單</span></li>
+                                <li class="mb-2"><i class="fas fa-check me-2" style="color: var(--dream-light-sage);"></i><span data-zh="訂單取消時自動回復庫存數量" data-en="Automatic inventory restoration upon order cancellation">訂單取消時自動回復庫存數量</span></li>
+                                <li class="mb-2"><i class="fas fa-check me-2" style="color: var(--dream-light-sage);"></i><span data-zh="個人消費統計和總額計算" data-en="Personal consumption statistics and total amount calculation">個人消費統計和總額計算</span></li>
                             </ul>
                         </div>
                         <div class="col-md-6">
-                            <h5><i class="fas fa-shield-alt me-2" style="color: var(--dream-sage);"></i>權限控制系統</h5>
+                            <h5><i class="fas fa-shield-alt me-2" style="color: var(--dream-sage);"></i><span data-zh="權限控制系統" data-en="Permission Control System">權限控制系統</span></h5>
                             <ul class="list-unstyled">
-                                <li class="mb-2"><i class="fas fa-check me-2" style="color: var(--dream-light-sage);"></i>管理員和員工的差異化權限</li>
-                                <li class="mb-2"><i class="fas fa-check me-2" style="color: var(--dream-light-sage);"></i>員工管理頁面僅限管理員存取</li>
-                                <li class="mb-2"><i class="fas fa-check me-2" style="color: var(--dream-light-sage);"></i>多層級安全驗證機制</li>
+                                <li class="mb-2"><i class="fas fa-check me-2" style="color: var(--dream-light-sage);"></i><span data-zh="管理員和員工的差異化權限" data-en="Differentiated permissions for administrators and staff">管理員和員工的差異化權限</span></li>
+                                <li class="mb-2"><i class="fas fa-check me-2" style="color: var(--dream-light-sage);"></i><span data-zh="員工管理頁面僅限管理員存取" data-en="Staff management page restricted to administrator access only">員工管理頁面僅限管理員存取</span></li>
+                                <li class="mb-2"><i class="fas fa-check me-2" style="color: var(--dream-light-sage);"></i><span data-zh="多層級安全驗證機制" data-en="Multi-level security verification mechanism">多層級安全驗證機制</span></li>
                             </ul>
                         </div>
                     </div>
 
                     <hr class="my-4">
 
-                    <h4><i class="fas fa-database me-2" style="color: var(--dream-orange);"></i>資料處理能力</h4>
+                    <h4><i class="fas fa-database me-2" style="color: var(--dream-orange);"></i><span data-zh="資料處理能力" data-en="Data Processing Capabilities">資料處理能力</span></h4>
                     <div class="row">
                         <div class="col-md-4">
                             <div class="achievement-item">
                                 <i class="fas fa-chart-pie me-2" style="color: var(--dream-light-sage);"></i>
-                                <strong>統計分析功能</strong><br>
-                                <small>個人消費統計、總銷售額計算</small>
+                                <strong data-zh="統計分析功能" data-en="Statistical Analysis Functions">統計分析功能</strong><br>
+                                <small data-zh="個人消費統計、總銷售額計算" data-en="Personal consumption statistics, total sales calculation">個人消費統計、總銷售額計算</small>
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="achievement-item">
                                 <i class="fas fa-search me-2" style="color: var(--dream-light-sage);"></i>
-                                <strong>搜尋功能</strong><br>
-                                <small>客戶和書籍的快速查詢機制</small>
+                                <strong data-zh="搜尋功能" data-en="Search Functionality">搜尋功能</strong><br>
+                                <small data-zh="客戶和書籍的快速查詢機制" data-en="Fast query mechanism for customers and books">客戶和書籍的快速查詢機制</small>
                             </div>
                         </div>
                     </div>
@@ -829,32 +838,32 @@
             <!-- 技術挑戰 -->
             <div class="card section-card" data-aos="fade-up" data-aos-delay="300">
                 <div class="section-header">
-                    <h2><i class="fas fa-lightbulb"></i>自主解決的技術挑戰</h2>
+                    <h2><i class="fas fa-lightbulb"></i><span data-zh="自主解決的技術挑戰" data-en="Self-Resolved Technical Challenges">自主解決的技術挑戰</span></h2>
                 </div>
                 <div class="card-body">
                     <div class="challenge-item">
-                        <h5><i class="fas fa-window-maximize me-2" style="color: var(--dream-orange);"></i>複雜表單設計</h5>
+                        <h5><i class="fas fa-window-maximize me-2" style="color: var(--dream-orange);"></i><span data-zh="複雜表單設計" data-en="Complex Form Design">複雜表單設計</span></h5>
                         <ul class="list-unstyled">
-                            <li class="mb-2"><i class="fas fa-columns me-1" style="color: var(--dream-sage);"></i><strong>多窗格布局：</strong> 新增訂單頁面的雙欄設計（客戶選擇 + 書籍資訊）</li>
-                            <li class="mb-2"><i class="fas fa-sync me-1" style="color: var(--dream-sage);"></i><strong>動態資料綁定：</strong> 即時更新價格計算和庫存狀態</li>
-                            <li class="mb-2"><i class="fas fa-mouse-pointer me-1" style="color: var(--dream-sage);"></i><strong>用戶互動：</strong> 流暢的資料輸入和驗證流程</li>
+                            <li class="mb-2"><i class="fas fa-columns me-1" style="color: var(--dream-sage);"></i><strong data-zh="多窗格布局：" data-en="Multi-Panel Layout: ">多窗格布局：</strong> <span data-zh="新增訂單頁面的雙欄設計（客戶選擇 + 書籍資訊）" data-en="Dual-column design for order creation page (customer selection + book information)">新增訂單頁面的雙欄設計（客戶選擇 + 書籍資訊）</span></li>
+                            <li class="mb-2"><i class="fas fa-sync me-1" style="color: var(--dream-sage);"></i><strong data-zh="動態資料綁定：" data-en="Dynamic Data Binding: ">動態資料綁定：</strong> <span data-zh="即時更新價格計算和庫存狀態" data-en="Real-time price calculation and inventory status updates">即時更新價格計算和庫存狀態</span></li>
+                            <li class="mb-2"><i class="fas fa-mouse-pointer me-1" style="color: var(--dream-sage);"></i><strong data-zh="用戶互動：" data-en="User Interaction: ">用戶互動：</strong> <span data-zh="流暢的資料輸入和驗證流程" data-en="Smooth data input and validation workflow">流暢的資料輸入和驗證流程</span></li>
                         </ul>
                     </div>
                     
                     <div class="challenge-item">
-                        <h5><i class="fas fa-database me-2" style="color: var(--dream-orange);"></i>資料一致性保證</h5>
+                        <h5><i class="fas fa-database me-2" style="color: var(--dream-orange);"></i><span data-zh="資料一致性保證" data-en="Data Consistency Guarantee">資料一致性保證</span></h5>
                         <ul class="list-unstyled">
-                            <li class="mb-2"><i class="fas fa-exchange-alt me-1" style="color: var(--dream-sage);"></i><strong>事務處理：</strong> 確保訂單建立過程中的資料完整性</li>
-                            <li class="mb-2"><i class="fas fa-lock me-1" style="color: var(--dream-sage);"></i><strong>併發控制：</strong> 防止庫存資料的競爭條件</li>
-                            <li class="mb-2"><i class="fas fa-exclamation-circle me-1" style="color: var(--dream-sage);"></i><strong>錯誤處理：</strong> 完善的異常處理和用戶提示機制</li>
+                            <li class="mb-2"><i class="fas fa-exchange-alt me-1" style="color: var(--dream-sage);"></i><strong data-zh="事務處理：" data-en="Transaction Processing: ">事務處理：</strong> <span data-zh="確保訂單建立過程中的資料完整性" data-en="Ensuring data integrity during order creation process">確保訂單建立過程中的資料完整性</span></li>
+                            <li class="mb-2"><i class="fas fa-lock me-1" style="color: var(--dream-sage);"></i><strong data-zh="併發控制：" data-en="Concurrency Control: ">併發控制：</strong> <span data-zh="防止庫存資料的競爭條件" data-en="Preventing race conditions in inventory data">防止庫存資料的競爭條件</span></li>
+                            <li class="mb-2"><i class="fas fa-exclamation-circle me-1" style="color: var(--dream-sage);"></i><strong data-zh="錯誤處理：" data-en="Error Handling: ">錯誤處理：</strong> <span data-zh="完善的異常處理和用戶提示機制" data-en="Comprehensive exception handling and user notification mechanism">完善的異常處理和用戶提示機制</span></li>
                         </ul>
                     </div>
 
                     <div class="challenge-item">
-                        <h5><i class="fas fa-expand-arrows-alt me-2" style="color: var(--dream-orange);"></i>系統擴展性設計</h5>
+                        <h5><i class="fas fa-expand-arrows-alt me-2" style="color: var(--dream-orange);"></i><span data-zh="系統擴展性設計" data-en="System Scalability Design">系統擴展性設計</span></h5>
                         <ul class="list-unstyled">
-                            <li class="mb-2"><i class="fas fa-puzzle-piece me-1" style="color: var(--dream-sage);"></i><strong>模組化架構：</strong> 各功能模組獨立設計，便於維護和擴展</li>
-                            <li class="mb-2"><i class="fas fa-road me-1" style="color: var(--dream-sage);"></i><strong>未來優化預留：</strong> 書封面自動更新機制（待實現）、會員折扣優惠系統（擴展計畫）</li>
+                            <li class="mb-2"><i class="fas fa-puzzle-piece me-1" style="color: var(--dream-sage);"></i><strong data-zh="模組化架構：" data-en="Modular Architecture: ">模組化架構：</strong> <span data-zh="各功能模組獨立設計，便於維護和擴展" data-en="Independent design of functional modules for easy maintenance and expansion">各功能模組獨立設計，便於維護和擴展</span></li>
+                            <li class="mb-2"><i class="fas fa-road me-1" style="color: var(--dream-sage);"></i><strong data-zh="未來優化預留：" data-en="Future Optimization Reserved: ">未來優化預留：</strong> <span data-zh="書封面自動更新機制（待實現）、會員折扣優惠系統（擴展計畫）" data-en="Automatic book cover update mechanism (to be implemented), member discount system (expansion plan)">書封面自動更新機制（待實現）、會員折扣優惠系統（擴展計畫）</span></li>
                         </ul>
                     </div>
                 </div>
@@ -863,37 +872,37 @@
             <!-- 全方位能力展現 -->
             <div class="card section-card" data-aos="fade-up" data-aos-delay="400">
                 <div class="section-header">
-                    <h2><i class="fas fa-user-graduate"></i>獨立開發者的全方位能力展現</h2>
+                    <h2><i class="fas fa-user-graduate"></i><span data-zh="獨立開發者的全方位能力展現" data-en="Comprehensive Capabilities of Independent Developer">獨立開發者的全方位能力展現</span></h2>
                 </div>
                 <div class="card-body">
                     <div class="row">
                         <div class="col-md-4">
                             <div class="data-viz">
-                                <h5><i class="fas fa-search me-2" style="color: var(--dream-orange);"></i>需求分析能力</h5>
+                                <h5><i class="fas fa-search me-2" style="color: var(--dream-orange);"></i><span data-zh="需求分析能力" data-en="Requirement Analysis Capability">需求分析能力</span></h5>
                                 <ul class="list-unstyled">
-                                    <li class="mb-2"><i class="fas fa-eye me-1" style="color: var(--dream-sage);"></i>深入了解獨立書店的營運需求</li>
-                                    <li class="mb-2"><i class="fas fa-drafting-compass me-1" style="color: var(--dream-sage);"></i>從零開始設計完整的功能架構</li>
-                                    <li class="mb-2"><i class="fas fa-sort-amount-up me-1" style="color: var(--dream-sage);"></i>識別核心功能與擴展功能的優先順序</li>
+                                    <li class="mb-2"><i class="fas fa-eye me-1" style="color: var(--dream-sage);"></i><span data-zh="深入了解獨立書店的營運需求" data-en="In-depth understanding of independent bookstore operational requirements">深入了解獨立書店的營運需求</span></li>
+                                    <li class="mb-2"><i class="fas fa-drafting-compass me-1" style="color: var(--dream-sage);"></i><span data-zh="從零開始設計完整的功能架構" data-en="Designing complete functional architecture from scratch">從零開始設計完整的功能架構</span></li>
+                                    <li class="mb-2"><i class="fas fa-sort-amount-up me-1" style="color: var(--dream-sage);"></i><span data-zh="識別核心功能與擴展功能的優先順序" data-en="Identifying priority of core functions vs. extended functions">識別核心功能與擴展功能的優先順序</span></li>
                                 </ul>
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="data-viz">
-                                <h5><i class="fas fa-code me-2" style="color: var(--dream-orange);"></i>技術實現能力</h5>
+                                <h5><i class="fas fa-code me-2" style="color: var(--dream-orange);"></i><span data-zh="技術實現能力" data-en="Technical Implementation Capability">技術實現能力</span></h5>
                                 <ul class="list-unstyled">
-                                    <li class="mb-2"><i class="fas fa-desktop me-1" style="color: var(--dream-sage);"></i>Windows Forms 界面設計與用戶體驗優化</li>
-                                    <li class="mb-2"><i class="fas fa-cog me-1" style="color: var(--dream-sage);"></i>C# 業務邏輯實現與資料處理</li>
-                                    <li class="mb-2"><i class="fas fa-database me-1" style="color: var(--dream-sage);"></i>SQL Server 資料庫架構設計與優化</li>
+                                    <li class="mb-2"><i class="fas fa-desktop me-1" style="color: var(--dream-sage);"></i><span data-zh="Windows Forms 界面設計與用戶體驗優化" data-en="Windows Forms interface design and user experience optimization">Windows Forms 界面設計與用戶體驗優化</span></li>
+                                    <li class="mb-2"><i class="fas fa-cog me-1" style="color: var(--dream-sage);"></i><span data-zh="C# 業務邏輯實現與資料處理" data-en="C# business logic implementation and data processing">C# 業務邏輯實現與資料處理</span></li>
+                                    <li class="mb-2"><i class="fas fa-database me-1" style="color: var(--dream-sage);"></i><span data-zh="SQL Server 資料庫架構設計與優化" data-en="SQL Server database architecture design and optimization">SQL Server 資料庫架構設計與優化</span></li>
                                 </ul>
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="data-viz">
-                                <h5><i class="fas fa-tasks me-2" style="color: var(--dream-orange);"></i>專案管理能力</h5>
+                                <h5><i class="fas fa-tasks me-2" style="color: var(--dream-orange);"></i><span data-zh="專案管理能力" data-en="Project Management Capability">專案管理能力</span></h5>
                                 <ul class="list-unstyled">
-                                    <li class="mb-2"><i class="fas fa-calendar-check me-1" style="color: var(--dream-sage);"></i>獨立制定開發計畫和里程碑</li>
-                                    <li class="mb-2"><i class="fas fa-bug me-1" style="color: var(--dream-sage);"></i>自主測試和問題修復</li>
-                                    <li class="mb-2"><i class="fas fa-file-alt me-1" style="color: var(--dream-sage);"></i>完整的系統說明和架構文檔</li>
+                                    <li class="mb-2"><i class="fas fa-calendar-check me-1" style="color: var(--dream-sage);"></i><span data-zh="獨立制定開發計畫和里程碑" data-en="Independently formulating development plans and milestones">獨立制定開發計畫和里程碑</span></li>
+                                    <li class="mb-2"><i class="fas fa-bug me-1" style="color: var(--dream-sage);"></i><span data-zh="自主測試和問題修復" data-en="Independent testing and issue resolution">自主測試和問題修復</span></li>
+                                    <li class="mb-2"><i class="fas fa-file-alt me-1" style="color: var(--dream-sage);"></i><span data-zh="完整的系統說明和架構文檔" data-en="Complete system documentation and architecture documentation">完整的系統說明和架構文檔</span></li>
                                 </ul>
                             </div>
                         </div>
@@ -904,42 +913,42 @@
             <!-- 技術深度 -->
             <div class="card section-card" data-aos="fade-up" data-aos-delay="500">
                 <div class="section-header">
-                    <h2><i class="fas fa-code"></i>技術深度體現</h2>
+                    <h2><i class="fas fa-code"></i><span data-zh="技術深度體現" data-en="Technical Depth Demonstration">技術深度體現</span></h2>
                 </div>
                 <div class="card-body">
-                    <h4><i class="fas fa-sitemap me-2" style="color: var(--dream-orange);"></i>資料庫設計精髓</h4>
-                    <pre><code>// 展示複雜的關聯設計思維
-📋 Orders (訂單主表)
-├── 👤 Customer (客戶資訊) - 多對一關係
-├── 📝 OrderDetails (訂單明細) - 一對多關係  
-└── 📚 Books (書籍資訊) - 透過明細表多對多關係
+                    <h4><i class="fas fa-sitemap me-2" style="color: var(--dream-orange);"></i><span data-zh="資料庫設計精髓" data-en="Database Design Essence">資料庫設計精髓</span></h4>
+                    <pre><code>// <span data-zh="展示複雜的關聯設計思維" data-en="Demonstrating complex relational design thinking">展示複雜的關聯設計思維</span>
+📋 Orders (<span data-zh="訂單主表" data-en="Orders Main Table">訂單主表</span>)
+├── 👤 Customer (<span data-zh="客戶資訊" data-en="Customer Information">客戶資訊</span>) - <span data-zh="多對一關係" data-en="Many-to-One Relationship">多對一關係</span>
+├── 📝 OrderDetails (<span data-zh="訂單明細" data-en="Order Details">訂單明細</span>) - <span data-zh="一對多關係" data-en="One-to-Many Relationship">一對多關係</span>  
+└── 📚 Books (<span data-zh="書籍資訊" data-en="Book Information">書籍資訊</span>) - <span data-zh="透過明細表多對多關係" data-en="Many-to-Many Relationship via Detail Table">透過明細表多對多關係</span>
 
-💡 核心設計理念：
-• 正規化設計避免資料冗餘
-• 外鍵關聯確保參照完整性
-• 索引優化提升查詢效能</code></pre>
+💡 <span data-zh="核心設計理念：" data-en="Core Design Philosophy:">核心設計理念：</span>
+• <span data-zh="正規化設計避免資料冗餘" data-en="Normalized design to avoid data redundancy">正規化設計避免資料冗餘</span>
+• <span data-zh="外鍵關聯確保參照完整性" data-en="Foreign key associations ensure referential integrity">外鍵關聯確保參照完整性</span>
+• <span data-zh="索引優化提升查詢效能" data-en="Index optimization improves query performance">索引優化提升查詢效能</span></code></pre>
 
-                    <h4 class="mt-4"><i class="fas fa-brain me-2" style="color: var(--dream-orange);"></i>業務邏輯複雜度</h4>
+                    <h4 class="mt-4"><i class="fas fa-brain me-2" style="color: var(--dream-orange);"></i><span data-zh="業務邏輯複雜度" data-en="Business Logic Complexity">業務邏輯複雜度</span></h4>
                     <div class="row">
                         <div class="col-md-4">
                             <div class="feature-highlight">
                                 <i class="fas fa-calculator me-2" style="color: var(--dream-orange);"></i>
-                                <strong>動態價格計算</strong><br>
-                                <small>支援多書籍訂單的自動總價計算</small>
+                                <strong data-zh="動態價格計算" data-en="Dynamic Price Calculation">動態價格計算</strong><br>
+                                <small data-zh="支援多書籍訂單的自動總價計算" data-en="Support for automatic total price calculation for multi-book orders">支援多書籍訂單的自動總價計算</small>
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="feature-highlight">
                                 <i class="fas fa-warehouse me-2" style="color: var(--dream-orange);"></i>
-                                <strong>庫存管理</strong><br>
-                                <small>即時庫存檢查和自動更新機制</small>
+                                <strong data-zh="庫存管理" data-en="Inventory Management">庫存管理</strong><br>
+                                <small data-zh="即時庫存檢查和自動更新機制" data-en="Real-time inventory checking and automatic update mechanism">即時庫存檢查和自動更新機制</small>
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="feature-highlight">
                                 <i class="fas fa-chart-line me-2" style="color: var(--dream-orange);"></i>
-                                <strong>統計報表</strong><br>
-                                <small>客戶消費行為分析和營收統計</small>
+                                <strong data-zh="統計報表" data-en="Statistical Reports">統計報表</strong><br>
+                                <small data-zh="客戶消費行為分析和營收統計" data-en="Customer consumption behavior analysis and revenue statistics">客戶消費行為分析和營收統計</small>
                             </div>
                         </div>
                     </div>
@@ -949,29 +958,29 @@
             <!-- 成長與學習 -->
             <div class="card section-card" data-aos="fade-up" data-aos-delay="600">
                 <div class="section-header">
-                    <h2><i class="fas fa-graduation-cap"></i>個人成長與學習成果</h2>
+                    <h2><i class="fas fa-graduation-cap"></i><span data-zh="個人成長與學習成果" data-en="Personal Growth & Learning Outcomes">個人成長與學習成果</span></h2>
                 </div>
                 <div class="card-body">
                     <div class="row">
                         <div class="col-md-6">
-                            <h5><i class="fas fa-rocket me-2" style="color: var(--dream-orange);"></i>技術能力提升</h5>
+                            <h5><i class="fas fa-rocket me-2" style="color: var(--dream-orange);"></i><span data-zh="技術能力提升" data-en="Technical Skill Enhancement">技術能力提升</span></h5>
                             <div class="data-viz">
                                 <div class="d-flex justify-content-between mb-2">
-                                    <span><strong>Windows Forms 開發</strong></span>
+                                    <span><strong data-zh="Windows Forms 開發" data-en="Windows Forms Development">Windows Forms 開發</strong></span>
                                     <span class="fw-bold" style="color: var(--dream-sage);">95%</span>
                                 </div>
                                 <div class="progress mb-3">
                                     <div class="progress-bar progress-bar-dream" style="width: 95%"></div>
                                 </div>
                                 <div class="d-flex justify-content-between mb-2">
-                                    <span><strong>資料庫設計</strong></span>
+                                    <span><strong data-zh="資料庫設計" data-en="Database Design">資料庫設計</strong></span>
                                     <span class="fw-bold" style="color: var(--dream-sage);">92%</span>
                                 </div>
                                 <div class="progress mb-3">
                                     <div class="progress-bar progress-bar-dream" style="width: 92%"></div>
                                 </div>
                                 <div class="d-flex justify-content-between mb-2">
-                                    <span><strong>問題解決能力</strong></span>
+                                    <span><strong data-zh="問題解決能力" data-en="Problem-Solving Ability">問題解決能力</strong></span>
                                     <span class="fw-bold" style="color: var(--dream-sage);">90%</span>
                                 </div>
                                 <div class="progress">
@@ -980,19 +989,19 @@
                             </div>
                         </div>
                         <div class="col-md-6">
-                            <h5><i class="fas fa-tools me-2" style="color: var(--dream-orange);"></i>軟體工程素養</h5>
+                            <h5><i class="fas fa-tools me-2" style="color: var(--dream-orange);"></i><span data-zh="軟體工程素養" data-en="Software Engineering Proficiency">軟體工程素養</span></h5>
                             <ul class="list-unstyled">
                                 <li class="mb-3">
                                     <i class="fas fa-project-diagram me-2" style="color: var(--dream-sage);"></i>
-                                    <strong>系統思維：</strong> 從整體角度設計和實現複雜系統
+                                    <strong data-zh="系統思維：" data-en="Systems Thinking: ">系統思維：</strong> <span data-zh="從整體角度設計和實現複雜系統" data-en="Designing and implementing complex systems from a holistic perspective">從整體角度設計和實現複雜系統</span>
                                 </li>
                                 <li class="mb-3">
                                     <i class="fas fa-code-branch me-2" style="color: var(--dream-sage);"></i>
-                                    <strong>代碼品質：</strong> 注重程式碼的可讀性和維護性
+                                    <strong data-zh="代碼品質：" data-en="Code Quality: ">代碼品質：</strong> <span data-zh="注重程式碼的可讀性和維護性" data-en="Emphasizing code readability and maintainability">注重程式碼的可讀性和維護性</span>
                                 </li>
                                 <li class="mb-3">
                                     <i class="fas fa-users me-2" style="color: var(--dream-sage);"></i>
-                                    <strong>用戶導向：</strong> 站在終端用戶角度思考功能設計
+                                    <strong data-zh="用戶導向：" data-en="User-Oriented: ">用戶導向：</strong> <span data-zh="站在終端用戶角度思考功能設計" data-en="Thinking about functional design from the end-user perspective">站在終端用戶角度思考功能設計</span>
                                 </li>
                             </ul>
                         </div>
@@ -1003,45 +1012,45 @@
             <!-- 專案價值與影響 -->
             <div class="card section-card" data-aos="fade-up" data-aos-delay="700">
                 <div class="section-header">
-                    <h2><i class="fas fa-chart-line"></i>專案價值與影響</h2>
+                    <h2><i class="fas fa-chart-line"></i><span data-zh="專案價值與影響" data-en="Project Value & Impact">專案價值與影響</span></h2>
                 </div>
                 <div class="card-body">
                     <div class="row">
                         <div class="col-md-6">
-                            <h4><i class="fas fa-business-time me-2" style="color: var(--dream-orange);"></i>商業價值</h4>
+                            <h4><i class="fas fa-business-time me-2" style="color: var(--dream-orange);"></i><span data-zh="商業價值" data-en="Business Value">商業價值</span></h4>
                             <div class="achievement-item">
                                 <i class="fas fa-store me-2" style="color: var(--dream-light-sage);"></i>
-                                <strong>實用性：</strong> 直接解決獨立書店的實際營運需求
+                                <strong data-zh="實用性：" data-en="Practicality: ">實用性：</strong> <span data-zh="直接解決獨立書店的實際營運需求" data-en="Directly addresses real operational needs of independent bookstores">直接解決獨立書店的實際營運需求</span>
                             </div>
                             <div class="achievement-item">
                                 <i class="fas fa-dollar-sign me-2" style="color: var(--dream-light-sage);"></i>
-                                <strong>成本效益：</strong> 為小型書店提供可負擔的管理解決方案
+                                <strong data-zh="成本效益：" data-en="Cost Effectiveness: ">成本效益：</strong> <span data-zh="為小型書店提供可負擔的管理解決方案" data-en="Provides affordable management solution for small bookstores">為小型書店提供可負擔的管理解決方案</span>
                             </div>
                             <div class="achievement-item">
                                 <i class="fas fa-digital-tachograph me-2" style="color: var(--dream-light-sage);"></i>
-                                <strong>數位轉型：</strong> 協助傳統書店邁向數位化管理
+                                <strong data-zh="數位轉型：" data-en="Digital Transformation: ">數位轉型：</strong> <span data-zh="協助傳統書店邁向數位化管理" data-en="Assists traditional bookstores in digital management transformation">協助傳統書店邁向數位化管理</span>
                             </div>
                         </div>
                         <div class="col-md-6">
-                            <h4><i class="fas fa-microchip me-2" style="color: var(--dream-orange);"></i>技術價值</h4>
+                            <h4><i class="fas fa-microchip me-2" style="color: var(--dream-orange);"></i><span data-zh="技術價值" data-en="Technical Value">技術價值</span></h4>
                             <div class="achievement-item">
                                 <i class="fas fa-puzzle-piece me-2" style="color: var(--dream-light-sage);"></i>
-                                <strong>完整性：</strong> 涵蓋完整的書店管理業務流程
+                                <strong data-zh="完整性：" data-en="Completeness: ">完整性：</strong> <span data-zh="涵蓋完整的書店管理業務流程" data-en="Covers complete bookstore management business processes">涵蓋完整的書店管理業務流程</span>
                             </div>
                             <div class="achievement-item">
                                 <i class="fas fa-shield-alt me-2" style="color: var(--dream-light-sage);"></i>
-                                <strong>穩定性：</strong> 通過實際測試驗證的穩定系統
+                                <strong data-zh="穩定性：" data-en="Stability: ">穩定性：</strong> <span data-zh="通過實際測試驗證的穩定系統" data-en="Stable system verified through practical testing">通過實際測試驗證的穩定系統</span>
                             </div>
                             <div class="achievement-item">
                                 <i class="fas fa-expand-arrows-alt me-2" style="color: var(--dream-light-sage);"></i>
-                                <strong>擴展性：</strong> 為未來功能擴展奠定良好基礎
+                                <strong data-zh="擴展性：" data-en="Scalability: ">擴展性：</strong> <span data-zh="為未來功能擴展奠定良好基礎" data-en="Establishes solid foundation for future functionality expansion">為未來功能擴展奠定良好基礎</span>
                             </div>
                         </div>
                     </div>
                     
                     <div class="alert alert-success mt-4">
                         <i class="fas fa-star me-2"></i>
-                        這個專案充分展現了我作為獨立開發者的綜合能力，從需求分析、系統設計到程式實現的完整軟體開發生命週期掌握，以及面對複雜業務邏輯時的獨立思考和解決能力。
+                        <span data-zh="這個專案充分展現了我作為獨立開發者的綜合能力，從需求分析、系統設計到程式實現的完整軟體開發生命週期掌握，以及面對複雜業務邏輯時的獨立思考和解決能力。" data-en="This project fully demonstrates my comprehensive capabilities as an independent developer, including mastery of the complete software development lifecycle from requirement analysis and system design to implementation, as well as independent thinking and problem-solving abilities when facing complex business logic.">這個專案充分展現了我作為獨立開發者的綜合能力，從需求分析、系統設計到程式實現的完整軟體開發生命週期掌握，以及面對複雜業務邏輯時的獨立思考和解決能力。</span>
                     </div>
                 </div>
             </div>
@@ -1049,36 +1058,36 @@
             <!-- 專案亮點總結 -->
             <div class="card section-card" data-aos="fade-up" data-aos-delay="800">
                 <div class="section-header">
-                    <h2><i class="fas fa-gem"></i>專案亮點總結</h2>
+                    <h2><i class="fas fa-gem"></i><span data-zh="專案亮點總結" data-en="Project Highlights Summary">專案亮點總結</span></h2>
                 </div>
                 <div class="card-body">
                     <div class="row">
                         <div class="col-md-6">
                             <div class="value-card mb-4">
                                 <i class="fas fa-user-circle value-icon" style="color: var(--dream-orange);"></i>
-                                <h5>獨立開發能力</h5>
-                                <p class="mb-0">從零開始獨力完成完整系統開發，展現全方位的軟體開發技能和自主學習能力。</p>
+                                <h5 data-zh="獨立開發能力" data-en="Independent Development Capability">獨立開發能力</h5>
+                                <p class="mb-0" data-zh="從零開始獨力完成完整系統開發，展現全方位的軟體開發技能和自主學習能力。" data-en="Completed comprehensive system development from scratch independently, demonstrating full-spectrum software development skills and self-learning capability.">從零開始獨力完成完整系統開發，展現全方位的軟體開發技能和自主學習能力。</p>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="value-card mb-4">
                                 <i class="fas fa-heart value-icon" style="color: var(--dream-sage);"></i>
-                                <h5>用戶體驗設計</h5>
-                                <p class="mb-0">深入思考書店經營者的實際需求，設計直觀溫馨的使用者介面。</p>
+                                <h5 data-zh="用戶體驗設計" data-en="User Experience Design">用戶體驗設計</h5>
+                                <p class="mb-0" data-zh="深入思考書店經營者的實際需求，設計直觀溫馨的使用者介面。" data-en="Deep consideration of bookstore operators' real needs, designing intuitive and warm user interface.">深入思考書店經營者的實際需求，設計直觀溫馨的使用者介面。</p>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="value-card mb-4">
                                 <i class="fas fa-cogs value-icon" style="color: var(--dream-light-sage);"></i>
-                                <h5>系統架構設計</h5>
-                                <p class="mb-0">建立完整的資料庫關聯結構，實現複雜的業務邏輯和權限控制。</p>
+                                <h5 data-zh="系統架構設計" data-en="System Architecture Design">系統架構設計</h5>
+                                <p class="mb-0" data-zh="建立完整的資料庫關聯結構，實現複雜的業務邏輯和權限控制。" data-en="Established complete database relational structure, implementing complex business logic and permission control.">建立完整的資料庫關聯結構，實現複雜的業務邏輯和權限控制。</p>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="value-card mb-4">
                                 <i class="fas fa-seedling value-icon" style="color: var(--dream-orange);"></i>
-                                <h5>持續成長精神</h5>
-                                <p class="mb-0">通過實際專案不斷學習新技術，培養解決實際問題的能力。</p>
+                                <h5 data-zh="持續成長精神" data-en="Continuous Growth Mindset">持續成長精神</h5>
+                                <p class="mb-0" data-zh="通過實際專案不斷學習新技術，培養解決實際問題的能力。" data-en="Continuously learning new technologies through practical projects, developing capability to solve real-world problems.">通過實際專案不斷學習新技術，培養解決實際問題的能力。</p>
                             </div>
                         </div>
                     </div>
@@ -1093,22 +1102,59 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-6 text-md-start">
-                    <h5><i class="fas fa-user-circle me-2"></i>劉冠彤</h5>
-                    <p class="mb-0">獨立開發者 • 系統架構師 • 問題解決者</p>
+                    <h5><i class="fas fa-user-circle me-2"></i><span data-zh="劉冠彤" data-en="Liu Kuan-Tung">劉冠彤</span></h5>
+                    <p class="mb-0" data-zh="獨立開發者 • 系統架構師 • 問題解決者" data-en="Independent Developer • System Architect • Problem Solver">獨立開發者 • 系統架構師 • 問題解決者</p>
                 </div>
                 <div class="col-md-6 text-md-end">
-                    <h5><i class="fas fa-envelope me-2"></i>聯絡方式</h5>
-                    <p class="mb-0">歡迎透過作品集主頁聯繫我</p>
+                    <h5><i class="fas fa-envelope me-2"></i><span data-zh="聯絡方式" data-en="Contact">聯絡方式</span></h5>
+                    <p class="mb-0" data-zh="歡迎透過作品集主頁聯繫我" data-en="Feel free to contact me through the portfolio homepage">歡迎透過作品集主頁聯繫我</p>
                 </div>
             </div>
             <hr style="border-color: rgba(255,255,255,0.2); margin: 2rem 0;">
-            <p class="mb-0">&copy; 2025 劉冠彤 • Dream Bookstore 專案詳細介紹 • 展現獨立開發實力</p>
+            <p class="mb-0" data-zh="© 2025 劉冠彤 • Dream Bookstore 專案詳細介紹 • 展現獨立開發實力" data-en="© 2025 Liu Kuan-Tung • Dream Bookstore Project Details • Demonstrating Independent Development Skills">&copy; 2025 劉冠彤 • Dream Bookstore 專案詳細介紹 • 展現獨立開發實力</p>
         </div>
     </footer>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
     <script>
+        // 語言切換功能
+        function switchLanguage(lang) {
+            const elements = document.querySelectorAll('[data-zh], [data-en]');
+            elements.forEach(element => {
+                if (lang === 'zh' && element.hasAttribute('data-zh')) {
+                    element.textContent = element.getAttribute('data-zh');
+                } else if (lang === 'en' && element.hasAttribute('data-en')) {
+                    element.textContent = element.getAttribute('data-en');
+                }
+            });
+            
+            // 更新語言顯示
+            const currentLangElement = document.getElementById('current-lang');
+            if (currentLangElement) {
+                currentLangElement.textContent = lang === 'zh' ? '中文' : 'English';
+            }
+            
+            // 更新頁面標題
+            const titleElement = document.querySelector('title');
+            if (titleElement) {
+                if (lang === 'zh' && titleElement.hasAttribute('data-zh')) {
+                    titleElement.textContent = titleElement.getAttribute('data-zh');
+                } else if (lang === 'en' && titleElement.hasAttribute('data-en')) {
+                    titleElement.textContent = titleElement.getAttribute('data-en');
+                }
+            }
+            
+            // 儲存語言設定
+            localStorage.setItem('preferred-language', lang);
+        }
+        
+        // 載入頁面時檢查語言設定
+        document.addEventListener('DOMContentLoaded', function() {
+            const savedLanguage = localStorage.getItem('preferred-language') || 'zh';
+            switchLanguage(savedLanguage);
+        });
+
         // 回到頂部按鈕顯示與滾動
         const backToTopBtn = document.getElementById('backToTopBtn');
         window.addEventListener('scroll', function() {
