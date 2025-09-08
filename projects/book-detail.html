@@ -1149,10 +1149,82 @@
             localStorage.setItem('preferred-language', lang);
         }
         
-        // 載入頁面時檢查語言設定
-        document.addEventListener('DOMContentLoaded', function() {
-            const savedLanguage = localStorage.getItem('preferred-language') || 'zh';
-            switchLanguage(savedLanguage);
+        // 自動檢測用戶語言偏好
+        async function detectUserLanguage() {
+            // 1. 檢查是否已有儲存的語言偏好
+            const savedLang = localStorage.getItem('preferred-language');
+            if (savedLang) {
+                return savedLang;
+            }
+            
+            try {
+                // 2. 嘗試使用地理位置 API 檢測
+                const geoLang = await detectLanguageByGeolocation();
+                if (geoLang) {
+                    return geoLang;
+                }
+            } catch (error) {
+                console.log('地理位置檢測失敗，使用瀏覽器語言檢測');
+            }
+            
+            // 3. 回退到瀏覽器語言檢測
+            return detectBrowserLanguage();
+        }
+        
+        // 瀏覽器語言檢測
+        function detectBrowserLanguage() {
+            const language = navigator.language || navigator.userLanguage;
+            const languages = navigator.languages || [language];
+            
+            const chineseRegex = /^(zh|zh-TW|zh-CN|zh-HK|zh-SG)/i;
+            
+            for (let lang of languages) {
+                if (chineseRegex.test(lang)) {
+                    return 'zh';
+                }
+                if (lang.startsWith('en')) {
+                    return 'en';
+                }
+            }
+            
+            return 'zh';
+        }
+        
+        // 地理位置語言檢測
+        async function detectLanguageByGeolocation() {
+            try {
+                const response = await fetch('https://ipapi.co/json/', {
+                    timeout: 3000
+                });
+                
+                if (!response.ok) throw new Error('地理位置 API 請求失敗');
+                
+                const data = await response.json();
+                const country = data.country_code;
+                
+                const chineseRegions = ['TW', 'CN', 'HK', 'MO', 'SG'];
+                const englishRegions = ['US', 'GB', 'CA', 'AU', 'NZ', 'IE'];
+                
+                if (chineseRegions.includes(country)) {
+                    return 'zh';
+                } else if (englishRegions.includes(country)) {
+                    return 'en';
+                }
+                
+                return null;
+            } catch (error) {
+                return null;
+            }
+        }
+        
+        // 載入頁面時自動檢測語言
+        document.addEventListener('DOMContentLoaded', async function() {
+            try {
+                const detectedLang = await detectUserLanguage();
+                switchLanguage(detectedLang);
+            } catch (error) {
+                switchLanguage('zh');
+            }
         });
 
         // 回到頂部按鈕顯示與滾動
