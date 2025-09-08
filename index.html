@@ -28,6 +28,11 @@
             border-bottom: 1px solid rgba(0,0,0,0.05);
             padding: 1rem 0;
             transition: all 0.3s ease;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
         }
 
         .navbar-brand {
@@ -54,9 +59,12 @@
             align-items: center;
             background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
             position: relative;
+            padding-top: 100px; /* 為 navbar 留出空間 */
+            padding-bottom: 2rem;
         }
+        
         .hero-image {
-            margin-top: 60px;
+            margin-top: 0; /* 移除原有的 margin-top */
             display: flex;
             align-items: center;
             justify-content: center;
@@ -141,8 +149,23 @@
 
         /* 關於我區域 */
         .about-section {
-            padding: 6rem 0;
+            padding: 8rem 0 6rem 0; /* 增加頂部 padding 為 fixed navbar 留空間 */
             background: white;
+        }
+
+        /* 技能區域 */
+        .skills-section {
+            padding: 8rem 0 6rem 0;
+        }
+
+        /* 專案區域 */
+        .projects-section {
+            padding: 8rem 0 6rem 0;
+        }
+
+        /* 聯絡區域 */
+        .contact-section {
+            padding: 8rem 0 6rem 0;
         }
 
         .section-title {
@@ -169,7 +192,6 @@
 
         /* 技能區域 */
         .skills-section {
-            padding: 6rem 0;
             background: #f8f9fa;
         }
 
@@ -225,7 +247,6 @@
 
         /* 專案區域 */
         .projects-section {
-            padding: 6rem 0;
             background: white;
         }
 
@@ -303,7 +324,6 @@
 
         /* 聯絡區域 */
         .contact-section {
-            padding: 6rem 0;
             background: #2c3e50;
             color: white;
             text-align: center;
@@ -346,18 +366,63 @@
         }
 
         /* 響應式設計 */
-        @media (max-width: 768px) {
+        
+        /* 處理瀏覽器縮放 (100% 以上) */
+        @media screen and (min-width: 769px) {
+            .hero-section {
+                padding-top: clamp(80px, 8vh, 120px);
+                min-height: 100vh;
+            }
+            
             .hero-title {
-                font-size: 2.5rem;
+                font-size: clamp(2.5rem, 4vw, 3.5rem);
+            }
+            
+            .hero-subtitle {
+                font-size: clamp(1.2rem, 2vw, 1.5rem);
+            }
+            
+            .hero-image img {
+                width: clamp(350px, 30vw, 450px);
+                height: clamp(350px, 30vw, 450px);
+            }
+        }
+        
+        /* 平板設備 */
+        @media (max-width: 768px) {
+            .navbar {
+                padding: 0.75rem 0;
+            }
+            
+            .hero-section {
+                padding-top: 90px;
+                min-height: calc(100vh - 20px);
+                text-align: center;
+            }
+            
+            .hero-title {
+                font-size: clamp(2rem, 5vw, 2.5rem);
+                margin-bottom: 1rem;
             }
 
             .hero-subtitle {
-                font-size: 1.2rem;
+                font-size: clamp(1rem, 3vw, 1.2rem);
+                margin-bottom: 1.5rem;
+            }
+            
+            .hero-description {
+                font-size: 1rem;
+                margin-bottom: 2rem;
             }
 
+            .hero-image {
+                min-height: 300px;
+                margin-top: 2rem;
+            }
+            
             .hero-image img {
-                width: 300px;
-                height: 300px;
+                width: clamp(250px, 50vw, 300px);
+                height: clamp(250px, 50vw, 300px);
             }
 
             .section-title {
@@ -372,35 +437,92 @@
                 gap: 1rem;
             }
 
-            .hero-section {
-                text-align: center;
-            }
-
             .hero-content {
-                margin-bottom: 3rem;
+                margin-bottom: 2rem;
             }
         }
 
+        /* 手機設備 */
         @media (max-width: 576px) {
+            .navbar {
+                padding: 0.5rem 0;
+            }
+            
+            .navbar-brand {
+                font-size: 1.25rem;
+            }
+            
+            .hero-section {
+                padding-top: 80px;
+                padding-left: 1rem;
+                padding-right: 1rem;
+            }
+            
             .hero-title {
-                font-size: 2rem;
+                font-size: clamp(1.75rem, 6vw, 2rem);
+                line-height: 1.1;
+            }
+            
+            .hero-subtitle {
+                font-size: clamp(0.9rem, 4vw, 1rem);
+            }
+            
+            .hero-description {
+                font-size: 0.95rem;
+                line-height: 1.6;
             }
 
             .hero-image img {
-                width: 250px;
-                height: 250px;
+                width: clamp(200px, 60vw, 250px);
+                height: clamp(200px, 60vw, 250px);
             }
 
             .btn-primary-custom,
             .btn-outline-custom {
                 padding: 0.6rem 1.5rem;
                 font-size: 0.9rem;
-                margin: 0.5rem 0;
-                display: block;
-                text-align: center;
+            }
+            
+            .container {
+                padding-left: 1rem;
+                padding-right: 1rem;
+            }
+        }
+        
+        /* 極小螢幕 */
+        @media (max-width: 360px) {
+            .hero-section {
+                padding-top: 70px;
+            }
+            
+            .hero-title {
+                font-size: 1.5rem;
+            }
+            
+            .hero-image img {
+                width: 180px;
+                height: 180px;
+            }
+        }
+        
+        /* 處理高 DPI 顯示器 */
+        @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+            .hero-image img {
+                image-rendering: -webkit-optimize-contrast;
+                image-rendering: crisp-edges;
             }
         }
 
+        /* 確保所有 section 有足夠的頂部間距 */
+        section, .section {
+            scroll-margin-top: 100px; /* 為 fixed navbar 預留空間 */
+        }
+        
+        /* 平滑滾動 */
+        html {
+            scroll-behavior: smooth;
+        }
+        
         /* 回到頂部懸浮按鈕 */
         #backToTopBtn {
             display: none;
