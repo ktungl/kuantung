@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-zh="劉冠彤 - 技術博客" data-en="Liu Kuan-Tung - Tech Blog">劉冠彤 - 技術部落格</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/blog.css">
+</head>
+<body>
+    <!-- 導航列 -->
+    <nav class="navbar navbar-expand-lg navbar-light">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <i class="fas fa-code me-2"></i>
+                <span data-zh="劉冠彤" data-en="Liu Kuan-Tung">劉冠彤</span>
+            </a>
+            
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">
+                            <span data-zh="首頁" data-en="Home">首頁</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html#about">
+                            <span data-zh="關於我" data-en="About">關於我</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html#projects">
+                            <span data-zh="專案作品" data-en="Projects">專案作品</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="blog.html">
+                            <span data-zh="技術博客" data-en="Blog">部落格</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html#contact">
+                            <span data-zh="聯絡我" data-en="Contact">聯絡我</span>
+                        </a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="language-selector" role="button" data-bs-toggle="dropdown">
+                            中文
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#" onclick="updateLanguage('zh')">中文</a></li>
+                            <li><a class="dropdown-item" href="#" onclick="updateLanguage('en')">English</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Blog 標題區 -->
+    <section class="blog-header">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 mx-auto text-center">
+                    <h1 class="blog-title" data-zh="技術博客" data-en="Tech Blog">技術博客</h1>
+                    <p class="blog-subtitle" data-zh="分享我的程式開發心得與技術學習歷程" 
+                       data-en="Sharing my programming insights and technical learning journey">
+                       分享我的程式開發心得與技術學習歷程
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 主要內容 -->
+    <div class="container my-5">
+        <!-- 分類篩選器 -->
+        <div class="category-filters text-center">
+            <button class="filter-btn active" data-category="all" data-zh="全部" data-en="All">全部</button>
+            <button class="filter-btn" data-category="frontend" data-zh="前端開發" data-en="Frontend">前端開發</button>
+            <button class="filter-btn" data-category="backend" data-zh="後端開發" data-en="Backend">後端開發</button>
+            <button class="filter-btn" data-category="tools" data-zh="開發工具" data-en="Dev Tools">開發工具</button>
+            <button class="filter-btn" data-category="career" data-zh="職涯心得" data-en="Career">職涯心得</button>
+        </div>
+
+        <!-- 文章網格 -->
+        <div class="blog-grid" id="blog-grid">
+            <!-- 文章卡片將由 JavaScript 動態生成 -->
+        </div>
+
+        <!-- 分頁導航 -->
+        <nav aria-label="Blog pagination" class="mt-5">
+            <ul class="pagination justify-content-center">
+                <li class="page-item disabled">
+                    <a class="page-link" href="#" tabindex="-1">
+                        <i class="fas fa-chevron-left"></i>
+                    </a>
+                </li>
+                <li class="page-item active">
+                    <a class="page-link" href="#">1</a>
+                </li>
+                <li class="page-item">
+                    <a class="page-link" href="#">2</a>
+                </li>
+                <li class="page-item">
+                    <a class="page-link" href="#">3</a>
+                </li>
+                <li class="page-item">
+                    <a class="page-link" href="#">
+                        <i class="fas fa-chevron-right"></i>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+
+    <!-- 頁尾 -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <h5 data-zh="聯絡資訊" data-en="Contact Information">聯絡資訊</h5>
+                    <p class="mb-1">
+                        <i class="fas fa-envelope me-2"></i>
+                        <a href="mailto:liukuantung@gmail.com">liukuantung@gmail.com</a>
+                    </p>
+                    <p class="mb-1">
+                        <i class="fab fa-linkedin me-2"></i>
+                        <a href="https://www.linkedin.com/in/liukuantung/" target="_blank">LinkedIn</a>
+                    </p>
+                    <p class="mb-1">
+                        <i class="fab fa-github me-2"></i>
+                        <a href="https://github.com/ktungl" target="_blank">GitHub</a>
+                    </p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <p class="mb-0" data-zh="© 2024 劉冠彤。保留所有權利。" 
+                       data-en="© 2024 Liu Kuan-Tung. All rights reserved.">
+                       © 2024 劉冠彤。保留所有權利。
+                    </p>
+                    <p class="small text-muted" data-zh="使用 Bootstrap 與 Font Awesome 製作" 
+                       data-en="Built with Bootstrap & Font Awesome">
+                       使用 Bootstrap 與 Font Awesome 製作
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    <!-- 語言管理腳本 -->
+    <script src="js/language.js"></script>
+    <!-- Blog 管理腳本 -->
+    <script src="js/blog-manager.js"></script>
+    
+    <script>
+        // 使用 Blog Manager 初始化頁面
+        document.addEventListener('DOMContentLoaded', function() {
+            // 獲取當前語言
+            const currentLang = getCurrentLanguage();
+            
+            // 使用 Blog Manager 生成文章卡片
+            function generateBlogCards(category = 'all') {
+                const posts = window.BlogManager.getBlogPosts(category, currentLang);
+                const blogGrid = document.getElementById('blog-grid');
+                
+                blogGrid.innerHTML = posts.map(post => 
+                    window.BlogManager.generateBlogCard(post)
+                ).join('');
+                
+                // 添加淡入動畫
+                const cards = blogGrid.querySelectorAll('.blog-card');
+                cards.forEach((card, index) => {
+                    card.style.animationDelay = `${index * 0.1}s`;
+                });
+            }
+            
+            // 初始化頁面
+            generateBlogCards();
+            
+            // 篩選功能
+            const filterButtons = document.querySelectorAll('.filter-btn');
+            filterButtons.forEach(btn => {
+                btn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    // 更新按鈕狀態
+                    filterButtons.forEach(b => b.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    // 篩選文章
+                    const category = this.dataset.category;
+                    generateBlogCards(category);
+                });
+            });
+            
+            // 平滑滾動到頂部功能
+            window.scrollToTop = function() {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            };
+        });
+    </script>
+</body>
+</html>

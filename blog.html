@@ -1,0 +1,783 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-zh="劉冠彤 - 技術部落格" data-en="Liu Kuan-Tung - Tech Blog">劉冠彤 - 技術博客</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/blog.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.6;
+            color: #2c3e50;
+            overflow-x: hidden;
+        }
+
+        /* 導航列 */
+        .navbar {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+            padding: 1rem 0;
+            transition: all 0.3s ease;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+        }
+
+        .navbar-brand {
+            font-weight: 650;
+            font-size: 1.5rem;
+            color: #2c3e50 !important;
+        }
+
+        .navbar-nav .nav-link {
+            color: #2c3e50 !important;
+            font-weight: 500;
+            margin: 0 0.5rem;
+            transition: color 0.3s ease;
+        }
+
+        .navbar-nav .nav-link:hover {
+            color: #3498db !important;
+        }
+
+        /* Hero 區域 */
+        .hero-section {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 150px 0 100px 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg"><g fill="none" fill-rule="evenodd"><g fill="%23ffffff" fill-opacity="0.1"><circle cx="30" cy="30" r="4"/></g></svg>');
+            opacity: 0.3;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-title {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .hero-subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            margin-bottom: 2rem;
+        }
+
+        /* Blog 文章卡片 */
+        .blog-section {
+            padding: 100px 0;
+            background: #f8f9fa;
+        }
+
+        .blog-filters {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .filter-btn {
+            background: white;
+            border: 2px solid #e9ecef;
+            color: #6c757d;
+            padding: 0.5rem 1.5rem;
+            margin: 0 0.25rem;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+
+        .filter-btn:hover,
+        .filter-btn.active {
+            background: #3498db;
+            border-color: #3498db;
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .blog-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .blog-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+
+        .blog-card-image {
+            height: 200px;
+            background: linear-gradient(45deg, #3498db, #2ecc71);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .blog-card-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .blog-card-category {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: rgba(255,255,255,0.9);
+            color: #3498db;
+            padding: 0.25rem 0.75rem;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .blog-card-content {
+            padding: 1.5rem;
+        }
+
+        .blog-card-date {
+            color: #7f8c8d;
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .blog-card-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 1rem;
+            line-height: 1.4;
+        }
+
+        .blog-card-excerpt {
+            color: #6c757d;
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+
+        .blog-card-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .blog-card-tags {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .blog-tag {
+            background: #e9ecef;
+            color: #6c757d;
+            padding: 0.25rem 0.5rem;
+            border-radius: 10px;
+            font-size: 0.75rem;
+            font-weight: 500;
+        }
+
+        .blog-card-link {
+            color: #3498db;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: color 0.3s ease;
+        }
+
+        .blog-card-link:hover {
+            color: #2980b9;
+        }
+
+        /* 分頁 */
+        .pagination-wrapper {
+            text-align: center;
+            margin-top: 3rem;
+        }
+
+        .pagination {
+            justify-content: center;
+        }
+
+        .page-link {
+            color: #3498db;
+            border-color: #e9ecef;
+            font-weight: 500;
+        }
+
+        .page-link:hover {
+            background: #3498db;
+            border-color: #3498db;
+            color: white;
+        }
+
+        .page-item.active .page-link {
+            background: #3498db;
+            border-color: #3498db;
+        }
+
+        /* 回到頂部按鈕 */
+        #backToTopBtn {
+            display: none;
+            position: fixed;
+            bottom: 40px;
+            right: 40px;
+            background: #3498db;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(52, 152, 219, 0.3);
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+
+        #backToTopBtn:hover {
+            background: #2980b9;
+            transform: translateY(-2px);
+        }
+
+        /* 響應式設計 */
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1rem;
+            }
+
+            .blog-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .blog-filters {
+                margin-bottom: 2rem;
+            }
+
+            .filter-btn {
+                margin: 0.25rem;
+                padding: 0.4rem 1rem;
+                font-size: 0.9rem;
+            }
+        }
+
+        /* Footer */
+        footer {
+            background: #2c3e50;
+            color: white;
+            padding: 3rem 0 2rem 0;
+            text-align: center;
+        }
+
+        footer h5 {
+            color: #3498db;
+            margin-bottom: 1rem;
+        }
+
+        footer p {
+            opacity: 0.8;
+            margin-bottom: 0.5rem;
+        }
+
+        footer a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        footer a:hover {
+            color: #3498db;
+            text-decoration: underline;
+        }
+
+        footer hr {
+            border-color: rgba(255,255,255,0.2);
+            margin: 2rem 0 1rem 0;
+        }
+    </style>
+</head>
+<body>
+    <!-- 導航列 -->
+    <nav class="navbar navbar-expand-lg">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <i class="fas fa-code me-2"></i><span data-zh="劉冠彤" data-en="Liu Kuan-Tung">劉冠彤</span>
+            </a>
+            
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html" data-zh="首頁" data-en="Home">首頁</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html#about" data-zh="關於我" data-en="About">關於我</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html#projects" data-zh="專案作品" data-en="Projects">專案作品</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="blog.html" data-zh="技術博客" data-en="Tech Blog">技術博客</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html#contact" data-zh="聯絡我" data-en="Contact">聯絡我</a>
+                    </li>
+                </ul>
+                
+                <div class="navbar-nav">
+                    <div class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                            <i class="fas fa-globe me-1"></i><span id="current-lang">中文</span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#" onclick="switchLanguage('zh')">中文</a></li>
+                            <li><a class="dropdown-item" href="#" onclick="switchLanguage('en')">English</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero 區域 -->
+    <section class="hero-section">
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="hero-title" data-zh="技術博客" data-en="Tech Blog">技術博客</h1>
+                <p class="hero-subtitle" data-zh="分享我的技術學習之路、開發經驗與產業洞察" data-en="Sharing my tech learning journey, development experience & industry insights">分享我的技術學習之路、開發經驗與產業洞察</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Blog 內容區域 -->
+    <section class="blog-section">
+        <div class="container">
+            <!-- 文章分類篩選 -->
+            <div class="blog-filters">
+                <button class="filter-btn active" data-category="all" data-zh="全部" data-en="All">全部</button>
+                <button class="filter-btn" data-category="frontend" data-zh="前端開發" data-en="Frontend">前端開發</button>
+                <button class="filter-btn" data-category="backend" data-zh="後端開發" data-en="Backend">後端開發</button>
+                <button class="filter-btn" data-category="tools" data-zh="開發工具" data-en="Dev Tools">開發工具</button>
+                <button class="filter-btn" data-category="career" data-zh="職涯心得" data-en="Career">職涯心得</button>
+            </div>
+
+            <!-- 文章列表 -->
+            <div class="blog-grid" id="blogGrid">
+                <!-- 文章1 -->
+                <article class="blog-card" data-category="frontend">
+                    <div class="blog-card-image">
+                        <div class="blog-card-category" data-zh="前端開發" data-en="Frontend">前端開發</div>
+                    </div>
+                    <div class="blog-card-content">
+                        <div class="blog-card-date">2025-09-10</div>
+                        <h3 class="blog-card-title" data-zh="響應式網頁設計的最佳實踐" data-en="Best Practices for Responsive Web Design">響應式網頁設計的最佳實踐</h3>
+                        <p class="blog-card-excerpt" data-zh="探討現代響應式設計的核心原則，包括 Flexbox、Grid 佈局以及媒體查詢的進階應用技巧。" data-en="Exploring core principles of modern responsive design, including Flexbox, Grid layout, and advanced media query techniques.">探討現代響應式設計的核心原則，包括 Flexbox、Grid 佈局以及媒體查詢的進階應用技巧。</p>
+                        <div class="blog-card-footer">
+                            <div class="blog-card-tags">
+                                <span class="blog-tag">CSS</span>
+                                <span class="blog-tag">HTML</span>
+                                <span class="blog-tag">RWD</span>
+                            </div>
+                            <a href="blog/responsive-design.html" class="blog-card-link" data-zh="閱讀更多" data-en="Read More">
+                                閱讀更多 <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- 文章2 -->
+                <article class="blog-card" data-category="tools">
+                    <div class="blog-card-image">
+                        <div class="blog-card-category" data-zh="開發工具" data-en="Dev Tools">開發工具</div>
+                    </div>
+                    <div class="blog-card-content">
+                        <div class="blog-card-date">2025-09-08</div>
+                        <h3 class="blog-card-title" data-zh="VS Code 擴展開發指南" data-en="VS Code Extension Development Guide">VS Code 擴展開發指南</h3>
+                        <p class="blog-card-excerpt" data-zh="從零開始學習 VS Code 擴展開發，包括 API 使用、調試技巧以及發布流程的完整教學。" data-en="Learn VS Code extension development from scratch, including API usage, debugging tips, and complete publishing workflow.">從零開始學習 VS Code 擴展開發，包括 API 使用、調試技巧以及發布流程的完整教學。</p>
+                        <div class="blog-card-footer">
+                            <div class="blog-card-tags">
+                                <span class="blog-tag">VS Code</span>
+                                <span class="blog-tag">TypeScript</span>
+                                <span class="blog-tag">API</span>
+                            </div>
+                            <a href="blog/vscode-extension.html" class="blog-card-link" data-zh="閱讀更多" data-en="Read More">
+                                閱讀更多 <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- 文章3 -->
+                <article class="blog-card" data-category="career">
+                    <div class="blog-card-image">
+                        <div class="blog-card-category" data-zh="職涯心得" data-en="Career">職涯心得</div>
+                    </div>
+                    <div class="blog-card-content">
+                        <div class="blog-card-date">2025-09-05</div>
+                        <h3 class="blog-card-title" data-zh="從學生到工程師的轉換心得" data-en="Transitioning from Student to Engineer">從學生到工程師的轉換心得</h3>
+                        <p class="blog-card-excerpt" data-zh="分享從學校畢業到進入職場的心路歷程，包括技能準備、面試經驗與職涯規劃建議。" data-en="Sharing the journey from graduation to entering the workforce, including skill preparation, interview experience, and career planning advice.">分享從學校畢業到進入職場的心路歷程，包括技能準備、面試經驗與職涯規劃建議。</p>
+                        <div class="blog-card-footer">
+                            <div class="blog-card-tags">
+                                <span class="blog-tag" data-zh="職涯" data-en="Career">職涯</span>
+                                <span class="blog-tag" data-zh="心得" data-en="Experience">心得</span>
+                                <span class="blog-tag" data-zh="新人" data-en="Beginner">新人</span>
+                            </div>
+                            <a href="blog/student-to-engineer.html" class="blog-card-link" data-zh="閱讀更多" data-en="Read More">
+                                閱讀更多 <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- 文章4 -->
+                <article class="blog-card" data-category="backend">
+                    <div class="blog-card-image">
+                        <div class="blog-card-category" data-zh="後端開發" data-en="Backend">後端開發</div>
+                    </div>
+                    <div class="blog-card-content">
+                        <div class="blog-card-date">2025-09-02</div>
+                        <h3 class="blog-card-title" data-zh="資料庫設計原則與最佳化策略" data-en="Database Design Principles & Optimization Strategies">資料庫設計原則與最佳化策略</h3>
+                        <p class="blog-card-excerpt" data-zh="深入探討關聯式資料庫的設計原則，索引優化技巧，以及 SQL 查詢效能提升方法。" data-en="In-depth exploration of relational database design principles, index optimization techniques, and SQL query performance improvement methods.">深入探討關聯式資料庫的設計原則，索引優化技巧，以及 SQL 查詢效能提升方法。</p>
+                        <div class="blog-card-footer">
+                            <div class="blog-card-tags">
+                                <span class="blog-tag">SQL</span>
+                                <span class="blog-tag" data-zh="資料庫" data-en="Database">資料庫</span>
+                                <span class="blog-tag" data-zh="效能" data-en="Performance">效能</span>
+                            </div>
+                            <a href="blog/database-optimization.html" class="blog-card-link" data-zh="閱讀更多" data-en="Read More">
+                                閱讀更多 <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- 文章5 -->
+                <article class="blog-card" data-category="frontend">
+                    <div class="blog-card-image">
+                        <div class="blog-card-category" data-zh="前端開發" data-en="Frontend">前端開發</div>
+                    </div>
+                    <div class="blog-card-content">
+                        <div class="blog-card-date">2025-08-30</div>
+                        <h3 class="blog-card-title" data-zh="JavaScript ES6+ 進階特性詳解" data-en="Advanced ES6+ JavaScript Features Explained">JavaScript ES6+ 進階特性詳解</h3>
+                        <p class="blog-card-excerpt" data-zh="詳細介紹 ES6 之後的 JavaScript 新特性，包括解構賦值、箭頭函數、Promise 與 async/await 的實際應用。" data-en="Detailed introduction to JavaScript features after ES6, including destructuring, arrow functions, Promise and async/await practical applications.">詳細介紹 ES6 之後的 JavaScript 新特性，包括解構賦值、箭頭函數、Promise 與 async/await 的實際應用。</p>
+                        <div class="blog-card-footer">
+                            <div class="blog-card-tags">
+                                <span class="blog-tag">JavaScript</span>
+                                <span class="blog-tag">ES6+</span>
+                                <span class="blog-tag">Async</span>
+                            </div>
+                            <a href="blog/javascript-es6.html" class="blog-card-link" data-zh="閱讀更多" data-en="Read More">
+                                閱讀更多 <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- 文章6 -->
+                <article class="blog-card" data-category="tools">
+                    <div class="blog-card-image">
+                        <div class="blog-card-category" data-zh="開發工具" data-en="Dev Tools">開發工具</div>
+                    </div>
+                    <div class="blog-card-content">
+                        <div class="blog-card-date">2025-08-28</div>
+                        <h3 class="blog-card-title" data-zh="Git 版本控制進階應用" data-en="Advanced Git Version Control Applications">Git 版本控制進階應用</h3>
+                        <p class="blog-card-excerpt" data-zh="超越基礎指令的 Git 進階技巧，包括分支策略、衝突解決以及團隊協作的最佳實踐。" data-en="Advanced Git techniques beyond basic commands, including branching strategies, conflict resolution, and team collaboration best practices.">超越基礎指令的 Git 進階技巧，包括分支策略、衝突解決以及團隊協作的最佳實踐。</p>
+                        <div class="blog-card-footer">
+                            <div class="blog-card-tags">
+                                <span class="blog-tag">Git</span>
+                                <span class="blog-tag" data-zh="版本控制" data-en="Version Control">版本控制</span>
+                                <span class="blog-tag" data-zh="團隊協作" data-en="Teamwork">團隊協作</span>
+                            </div>
+                            <a href="blog/advanced-git.html" class="blog-card-link" data-zh="閱讀更多" data-en="Read More">
+                                閱讀更多 <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                </article>
+            </div>
+
+            <!-- 分頁 -->
+            <div class="pagination-wrapper">
+                <nav>
+                    <ul class="pagination">
+                        <li class="page-item disabled">
+                            <span class="page-link" data-zh="上一頁" data-en="Previous">上一頁</span>
+                        </li>
+                        <li class="page-item active">
+                            <span class="page-link">1</span>
+                        </li>
+                        <li class="page-item">
+                            <a class="page-link" href="#" onclick="loadPage(2)">2</a>
+                        </li>
+                        <li class="page-item">
+                            <a class="page-link" href="#" onclick="loadPage(3)">3</a>
+                        </li>
+                        <li class="page-item">
+                            <a class="page-link" href="#" onclick="loadPage(2)" data-zh="下一頁" data-en="Next">下一頁</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 text-md-start">
+                    <h5><i class="fas fa-user-circle me-2"></i><span data-zh="劉冠彤" data-en="Liu Kuan-Tung">劉冠彤</span></h5>
+                    <p class="mb-0" data-zh="全端工程師 • 技術愛好者 • 持續學習者" data-en="Full-Stack Developer • Tech Enthusiast • Lifelong Learner">全端工程師 • 技術愛好者 • 持續學習者</p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <h5><i class="fas fa-envelope me-2"></i><span data-zh="聯絡方式" data-en="Contact">聯絡方式</span></h5>
+                    <p class="mb-1">
+                        <i class="fas fa-envelope me-2"></i>
+                        <a href="mailto:liukuantung@gmail.com">liukuantung@gmail.com</a>
+                    </p>
+                    <p class="mb-1">
+                        <i class="fab fa-linkedin me-2"></i>
+                        <a href="https://www.linkedin.com/in/liukuantung/" target="_blank">LinkedIn</a>
+                    </p>
+                    <p class="mb-1">
+                        <i class="fab fa-github me-2"></i>
+                        <a href="https://github.com/ktungl" target="_blank">GitHub</a>
+                    </p>
+                </div>
+            </div>
+            <hr>
+            <p class="mb-0" data-zh="© 2025 劉冠彤 • 技術部落格 • 分享知識，共同成長" data-en="© 2025 Liu Kuan-Tung • Tech Blog • Sharing Knowledge, Growing Together">&copy; 2025 劉冠彤 • 技術部落格 • 分享知識，共同成長</p>
+        </div>
+    </footer>
+
+    <!-- 回到頂部按鈕 -->
+    <button id="backToTopBtn" title="回到頂部">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // 語言切換功能 (與主網站一致)
+        let currentLanguage = 'zh';
+        
+        function switchLanguage(lang) {
+            currentLanguage = lang;
+            const elements = document.querySelectorAll('[data-zh][data-en]');
+            
+            elements.forEach(element => {
+                const text = element.getAttribute('data-' + lang);
+                if (text) {
+                    element.textContent = text;
+                }
+            });
+            
+            // 更新語言選擇器顯示
+            const langDisplay = document.getElementById('current-lang');
+            langDisplay.textContent = lang === 'zh' ? '中文' : 'English';
+            
+            // 儲存語言偏好
+            localStorage.setItem('preferred-language', lang);
+            
+            // 更新頁面語言屬性
+            document.documentElement.lang = lang === 'zh' ? 'zh-TW' : 'en';
+        }
+        
+        // 自動檢測用戶語言偏好 (與主網站一致)
+        async function detectUserLanguage() {
+            const savedLang = localStorage.getItem('preferred-language');
+            if (savedLang) {
+                return savedLang;
+            }
+            
+            try {
+                const geoLang = await detectLanguageByGeolocation();
+                if (geoLang) {
+                    return geoLang;
+                }
+            } catch (error) {
+                console.log('地理位置檢測失敗，使用瀏覽器語言檢測');
+            }
+            
+            return detectBrowserLanguage();
+        }
+        
+        function detectBrowserLanguage() {
+            const language = navigator.language || navigator.userLanguage;
+            const languages = navigator.languages || [language];
+            
+            const chineseRegex = /^(zh|zh-TW|zh-CN|zh-HK|zh-SG)/i;
+            
+            for (let lang of languages) {
+                if (chineseRegex.test(lang)) {
+                    return 'zh';
+                }
+                if (lang.startsWith('en')) {
+                    return 'en';
+                }
+            }
+            
+            return 'zh';
+        }
+        
+        async function detectLanguageByGeolocation() {
+            try {
+                const response = await fetch('https://ipapi.co/json/', {
+                    timeout: 3000
+                });
+                
+                if (!response.ok) throw new Error('地理位置 API 請求失敗');
+                
+                const data = await response.json();
+                const country = data.country_code;
+                
+                const chineseRegions = ['TW', 'CN', 'HK', 'MO', 'SG'];
+                const englishRegions = ['US', 'GB', 'CA', 'AU', 'NZ', 'IE'];
+                
+                if (chineseRegions.includes(country)) {
+                    return 'zh';
+                } else if (englishRegions.includes(country)) {
+                    return 'en';
+                }
+                
+                return null;
+            } catch (error) {
+                return null;
+            }
+        }
+        
+        // 頁面載入時自動檢測語言
+        document.addEventListener('DOMContentLoaded', async function() {
+            try {
+                const detectedLang = await detectUserLanguage();
+                if (detectedLang !== 'zh') {
+                    switchLanguage(detectedLang);
+                }
+            } catch (error) {
+                switchLanguage('zh');
+            }
+        });
+
+        // 文章篩選功能
+        function filterBlogPosts(category) {
+            const cards = document.querySelectorAll('.blog-card');
+            const buttons = document.querySelectorAll('.filter-btn');
+            
+            // 更新按鈕狀態
+            buttons.forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+            
+            // 篩選文章
+            cards.forEach(card => {
+                if (category === 'all' || card.dataset.category === category) {
+                    card.style.display = 'block';
+                    card.style.animation = 'fadeIn 0.5s ease forwards';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+
+        // 添加篩選按鈕事件
+        document.querySelectorAll('.filter-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const category = this.dataset.category;
+                filterBlogPosts(category);
+            });
+        });
+
+        // 分頁功能 (模擬)
+        function loadPage(pageNumber) {
+            console.log('載入第', pageNumber, '頁');
+            // 這裡可以添加 AJAX 載入新文章的邏輯
+            
+            // 更新分頁狀態
+            document.querySelectorAll('.page-item').forEach(item => {
+                item.classList.remove('active');
+            });
+            
+            // 模擬載入動畫
+            const blogGrid = document.getElementById('blogGrid');
+            blogGrid.style.opacity = '0.5';
+            
+            setTimeout(() => {
+                blogGrid.style.opacity = '1';
+                // 這裡可以添加新的文章內容
+            }, 500);
+        }
+
+        // 回到頂部按鈕功能
+        const backToTopBtn = document.getElementById('backToTopBtn');
+        window.addEventListener('scroll', function() {
+            if (window.scrollY > 200) {
+                backToTopBtn.style.display = 'block';
+            } else {
+                backToTopBtn.style.display = 'none';
+            }
+        });
+
+        backToTopBtn.addEventListener('click', function() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        // 添加載入動畫
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes fadeIn {
+                from { opacity: 0; transform: translateY(20px); }
+                to { opacity: 1; transform: translateY(0); }
+            }
+            
+            .blog-card {
+                animation: fadeIn 0.6s ease forwards;
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
+</body>
+</html>
