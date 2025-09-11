@@ -1,0 +1,824 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>種花遊戲開發心得 - 從 Python 到 Flutter 的跨平台實踐</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.7;
+            color: #2c3e50;
+            background: #f8f9fa;
+        }
+
+        .navbar {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+            padding: 1rem 0;
+        }
+
+        .navbar-brand {
+            font-weight: 650;
+            font-size: 1.5rem;
+            color: #2c3e50 !important;
+        }
+
+        .navbar-nav .nav-link {
+            color: #2c3e50 !important;
+            font-weight: 500;
+            margin: 0 0.5rem;
+            transition: color 0.3s ease;
+        }
+
+        .navbar-nav .nav-link:hover {
+            color: #3498db !important;
+        }
+
+        .navbar-nav .nav-link.active {
+            color: #3498db !important;
+        }
+
+        .breadcrumb-section {
+            background: white;
+            padding: 1rem 0;
+            border-bottom: 1px solid #e9ecef;
+        }
+
+        .breadcrumb {
+            background: transparent;
+            padding: 0;
+            margin: 0;
+            font-size: 0.9rem;
+        }
+
+        .breadcrumb-item {
+            color: #6c757d;
+        }
+
+        .breadcrumb-item + .breadcrumb-item::before {
+            content: "›";
+            color: #6c757d;
+            margin: 0 0.5rem;
+        }
+
+        .breadcrumb-item a {
+            color: #3498db;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .breadcrumb-item a:hover {
+            color: #2980b9;
+            text-decoration: underline;
+        }
+
+        .breadcrumb-item.active {
+            color: #2c3e50;
+            font-weight: 500;
+        }
+
+        .article-header {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            color: #2c3e50;
+            padding: 120px 0 60px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .article-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg"><g fill="none" fill-rule="evenodd"><g fill="%23000000" fill-opacity="0.05"><circle cx="30" cy="30" r="4"/></g></svg>');
+            opacity: 0.3;
+        }
+
+        .article-meta {
+            background: white;
+            padding: 2rem 0;
+            border-bottom: 1px solid #e9ecef;
+        }
+
+        .article-content {
+            background: white;
+            padding: 3rem 0;
+            min-height: 60vh;
+        }
+
+        .article-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            position: relative;
+            z-index: 2;
+            color: #2c3e50;
+        }
+
+        .article-subtitle {
+            font-size: 1.2rem;
+            opacity: 0.8;
+            margin-bottom: 2rem;
+            position: relative;
+            z-index: 2;
+            color: #7f8c8d;
+        }
+
+        .meta-info {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            color: #6c757d;
+        }
+
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .content-section {
+            margin-bottom: 3rem;
+        }
+
+        .section-title {
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid #3498db;
+            display: inline-block;
+        }
+
+        .highlight-box {
+            background: linear-gradient(135deg, #e3f2fd 0%, #f3e5f5 100%);
+            border-left: 4px solid #3498db;
+            padding: 1.5rem;
+            border-radius: 0 10px 10px 0;
+            margin: 2rem 0;
+        }
+
+        .game-features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .feature-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .feature-icon {
+            font-size: 2rem;
+            color: #3498db;
+            margin-bottom: 1rem;
+        }
+
+        .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+
+        .tech-badge {
+            background: #3498db;
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .code-block {
+            background: #2d3748;
+            color: #e2e8f0;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 1rem 0;
+            overflow-x: auto;
+        }
+
+        .play-button {
+            background: #3498db;
+            color: white;
+            border: none;
+            padding: 0.75rem 2rem;
+            border-radius: 50px;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(52, 152, 219, 0.3);
+            position: relative;
+            z-index: 10;
+        }
+
+        .play-button:hover {
+            background: #2980b9;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(52, 152, 219, 0.4);
+            color: white;
+        }
+
+        .comparison-table {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .comparison-table table {
+            margin-bottom: 0;
+        }
+
+        .comparison-table th {
+            background: #3498db;
+            color: white;
+            font-weight: 600;
+            border: none;
+            padding: 1rem;
+        }
+
+        .comparison-table td {
+            padding: 1rem;
+            border-color: #e9ecef;
+        }
+
+        .tips-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+
+        .tip-card {
+            background: linear-gradient(135deg, #fff5f5 0%, #f0fff4 100%);
+            padding: 1rem;
+            border-radius: 8px;
+            border-left: 3px solid #e74c3c;
+        }
+
+        .social-share {
+            background: #f8f9fa;
+            padding: 2rem;
+            border-radius: 10px;
+            text-align: center;
+            margin: 3rem 0;
+        }
+
+        .share-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .share-btn {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .share-btn.github {
+            background: #333;
+            color: white;
+        }
+
+        .share-btn.linkedin {
+            background: #0077b5;
+            color: white;
+        }
+
+        .share-btn:hover {
+            transform: translateY(-2px);
+            color: white;
+        }
+
+        @media (max-width: 768px) {
+            .article-title {
+                font-size: 2rem;
+            }
+            
+            .meta-info {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 1rem;
+            }
+
+            .game-features {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="../index.html">
+                <i class="fas fa-code me-2"></i>
+                <span>劉冠彤</span>
+            </a>
+            
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="../index.html">
+                            <span>首頁</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../index.html#about">
+                            <span>關於我</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../index.html#projects">
+                            <span>專案作品</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="../blog.html">
+                            <span>技術博客</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../index.html#contact">
+                            <span>聯絡我</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Article Header -->
+    <header class="article-header">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-10 mx-auto text-center">
+                    <h1 class="article-title">種花遊戲開發心得</h1>
+                    <p class="article-subtitle">從 Python 到 Flutter 的跨平台遊戲開發實踐</p>
+                    <a href="https://ktungl.github.io/flower_garden_game" class="play-button" target="_blank" rel="noopener noreferrer">
+                        <i class="fas fa-play me-2"></i>立即遊玩
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Breadcrumb -->
+    <section class="breadcrumb-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-10 mx-auto">
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item">
+                                <a href="../index.html">
+                                    <i class="fas fa-home me-1"></i>首頁
+                                </a>
+                            </li>
+                            <li class="breadcrumb-item">
+                                <a href="../blog.html">
+                                    <i class="fas fa-blog me-1"></i>技術部落格
+                                </a>
+                            </li>
+                            <li class="breadcrumb-item active" aria-current="page">
+                                種花遊戲開發心得
+                            </li>
+                        </ol>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Article Meta -->
+    <section class="article-meta">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-10 mx-auto">
+                    <div class="meta-info">
+                        <div class="meta-item">
+                            <i class="fas fa-calendar-alt"></i>
+                            <span>2025年9月10日</span>
+                        </div>
+                        <div class="meta-item">
+                            <i class="fas fa-clock"></i>
+                            <span>閱讀時間 8 分鐘</span>
+                        </div>
+                        <div class="meta-item">
+                            <i class="fas fa-tags"></i>
+                            <span>Flutter, 遊戲開發, 跨平台</span>
+                        </div>
+                        <div class="meta-item">
+                            <i class="fas fa-eye"></i>
+                            <span>瀏覽次數 <span id="viewCount">載入中...</span></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Article Content -->
+    <section class="article-content">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-10 mx-auto">
+                    <!-- 專案簡介 -->
+                    <div class="content-section">
+                        <h2 class="section-title">專案簡介</h2>
+                        <p>這是一個有趣且令人上癮的手機遊戲，玩家需要在60秒內盡可能多地種花，同時避開危險的紅色蘑菇。每種一朵花得1分，但如果不小心點到蘑菇就會失去一條生命，而且蘑菇還會動態跳轉到新位置，增加遊戲的挑戰性。</p>
+                        
+                        <div class="highlight-box">
+                            <strong>專案亮點：</strong>這個遊戲最初是用 Python 開發的桌面版本，後來完全重構為 Flutter 應用，實現了跨平台部署（Web + Android）。
+                        </div>
+
+                        <div class="tech-stack">
+                            <span class="tech-badge">Flutter 3.24.3</span>
+                            <span class="tech-badge">Dart</span>
+                            <span class="tech-badge">GitHub Pages</span>
+                            <span class="tech-badge">GitHub Actions</span>
+                            <span class="tech-badge">CustomPainter</span>
+                        </div>
+                    </div>
+
+                    <!-- 遊戲規則與特色 -->
+                    <div class="content-section">
+                        <h2 class="section-title">遊戲規則與特色</h2>
+                        
+                        <div class="game-features">
+                            <div class="feature-card">
+                                <div class="feature-icon">⏰</div>
+                                <h4>限時挑戰</h4>
+                                <p>60秒倒數計時，考驗玩家的反應速度</p>
+                            </div>
+                            <div class="feature-card">
+                                <div class="feature-icon">🌸</div>
+                                <h4>種花得分</h4>
+                                <p>點擊螢幕種花，每朵花獲得1分</p>
+                            </div>
+                            <div class="feature-card">
+                                <div class="feature-icon">🍄</div>
+                                <h4>動態障礙</h4>
+                                <p>避開紅色蘑菇，每次點擊後位置會改變</p>
+                            </div>
+                            <div class="feature-card">
+                                <div class="feature-icon">❤️</div>
+                                <h4>生命系統</h4>
+                                <p>3條生命，點到蘑菇會失去生命</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 技術實作細節 -->
+                    <div class="content-section">
+                        <h2 class="section-title">技術實作細節</h2>
+                        
+                        <h3>核心架構</h3>
+                        <p>遊戲使用 Flutter 的 <code>CustomPainter</code> 來繪製所有遊戲元素，包括花朵、蘑菇和玩家指示器。這種方式提供了高度的繪圖控制能力，同時保持良好的效能。</p>
+
+                        <div class="code-block">
+<pre><code>class GamePainter extends CustomPainter {
+  final List&lt;Flower&gt; flowers;
+  final List&lt;Mushroom&gt; mushrooms;
+  final Offset? playerPosition;
+  
+  @override
+  void paint(Canvas canvas, Size size) {
+    // 繪製花朵
+    for (var flower in flowers) {
+      _drawFlower(canvas, flower.position);
+    }
+    
+    // 繪製蘑菇
+    for (var mushroom in mushrooms) {
+      _drawMushroom(canvas, mushroom.position);
+    }
+    
+    // 繪製玩家位置指示器
+    if (playerPosition != null) {
+      _drawPlayerIndicator(canvas, playerPosition!);
+    }
+  }
+}</code></pre>
+                        </div>
+
+                        <h3>遊戲狀態管理</h3>
+                        <p>使用 Flutter 的內建狀態管理機制，透過 <code>StatefulWidget</code> 和 <code>setState()</code> 來管理遊戲狀態：</p>
+
+                        <ul>
+                            <li><strong>遊戲計時</strong>：使用 <code>Timer.periodic</code> 實現倒數計時</li>
+                            <li><strong>碰撞檢測</strong>：基於座標距離計算來判斷是否點擊到蘑菇</li>
+                            <li><strong>隨機位置</strong>：使用 <code>Random</code> 類別生成蘑菇的新位置</li>
+                            <li><strong>動畫效果</strong>：透過 <code>AnimationController</code> 實現平滑的視覺效果</li>
+                        </ul>
+                    </div>
+
+                    <!-- 從 Python 到 Flutter 的轉換 -->
+                    <div class="content-section">
+                        <h2 class="section-title">從 Python 到 Flutter 的轉換</h2>
+                        
+                        <p>這個專案最初是在史丹佛大學的 Code in Place 課程中用 Python 開發的桌面遊戲。為了讓更多人能夠遊玩，我決定將其重構為跨平台的 Flutter 應用。</p>
+
+                        <div class="comparison-table">
+                            <table class="table table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>技術面向</th>
+                                        <th>Python 原版</th>
+                                        <th>Flutter 新版</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>圖形繪製</td>
+                                        <td>Stanford Graphics Library</td>
+                                        <td>Flutter CustomPainter</td>
+                                    </tr>
+                                    <tr>
+                                        <td>輸入處理</td>
+                                        <td>滑鼠點擊事件</td>
+                                        <td>觸控手勢識別</td>
+                                    </tr>
+                                    <tr>
+                                        <td>平台支援</td>
+                                        <td>僅限桌面</td>
+                                        <td>Web + Android + iOS</td>
+                                    </tr>
+                                    <tr>
+                                        <td>部署方式</td>
+                                        <td>本地執行</td>
+                                        <td>GitHub Pages + APK</td>
+                                    </tr>
+                                    <tr>
+                                        <td>效能表現</td>
+                                        <td>依賴 Python 解釋器</td>
+                                        <td>編譯為原生代碼</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <div class="highlight-box">
+                            <strong>轉換挑戰：</strong>最大的挑戰是將基於事件驅動的桌面應用邏輯轉換為適合觸控介面的移動應用。需要重新思考用戶交互方式和響應式佈局設計。
+                        </div>
+                    </div>
+
+                    <!-- 部署與CI/CD -->
+                    <div class="content-section">
+                        <h2 class="section-title">部署與 CI/CD</h2>
+                        
+                        <p>專案使用 GitHub Actions 實現自動化部署流程：</p>
+
+                        <div class="code-block">
+<pre><code>name: Deploy to GitHub Pages
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: subosito/flutter-action@v2
+        with:
+          flutter-version: '3.24.3'
+      - run: flutter pub get
+      - run: flutter build web --release
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./build/web</code></pre>
+                        </div>
+
+                        <p>這個配置實現了：</p>
+                        <ul>
+                            <li>自動構建 Web 版本並部署到 GitHub Pages</li>
+                            <li>自動生成 Android APK 檔案</li>
+                            <li>版本標籤管理和發布流程</li>
+                        </ul>
+                    </div>
+
+                    <!-- 高分秘訣 -->
+                    <div class="content-section">
+                        <h2 class="section-title">高分秘訣</h2>
+                        
+                        <div class="tips-grid">
+                            <div class="tip-card">
+                                <h5>保持冷靜</h5>
+                                <p>蘑菇出現在手指附近時不要驚慌，觀察其位置再行動</p>
+                            </div>
+                            <div class="tip-card">
+                                <h5>快速點擊</h5>
+                                <p>在安全區域快速連續點擊，最大化得分效率</p>
+                            </div>
+                            <div class="tip-card">
+                                <h5>邊緣策略</h5>
+                                <p>螢幕邊緣通常較安全，蘑菇較少出現在邊界位置</p>
+                            </div>
+                            <div class="tip-card">
+                                <h5>模式識別</h5>
+                                <p>觀察蘑菇的移動模式，找出相對安全的區域</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 學習心得 -->
+                    <div class="content-section">
+                        <h2 class="section-title">開發心得與反思</h2>
+                        
+                        <h3>技術收穫</h3>
+                        <ul>
+                            <li><strong>跨平台開發</strong>：深入理解了 Flutter 的跨平台能力和限制</li>
+                            <li><strong>自定義繪圖</strong>：掌握了 CustomPainter 的進階應用技巧</li>
+                            <li><strong>遊戲邏輯設計</strong>：學會了如何設計簡單但有趣的遊戲機制</li>
+                            <li><strong>CI/CD 實踐</strong>：建立了完整的自動化部署流程</li>
+                        </ul>
+
+                        <h3>專案管理經驗</h3>
+                        <ul>
+                            <li><strong>版本控制</strong>：使用 Git 管理不同版本的程式碼</li>
+                            <li><strong>問題追蹤</strong>：透過 GitHub Issues 記錄和解決技術問題</li>
+                            <li><strong>文件撰寫</strong>：編寫清晰的 README 和技術文件</li>
+                        </ul>
+
+                        <div class="highlight-box">
+                            <strong>最大收穫：</strong>這個專案讓我體驗了完整的軟體開發週期，從概念設計到部署上線，每個階段都有不同的挑戰和學習機會。
+                        </div>
+                    </div>
+
+                    <!-- 未來計畫 -->
+                    <div class="content-section">
+                        <h2 class="section-title">未來改進計畫</h2>
+                        
+                        <ul>
+                            <li>🏆 <strong>排行榜系統</strong>：添加本地和線上排行榜功能</li>
+                            <li>🎵 <strong>音效與音樂</strong>：增加背景音樂和互動音效</li>
+                            <li>🎨 <strong>主題系統</strong>：提供多種視覺主題選擇</li>
+                            <li>📊 <strong>統計數據</strong>：記錄詳細的遊戲統計資訊</li>
+                            <li>🌟 <strong>成就系統</strong>：設計各種遊戲成就和獎勵</li>
+                            <li>📱 <strong>iOS 版本</strong>：發布到 App Store</li>
+                        </ul>
+                    </div>
+
+                    <!-- 社群分享 -->
+                    <div class="social-share">
+                        <h3>分享這個專案</h3>
+                        <p>如果你喜歡這個遊戲或這篇文章，歡迎分享給更多人！</p>
+                        <div class="share-buttons">
+                            <a href="https://github.com/ktungl/flower_garden_game" class="share-btn github" target="_blank">
+                                <i class="fab fa-github"></i>
+                                查看原始碼
+                            </a>
+                            <a href="https://ktungl.github.io/flower_garden_game" class="share-btn linkedin" target="_blank">
+                                <i class="fas fa-play"></i>
+                                立即遊玩
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+    
+    <script>
+        // 瀏覽次數統計系統
+        class ViewCountTracker {
+            constructor(articleId) {
+                this.articleId = articleId;
+                this.storageKey = `viewCount_${articleId}`;
+                this.sessionKey = `session_${articleId}`;
+                this.lastViewKey = `lastView_${articleId}`;
+                this.init();
+            }
+
+            init() {
+                // 檢查是否為新的訪問會話
+                if (this.isNewSession()) {
+                    this.incrementViewCount();
+                    this.recordSession();
+                }
+                this.displayViewCount();
+            }
+
+            isNewSession() {
+                const sessionId = sessionStorage.getItem(this.sessionKey);
+                const lastView = localStorage.getItem(this.lastViewKey);
+                const now = new Date().getTime();
+                
+                // 如果沒有會話ID，或者距離上次訪問超過30分鐘，則認為是新訪問
+                if (!sessionId || (lastView && (now - parseInt(lastView)) > 30 * 60 * 1000)) {
+                    return true;
+                }
+                return false;
+            }
+
+            incrementViewCount() {
+                let currentCount = parseInt(localStorage.getItem(this.storageKey)) || 0;
+                currentCount++;
+                localStorage.setItem(this.storageKey, currentCount.toString());
+                localStorage.setItem(this.lastViewKey, new Date().getTime().toString());
+            }
+
+            recordSession() {
+                // 為這次會話生成唯一ID
+                const sessionId = Date.now().toString() + Math.random().toString(36).substr(2, 9);
+                sessionStorage.setItem(this.sessionKey, sessionId);
+            }
+
+            getViewCount() {
+                return parseInt(localStorage.getItem(this.storageKey)) || 0;
+            }
+
+            displayViewCount() {
+                const viewCountElement = document.getElementById('viewCount');
+                if (viewCountElement) {
+                    const count = this.getViewCount();
+                    viewCountElement.textContent = count.toLocaleString();
+                    
+                    // 添加動畫效果
+                    viewCountElement.style.opacity = '0';
+                    setTimeout(() => {
+                        viewCountElement.style.transition = 'opacity 0.5s ease';
+                        viewCountElement.style.opacity = '1';
+                    }, 100);
+                }
+            }
+
+            // 開發者工具：重置瀏覽次數（僅供測試）
+            reset() {
+                localStorage.removeItem(this.storageKey);
+                localStorage.removeItem(this.lastViewKey);
+                sessionStorage.removeItem(this.sessionKey);
+                this.displayViewCount();
+                console.log('瀏覽次數已重置');
+            }
+        }
+
+        // 初始化瀏覽次數追蹤
+        document.addEventListener('DOMContentLoaded', function() {
+            const tracker = new ViewCountTracker('flower-garden-game');
+            
+            // 將 tracker 實例添加到全局範圍供調試使用
+            window.viewTracker = tracker;
+            
+            // 在控制台顯示使用說明
+            console.log('💡 瀏覽次數追蹤已啟動');
+            console.log('🔧 開發者工具: window.viewTracker.reset() - 重置瀏覽次數');
+            console.log('📊 當前瀏覽次數:', tracker.getViewCount());
+        });
+
+        // 頁面可見性API - 當用戶切換標籤頁後回來時不重複計算
+        document.addEventListener('visibilitychange', function() {
+            if (document.visibilityState === 'visible') {
+                // 頁面重新變為可見時，不增加瀏覽次數
+                // 因為我們已經在會話中記錄了這次訪問
+                console.log('頁面重新可見，但不重複計算瀏覽次數');
+            }
+        });
+
+        // 防止重新整理頁面時重複計算
+        window.addEventListener('beforeunload', function() {
+            // 頁面卸載時不做任何操作
+            // 瀏覽次數已經在初始化時計算過了
+        });
+    </script>
+</body>
+</html>

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title data-zh="劉冠彤 - 技術部落格" data-en="Liu Kuan-Tung - Tech Blog">劉冠彤 - 技術博客</title>
+    <title data-zh="劉冠彤 - 技術部落格" data-en="Liu Kuan-Tung - Tech Blog">劉冠彤 - 部落格</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -56,8 +56,8 @@
 
         /* Hero 區域 */
         .hero-section {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            color: #2c3e50;
             padding: 150px 0 100px 0;
             text-align: center;
             position: relative;
@@ -71,7 +71,7 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: url('data:image/svg+xml,<svg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg"><g fill="none" fill-rule="evenodd"><g fill="%23ffffff" fill-opacity="0.1"><circle cx="30" cy="30" r="4"/></g></svg>');
+            background: url('data:image/svg+xml,<svg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg"><g fill="none" fill-rule="evenodd"><g fill="%23000000" fill-opacity="0.05"><circle cx="30" cy="30" r="4"/></g></svg>');
             opacity: 0.3;
         }
 
@@ -84,12 +84,14 @@
             font-size: 3rem;
             font-weight: 700;
             margin-bottom: 1rem;
+            color: #2c3e50;
         }
 
         .hero-subtitle {
             font-size: 1.2rem;
-            opacity: 0.9;
+            opacity: 0.8;
             margin-bottom: 2rem;
+            color: #7f8c8d;
         }
 
         /* Blog 文章卡片 */
@@ -145,9 +147,10 @@
 
         .blog-card-image {
             height: 200px;
-            background: linear-gradient(45deg, #3498db, #2ecc71);
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
             position: relative;
             overflow: hidden;
+            border-bottom: 1px solid #e9ecef;
         }
 
         .blog-card-image img {
@@ -312,6 +315,11 @@
             text-align: center;
         }
 
+        .view-count-small {
+            font-size: 0.85rem;
+            opacity: 0.8;
+        }
+
         footer h5 {
             color: #3498db;
             margin-bottom: 1rem;
@@ -389,7 +397,7 @@
     <section class="hero-section">
         <div class="container">
             <div class="hero-content">
-                <h1 class="hero-title" data-zh="技術博客" data-en="Tech Blog">技術博客</h1>
+                <h1 class="hero-title" data-zh="技術博客" data-en="Tech Blog">技術部落格</h1>
                 <p class="hero-subtitle" data-zh="分享我的技術學習之路、開發經驗與產業洞察" data-en="Sharing my tech learning journey, development experience & industry insights">分享我的技術學習之路、開發經驗與產業洞察</p>
             </div>
         </div>
@@ -403,7 +411,7 @@
                 <button class="filter-btn active" data-category="all" data-zh="全部" data-en="All">全部</button>
                 <button class="filter-btn" data-category="frontend" data-zh="前端開發" data-en="Frontend">前端開發</button>
                 <button class="filter-btn" data-category="backend" data-zh="後端開發" data-en="Backend">後端開發</button>
-                <button class="filter-btn" data-category="tools" data-zh="開發工具" data-en="Dev Tools">開發工具</button>
+                <button class="filter-btn" data-category="tools" data-zh="App開發" data-en="App Dev">App開發</button>
                 <button class="filter-btn" data-category="career" data-zh="職涯心得" data-en="Career">職涯心得</button>
             </div>
 
@@ -434,26 +442,25 @@
                 <!-- 文章2 -->
                 <article class="blog-card" data-category="tools">
                     <div class="blog-card-image">
-                        <div class="blog-card-category" data-zh="開發工具" data-en="Dev Tools">開發工具</div>
+                        <div class="blog-card-category" data-zh="種花遊戲開發" data-en="App Development">App開發</div>
                     </div>
                     <div class="blog-card-content">
-                        <div class="blog-card-date">2025-09-08</div>
-                        <h3 class="blog-card-title" data-zh="VS Code 擴展開發指南" data-en="VS Code Extension Development Guide">VS Code 擴展開發指南</h3>
-                        <p class="blog-card-excerpt" data-zh="從零開始學習 VS Code 擴展開發，包括 API 使用、調試技巧以及發布流程的完整教學。" data-en="Learn VS Code extension development from scratch, including API usage, debugging tips, and complete publishing workflow.">從零開始學習 VS Code 擴展開發，包括 API 使用、調試技巧以及發布流程的完整教學。</p>
+                        <div class="blog-card-date">2025-09-11</div>
+                        <h3 class="blog-card-title" data-zh="種花遊戲：從Python到Flutter" data-en="Garden Game: From Python to Flutter">種花遊戲：從Python到Flutter</h3>
+                        <p class="blog-card-excerpt" data-zh="從零開始學習 Flutter 開發，包括環境設置、基本概念以及實作範例。" data-en="Learn Flutter development from scratch, including environment setup, basic concepts, and implementation examples.">從零開始學習 Flutter 開發，包括環境設置、基本概念以及實作範例。</p>
                         <div class="blog-card-footer">
                             <div class="blog-card-tags">
-                                <span class="blog-tag">VS Code</span>
-                                <span class="blog-tag">TypeScript</span>
-                                <span class="blog-tag">API</span>
+                                <span class="blog-tag">Flutter</span>
+                                <span class="blog-tag">Dart</span>
                             </div>
-                            <a href="blog/vscode-extension.html" class="blog-card-link" data-zh="閱讀更多" data-en="Read More">
+                            <a href="blog/flower-garden-game.html" class="blog-card-link" data-zh="閱讀更多" data-en="Read More">
                                 閱讀更多 <i class="fas fa-arrow-right"></i>
                             </a>
                         </div>
                     </div>
                 </article>
 
-                <!-- 文章3 -->
+                <!-- 文章3
                 <article class="blog-card" data-category="career">
                     <div class="blog-card-image">
                         <div class="blog-card-category" data-zh="職涯心得" data-en="Career">職涯心得</div>
@@ -475,7 +482,7 @@
                     </div>
                 </article>
 
-                <!-- 文章4 -->
+                文章4
                 <article class="blog-card" data-category="backend">
                     <div class="blog-card-image">
                         <div class="blog-card-category" data-zh="後端開發" data-en="Backend">後端開發</div>
@@ -497,7 +504,7 @@
                     </div>
                 </article>
 
-                <!-- 文章5 -->
+                文章5
                 <article class="blog-card" data-category="frontend">
                     <div class="blog-card-image">
                         <div class="blog-card-category" data-zh="前端開發" data-en="Frontend">前端開發</div>
@@ -519,7 +526,7 @@
                     </div>
                 </article>
 
-                <!-- 文章6 -->
+                文章6
                 <article class="blog-card" data-category="tools">
                     <div class="blog-card-image">
                         <div class="blog-card-category" data-zh="開發工具" data-en="Dev Tools">開發工具</div>
@@ -539,8 +546,8 @@
                             </a>
                         </div>
                     </div>
-                </article>
-            </div>
+                </article>-->
+            </div> 
 
             <!-- 分頁 -->
             <div class="pagination-wrapper">
@@ -589,6 +596,11 @@
                         <i class="fab fa-github me-2"></i>
                         <a href="https://github.com/ktungl" target="_blank">GitHub</a>
                     </p>
+                    <!-- 小巧的瀏覽次數顯示 -->
+                    <p class="mb-1 view-count-small">
+                        <i class="fas fa-eye me-2"></i>
+                        <span id="viewCount">載入中...</span> <span data-zh="次瀏覽" data-en="views">次瀏覽</span>
+                    </p>
                 </div>
             </div>
             <hr>
@@ -603,6 +615,74 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
     <script>
+        // 瀏覽次數統計系統
+        class ViewCountTracker {
+            constructor(articleId) {
+                this.articleId = articleId;
+                this.storageKey = `viewCount_${articleId}`;
+                this.sessionKey = `session_${articleId}`;
+                this.lastViewKey = `lastView_${articleId}`;
+                this.init();
+            }
+
+            init() {
+                if (this.isNewSession()) {
+                    this.incrementViewCount();
+                    this.recordSession();
+                }
+                this.displayViewCount();
+            }
+
+            isNewSession() {
+                const sessionId = sessionStorage.getItem(this.sessionKey);
+                const lastView = localStorage.getItem(this.lastViewKey);
+                const now = new Date().getTime();
+                
+                if (!sessionId || (lastView && (now - parseInt(lastView)) > 30 * 60 * 1000)) {
+                    return true;
+                }
+                return false;
+            }
+
+            incrementViewCount() {
+                let currentCount = parseInt(localStorage.getItem(this.storageKey)) || 0;
+                currentCount++;
+                localStorage.setItem(this.storageKey, currentCount.toString());
+                localStorage.setItem(this.lastViewKey, new Date().getTime().toString());
+            }
+
+            recordSession() {
+                const sessionId = Date.now().toString() + Math.random().toString(36).substr(2, 9);
+                sessionStorage.setItem(this.sessionKey, sessionId);
+            }
+
+            getViewCount() {
+                return parseInt(localStorage.getItem(this.storageKey)) || 0;
+            }
+
+            displayViewCount() {
+                const viewCountElement = document.getElementById('viewCount');
+                if (viewCountElement) {
+                    const count = this.getViewCount();
+                    viewCountElement.textContent = count.toLocaleString();
+                    
+                    viewCountElement.style.opacity = '0';
+                    setTimeout(() => {
+                        viewCountElement.style.transition = 'opacity 0.5s ease';
+                        viewCountElement.style.opacity = '1';
+                    }, 100);
+                }
+            }
+
+            reset() {
+                localStorage.removeItem(this.storageKey);
+                localStorage.removeItem(this.lastViewKey);
+                sessionStorage.removeItem(this.sessionKey);
+                this.displayViewCount();
+                console.log('瀏覽次數已重置');
+            }
+        }
+
         // 語言切換功能 (與主網站一致)
         let currentLanguage = 'zh';
         
@@ -701,6 +781,13 @@
             } catch (error) {
                 switchLanguage('zh');
             }
+            
+            // 初始化瀏覽次數追蹤
+            const tracker = new ViewCountTracker('blog-homepage');
+            window.viewTracker = tracker;
+            console.log('💡 瀏覽次數追蹤已啟動 - blog-homepage');
+            console.log('🔧 開發者工具: window.viewTracker.reset() - 重置瀏覽次數');
+            console.log('📊 當前瀏覽次數:', tracker.getViewCount());
         });
 
         // 文章篩選功能

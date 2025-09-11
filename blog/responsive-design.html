@@ -447,7 +447,7 @@
             <div class="article-meta">
                 <span><i class="fas fa-calendar"></i>2025-09-10</span>
                 <span><i class="fas fa-clock"></i><span data-zh="8 分鐘閱讀" data-en="8 min read">8 分鐘閱讀</span></span>
-                <span><i class="fas fa-eye"></i>1,234 <span data-zh="次瀏覽" data-en="views">次瀏覽</span></span>
+                <span><i class="fas fa-eye"></i><span id="viewCount">載入中...</span> <span data-zh="次瀏覽" data-en="views">次瀏覽</span></span>
             </div>
 
             <div class="article-tags">
@@ -705,6 +705,74 @@ img {
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
     <script>
+        // 瀏覽次數統計系統
+        class ViewCountTracker {
+            constructor(articleId) {
+                this.articleId = articleId;
+                this.storageKey = `viewCount_${articleId}`;
+                this.sessionKey = `session_${articleId}`;
+                this.lastViewKey = `lastView_${articleId}`;
+                this.init();
+            }
+
+            init() {
+                if (this.isNewSession()) {
+                    this.incrementViewCount();
+                    this.recordSession();
+                }
+                this.displayViewCount();
+            }
+
+            isNewSession() {
+                const sessionId = sessionStorage.getItem(this.sessionKey);
+                const lastView = localStorage.getItem(this.lastViewKey);
+                const now = new Date().getTime();
+                
+                if (!sessionId || (lastView && (now - parseInt(lastView)) > 30 * 60 * 1000)) {
+                    return true;
+                }
+                return false;
+            }
+
+            incrementViewCount() {
+                let currentCount = parseInt(localStorage.getItem(this.storageKey)) || 0;
+                currentCount++;
+                localStorage.setItem(this.storageKey, currentCount.toString());
+                localStorage.setItem(this.lastViewKey, new Date().getTime().toString());
+            }
+
+            recordSession() {
+                const sessionId = Date.now().toString() + Math.random().toString(36).substr(2, 9);
+                sessionStorage.setItem(this.sessionKey, sessionId);
+            }
+
+            getViewCount() {
+                return parseInt(localStorage.getItem(this.storageKey)) || 0;
+            }
+
+            displayViewCount() {
+                const viewCountElement = document.getElementById('viewCount');
+                if (viewCountElement) {
+                    const count = this.getViewCount();
+                    viewCountElement.textContent = count.toLocaleString();
+                    
+                    viewCountElement.style.opacity = '0';
+                    setTimeout(() => {
+                        viewCountElement.style.transition = 'opacity 0.5s ease';
+                        viewCountElement.style.opacity = '1';
+                    }, 100);
+                }
+            }
+
+            reset() {
+                localStorage.removeItem(this.storageKey);
+                localStorage.removeItem(this.lastViewKey);
+                sessionStorage.removeItem(this.sessionKey);
+                this.displayViewCount();
+                console.log('瀏覽次數已重置');
+            }
+        }
+
         // 語言切換功能 (與主網站一致)
         let currentLanguage = 'zh';
         
@@ -803,6 +871,13 @@ img {
             } catch (error) {
                 switchLanguage('zh');
             }
+            
+            // 初始化瀏覽次數追蹤
+            const tracker = new ViewCountTracker('responsive-design');
+            window.viewTracker = tracker;
+            console.log('💡 瀏覽次數追蹤已啟動 - responsive-design');
+            console.log('🔧 開發者工具: window.viewTracker.reset() - 重置瀏覽次數');
+            console.log('📊 當前瀏覽次數:', tracker.getViewCount());
         });
 
         // 分享功能

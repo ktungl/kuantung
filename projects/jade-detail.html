@@ -358,6 +358,11 @@
             margin-top: 5rem;
         }
 
+        .view-count-small {
+            font-size: 0.85rem;
+            opacity: 0.8;
+        }
+
         /* 滾動指示器 */
         .scroll-indicator {
             position: fixed;
@@ -583,11 +588,11 @@
                             <span data-zh="專案作品" data-en="Projects">專案作品</span>
                         </a>
                     </li>
-                    <!-- <li class="nav-item">
+                    <li class="nav-item">
                         <a class="nav-link" href="../blog.html">
                             <span data-zh="部落格" data-en="Blog">部落格</span>
                         </a>
-                    </li> -->
+                    </li>
                     <li class="nav-item">
                         <a class="nav-link" href="../index.html#contact">
                             <span data-zh="聯絡我" data-en="Contact">聯絡我</span>
@@ -1034,6 +1039,7 @@ const bannerApi = {
     </main>
 
     <button id="backToTopBtn" title="回到頂部"><i class="fas fa-arrow-up"></i></button>
+    
     <footer class="text-center">
         <div class="container">
             <div class="row">
@@ -1043,7 +1049,12 @@ const bannerApi = {
                 </div>
                 <div class="col-md-6 text-md-end">
                     <h5><i class="fas fa-envelope me-2"></i><span data-zh="聯絡方式" data-en="Contact">聯絡方式</span></h5>
-                    <p class="mb-0" data-zh="歡迎透過作品集主頁聯繫我" data-en="Feel free to contact me through the portfolio homepage">歡迎透過作品集主頁聯繫我</p>
+                    <p class="mb-1" data-zh="歡迎透過作品集主頁聯繫我" data-en="Feel free to contact me through the portfolio homepage">歡迎透過作品集主頁聯繫我</p>
+                    <!-- 小巧的瀏覽次數顯示 -->
+                    <p class="mb-0 view-count-small">
+                        <i class="fas fa-eye me-2"></i>
+                        <span id="viewCount">載入中...</span> <span data-zh="次瀏覽" data-en="views">次瀏覽</span>
+                    </p>
                 </div>
             </div>
             <hr style="border-color: rgba(255,255,255,0.2); margin: 2rem 0;">
@@ -1054,6 +1065,74 @@ const bannerApi = {
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
     <script>
+        // 瀏覽次數統計系統
+        class ViewCountTracker {
+            constructor(articleId) {
+                this.articleId = articleId;
+                this.storageKey = `viewCount_${articleId}`;
+                this.sessionKey = `session_${articleId}`;
+                this.lastViewKey = `lastView_${articleId}`;
+                this.init();
+            }
+
+            init() {
+                if (this.isNewSession()) {
+                    this.incrementViewCount();
+                    this.recordSession();
+                }
+                this.displayViewCount();
+            }
+
+            isNewSession() {
+                const sessionId = sessionStorage.getItem(this.sessionKey);
+                const lastView = localStorage.getItem(this.lastViewKey);
+                const now = new Date().getTime();
+                
+                if (!sessionId || (lastView && (now - parseInt(lastView)) > 30 * 60 * 1000)) {
+                    return true;
+                }
+                return false;
+            }
+
+            incrementViewCount() {
+                let currentCount = parseInt(localStorage.getItem(this.storageKey)) || 0;
+                currentCount++;
+                localStorage.setItem(this.storageKey, currentCount.toString());
+                localStorage.setItem(this.lastViewKey, new Date().getTime().toString());
+            }
+
+            recordSession() {
+                const sessionId = Date.now().toString() + Math.random().toString(36).substr(2, 9);
+                sessionStorage.setItem(this.sessionKey, sessionId);
+            }
+
+            getViewCount() {
+                return parseInt(localStorage.getItem(this.storageKey)) || 0;
+            }
+
+            displayViewCount() {
+                const viewCountElement = document.getElementById('viewCount');
+                if (viewCountElement) {
+                    const count = this.getViewCount();
+                    viewCountElement.textContent = count.toLocaleString();
+                    
+                    viewCountElement.style.opacity = '0';
+                    setTimeout(() => {
+                        viewCountElement.style.transition = 'opacity 0.5s ease';
+                        viewCountElement.style.opacity = '1';
+                    }, 100);
+                }
+            }
+
+            reset() {
+                localStorage.removeItem(this.storageKey);
+                localStorage.removeItem(this.lastViewKey);
+                sessionStorage.removeItem(this.sessionKey);
+                this.displayViewCount();
+                console.log('瀏覽次數已重置');
+            }
+        }
+
         // 語言切換功能
         function updateLanguage(lang) {
             const elements = document.querySelectorAll('[data-zh], [data-en]');
@@ -1161,6 +1240,13 @@ const bannerApi = {
             } catch (error) {
                 updateLanguage('zh');
             }
+            
+            // 初始化瀏覽次數追蹤
+            const tracker = new ViewCountTracker('jade-project');
+            window.viewTracker = tracker;
+            console.log('💡 瀏覽次數追蹤已啟動 - jade-project');
+            console.log('🔧 開發者工具: window.viewTracker.reset() - 重置瀏覽次數');
+            console.log('📊 當前瀏覽次數:', tracker.getViewCount());
         });
 
         // 回到頂部按鈕顯示與滾動
