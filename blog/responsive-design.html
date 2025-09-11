@@ -3,37 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title data-zh="響應式網頁設計的最佳實踐 - 劉冠彤的技術博客" data-en="Best Practices for Responsive Web Design - Liu Guan-Tong's Tech Blog">響應式網頁設計的最佳實踐 - 劉冠彤的技術博客</title>
+    <title data-zh="響應式網頁設計的最佳實踐 - 劉冠彤的技術部落格" data-en="Best Practices for Responsive Web Design - Liu Kuan-Tung's Tech Blog">響應式網頁設計的最佳實踐 - 劉冠彤的技術部落格</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" rel="stylesheet">
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
         body {
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
             line-height: 1.7;
             color: #2c3e50;
-            overflow-x: hidden;
+            background: #f8f9fa;
         }
 
-        /* 導航列 */
         .navbar {
             background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(10px);
             border-bottom: 1px solid rgba(0,0,0,0.05);
             padding: 1rem 0;
-            transition: all 0.3s ease;
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            z-index: 1000;
         }
 
         .navbar-brand {
@@ -53,184 +40,271 @@
             color: #3498db !important;
         }
 
-        /* 文章內容區域 */
-        .article-container {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 120px 2rem 4rem 2rem;
+        .navbar-nav .nav-link.active {
+            color: #3498db !important;
+        }
+
+        .breadcrumb-section {
+            background: white;
+            padding: 1rem 0;
+            border-bottom: 1px solid #e9ecef;
+        }
+
+        .breadcrumb {
+            background: transparent;
+            padding: 0;
+            margin: 0;
+            font-size: 0.9rem;
+        }
+
+        .breadcrumb-item {
+            color: #6c757d;
+        }
+
+        .breadcrumb-item + .breadcrumb-item::before {
+            content: "›";
+            color: #6c757d;
+            margin: 0 0.5rem;
+        }
+
+        .breadcrumb-item a {
+            color: #3498db;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .breadcrumb-item a:hover {
+            color: #2980b9;
+            text-decoration: underline;
+        }
+
+        .breadcrumb-item.active {
+            color: #2c3e50;
+            font-weight: 500;
         }
 
         .article-header {
-            margin-bottom: 3rem;
-            text-align: center;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            color: #2c3e50;
+            padding: 120px 0 60px 0;
+            position: relative;
+            overflow: hidden;
         }
 
-        .article-category {
-            display: inline-block;
-            background: #3498db;
-            color: white;
-            padding: 0.5rem 1rem;
-            border-radius: 20px;
-            font-size: 0.9rem;
-            font-weight: 600;
-            margin-bottom: 1rem;
+        .article-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg"><g fill="none" fill-rule="evenodd"><g fill="%23000000" fill-opacity="0.05"><circle cx="30" cy="30" r="4"/></g></svg>');
+            opacity: 0.3;
+        }
+
+        .article-meta {
+            background: white;
+            padding: 2rem 0;
+            border-bottom: 1px solid #e9ecef;
+        }
+
+        .article-content {
+            background: white;
+            padding: 3rem 0;
+            min-height: 60vh;
         }
 
         .article-title {
             font-size: 2.5rem;
             font-weight: 700;
-            color: #2c3e50;
             margin-bottom: 1rem;
-            line-height: 1.3;
+            position: relative;
+            z-index: 2;
+            color: #2c3e50;
         }
 
-        .article-meta {
+        .article-subtitle {
+            font-size: 1.2rem;
+            opacity: 0.8;
+            margin-bottom: 2rem;
+            position: relative;
+            z-index: 2;
+            color: #7f8c8d;
+        }
+
+        .meta-info {
             display: flex;
-            justify-content: center;
             align-items: center;
             gap: 2rem;
-            color: #7f8c8d;
-            font-size: 0.95rem;
-            margin-bottom: 2rem;
-        }
-
-        .article-meta i {
-            margin-right: 0.5rem;
-        }
-
-        .article-tags {
-            display: flex;
-            justify-content: center;
-            gap: 0.5rem;
-            flex-wrap: wrap;
-        }
-
-        .article-tag {
-            background: #e9ecef;
             color: #6c757d;
-            padding: 0.25rem 0.75rem;
-            border-radius: 15px;
-            font-size: 0.8rem;
-            font-weight: 500;
         }
 
-        .article-content {
-            font-size: 1.1rem;
-            line-height: 1.8;
-            color: #2c3e50;
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
         }
 
-        .article-content h2 {
+        .content-section {
+            margin-bottom: 3rem;
+        }
+
+        .section-title {
             font-size: 1.8rem;
             font-weight: 600;
             color: #2c3e50;
-            margin: 2.5rem 0 1.5rem 0;
+            margin-bottom: 1.5rem;
             padding-bottom: 0.5rem;
             border-bottom: 2px solid #3498db;
+            display: inline-block;
         }
 
-        .article-content h3 {
-            font-size: 1.4rem;
-            font-weight: 600;
-            color: #34495e;
-            margin: 2rem 0 1rem 0;
-        }
-
-        .article-content h4 {
-            font-size: 1.2rem;
-            font-weight: 600;
-            color: #34495e;
-            margin: 1.5rem 0 1rem 0;
-        }
-
-        .article-content p {
-            margin-bottom: 1.5rem;
-        }
-
-        .article-content ul, 
-        .article-content ol {
-            margin-bottom: 1.5rem;
-            padding-left: 2rem;
-        }
-
-        .article-content li {
-            margin-bottom: 0.5rem;
-        }
-
-        .article-content blockquote {
+        .table-of-contents {
             background: #f8f9fa;
-            border-left: 4px solid #3498db;
-            padding: 1rem 1.5rem;
-            margin: 1.5rem 0;
-            font-style: italic;
-            border-radius: 0 8px 8px 0;
-        }
-
-        .article-content code {
-            background: #f1f2f6;
-            color: #e74c3c;
-            padding: 0.2rem 0.4rem;
-            border-radius: 4px;
-            font-size: 0.9em;
-            font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
-        }
-
-        .article-content pre {
-            background: #2d3748;
-            border-radius: 8px;
-            padding: 1.5rem;
-            margin: 1.5rem 0;
-            overflow-x: auto;
-            position: relative;
-        }
-
-        .article-content pre code {
-            background: none;
-            color: #f7fafc;
-            padding: 0;
-            border-radius: 0;
-            font-size: 0.9rem;
-        }
-
-        .article-content img {
-            max-width: 100%;
-            height: auto;
-            border-radius: 8px;
-            margin: 1.5rem 0;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-        }
-
-        .article-content .highlight-box {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
             padding: 1.5rem;
             border-radius: 10px;
             margin: 2rem 0;
+            border-left: 4px solid #3498db;
         }
 
-        .article-content .highlight-box h4 {
+        .table-of-contents h4 {
+            color: #2c3e50;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .table-of-contents ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .table-of-contents li {
+            margin-bottom: 0.5rem;
+        }
+
+        .table-of-contents a {
+            color: #3498db;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .table-of-contents a:hover {
+            color: #2980b9;
+            text-decoration: underline;
+        }
+
+        /* 語言切換樣式 */
+        .language-switch {
+            position: relative;
+            margin-left: 1rem;
+        }
+
+        .lang-toggle {
+            background: #3498db;
             color: white;
-            margin-top: 0;
+            border: none;
+            padding: 0.375rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.875rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
         }
 
-        /* 導航按鈕 */
+        .lang-toggle:hover {
+            background: #2980b9;
+            transform: translateY(-1px);
+        }
+
+        .lang-dropdown {
+            position: absolute;
+            top: 100%;
+            right: 0;
+            background: white;
+            border: 1px solid #e9ecef;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            padding: 0.5rem 0;
+            min-width: 120px;
+            z-index: 1000;
+            opacity: 0;
+            transform: translateY(-10px);
+            pointer-events: none;
+            transition: all 0.3s ease;
+        }
+
+        .lang-dropdown.show {
+            opacity: 1;
+            transform: translateY(0);
+            pointer-events: auto;
+        }
+
+        .lang-option {
+            display: block;
+            width: 100%;
+            padding: 0.5rem 1rem;
+            border: none;
+            background: transparent;
+            text-align: left;
+            cursor: pointer;
+            transition: background-color 0.2s ease;
+            color: #2c3e50;
+            font-size: 0.875rem;
+        }
+
+        .lang-option:hover {
+            background: #f8f9fa;
+        }
+
+        .lang-option.active {
+            background: #3498db;
+            color: white;
+        }
+
+        /* 回到頂部按鈕 */
+        #backToTopBtn {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 1000;
+            background: #3498db;
+            color: white;
+            border: none;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(52, 152, 219, 0.3);
+            transition: all 0.3s ease;
+            display: none;
+        }
+
+        #backToTopBtn:hover {
+            background: #2980b9;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(52, 152, 219, 0.4);
+        }
+
+        /* 文章導航 */
         .article-navigation {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-top: 4rem;
-            padding-top: 2rem;
+            padding: 2rem 0;
+            margin-top: 3rem;
             border-top: 1px solid #e9ecef;
+            gap: 1rem;
         }
 
         .nav-btn {
             display: flex;
             align-items: center;
+            gap: 0.5rem;
             padding: 0.75rem 1.5rem;
             background: #f8f9fa;
             color: #2c3e50;
             text-decoration: none;
-            border-radius: 50px;
+            border-radius: 8px;
             transition: all 0.3s ease;
             font-weight: 500;
         }
@@ -242,48 +316,44 @@
         }
 
         .nav-btn i {
-            margin: 0 0.5rem;
+            font-size: 0.9rem;
         }
 
-        /* 分享按鈕 */
+        /* 分享區域 */
         .share-section {
             background: #f8f9fa;
             padding: 2rem;
-            border-radius: 15px;
-            margin: 3rem 0;
+            border-radius: 10px;
             text-align: center;
+            margin: 3rem 0;
         }
 
-        .share-buttons {
+        .share-section h4 {
+            color: #2c3e50;
+            margin-bottom: 1rem;
+        }
+
+        .share-section .share-buttons {
             display: flex;
             justify-content: center;
             gap: 1rem;
-            margin-top: 1rem;
             flex-wrap: wrap;
         }
 
-        .share-btn {
-            display: inline-flex;
+        .share-section .share-btn {
+            display: flex;
             align-items: center;
+            gap: 0.5rem;
             padding: 0.5rem 1rem;
             border-radius: 25px;
             text-decoration: none;
-            font-size: 0.9rem;
             font-weight: 500;
             transition: all 0.3s ease;
-        }
-
-        .share-btn:hover {
-            transform: translateY(-2px);
+            font-size: 0.9rem;
         }
 
         .share-btn.facebook {
             background: #1877f2;
-            color: white;
-        }
-
-        .share-btn.twitter {
-            background: #1da1f2;
             color: white;
         }
 
@@ -297,106 +367,81 @@
             color: white;
         }
 
-        /* 目錄 */
-        .table-of-contents {
-            background: #f8f9fa;
-            border: 1px solid #e9ecef;
-            border-radius: 10px;
+        .share-btn:hover {
+            transform: translateY(-2px);
+            color: white;
+        }
+
+        blockquote {
+            background: linear-gradient(135deg, #e3f2fd 0%, #f3e5f5 100%);
+            border-left: 4px solid #3498db;
             padding: 1.5rem;
+            border-radius: 0 10px 10px 0;
             margin: 2rem 0;
-        }
-
-        .table-of-contents h4 {
-            margin: 0 0 1rem 0;
+            font-style: italic;
             color: #2c3e50;
-            font-size: 1.1rem;
         }
 
-        .table-of-contents ul {
-            list-style: none;
+        pre {
+            background: #2d3748;
+            color: #e2e8f0;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 1.5rem 0;
+            overflow-x: auto;
+        }
+
+        code {
+            background: #f8f9fa;
+            color: #e74c3c;
+            padding: 0.2rem 0.4rem;
+            border-radius: 4px;
+            font-size: 0.9em;
+        }
+
+        pre code {
+            background: transparent;
+            color: inherit;
             padding: 0;
-            margin: 0;
         }
 
-        .table-of-contents li {
-            margin-bottom: 0.5rem;
+        .view-count-small {
+            font-size: 0.85rem;
+            color: #6c757d;
+            margin-top: 0.5rem;
         }
 
-        .table-of-contents a {
-            color: #3498db;
-            text-decoration: none;
-            font-weight: 500;
-            transition: color 0.3s ease;
-        }
-
-        .table-of-contents a:hover {
-            color: #2980b9;
-        }
-
-        /* 響應式設計 */
         @media (max-width: 768px) {
-            .article-container {
-                padding: 100px 1rem 2rem 1rem;
-            }
-
             .article-title {
                 font-size: 2rem;
             }
-
-            .article-meta {
+            
+            .meta-info {
                 flex-direction: column;
-                gap: 0.5rem;
-            }
-
-            .article-content {
-                font-size: 1rem;
-            }
-
-            .article-content h2 {
-                font-size: 1.5rem;
+                align-items: flex-start;
+                gap: 1rem;
             }
 
             .article-navigation {
                 flex-direction: column;
-                gap: 1rem;
+                text-align: center;
             }
 
-            .share-buttons {
-                flex-direction: column;
-                align-items: center;
+            .language-switch {
+                margin-left: 0;
+                margin-top: 1rem;
             }
-        }
-
-        /* 回到頂部按鈕 */
-        #backToTopBtn {
-            display: none;
-            position: fixed;
-            bottom: 40px;
-            right: 40px;
-            background: #3498db;
-            color: white;
-            border: none;
-            border-radius: 50%;
-            width: 50px;
-            height: 50px;
-            cursor: pointer;
-            box-shadow: 0 4px 12px rgba(52, 152, 219, 0.3);
-            transition: all 0.3s ease;
-            z-index: 1000;
-        }
-
-        #backToTopBtn:hover {
-            background: #2980b9;
-            transform: translateY(-2px);
         }
     </style>
+          
 </head>
 <body>
-    <!-- 導航列 -->
-    <nav class="navbar navbar-expand-lg">
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg fixed-top">
         <div class="container">
             <a class="navbar-brand" href="../index.html">
-                <i class="fas fa-code me-2"></i><span data-zh="劉冠彤" data-en="Liu Guan-Tong">劉冠彤</span>
+                <i class="fas fa-code me-2"></i>
+                <span data-zh="劉冠彤" data-en="Liu Kuan-Tung">劉冠彤</span>
             </a>
             
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
@@ -404,7 +449,7 @@
             </button>
             
             <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav me-auto">
+                <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
                         <a class="nav-link" href="../index.html" data-zh="首頁" data-en="Home">首頁</a>
                     </li>
@@ -415,75 +460,130 @@
                         <a class="nav-link" href="../index.html#projects" data-zh="專案作品" data-en="Projects">專案作品</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="../blog.html" data-zh="技術博客" data-en="Tech Blog">技術博客</a>
+                        <a class="nav-link active" href="../blog.html" data-zh="部落格" data-en="Tech Blog">部落格</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="../index.html#contact" data-zh="聯絡我" data-en="Contact">聯絡我</a>
                     </li>
                 </ul>
                 
-                <div class="navbar-nav">
-                    <div class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
-                            <i class="fas fa-globe me-1"></i><span id="current-lang">中文</span>
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#" onclick="switchLanguage('zh')">中文</a></li>
-                            <li><a class="dropdown-item" href="#" onclick="switchLanguage('en')">English</a></li>
-                        </ul>
+                <!-- 語言切換 -->
+                <div class="language-switch">
+                    <button class="lang-toggle" onclick="toggleLanguageDropdown()">
+                        <i class="fas fa-globe me-1"></i>
+                        <span id="current-lang">中文</span>
+                        <i class="fas fa-chevron-down ms-1"></i>
+                    </button>
+                    <div class="lang-dropdown" id="langDropdown">
+                        <button class="lang-option active" onclick="switchLanguage('zh')">
+                            中文
+                        </button>
+                        <button class="lang-option" onclick="switchLanguage('en')">
+                            English
+                        </button>
                     </div>
                 </div>
             </div>
         </div>
     </nav>
-
-    <!-- 文章內容 -->
-    <article class="article-container">
-        <!-- 文章標頭 -->
-        <header class="article-header">
-            <div class="article-category" data-zh="前端開發" data-en="Frontend Development">前端開發</div>
-            <h1 class="article-title" data-zh="響應式網頁設計的最佳實踐" data-en="Best Practices for Responsive Web Design">響應式網頁設計的最佳實踐</h1>
-            
-            <div class="article-meta">
-                <span><i class="fas fa-calendar"></i>2025-09-10</span>
-                <span><i class="fas fa-clock"></i><span data-zh="8 分鐘閱讀" data-en="8 min read">8 分鐘閱讀</span></span>
-                <span><i class="fas fa-eye"></i><span id="viewCount">載入中...</span> <span data-zh="次瀏覽" data-en="views">次瀏覽</span></span>
             </div>
-
-            <div class="article-tags">
-                <span class="article-tag">CSS</span>
-                <span class="article-tag">HTML</span>
-                <span class="article-tag">RWD</span>
-                <span class="article-tag">Flexbox</span>
-                <span class="article-tag">Grid</span>
-            </div>
-        </header>
-
-        <!-- 目錄 -->
-        <div class="table-of-contents">
-            <h4 data-zh="文章目錄" data-en="Table of Contents">文章目錄</h4>
-            <ul>
-                <li><a href="#introduction" data-zh="1. 什麼是響應式設計？" data-en="1. What is Responsive Design?">1. 什麼是響應式設計？</a></li>
-                <li><a href="#core-principles" data-zh="2. 核心設計原則" data-en="2. Core Design Principles">2. 核心設計原則</a></li>
-                <li><a href="#flexbox-grid" data-zh="3. Flexbox 與 Grid 佈局" data-en="3. Flexbox & Grid Layout">3. Flexbox 與 Grid 佈局</a></li>
-                <li><a href="#media-queries" data-zh="4. 媒體查詢進階技巧" data-en="4. Advanced Media Query Techniques">4. 媒體查詢進階技巧</a></li>
-                <li><a href="#best-practices" data-zh="5. 最佳實踐建議" data-en="5. Best Practice Recommendations">5. 最佳實踐建議</a></li>
-                <li><a href="#conclusion" data-zh="6. 總結" data-en="6. Conclusion">6. 總結</a></li>
-            </ul>
         </div>
+    </nav>
 
-        <!-- 文章正文 -->
-        <div class="article-content">
-            <p data-zh="在現代網頁開發中，響應式設計已經不再是選擇性功能，而是必備的核心技能。隨著移動設備的普及和螢幕尺寸的多樣化，開發者需要確保網站在任何設備上都能提供優秀的用戶體驗。本文將深入探討響應式網頁設計的最佳實踐。" data-en="In modern web development, responsive design is no longer an optional feature but a core skill requirement. With the proliferation of mobile devices and diverse screen sizes, developers need to ensure websites provide excellent user experience on any device. This article will explore best practices for responsive web design in depth.">在現代網頁開發中，響應式設計已經不再是選擇性功能，而是必備的核心技能。隨著移動設備的普及和螢幕尺寸的多樣化，開發者需要確保網站在任何設備上都能提供優秀的用戶體驗。本文將深入探討響應式網頁設計的最佳實踐。</p>
-
-            <h2 id="introduction" data-zh="什麼是響應式設計？" data-en="What is Responsive Design?">什麼是響應式設計？</h2>
-            
-            <p data-zh="響應式網頁設計（Responsive Web Design，RWD）是一種網頁設計方法，讓網站能夠根據用戶的設備螢幕大小、解析度和瀏覽器環境自動調整佈局和內容呈現方式。" data-en="Responsive Web Design (RWD) is a web design approach that allows websites to automatically adjust layout and content presentation based on user's device screen size, resolution, and browser environment.">響應式網頁設計（Responsive Web Design，RWD）是一種網頁設計方法，讓網站能夠根據用戶的設備螢幕大小、解析度和瀏覽器環境自動調整佈局和內容呈現方式。</p>
-
-            <div class="highlight-box">
-                <h4 data-zh="💡 核心概念" data-en="💡 Core Concept">💡 核心概念</h4>
-                <p data-zh="響應式設計的核心在於「一個網站，多種體驗」。透過彈性的佈局、圖片和 CSS 媒體查詢，創造出能夠適應各種螢幕尺寸的網站。" data-en="The core of responsive design is 'one website, multiple experiences'. Through flexible layouts, images, and CSS media queries, create websites that can adapt to various screen sizes.">響應式設計的核心在於「一個網站，多種體驗」。透過彈性的佈局、圖片和 CSS 媒體查詢，創造出能夠適應各種螢幕尺寸的網站。</p>
+    <!-- Article Header -->
+    <header class="article-header">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-10 mx-auto text-center">
+                    <h1 class="article-title" data-zh="響應式網頁設計的最佳實踐" data-en="Best Practices for Responsive Web Design">響應式網頁設計的最佳實踐</h1>
+                    <p class="article-subtitle" data-zh="掌握現代前端開發的核心技能，打造適配所有設備的優秀用戶體驗" data-en="Master core skills of modern frontend development and create excellent user experiences for all devices">掌握現代前端開發的核心技能，打造適配所有設備的優秀用戶體驗</p>
+                </div>
             </div>
+        </div>
+    </header>
+
+    <!-- Breadcrumb -->
+    <section class="breadcrumb-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-10 mx-auto">
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item">
+                                <a href="../index.html">
+                                    <i class="fas fa-home me-1"></i><span data-zh="首頁" data-en="Home">首頁</span>
+                                </a>
+                            </li>
+                            <li class="breadcrumb-item">
+                                <a href="../blog.html">
+                                    <i class="fas fa-blog me-1"></i><span data-zh="技術部落格" data-en="Tech Blog">技術部落格</span>
+                                </a>
+                            </li>
+                            <li class="breadcrumb-item active" aria-current="page" data-zh="響應式網頁設計的最佳實踐" data-en="Best Practices for Responsive Web Design">
+                                響應式網頁設計的最佳實踐
+                            </li>
+                        </ol>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Article Meta -->
+    <section class="article-meta">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-10 mx-auto">
+                    <div class="meta-info">
+                        <div class="meta-item">
+                            <i class="fas fa-calendar-alt"></i>
+                            <span data-zh="2025年9月10日" data-en="September 10, 2025">2025年9月10日</span>
+                        </div>
+                        <div class="meta-item">
+                            <i class="fas fa-clock"></i>
+                            <span data-zh="閱讀時間 8 分鐘" data-en="8 min read">閱讀時間 8 分鐘</span>
+                        </div>
+                        <div class="meta-item">
+                            <i class="fas fa-tags"></i>
+                            <span data-zh="前端開發" data-en="Frontend Development">前端開發</span>
+                        </div>
+                        <div class="meta-item">
+                            <i class="fas fa-eye"></i>
+                            <span data-zh="瀏覽次數" data-en="Views">瀏覽次數</span> <span id="viewCount">載入中...</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Article Content -->
+    <section class="article-content">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-10 mx-auto">
+                    <!-- 目錄 -->
+                    <div class="table-of-contents">
+                        <h4 data-zh="文章目錄" data-en="Table of Contents">文章目錄</h4>
+                        <ul>
+                            <li><a href="#introduction" data-zh="1. 什麼是響應式設計？" data-en="1. What is Responsive Design?">1. 什麼是響應式設計？</a></li>
+                            <li><a href="#core-principles" data-zh="2. 核心設計原則" data-en="2. Core Design Principles">2. 核心設計原則</a></li>
+                            <li><a href="#flexbox-grid" data-zh="3. Flexbox 與 Grid 佈局" data-en="3. Flexbox & Grid Layout">3. Flexbox 與 Grid 佈局</a></li>
+                            <li><a href="#media-queries" data-zh="4. 媒體查詢進階技巧" data-en="4. Advanced Media Query Techniques">4. 媒體查詢進階技巧</a></li>
+                            <li><a href="#best-practices" data-zh="5. 最佳實踐建議" data-en="5. Best Practice Recommendations">5. 最佳實踐建議</a></li>
+                            <li><a href="#conclusion" data-zh="6. 總結" data-en="6. Conclusion">6. 總結</a></li>
+                        </ul>
+                    </div>
+
+                    <!-- 文章正文 -->
+                    <div class="content-section">
+                        <p data-zh="在現代網頁開發中，響應式設計已經不再是選擇性功能，而是必備的核心技能。隨著移動設備的普及和螢幕尺寸的多樣化，開發者需要確保網站在任何設備上都能提供優秀的用戶體驗。本文將深入探討響應式網頁設計的最佳實踐。" data-en="In modern web development, responsive design is no longer an optional feature but a core skill requirement. With the proliferation of mobile devices and diverse screen sizes, developers need to ensure websites provide excellent user experience on any device. This article will explore best practices for responsive web design in depth.">在現代網頁開發中，響應式設計已經不再是選擇性功能，而是必備的核心技能。隨著移動設備的普及和螢幕尺寸的多樣化，開發者需要確保網站在任何設備上都能提供優秀的用戶體驗。本文將深入探討響應式網頁設計的最佳實踐。</p>
+
+                        <h2 id="introduction" data-zh="什麼是響應式設計？" data-en="What is Responsive Design?">什麼是響應式設計？</h2>
+                        
+                        <p data-zh="響應式網頁設計（Responsive Web Design，RWD）是一種網頁設計方法，讓網站能夠根據用戶的設備螢幕大小、解析度和瀏覽器環境自動調整佈局和內容呈現方式。" data-en="Responsive Web Design (RWD) is a web design approach that allows websites to automatically adjust layout and content presentation based on user's device screen size, resolution, and browser environment.">響應式網頁設計（Responsive Web Design，RWD）是一種網頁設計方法，讓網站能夠根據用戶的設備螢幕大小、解析度和瀏覽器環境自動調整佈局和內容呈現方式。</p>
+
+                        <blockquote data-zh="響應式設計的核心在於「一個網站，多種體驗」。透過彈性的佈局、圖片和 CSS 媒體查詢，創造出能夠適應各種螢幕尺寸的網站。" data-en="The core of responsive design is 'one website, multiple experiences'. Through flexible layouts, images, and CSS media queries, create websites that can adapt to various screen sizes.">響應式設計的核心在於「一個網站，多種體驗」。透過彈性的佈局、圖片和 CSS 媒體查詢，創造出能夠適應各種螢幕尺寸的網站。</blockquote>
 
             <h2 id="core-principles" data-zh="核心設計原則" data-en="Core Design Principles">核心設計原則</h2>
 
@@ -662,42 +762,42 @@ img {
 
             <h2 id="conclusion" data-zh="總結" data-en="Conclusion">總結</h2>
             <p data-zh="響應式網頁設計是現代前端開發的基石。通過掌握 Flexbox、Grid、媒體查詢等核心技術，並遵循行動優先的設計原則，我們能夠創造出在任何設備上都表現優秀的網站。記住，響應式設計不僅僅是技術實現，更是對用戶體驗的深度思考。" data-en="Responsive web design is the cornerstone of modern frontend development. By mastering core technologies like Flexbox, Grid, and media queries, and following mobile-first design principles, we can create websites that perform excellently on any device. Remember, responsive design is not just technical implementation, but deep thinking about user experience.">響應式網頁設計是現代前端開發的基石。通過掌握 Flexbox、Grid、媒體查詢等核心技術，並遵循行動優先的設計原則，我們能夠創造出在任何設備上都表現優秀的網站。記住，響應式設計不僅僅是技術實現，更是對用戶體驗的深度思考。</p>
-        </div>
+                    </div>
 
-        <!-- 分享區域 -->
-        <div class="share-section">
-            <h4 data-zh="喜歡這篇文章嗎？分享給更多人！" data-en="Like this article? Share it with more people!">喜歡這篇文章嗎？分享給更多人！</h4>
-            <div class="share-buttons">
-                <a href="#" class="share-btn facebook" onclick="shareToFacebook()">
-                    <i class="fab fa-facebook-f me-2"></i>Facebook
-                </a>
-                <a href="#" class="share-btn twitter" onclick="shareToTwitter()">
-                    <i class="fab fa-twitter me-2"></i>Twitter
-                </a>
-                <a href="#" class="share-btn linkedin" onclick="shareToLinkedIn()">
-                    <i class="fab fa-linkedin-in me-2"></i>LinkedIn
-                </a>
-                <a href="#" class="share-btn copy" onclick="copyLink()">
-                    <i class="fas fa-link me-2"></i><span data-zh="複製連結" data-en="Copy Link">複製連結</span>
-                </a>
+                    <!-- 分享區域 -->
+                    <div class="share-section">
+                        <h4 data-zh="喜歡這篇文章嗎？分享給更多人！" data-en="Like this article? Share it with more people!">喜歡這篇文章嗎？分享給更多人！</h4>
+                        <div class="share-buttons">
+                            <a href="#" class="share-btn facebook" onclick="shareToFacebook()">
+                                <i class="fab fa-facebook-f me-2"></i>Facebook
+                            </a>
+                            <a href="#" class="share-btn linkedin" onclick="shareToLinkedIn()">
+                                <i class="fab fa-linkedin-in me-2"></i>LinkedIn
+                            </a>
+                            <a href="#" class="share-btn copy" onclick="copyLink()">
+                                <i class="fas fa-link me-2"></i><span data-zh="複製連結" data-en="Copy Link">複製連結</span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- 文章導航 -->
+                    <nav class="article-navigation">
+                        <a href="../blog.html" class="nav-btn">
+                            <i class="fas fa-arrow-left"></i>
+                            <span data-zh="回到部落格列表" data-en="Back to Blog List">回到部落格列表</span>
+                        </a>
+                        <a href="flower-garden-game.html" class="nav-btn">
+                            <span data-zh="下一篇文章" data-en="Next Article">下一篇文章</span>
+                            <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </nav>
+                </div>
             </div>
         </div>
-
-        <!-- 文章導航 -->
-        <nav class="article-navigation">
-            <a href="../blog.html" class="nav-btn">
-                <i class="fas fa-arrow-left"></i>
-                <span data-zh="回到博客列表" data-en="Back to Blog List">回到博客列表</span>
-            </a>
-            <a href="vscode-extension.html" class="nav-btn">
-                <span data-zh="下一篇文章" data-en="Next Article">下一篇文章</span>
-                <i class="fas fa-arrow-right"></i>
-            </a>
-        </nav>
-    </article>
+    </section>
 
     <!-- 回到頂部按鈕 -->
-    <button id="backToTopBtn" title="回到頂部">
+    <button id="backToTopBtn" data-zh="回到頂部" data-en="Back to Top" title="回到頂部">
         <i class="fas fa-arrow-up"></i>
     </button>
 
@@ -773,8 +873,20 @@ img {
             }
         }
 
-        // 語言切換功能 (與主網站一致)
+        // 語言切換功能
         let currentLanguage = 'zh';
+        let isLanguageDropdownOpen = false;
+        
+        function toggleLanguageDropdown() {
+            const dropdown = document.getElementById('langDropdown');
+            isLanguageDropdownOpen = !isLanguageDropdownOpen;
+            
+            if (isLanguageDropdownOpen) {
+                dropdown.classList.add('show');
+            } else {
+                dropdown.classList.remove('show');
+            }
+        }
         
         function switchLanguage(lang) {
             currentLanguage = lang;
@@ -783,12 +895,49 @@ img {
             elements.forEach(element => {
                 const text = element.getAttribute('data-' + lang);
                 if (text) {
-                    element.textContent = text;
+                    // 跳過瀏覽次數元素，避免覆蓋數字
+                    if (element.id === 'viewCount') {
+                        return;
+                    }
+                    // 更新按鈕文字內容
+                    if (element.tagName === 'BUTTON' && element.id === 'backToTopBtn') {
+                        element.setAttribute('title', text);
+                    } else {
+                        element.textContent = text;
+                    }
                 }
             });
             
             // 更新語言選擇器顯示
             const langDisplay = document.getElementById('current-lang');
+            langDisplay.textContent = lang === 'zh' ? '中文' : 'English';
+            
+            // 更新語言選項的活動狀態
+            const langOptions = document.querySelectorAll('.lang-option');
+            langOptions.forEach(option => {
+                option.classList.remove('active');
+                if ((lang === 'zh' && option.textContent.trim() === '中文') || 
+                    (lang === 'en' && option.textContent.trim() === 'English')) {
+                    option.classList.add('active');
+                }
+            });
+            
+            // 儲存語言偏好
+            localStorage.setItem('preferred-language', lang);
+            
+            // 更新頁面語言屬性
+            document.documentElement.lang = lang === 'zh' ? 'zh-TW' : 'en';
+            
+            // 關閉下拉選單
+            if (isLanguageDropdownOpen) {
+                toggleLanguageDropdown();
+            }
+            
+            // 語言切換後重新顯示瀏覽次數
+            if (window.viewTracker) {
+                window.viewTracker.displayViewCount();
+            }
+        }
             langDisplay.textContent = lang === 'zh' ? '中文' : 'English';
             
             // 儲存語言偏好
@@ -887,12 +1036,6 @@ img {
             window.open(`https://www.facebook.com/sharer/sharer.php?u=${url}`, '_blank');
         }
 
-        function shareToTwitter() {
-            const url = encodeURIComponent(window.location.href);
-            const title = encodeURIComponent(document.title);
-            window.open(`https://twitter.com/intent/tweet?url=${url}&text=${title}`, '_blank');
-        }
-
         function shareToLinkedIn() {
             const url = encodeURIComponent(window.location.href);
             const title = encodeURIComponent(document.title);
@@ -917,6 +1060,14 @@ img {
 
         backToTopBtn.addEventListener('click', function() {
             window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        // 關閉語言下拉選單（點擊外部）
+        document.addEventListener('click', function(event) {
+            const languageSwitch = document.querySelector('.language-switch');
+            if (!languageSwitch.contains(event.target) && isLanguageDropdownOpen) {
+                toggleLanguageDropdown();
+            }
         });
 
         // 平滑滾動目錄連結

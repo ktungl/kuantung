@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>種花遊戲開發心得 - 從 Python 到 Flutter 的跨平台實踐</title>
+    <title data-zh="種花遊戲開發心得 - 從 Python 到 Flutter 的跨平台實踐 - 劉冠彤的技術博客" data-en="Flower Garden Game Development - Cross-platform Practice from Python to Flutter - Liu Kuan-Tung's Tech Blog">種花遊戲開發心得 - 從 Python 到 Flutter 的跨平台實踐 - 劉冠彤的技術博客</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -318,6 +318,167 @@
             color: white;
         }
 
+        /* 語言切換樣式 */
+        .language-switch {
+            position: relative;
+            margin-left: 1rem;
+        }
+
+        .lang-toggle {
+            background: #3498db;
+            color: white;
+            border: none;
+            padding: 0.375rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.875rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .lang-toggle:hover {
+            background: #2980b9;
+            transform: translateY(-1px);
+        }
+
+        .lang-dropdown {
+            position: absolute;
+            top: 100%;
+            right: 0;
+            background: white;
+            border: 1px solid #e9ecef;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            padding: 0.5rem 0;
+            min-width: 120px;
+            z-index: 1000;
+            opacity: 0;
+            transform: translateY(-10px);
+            pointer-events: none;
+            transition: all 0.3s ease;
+        }
+
+        .lang-dropdown.show {
+            opacity: 1;
+            transform: translateY(0);
+            pointer-events: auto;
+        }
+
+        .lang-option {
+            display: block;
+            width: 100%;
+            padding: 0.5rem 1rem;
+            border: none;
+            background: transparent;
+            text-align: left;
+            cursor: pointer;
+            transition: background-color 0.2s ease;
+            color: #2c3e50;
+            font-size: 0.875rem;
+        }
+
+        .lang-option:hover {
+            background: #f8f9fa;
+        }
+
+        .lang-option.active {
+            background: #3498db;
+            color: white;
+        }
+
+        /* 回到頂部按鈕 */
+        #backToTopBtn {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 1000;
+            background: #3498db;
+            color: white;
+            border: none;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(52, 152, 219, 0.3);
+            transition: all 0.3s ease;
+            display: none;
+        }
+
+        #backToTopBtn:hover {
+            background: #2980b9;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(52, 152, 219, 0.4);
+        }
+
+        /* 文章導航 */
+        .article-navigation {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 2rem 0;
+            margin-top: 3rem;
+            border-top: 1px solid #e9ecef;
+            gap: 1rem;
+        }
+
+        .nav-btn {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.5rem;
+            background: #f8f9fa;
+            color: #2c3e50;
+            text-decoration: none;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+
+        .nav-btn:hover {
+            background: #3498db;
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .nav-btn i {
+            font-size: 0.9rem;
+        }
+
+        /* 分享區域 */
+        .share-section {
+            background: #f8f9fa;
+            padding: 2rem;
+            border-radius: 10px;
+            text-align: center;
+            margin: 3rem 0;
+        }
+
+        .share-section h4 {
+            color: #2c3e50;
+            margin-bottom: 1rem;
+        }
+
+        .share-section .share-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .share-section .share-btn {
+            padding: 0.5rem 1rem;
+            font-size: 0.9rem;
+        }
+
+        .share-btn.facebook {
+            background: #1877f2;
+            color: white;
+        }
+        .share-btn.copy {
+            background: #6c757d;
+            color: white;
+        }
+
         @media (max-width: 768px) {
             .article-title {
                 font-size: 2rem;
@@ -332,6 +493,16 @@
             .game-features {
                 grid-template-columns: 1fr;
             }
+
+            .article-navigation {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .language-switch {
+                margin-left: 0;
+                margin-top: 1rem;
+            }
         }
     </style>
 </head>
@@ -341,7 +512,7 @@
         <div class="container">
             <a class="navbar-brand" href="../index.html">
                 <i class="fas fa-code me-2"></i>
-                <span>劉冠彤</span>
+                <span data-zh="劉冠彤" data-en="Liu Kuan-Tung">劉冠彤</span>
             </a>
             
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
@@ -351,31 +522,38 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="../index.html">
-                            <span>首頁</span>
-                        </a>
+                        <a class="nav-link" href="../index.html" data-zh="首頁" data-en="Home">首頁</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="../index.html#about">
-                            <span>關於我</span>
-                        </a>
+                        <a class="nav-link" href="../index.html#about" data-zh="關於我" data-en="About">關於我</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="../index.html#projects">
-                            <span>專案作品</span>
-                        </a>
+                        <a class="nav-link" href="../index.html#projects" data-zh="專案作品" data-en="Projects">專案作品</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" href="../blog.html">
-                            <span>技術博客</span>
-                        </a>
+                        <a class="nav-link active" href="../blog.html" data-zh="技術博客" data-en="Tech Blog">技術博客</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="../index.html#contact">
-                            <span>聯絡我</span>
-                        </a>
+                        <a class="nav-link" href="../index.html#contact" data-zh="聯絡我" data-en="Contact">聯絡我</a>
                     </li>
                 </ul>
+                
+                <!-- 語言切換 -->
+                <div class="language-switch">
+                    <button class="lang-toggle" onclick="toggleLanguageDropdown()">
+                        <i class="fas fa-globe me-1"></i>
+                        <span id="current-lang">中文</span>
+                        <i class="fas fa-chevron-down ms-1"></i>
+                    </button>
+                    <div class="lang-dropdown" id="langDropdown">
+                        <button class="lang-option active" onclick="switchLanguage('zh')">
+                            中文
+                        </button>
+                        <button class="lang-option" onclick="switchLanguage('en')">
+                            English
+                        </button>
+                    </div>
+                </div>
             </div>
         </div>
     </nav>
@@ -385,10 +563,10 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-10 mx-auto text-center">
-                    <h1 class="article-title">種花遊戲開發心得</h1>
-                    <p class="article-subtitle">從 Python 到 Flutter 的跨平台遊戲開發實踐</p>
+                    <h1 class="article-title" data-zh="種花遊戲開發心得" data-en="Flower Garden Game Development">種花遊戲開發心得</h1>
+                    <p class="article-subtitle" data-zh="從 Python 到 Flutter 的跨平台遊戲開發實踐" data-en="Cross-platform Game Development Practice from Python to Flutter">從 Python 到 Flutter 的跨平台遊戲開發實踐</p>
                     <a href="https://ktungl.github.io/flower_garden_game" class="play-button" target="_blank" rel="noopener noreferrer">
-                        <i class="fas fa-play me-2"></i>立即遊玩
+                        <i class="fas fa-play me-2"></i><span data-zh="立即遊玩" data-en="Play Now">立即遊玩</span>
                     </a>
                 </div>
             </div>
@@ -404,15 +582,15 @@
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item">
                                 <a href="../index.html">
-                                    <i class="fas fa-home me-1"></i>首頁
+                                    <i class="fas fa-home me-1"></i><span data-zh="首頁" data-en="Home">首頁</span>
                                 </a>
                             </li>
                             <li class="breadcrumb-item">
                                 <a href="../blog.html">
-                                    <i class="fas fa-blog me-1"></i>技術部落格
+                                    <i class="fas fa-blog me-1"></i><span data-zh="技術部落格" data-en="Tech Blog">技術部落格</span>
                                 </a>
                             </li>
-                            <li class="breadcrumb-item active" aria-current="page">
+                            <li class="breadcrumb-item active" aria-current="page" data-zh="種花遊戲開發心得" data-en="Flower Garden Game Development">
                                 種花遊戲開發心得
                             </li>
                         </ol>
@@ -430,19 +608,19 @@
                     <div class="meta-info">
                         <div class="meta-item">
                             <i class="fas fa-calendar-alt"></i>
-                            <span>2025年9月10日</span>
+                            <span data-zh="2025年9月10日" data-en="September 10, 2025">2025年9月10日</span>
                         </div>
                         <div class="meta-item">
                             <i class="fas fa-clock"></i>
-                            <span>閱讀時間 8 分鐘</span>
+                            <span data-zh="閱讀時間 8 分鐘" data-en="8 min read">閱讀時間 8 分鐘</span>
                         </div>
                         <div class="meta-item">
                             <i class="fas fa-tags"></i>
-                            <span>Flutter, 遊戲開發, 跨平台</span>
+                            <span>Flutter, <span data-zh="遊戲開發" data-en="Game Development">遊戲開發</span>, <span data-zh="跨平台" data-en="Cross-platform">跨平台</span></span>
                         </div>
                         <div class="meta-item">
                             <i class="fas fa-eye"></i>
-                            <span>瀏覽次數 <span id="viewCount">載入中...</span></span>
+                            <span data-zh="瀏覽次數" data-en="Views">瀏覽次數</span> <span id="viewCount" data-zh="載入中..." data-en="Loading...">載入中...</span>
                         </div>
                     </div>
                 </div>
@@ -457,11 +635,11 @@
                 <div class="col-lg-10 mx-auto">
                     <!-- 專案簡介 -->
                     <div class="content-section">
-                        <h2 class="section-title">專案簡介</h2>
-                        <p>這是一個有趣且令人上癮的手機遊戲，玩家需要在60秒內盡可能多地種花，同時避開危險的紅色蘑菇。每種一朵花得1分，但如果不小心點到蘑菇就會失去一條生命，而且蘑菇還會動態跳轉到新位置，增加遊戲的挑戰性。</p>
+                        <h2 class="section-title" data-zh="專案簡介" data-en="Project Overview">專案簡介</h2>
+                        <p data-zh="這是一個有趣且令人上癮的手機遊戲，玩家需要在60秒內盡可能多地種花，同時避開危險的紅色蘑菇。每種一朵花得1分，但如果不小心點到蘑菇就會失去一條生命，而且蘑菇還會動態跳轉到新位置，增加遊戲的挑戰性。" data-en="This is a fun and addictive mobile game where players need to plant as many flowers as possible within 60 seconds while avoiding dangerous red mushrooms. Each flower planted earns 1 point, but accidentally clicking on a mushroom will cost you a life, and mushrooms dynamically jump to new positions, adding to the game's challenge.">這是一個有趣且令人上癮的手機遊戲，玩家需要在60秒內盡可能多地種花，同時避開危險的紅色蘑菇。每種一朵花得1分，但如果不小心點到蘑菇就會失去一條生命，而且蘑菇還會動態跳轉到新位置，增加遊戲的挑戰性。</p>
                         
                         <div class="highlight-box">
-                            <strong>專案亮點：</strong>這個遊戲最初是用 Python 開發的桌面版本，後來完全重構為 Flutter 應用，實現了跨平台部署（Web + Android）。
+                            <strong data-zh="專案亮點：" data-en="Project Highlights:">專案亮點：</strong><span data-zh="這個遊戲最初是用 Python 開發的桌面版本，後來完全重構為 Flutter 應用，實現了跨平台部署（Web + Android）。" data-en="This game was originally developed as a desktop version using Python, and later completely refactored as a Flutter application, achieving cross-platform deployment (Web + Android).">這個遊戲最初是用 Python 開發的桌面版本，後來完全重構為 Flutter 應用，實現了跨平台部署（Web + Android）。</span>
                         </div>
 
                         <div class="tech-stack">
@@ -475,38 +653,38 @@
 
                     <!-- 遊戲規則與特色 -->
                     <div class="content-section">
-                        <h2 class="section-title">遊戲規則與特色</h2>
+                        <h2 class="section-title" data-zh="遊戲規則與特色" data-en="Game Rules & Features">遊戲規則與特色</h2>
                         
                         <div class="game-features">
                             <div class="feature-card">
                                 <div class="feature-icon">⏰</div>
-                                <h4>限時挑戰</h4>
-                                <p>60秒倒數計時，考驗玩家的反應速度</p>
+                                <h4 data-zh="限時挑戰" data-en="Time Challenge">限時挑戰</h4>
+                                <p data-zh="60秒倒數計時，考驗玩家的反應速度" data-en="60-second countdown timer, testing player reaction speed">60秒倒數計時，考驗玩家的反應速度</p>
                             </div>
                             <div class="feature-card">
                                 <div class="feature-icon">🌸</div>
-                                <h4>種花得分</h4>
-                                <p>點擊螢幕種花，每朵花獲得1分</p>
+                                <h4 data-zh="種花得分" data-en="Flower Scoring">種花得分</h4>
+                                <p data-zh="點擊螢幕種花，每朵花獲得1分" data-en="Tap screen to plant flowers, earn 1 point per flower">點擊螢幕種花，每朵花獲得1分</p>
                             </div>
                             <div class="feature-card">
                                 <div class="feature-icon">🍄</div>
-                                <h4>動態障礙</h4>
-                                <p>避開紅色蘑菇，每次點擊後位置會改變</p>
+                                <h4 data-zh="動態障礙" data-en="Dynamic Obstacles">動態障礙</h4>
+                                <p data-zh="避開紅色蘑菇，每次點擊後位置會改變" data-en="Avoid red mushrooms, positions change after each click">避開紅色蘑菇，每次點擊後位置會改變</p>
                             </div>
                             <div class="feature-card">
                                 <div class="feature-icon">❤️</div>
-                                <h4>生命系統</h4>
-                                <p>3條生命，點到蘑菇會失去生命</p>
+                                <h4 data-zh="生命系統" data-en="Life System">生命系統</h4>
+                                <p data-zh="3條生命，點到蘑菇會失去生命" data-en="3 lives, lose a life when hitting mushrooms">3條生命，點到蘑菇會失去生命</p>
                             </div>
                         </div>
                     </div>
 
                     <!-- 技術實作細節 -->
                     <div class="content-section">
-                        <h2 class="section-title">技術實作細節</h2>
+                        <h2 class="section-title" data-zh="技術實作細節" data-en="Technical Implementation Details">技術實作細節</h2>
                         
-                        <h3>核心架構</h3>
-                        <p>遊戲使用 Flutter 的 <code>CustomPainter</code> 來繪製所有遊戲元素，包括花朵、蘑菇和玩家指示器。這種方式提供了高度的繪圖控制能力，同時保持良好的效能。</p>
+                        <h3 data-zh="核心架構" data-en="Core Architecture">核心架構</h3>
+                        <p data-zh="遊戲使用 Flutter 的 CustomPainter 來繪製所有遊戲元素，包括花朵、蘑菇和玩家指示器。這種方式提供了高度的繪圖控制能力，同時保持良好的效能。" data-en="The game uses Flutter's CustomPainter to render all game elements, including flowers, mushrooms, and player indicators. This approach provides high-level drawing control while maintaining good performance.">遊戲使用 Flutter 的 <code>CustomPainter</code> 來繪製所有遊戲元素，包括花朵、蘑菇和玩家指示器。這種方式提供了高度的繪圖控制能力，同時保持良好的效能。</p>
 
                         <div class="code-block">
 <pre><code>class GamePainter extends CustomPainter {
@@ -534,72 +712,72 @@
 }</code></pre>
                         </div>
 
-                        <h3>遊戲狀態管理</h3>
-                        <p>使用 Flutter 的內建狀態管理機制，透過 <code>StatefulWidget</code> 和 <code>setState()</code> 來管理遊戲狀態：</p>
+                        <h3 data-zh="遊戲狀態管理" data-en="Game State Management">遊戲狀態管理</h3>
+                        <p data-zh="使用 Flutter 的內建狀態管理機制，透過 StatefulWidget 和 setState() 來管理遊戲狀態：" data-en="Uses Flutter's built-in state management mechanism, managing game state through StatefulWidget and setState():">使用 Flutter 的內建狀態管理機制，透過 <code>StatefulWidget</code> 和 <code>setState()</code> 來管理遊戲狀態：</p>
 
                         <ul>
-                            <li><strong>遊戲計時</strong>：使用 <code>Timer.periodic</code> 實現倒數計時</li>
-                            <li><strong>碰撞檢測</strong>：基於座標距離計算來判斷是否點擊到蘑菇</li>
-                            <li><strong>隨機位置</strong>：使用 <code>Random</code> 類別生成蘑菇的新位置</li>
-                            <li><strong>動畫效果</strong>：透過 <code>AnimationController</code> 實現平滑的視覺效果</li>
+                            <li><strong data-zh="遊戲計時" data-en="Game Timing">遊戲計時</strong>：<span data-zh="使用 Timer.periodic 實現倒數計時" data-en="Uses Timer.periodic to implement countdown timer">使用 <code>Timer.periodic</code> 實現倒數計時</span></li>
+                            <li><strong data-zh="碰撞檢測" data-en="Collision Detection">碰撞檢測</strong>：<span data-zh="基於座標距離計算來判斷是否點擊到蘑菇" data-en="Based on coordinate distance calculation to determine mushroom clicks">基於座標距離計算來判斷是否點擊到蘑菇</span></li>
+                            <li><strong data-zh="隨機位置" data-en="Random Positioning">隨機位置</strong>：<span data-zh="使用 Random 類別生成蘑菇的新位置" data-en="Uses Random class to generate new mushroom positions">使用 <code>Random</code> 類別生成蘑菇的新位置</span></li>
+                            <li><strong data-zh="動畫效果" data-en="Animation Effects">動畫效果</strong>：<span data-zh="透過 AnimationController 實現平滑的視覺效果" data-en="Achieves smooth visual effects through AnimationController">透過 <code>AnimationController</code> 實現平滑的視覺效果</span></li>
                         </ul>
                     </div>
 
                     <!-- 從 Python 到 Flutter 的轉換 -->
                     <div class="content-section">
-                        <h2 class="section-title">從 Python 到 Flutter 的轉換</h2>
+                        <h2 class="section-title" data-zh="從 Python 到 Flutter 的轉換" data-en="Transition from Python to Flutter">從 Python 到 Flutter 的轉換</h2>
                         
-                        <p>這個專案最初是在史丹佛大學的 Code in Place 課程中用 Python 開發的桌面遊戲。為了讓更多人能夠遊玩，我決定將其重構為跨平台的 Flutter 應用。</p>
+                        <p data-zh="這個專案最初是在史丹佛大學的 Code in Place 課程中用 Python 開發的桌面遊戲。為了讓更多人能夠遊玩，我決定將其重構為跨平台的 Flutter 應用。" data-en="This project was originally developed as a desktop game using Python in Stanford University's Code in Place course. To make it accessible to more people, I decided to refactor it into a cross-platform Flutter application.">這個專案最初是在史丹佛大學的 Code in Place 課程中用 Python 開發的桌面遊戲。為了讓更多人能夠遊玩，我決定將其重構為跨平台的 Flutter 應用。</p>
 
                         <div class="comparison-table">
                             <table class="table table-striped">
                                 <thead>
                                     <tr>
-                                        <th>技術面向</th>
-                                        <th>Python 原版</th>
-                                        <th>Flutter 新版</th>
+                                        <th data-zh="技術面向" data-en="Technical Aspect">技術面向</th>
+                                        <th data-zh="Python 原版" data-en="Python Original">Python 原版</th>
+                                        <th data-zh="Flutter 新版" data-en="Flutter New Version">Flutter 新版</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <tr>
-                                        <td>圖形繪製</td>
+                                        <td data-zh="圖形繪製" data-en="Graphics Rendering">圖形繪製</td>
                                         <td>Stanford Graphics Library</td>
                                         <td>Flutter CustomPainter</td>
                                     </tr>
                                     <tr>
-                                        <td>輸入處理</td>
-                                        <td>滑鼠點擊事件</td>
-                                        <td>觸控手勢識別</td>
+                                        <td data-zh="輸入處理" data-en="Input Handling">輸入處理</td>
+                                        <td data-zh="滑鼠點擊事件" data-en="Mouse click events">滑鼠點擊事件</td>
+                                        <td data-zh="觸控手勢識別" data-en="Touch gesture recognition">觸控手勢識別</td>
                                     </tr>
                                     <tr>
-                                        <td>平台支援</td>
-                                        <td>僅限桌面</td>
+                                        <td data-zh="平台支援" data-en="Platform Support">平台支援</td>
+                                        <td data-zh="僅限桌面" data-en="Desktop only">僅限桌面</td>
                                         <td>Web + Android + iOS</td>
                                     </tr>
                                     <tr>
-                                        <td>部署方式</td>
-                                        <td>本地執行</td>
+                                        <td data-zh="部署方式" data-en="Deployment">部署方式</td>
+                                        <td data-zh="本地執行" data-en="Local execution">本地執行</td>
                                         <td>GitHub Pages + APK</td>
                                     </tr>
                                     <tr>
-                                        <td>效能表現</td>
-                                        <td>依賴 Python 解釋器</td>
-                                        <td>編譯為原生代碼</td>
+                                        <td data-zh="效能表現" data-en="Performance">效能表現</td>
+                                        <td data-zh="依賴 Python 解釋器" data-en="Depends on Python interpreter">依賴 Python 解釋器</td>
+                                        <td data-zh="編譯為原生代碼" data-en="Compiled to native code">編譯為原生代碼</td>
                                     </tr>
                                 </tbody>
                             </table>
                         </div>
 
                         <div class="highlight-box">
-                            <strong>轉換挑戰：</strong>最大的挑戰是將基於事件驅動的桌面應用邏輯轉換為適合觸控介面的移動應用。需要重新思考用戶交互方式和響應式佈局設計。
+                            <strong data-zh="轉換挑戰：" data-en="Conversion Challenges:">轉換挑戰：</strong><span data-zh="最大的挑戰是將基於事件驅動的桌面應用邏輯轉換為適合觸控介面的移動應用。需要重新思考用戶交互方式和響應式佈局設計。" data-en="The biggest challenge was converting event-driven desktop application logic into a mobile application suitable for touch interfaces. It required rethinking user interaction patterns and responsive layout design.">最大的挑戰是將基於事件驅動的桌面應用邏輯轉換為適合觸控介面的移動應用。需要重新思考用戶交互方式和響應式佈局設計。</span>
                         </div>
                     </div>
 
                     <!-- 部署與CI/CD -->
                     <div class="content-section">
-                        <h2 class="section-title">部署與 CI/CD</h2>
+                        <h2 class="section-title" data-zh="部署與 CI/CD" data-en="Deployment & CI/CD">部署與 CI/CD</h2>
                         
-                        <p>專案使用 GitHub Actions 實現自動化部署流程：</p>
+                        <p data-zh="專案使用 GitHub Actions 實現自動化部署流程：" data-en="The project uses GitHub Actions to implement automated deployment workflow:">專案使用 GitHub Actions 實現自動化部署流程：</p>
 
                         <div class="code-block">
 <pre><code>name: Deploy to GitHub Pages
@@ -624,95 +802,120 @@ jobs:
           publish_dir: ./build/web</code></pre>
                         </div>
 
-                        <p>這個配置實現了：</p>
+                        <p data-zh="這個配置實現了：" data-en="This configuration achieves:">這個配置實現了：</p>
                         <ul>
-                            <li>自動構建 Web 版本並部署到 GitHub Pages</li>
-                            <li>自動生成 Android APK 檔案</li>
-                            <li>版本標籤管理和發布流程</li>
+                            <li data-zh="自動構建 Web 版本並部署到 GitHub Pages" data-en="Automatically builds Web version and deploys to GitHub Pages">自動構建 Web 版本並部署到 GitHub Pages</li>
+                            <li data-zh="自動生成 Android APK 檔案" data-en="Automatically generates Android APK files">自動生成 Android APK 檔案</li>
+                            <li data-zh="版本標籤管理和發布流程" data-en="Version tag management and release workflow">版本標籤管理和發布流程</li>
                         </ul>
                     </div>
 
                     <!-- 高分秘訣 -->
                     <div class="content-section">
-                        <h2 class="section-title">高分秘訣</h2>
+                        <h2 class="section-title" data-zh="高分秘訣" data-en="High Score Tips">高分秘訣</h2>
                         
                         <div class="tips-grid">
                             <div class="tip-card">
-                                <h5>保持冷靜</h5>
-                                <p>蘑菇出現在手指附近時不要驚慌，觀察其位置再行動</p>
+                                <h5 data-zh="保持冷靜" data-en="Stay Calm">保持冷靜</h5>
+                                <p data-zh="蘑菇出現在手指附近時不要驚慌，觀察其位置再行動" data-en="Don't panic when mushrooms appear near your finger, observe their position before acting">蘑菇出現在手指附近時不要驚慌，觀察其位置再行動</p>
                             </div>
                             <div class="tip-card">
-                                <h5>快速點擊</h5>
-                                <p>在安全區域快速連續點擊，最大化得分效率</p>
+                                <h5 data-zh="快速點擊" data-en="Quick Tapping">快速點擊</h5>
+                                <p data-zh="在安全區域快速連續點擊，最大化得分效率" data-en="Rapidly tap in safe areas to maximize scoring efficiency">在安全區域快速連續點擊，最大化得分效率</p>
                             </div>
                             <div class="tip-card">
-                                <h5>邊緣策略</h5>
-                                <p>螢幕邊緣通常較安全，蘑菇較少出現在邊界位置</p>
+                                <h5 data-zh="邊緣策略" data-en="Edge Strategy">邊緣策略</h5>
+                                <p data-zh="螢幕邊緣通常較安全，蘑菇較少出現在邊界位置" data-en="Screen edges are usually safer, mushrooms rarely appear at boundary positions">螢幕邊緣通常較安全，蘑菇較少出現在邊界位置</p>
                             </div>
                             <div class="tip-card">
-                                <h5>模式識別</h5>
-                                <p>觀察蘑菇的移動模式，找出相對安全的區域</p>
+                                <h5 data-zh="模式識別" data-en="Pattern Recognition">模式識別</h5>
+                                <p data-zh="觀察蘑菇的移動模式，找出相對安全的區域" data-en="Observe mushroom movement patterns to find relatively safe areas">觀察蘑菇的移動模式，找出相對安全的區域</p>
                             </div>
                         </div>
                     </div>
 
                     <!-- 學習心得 -->
                     <div class="content-section">
-                        <h2 class="section-title">開發心得與反思</h2>
+                        <h2 class="section-title" data-zh="開發心得與反思" data-en="Development Insights & Reflections">開發心得與反思</h2>
                         
-                        <h3>技術收穫</h3>
+                        <h3 data-zh="技術收穫" data-en="Technical Gains">技術收穫</h3>
                         <ul>
-                            <li><strong>跨平台開發</strong>：深入理解了 Flutter 的跨平台能力和限制</li>
-                            <li><strong>自定義繪圖</strong>：掌握了 CustomPainter 的進階應用技巧</li>
-                            <li><strong>遊戲邏輯設計</strong>：學會了如何設計簡單但有趣的遊戲機制</li>
-                            <li><strong>CI/CD 實踐</strong>：建立了完整的自動化部署流程</li>
+                            <li><strong data-zh="跨平台開發" data-en="Cross-platform Development">跨平台開發</strong>：<span data-zh="深入理解了 Flutter 的跨平台能力和限制" data-en="Gained deep understanding of Flutter's cross-platform capabilities and limitations">深入理解了 Flutter 的跨平台能力和限制</span></li>
+                            <li><strong data-zh="自定義繪圖" data-en="Custom Drawing">自定義繪圖</strong>：<span data-zh="掌握了 CustomPainter 的進階應用技巧" data-en="Mastered advanced application techniques of CustomPainter">掌握了 CustomPainter 的進階應用技巧</span></li>
+                            <li><strong data-zh="遊戲邏輯設計" data-en="Game Logic Design">遊戲邏輯設計</strong>：<span data-zh="學會了如何設計簡單但有趣的遊戲機制" data-en="Learned how to design simple but engaging game mechanics">學會了如何設計簡單但有趣的遊戲機制</span></li>
+                            <li><strong data-zh="CI/CD 實踐" data-en="CI/CD Practice">CI/CD 實踐</strong>：<span data-zh="建立了完整的自動化部署流程" data-en="Established complete automated deployment workflow">建立了完整的自動化部署流程</span></li>
                         </ul>
 
-                        <h3>專案管理經驗</h3>
+                        <h3 data-zh="專案管理經驗" data-en="Project Management Experience">專案管理經驗</h3>
                         <ul>
-                            <li><strong>版本控制</strong>：使用 Git 管理不同版本的程式碼</li>
-                            <li><strong>問題追蹤</strong>：透過 GitHub Issues 記錄和解決技術問題</li>
-                            <li><strong>文件撰寫</strong>：編寫清晰的 README 和技術文件</li>
+                            <li><strong data-zh="版本控制" data-en="Version Control">版本控制</strong>：<span data-zh="使用 Git 管理不同版本的程式碼" data-en="Used Git to manage different versions of code">使用 Git 管理不同版本的程式碼</span></li>
+                            <li><strong data-zh="問題追蹤" data-en="Issue Tracking">問題追蹤</strong>：<span data-zh="透過 GitHub Issues 記錄和解決技術問題" data-en="Recorded and resolved technical issues through GitHub Issues">透過 GitHub Issues 記錄和解決技術問題</span></li>
+                            <li><strong data-zh="文件撰寫" data-en="Documentation">文件撰寫</strong>：<span data-zh="編寫清晰的 README 和技術文件" data-en="Wrote clear README and technical documentation">編寫清晰的 README 和技術文件</span></li>
                         </ul>
 
                         <div class="highlight-box">
-                            <strong>最大收穫：</strong>這個專案讓我體驗了完整的軟體開發週期，從概念設計到部署上線，每個階段都有不同的挑戰和學習機會。
+                            <strong data-zh="最大收穫：" data-en="Greatest Gain:">最大收穫：</strong><span data-zh="這個專案讓我體驗了完整的軟體開發週期，從概念設計到部署上線，每個階段都有不同的挑戰和學習機會。" data-en="This project gave me experience of a complete software development lifecycle, from concept design to deployment, with different challenges and learning opportunities at each stage.">這個專案讓我體驗了完整的軟體開發週期，從概念設計到部署上線，每個階段都有不同的挑戰和學習機會。</span>
                         </div>
                     </div>
 
                     <!-- 未來計畫 -->
                     <div class="content-section">
-                        <h2 class="section-title">未來改進計畫</h2>
+                        <h2 class="section-title" data-zh="未來改進計畫" data-en="Future Improvement Plans">未來改進計畫</h2>
                         
                         <ul>
-                            <li>🏆 <strong>排行榜系統</strong>：添加本地和線上排行榜功能</li>
-                            <li>🎵 <strong>音效與音樂</strong>：增加背景音樂和互動音效</li>
-                            <li>🎨 <strong>主題系統</strong>：提供多種視覺主題選擇</li>
-                            <li>📊 <strong>統計數據</strong>：記錄詳細的遊戲統計資訊</li>
-                            <li>🌟 <strong>成就系統</strong>：設計各種遊戲成就和獎勵</li>
-                            <li>📱 <strong>iOS 版本</strong>：發布到 App Store</li>
+                            <li>🏆 <strong data-zh="排行榜系統" data-en="Leaderboard System">排行榜系統</strong>：<span data-zh="添加本地和線上排行榜功能" data-en="Add local and online leaderboard features">添加本地和線上排行榜功能</span></li>
+                            <li>🎵 <strong data-zh="音效與音樂" data-en="Sound & Music">音效與音樂</strong>：<span data-zh="增加背景音樂和互動音效" data-en="Add background music and interactive sound effects">增加背景音樂和互動音效</span></li>
+                            <li>🎨 <strong data-zh="主題系統" data-en="Theme System">主題系統</strong>：<span data-zh="提供多種視覺主題選擇" data-en="Provide multiple visual theme options">提供多種視覺主題選擇</span></li>
+                            <li>📊 <strong data-zh="統計數據" data-en="Statistics">統計數據</strong>：<span data-zh="記錄詳細的遊戲統計資訊" data-en="Record detailed game statistics">記錄詳細的遊戲統計資訊</span></li>
+                            <li>🌟 <strong data-zh="成就系統" data-en="Achievement System">成就系統</strong>：<span data-zh="設計各種遊戲成就和獎勵" data-en="Design various game achievements and rewards">設計各種遊戲成就和獎勵</span></li>
+                            <li>📱 <strong data-zh="iOS 版本" data-en="iOS Version">iOS 版本</strong>：<span data-zh="發布到 App Store" data-en="Release to App Store">發布到 App Store</span></li>
                         </ul>
                     </div>
 
                     <!-- 社群分享 -->
-                    <div class="social-share">
-                        <h3>分享這個專案</h3>
-                        <p>如果你喜歡這個遊戲或這篇文章，歡迎分享給更多人！</p>
+                    <div class="share-section">
+                        <h4 data-zh="喜歡這篇文章嗎？分享給更多人！" data-en="Like this article? Share it with more people!">喜歡這篇文章嗎？分享給更多人！</h4>
                         <div class="share-buttons">
+                            <a href="#" class="share-btn facebook" onclick="shareToFacebook()">
+                                <i class="fab fa-facebook-f me-2"></i>Facebook
+                            </a>
+                            <a href="#" class="share-btn linkedin" onclick="shareToLinkedIn()">
+                                <i class="fab fa-linkedin-in me-2"></i>LinkedIn
+                            </a>
+                            <a href="#" class="share-btn copy" onclick="copyLink()">
+                                <i class="fas fa-link me-2"></i><span data-zh="複製連結" data-en="Copy Link">複製連結</span>
+                            </a>
+                        </div>
+                        <div class="share-buttons" style="margin-top: 1rem;">
                             <a href="https://github.com/ktungl/flower_garden_game" class="share-btn github" target="_blank">
-                                <i class="fab fa-github"></i>
-                                查看原始碼
+                                <i class="fab fa-github me-2"></i><span data-zh="查看原始碼" data-en="View Source Code">查看原始碼</span>
                             </a>
                             <a href="https://ktungl.github.io/flower_garden_game" class="share-btn linkedin" target="_blank">
-                                <i class="fas fa-play"></i>
-                                立即遊玩
+                                <i class="fas fa-play me-2"></i><span data-zh="立即遊玩" data-en="Play Now">立即遊玩</span>
                             </a>
                         </div>
                     </div>
+
+                    <!-- 文章導航 -->
+                    <nav class="article-navigation">
+                        <a href="../blog.html" class="nav-btn">
+                            <i class="fas fa-arrow-left"></i>
+                            <span data-zh="回到部落格列表" data-en="Back to Blog List">回到部落格列表</span>
+                        </a>
+                        <a href="responsive-design.html" class="nav-btn">
+                            <span data-zh="下一篇文章" data-en="Next Article">下一篇文章</span>
+                            <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </nav>
                 </div>
             </div>
         </div>
     </section>
+
+    <!-- 回到頂部按鈕 -->
+    <button id="backToTopBtn" data-zh="回到頂部" data-en="Back to Top" title="回到頂部">
+        <i class="fas fa-arrow-up"></i>
+    </button>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
@@ -730,7 +933,6 @@ jobs:
             }
 
             init() {
-                // 檢查是否為新的訪問會話
                 if (this.isNewSession()) {
                     this.incrementViewCount();
                     this.recordSession();
@@ -743,7 +945,6 @@ jobs:
                 const lastView = localStorage.getItem(this.lastViewKey);
                 const now = new Date().getTime();
                 
-                // 如果沒有會話ID，或者距離上次訪問超過30分鐘，則認為是新訪問
                 if (!sessionId || (lastView && (now - parseInt(lastView)) > 30 * 60 * 1000)) {
                     return true;
                 }
@@ -758,7 +959,6 @@ jobs:
             }
 
             recordSession() {
-                // 為這次會話生成唯一ID
                 const sessionId = Date.now().toString() + Math.random().toString(36).substr(2, 9);
                 sessionStorage.setItem(this.sessionKey, sessionId);
             }
@@ -773,7 +973,6 @@ jobs:
                     const count = this.getViewCount();
                     viewCountElement.textContent = count.toLocaleString();
                     
-                    // 添加動畫效果
                     viewCountElement.style.opacity = '0';
                     setTimeout(() => {
                         viewCountElement.style.transition = 'opacity 0.5s ease';
@@ -782,7 +981,6 @@ jobs:
                 }
             }
 
-            // 開發者工具：重置瀏覽次數（僅供測試）
             reset() {
                 localStorage.removeItem(this.storageKey);
                 localStorage.removeItem(this.lastViewKey);
@@ -792,32 +990,183 @@ jobs:
             }
         }
 
-        // 初始化瀏覽次數追蹤
-        document.addEventListener('DOMContentLoaded', function() {
-            const tracker = new ViewCountTracker('flower-garden-game');
+        // 語言切換功能
+        let currentLanguage = 'zh';
+        let isLanguageDropdownOpen = false;
+        
+        function toggleLanguageDropdown() {
+            const dropdown = document.getElementById('langDropdown');
+            isLanguageDropdownOpen = !isLanguageDropdownOpen;
             
-            // 將 tracker 實例添加到全局範圍供調試使用
-            window.viewTracker = tracker;
+            if (isLanguageDropdownOpen) {
+                dropdown.classList.add('show');
+            } else {
+                dropdown.classList.remove('show');
+            }
+        }
+        
+        function switchLanguage(lang) {
+            currentLanguage = lang;
+            const elements = document.querySelectorAll('[data-zh][data-en]');
             
-            // 在控制台顯示使用說明
-            console.log('💡 瀏覽次數追蹤已啟動');
-            console.log('🔧 開發者工具: window.viewTracker.reset() - 重置瀏覽次數');
-            console.log('📊 當前瀏覽次數:', tracker.getViewCount());
-        });
+            elements.forEach(element => {
+                const text = element.getAttribute('data-' + lang);
+                if (text) {
+                    // 更新按鈕文字內容
+                    if (element.tagName === 'BUTTON' && element.id === 'backToTopBtn') {
+                        element.setAttribute('title', text);
+                    } else {
+                        element.textContent = text;
+                    }
+                }
+            });
+            
+            // 更新語言選擇器顯示
+            const langDisplay = document.getElementById('current-lang');
+            langDisplay.textContent = lang === 'zh' ? '中文' : 'English';
+            
+            // 更新語言選項的活動狀態
+            const langOptions = document.querySelectorAll('.lang-option');
+            langOptions.forEach(option => {
+                option.classList.remove('active');
+                if ((lang === 'zh' && option.textContent.trim() === '中文') || 
+                    (lang === 'en' && option.textContent.trim() === 'English')) {
+                    option.classList.add('active');
+                }
+            });
+            
+            // 儲存語言偏好
+            localStorage.setItem('preferred-language', lang);
+            
+            // 更新頁面語言屬性
+            document.documentElement.lang = lang === 'zh' ? 'zh-TW' : 'en';
+            
+            // 關閉下拉選單
+            toggleLanguageDropdown();
+        }
+        
+        // 自動檢測用戶語言偏好
+        async function detectUserLanguage() {
+            const savedLang = localStorage.getItem('preferred-language');
+            if (savedLang) {
+                return savedLang;
+            }
+            
+            try {
+                const geoLang = await detectLanguageByGeolocation();
+                if (geoLang) {
+                    return geoLang;
+                }
+            } catch (error) {
+                console.log('地理位置檢測失敗，使用瀏覽器語言檢測');
+            }
+            
+            return detectBrowserLanguage();
+        }
+        
+        function detectBrowserLanguage() {
+            const language = navigator.language || navigator.userLanguage;
+            const languages = navigator.languages || [language];
+            
+            const chineseRegex = /^(zh|zh-TW|zh-CN|zh-HK|zh-SG)/i;
+            
+            for (let lang of languages) {
+                if (chineseRegex.test(lang)) {
+                    return 'zh';
+                }
+                if (lang.startsWith('en')) {
+                    return 'en';
+                }
+            }
+            
+            return 'zh';
+        }
+        
+        async function detectLanguageByGeolocation() {
+            try {
+                const response = await fetch('https://ipapi.co/json/', {
+                    timeout: 3000
+                });
+                
+                if (!response.ok) throw new Error('地理位置 API 請求失敗');
+                
+                const data = await response.json();
+                const country = data.country_code;
+                
+                const chineseRegions = ['TW', 'CN', 'HK', 'MO', 'SG'];
+                const englishRegions = ['US', 'GB', 'CA', 'AU', 'NZ', 'IE'];
+                
+                if (chineseRegions.includes(country)) {
+                    return 'zh';
+                } else if (englishRegions.includes(country)) {
+                    return 'en';
+                }
+                
+                return null;
+            } catch (error) {
+                return null;
+            }
+        }
 
-        // 頁面可見性API - 當用戶切換標籤頁後回來時不重複計算
-        document.addEventListener('visibilitychange', function() {
-            if (document.visibilityState === 'visible') {
-                // 頁面重新變為可見時，不增加瀏覽次數
-                // 因為我們已經在會話中記錄了這次訪問
-                console.log('頁面重新可見，但不重複計算瀏覽次數');
+        // 分享功能
+        function shareToFacebook() {
+            const url = encodeURIComponent(window.location.href);
+            const title = encodeURIComponent(document.title);
+            window.open(`https://www.facebook.com/sharer/sharer.php?u=${url}`, '_blank');
+        }
+
+
+        function shareToLinkedIn() {
+            const url = encodeURIComponent(window.location.href);
+            const title = encodeURIComponent(document.title);
+            window.open(`https://www.linkedin.com/sharing/share-offsite/?url=${url}`, '_blank');
+        }
+
+        function copyLink() {
+            navigator.clipboard.writeText(window.location.href).then(() => {
+                alert(currentLanguage === 'zh' ? '連結已複製到剪貼簿！' : 'Link copied to clipboard!');
+            });
+        }
+
+        // 回到頂部按鈕功能
+        const backToTopBtn = document.getElementById('backToTopBtn');
+        window.addEventListener('scroll', function() {
+            if (window.scrollY > 200) {
+                backToTopBtn.style.display = 'block';
+            } else {
+                backToTopBtn.style.display = 'none';
             }
         });
 
-        // 防止重新整理頁面時重複計算
-        window.addEventListener('beforeunload', function() {
-            // 頁面卸載時不做任何操作
-            // 瀏覽次數已經在初始化時計算過了
+        backToTopBtn.addEventListener('click', function() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        // 關閉語言下拉選單（點擊外部）
+        document.addEventListener('click', function(event) {
+            const languageSwitch = document.querySelector('.language-switch');
+            if (!languageSwitch.contains(event.target) && isLanguageDropdownOpen) {
+                toggleLanguageDropdown();
+            }
+        });
+
+        // 頁面載入時自動檢測語言和初始化
+        document.addEventListener('DOMContentLoaded', async function() {
+            try {
+                const detectedLang = await detectUserLanguage();
+                if (detectedLang !== 'zh') {
+                    switchLanguage(detectedLang);
+                }
+            } catch (error) {
+                switchLanguage('zh');
+            }
+            
+            // 初始化瀏覽次數追蹤
+            const tracker = new ViewCountTracker('flower-garden-game');
+            window.viewTracker = tracker;
+            console.log('💡 瀏覽次數追蹤已啟動 - flower-garden-game');
+            console.log('🔧 開發者工具: window.viewTracker.reset() - 重置瀏覽次數');
+            console.log('📊 當前瀏覽次數:', tracker.getViewCount());
         });
     </script>
 </body>
