@@ -1,0 +1,1392 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-zh="JADE 電商平台開發實戰 - 全端開發與團隊管理心得 - 劉冠彤的技術博客" data-en="JADE E-commerce Platform Development - Full-Stack Development & Team Management Experience - Liu Guan-Tong's Tech Blog">JADE 電商平台開發實戰 - 全端開發與團隊管理心得 - 劉冠彤的技術博客</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.7;
+            color: #2c3e50;
+            background: #f8f9fa;
+        }
+
+        .navbar {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+            padding: 1rem 0;
+        }
+
+        .navbar-brand {
+            font-weight: 650;
+            font-size: 1.5rem;
+            color: #2c3e50 !important;
+        }
+
+        .navbar-nav .nav-link {
+            color: #2c3e50 !important;
+            font-weight: 500;
+            margin: 0 0.5rem;
+            transition: color 0.3s ease;
+        }
+
+        .navbar-nav .nav-link:hover {
+            color: #3498db !important;
+        }
+
+        .navbar-nav .nav-link.active {
+            color: #3498db !important;
+        }
+
+        .breadcrumb-section {
+            background: white;
+            padding: 1rem 0;
+            border-bottom: 1px solid #e9ecef;
+        }
+
+        .breadcrumb {
+            background: transparent;
+            padding: 0;
+            margin: 0;
+            font-size: 0.9rem;
+        }
+
+        .breadcrumb-item {
+            color: #6c757d;
+        }
+
+        .breadcrumb-item + .breadcrumb-item::before {
+            content: "›";
+            color: #6c757d;
+            margin: 0 0.5rem;
+        }
+
+        .breadcrumb-item a {
+            color: #3498db;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .breadcrumb-item a:hover {
+            color: #2980b9;
+            text-decoration: underline;
+        }
+
+        .breadcrumb-item.active {
+            color: #2c3e50;
+            font-weight: 500;
+        }
+
+  .article-header {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            color: #2c3e50;
+            padding: 120px 0 60px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .article-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg"><g fill="none" fill-rule="evenodd"><g fill="%23ffffff" fill-opacity="0.1"><circle cx="30" cy="30" r="4"/></g></svg>');
+            opacity: 0.3;
+        }
+
+        .article-meta {
+            background: white;
+            padding: 2rem 0;
+            border-bottom: 1px solid #e9ecef;
+        }
+
+        .article-content {
+            background: white;
+            padding: 3rem 0;
+            min-height: 60vh;
+        }
+
+        .article-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            position: relative;
+            z-index: 2;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+        }
+
+        .article-subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            margin-bottom: 2rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .meta-info {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            color: #6c757d;
+        }
+
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .content-section {
+            margin-bottom: 3rem;
+        }
+
+        .section-title {
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid #ff6b6b;
+            display: inline-block;
+        }
+
+        .highlight-box {
+            background: linear-gradient(135deg, #fff5f5 0%, #f0fff4 100%);
+            border-left: 4px solid #ff6b6b;
+            padding: 1.5rem;
+            border-radius: 0 10px 10px 0;
+            margin: 2rem 0;
+        }
+
+        .jade-features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .feature-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+            border-left: 4px solid #ff6b6b;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        }
+
+        .feature-icon {
+            font-size: 2rem;
+            color: #ff6b6b;
+            margin-bottom: 1rem;
+        }
+
+        .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+
+        .tech-badge {
+            background: linear-gradient(135deg, #ff6b6b, #ff8a80);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .tech-badge:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(255, 107, 107, 0.3);
+        }
+
+        .code-block {
+            background: #2d3748;
+            color: #e2e8f0;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 1rem 0;
+            overflow-x: auto;
+            position: relative;
+        }
+
+        .code-block::before {
+            content: '';
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: #e74c3c;
+            box-shadow: 20px 0 0 #f39c12, 40px 0 0 #27ae60;
+        }
+
+        .code-block pre {
+            margin-top: 25px;
+            margin-bottom: 0;
+        }
+
+        .view-button {
+            background: linear-gradient(135deg, #ff6b6b, #ff8a80);
+            color: white;
+            border: none;
+            padding: 0.75rem 2rem;
+            border-radius: 50px;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(255, 107, 107, 0.3);
+            position: relative;
+            z-index: 10;
+        }
+
+        .view-button:hover {
+            background: linear-gradient(135deg, #e74c3c, #ff6b6b);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(255, 107, 107, 0.4);
+            color: white;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .stat-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            text-align: center;
+            border-top: 4px solid #ff6b6b;
+        }
+
+        .stat-number {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #ff6b6b;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            color: #6c757d;
+            font-size: 0.9rem;
+        }
+
+        .responsibility-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .responsibility-list li {
+            background: #f8f9fa;
+            margin-bottom: 0.8rem;
+            padding: 1rem;
+            border-radius: 8px;
+            border-left: 3px solid #6bcf7f;
+        }
+
+        .responsibility-list li:hover {
+            background: #e9f7ef;
+            transform: translateX(5px);
+            transition: all 0.3s ease;
+        }
+
+        .achievement-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+
+        .achievement-card {
+            background: linear-gradient(135deg, #fff5f5 0%, #f0fff4 100%);
+            padding: 1.2rem;
+            border-radius: 10px;
+            border-left: 3px solid #ffd93d;
+        }
+
+        .social-share {
+            background: #f8f9fa;
+            padding: 2rem;
+            border-radius: 10px;
+            text-align: center;
+            margin: 3rem 0;
+        }
+
+        .share-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .share-btn {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .share-btn.jade {
+            background: #ff6b6b;
+            color: white;
+        }
+
+        .share-btn.github {
+            background: #333;
+            color: white;
+        }
+
+        .share-btn:hover {
+            transform: translateY(-2px);
+            color: white;
+        }
+
+        /* 語言切換樣式 */
+        .language-switch {
+            position: relative;
+            margin-left: 1rem;
+        }
+
+        .lang-toggle {
+            background: #ff6b6b;
+            color: white;
+            border: none;
+            padding: 0.375rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.875rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .lang-toggle:hover {
+            background: #e74c3c;
+            transform: translateY(-1px);
+        }
+
+        .lang-dropdown {
+            position: absolute;
+            top: 100%;
+            right: 0;
+            background: white;
+            border: 1px solid #e9ecef;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            padding: 0.5rem 0;
+            min-width: 120px;
+            z-index: 1000;
+            opacity: 0;
+            transform: translateY(-10px);
+            pointer-events: none;
+            transition: all 0.3s ease;
+        }
+
+        .lang-dropdown.show {
+            opacity: 1;
+            transform: translateY(0);
+            pointer-events: auto;
+        }
+
+        .lang-option {
+            display: block;
+            width: 100%;
+            padding: 0.5rem 1rem;
+            border: none;
+            background: transparent;
+            text-align: left;
+            cursor: pointer;
+            transition: background-color 0.2s ease;
+            color: #2c3e50;
+            font-size: 0.875rem;
+        }
+
+        .lang-option:hover {
+            background: #f8f9fa;
+        }
+
+        .lang-option.active {
+            background: #ff6b6b;
+            color: white;
+        }
+
+        /* 回到頂部按鈕 */
+        #backToTopBtn {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 1000;
+            background: #ff6b6b;
+            color: white;
+            border: none;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(255, 107, 107, 0.3);
+            transition: all 0.3s ease;
+            display: none;
+        }
+
+        #backToTopBtn:hover {
+            background: #e74c3c;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(255, 107, 107, 0.4);
+        }
+
+        /* 文章導航 */
+        .article-navigation {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 2rem 0;
+            margin-top: 3rem;
+            border-top: 1px solid #e9ecef;
+            gap: 1rem;
+        }
+
+        .nav-btn {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.5rem;
+            background: #f8f9fa;
+            color: #2c3e50;
+            text-decoration: none;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+
+        .nav-btn:hover {
+            background: #ff6b6b;
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .nav-btn i {
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            .article-title {
+                font-size: 2rem;
+            }
+            
+            .meta-info {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 1rem;
+            }
+
+            .jade-features {
+                grid-template-columns: 1fr;
+            }
+
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .achievement-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .article-navigation {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .language-switch {
+                margin-left: 0;
+                margin-top: 1rem;
+            }
+
+            .share-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="../index.html">
+                <i class="fas fa-code me-2"></i>
+                <span data-zh="劉冠彤" data-en="Liu Guan-Tong">劉冠彤</span>
+            </a>
+            
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="../index.html" data-zh="首頁" data-en="Home">首頁</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../index.html#about" data-zh="關於我" data-en="About">關於我</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../index.html#projects" data-zh="專案作品" data-en="Projects">專案作品</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="../blog.html" data-zh="技術博客" data-en="Tech Blog">技術博客</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../index.html#contact" data-zh="聯絡我" data-en="Contact">聯絡我</a>
+                    </li>
+                </ul>
+                
+                <!-- 語言切換 -->
+                <div class="language-switch">
+                    <button class="lang-toggle" onclick="toggleLanguageDropdown()">
+                        <i class="fas fa-globe me-1"></i>
+                        <span id="current-lang">中文</span>
+                        <i class="fas fa-chevron-down ms-1"></i>
+                    </button>
+                    <div class="lang-dropdown" id="langDropdown">
+                        <button class="lang-option active" onclick="switchLanguage('zh')">
+                            中文
+                        </button>
+                        <button class="lang-option" onclick="switchLanguage('en')">
+                            English
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Article Header -->
+    <header class="article-header">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-10 mx-auto text-center">
+                    <h1 class="article-title" data-zh="JADE 電商平台開發實戰" data-en="JADE E-commerce Platform Development">JADE 電商平台開發實戰</h1>
+                    <p class="article-subtitle" data-zh="全端開發與團隊管理的深度實踐心得" data-en="In-depth Practice Experience in Full-Stack Development and Team Management">全端開發與團隊管理的深度實踐心得</p>
+                    <a href="https://moonlit-klepon-a78f8c.netlify.app/" class="view-button" target="_blank" rel="noopener noreferrer">
+                        <i class="fas fa-external-link-alt me-2"></i><span data-zh="查看專案" data-en="View Project">查看專案</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Breadcrumb -->
+    <section class="breadcrumb-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-10 mx-auto">
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item">
+                                <a href="../index.html">
+                                    <i class="fas fa-home me-1"></i><span data-zh="首頁" data-en="Home">首頁</span>
+                                </a>
+                            </li>
+                            <li class="breadcrumb-item">
+                                <a href="../blog.html">
+                                    <i class="fas fa-blog me-1"></i><span data-zh="技術部落格" data-en="Tech Blog">技術部落格</span>
+                                </a>
+                            </li>
+                            <li class="breadcrumb-item active" aria-current="page" data-zh="JADE 電商平台開發實戰" data-en="JADE E-commerce Platform Development">
+                                JADE 電商平台開發實戰
+                            </li>
+                        </ol>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Article Meta -->
+    <section class="article-meta">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-10 mx-auto">
+                    <div class="meta-info">
+                        <div class="meta-item">
+                            <i class="fas fa-calendar-alt"></i>
+                            <span data-zh="2025年9月11日" data-en="September 11, 2025">2025年9月11日</span>
+                        </div>
+                        <div class="meta-item">
+                            <i class="fas fa-clock"></i>
+                            <span data-zh="閱讀時間 12 分鐘" data-en="12 min read">閱讀時間 12 分鐘</span>
+                        </div>
+                        <div class="meta-item">
+                            <i class="fas fa-tags"></i>
+                            <span>Vue.js, ASP.NET Core, <span data-zh="電商開發" data-en="E-commerce Development">電商開發</span>, <span data-zh="團隊管理" data-en="Team Management">團隊管理</span></span>
+                        </div>
+                        <div class="meta-item">
+                            <i class="fas fa-eye"></i>
+                            <span data-zh="瀏覽次數" data-en="Views">瀏覽次數</span> <span id="viewCount" data-zh="載入中..." data-en="Loading...">載入中...</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Article Content -->
+    <section class="article-content">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-10 mx-auto">
+                    <!-- 專案概述 -->
+                    <div class="content-section">
+                        <h2 class="section-title" data-zh="專案概述" data-en="Project Overview">專案概述</h2>
+                        <p data-zh="JADE 是一個專注於服飾領域的電商平台，整合了購物、社群、會員管理等多重功能。作為專案組長，我帶領6人團隊歷時3個月，從零開始建構了這個包含60+資料表的完整電商生態系統。" data-en="JADE is an e-commerce platform focused on the fashion industry, integrating shopping, social networking, member management and multiple functions. As project leader, I led a 6-member team for 3 months to build this complete e-commerce ecosystem with 60+ database tables from scratch.">JADE 是一個專注於服飾領域的電商平台，整合了購物、社群、會員管理等多重功能。作為專案組長，我帶領6人團隊歷時3個月，從零開始建構了這個包含60+資料表的完整電商生態系統。</p>
+                        
+                        <div class="highlight-box">
+                            <strong data-zh="專案亮點：" data-en="Project Highlights:">專案亮點：</strong><span data-zh="這不僅是一個技術實作專案，更是我在專案管理、系統整合和團隊協作方面的重要里程碑。從資料庫設計到前端交互，從第三方服務整合到部署上線，每個環節都體現了現代全端開發的最佳實踐。" data-en="This is not only a technical implementation project, but also an important milestone in my project management, system integration, and team collaboration. From database design to frontend interaction, from third-party service integration to deployment, every aspect reflects the best practices of modern full-stack development.">這不僅是一個技術實作專案，更是我在專案管理、系統整合和團隊協作方面的重要里程碑。從資料庫設計到前端交互，從第三方服務整合到部署上線，每個環節都體現了現代全端開發的最佳實踐。</span>
+                        </div>
+
+                        <div class="stats-grid">
+                            <div class="stat-card">
+                                <div class="stat-number" data-zh="3個月" data-en="3 Months">3個月</div>
+                                <div class="stat-label" data-zh="開發週期" data-en="Development Period">開發週期</div>
+                            </div>
+                            <div class="stat-card">
+                                <div class="stat-number" data-zh="6人" data-en="6 Members">6人</div>
+                                <div class="stat-label" data-zh="開發團隊" data-en="Development Team">開發團隊</div>
+                            </div>
+                            <div class="stat-card">
+                                <div class="stat-number">60+</div>
+                                <div class="stat-label" data-zh="資料庫表格" data-en="Database Tables">資料庫表格</div>
+                            </div>
+                            <div class="stat-card">
+                                <div class="stat-number" data-zh="全端" data-en="Full-Stack">全端</div>
+                                <div class="stat-label" data-zh="系統整合" data-en="System Integration">系統整合</div>
+                            </div>
+                        </div>
+
+                        <div class="tech-stack">
+                            <span class="tech-badge">Vue.js 3</span>
+                            <span class="tech-badge">ASP.NET Core MVC</span>
+                            <span class="tech-badge">Azure SQL Server</span>
+                            <span class="tech-badge">Entity Framework Core</span>
+                            <span class="tech-badge">SignalR</span>
+                            <span class="tech-badge">Cloudinary</span>
+                            <span class="tech-badge">綠界金流</span>
+                            <span class="tech-badge">OpenAI API</span>
+                        </div>
+                    </div>
+
+                    <!-- 專案背景與挑戰 -->
+                    <div class="content-section">
+                        <h2 class="section-title" data-zh="專案背景與挑戰" data-en="Project Background & Challenges">專案背景與挑戰</h2>
+                        
+                        <h3 data-zh="市場痛點分析" data-en="Market Pain Point Analysis">市場痛點分析</h3>
+                        <p data-zh="在深入研究現有電商平台後，我們發現了幾個關鍵問題：" data-en="After in-depth research on existing e-commerce platforms, we identified several key issues:">在深入研究現有電商平台後，我們發現了幾個關鍵問題：</p>
+
+                        <div class="jade-features">
+                            <div class="feature-card">
+                                <div class="feature-icon">🎯</div>
+                                <h4 data-zh="分類過於廣泛" data-en="Over-broad Categories">分類過於廣泛</h4>
+                                <p data-zh="傳統電商平台商品種類繁雜，缺乏針對特定領域的深度優化，導致用戶購物體驗不夠精準。" data-en="Traditional e-commerce platforms have diverse product categories, lacking deep optimization for specific fields, resulting in imprecise user shopping experience.">傳統電商平台商品種類繁雜，缺乏針對特定領域的深度優化，導致用戶購物體驗不夠精準。</p>
+                            </div>
+                            <div class="feature-card">
+                                <div class="feature-icon">👥</div>
+                                <h4 data-zh="社群互動缺失" data-en="Lack of Social Interaction">社群互動缺失</h4>
+                                <p data-zh="多數電商平台僅專注於交易功能，忽略了用戶之間的互動和社群建立，缺乏穿搭分享等社交元素。" data-en="Most e-commerce platforms only focus on transaction functions, ignoring user interaction and community building, lacking social elements like outfit sharing.">多數電商平台僅專注於交易功能，忽略了用戶之間的互動和社群建立，缺乏穿搭分享等社交元素。</p>
+                            </div>
+                            <div class="feature-card">
+                                <div class="feature-icon">🏪</div>
+                                <h4 data-zh="開店門檻高" data-en="High Store Setup Barriers">開店門檻高</h4>
+                                <p data-zh="中小型賣家難以快速進入市場，複雜的開店流程和高昂的平台費用成為主要障礙。" data-en="Small and medium-sized sellers find it difficult to quickly enter the market, with complex store setup processes and high platform fees being major barriers.">中小型賣家難以快速進入市場，複雜的開店流程和高昂的平台費用成為主要障礙。</p>
+                            </div>
+                            <div class="feature-card">
+                                <div class="feature-icon">🎁</div>
+                                <h4 data-zh="會員制度單一" data-en="Single Membership System">會員制度單一</h4>
+                                <p data-zh="缺乏完整的會員等級制度和忠誠度計畫，無法有效提升用戶黏性和回購率。" data-en="Lack of comprehensive member tier systems and loyalty programs, unable to effectively improve user retention and repurchase rates.">缺乏完整的會員等級制度和忠誠度計畫，無法有效提升用戶黏性和回購率。</p>
+                            </div>
+                        </div>
+
+                        <div class="highlight-box">
+                            <strong data-zh="解決方案：" data-en="Solution:">解決方案：</strong><span data-zh="針對這些痛點，JADE 平台採用了六大風格分類、社群整合、低門檻開店和完整會員等級制度，打造以用戶體驗為核心的服飾電商平台。" data-en="Addressing these pain points, the JADE platform adopted six major style categories, social integration, low-barrier store setup, and complete member tier system to create a fashion e-commerce platform centered on user experience.">針對這些痛點，JADE 平台採用了六大風格分類、社群整合、低門檻開店和完整會員等級制度，打造以用戶體驗為核心的服飾電商平台。</span>
+                        </div>
+                    </div>
+
+                    <!-- 我的角色與職責 -->
+                    <div class="content-section">
+                        <h2 class="section-title" data-zh="我的角色與核心職責" data-en="My Role & Core Responsibilities">我的角色與核心職責</h2>
+                        
+                        <p data-zh="身為專案組長兼全端工程師，我的職責不僅限於程式開發，更涵蓋了專案管理、架構設計和團隊協調等多個層面：" data-en="As project leader and full-stack engineer, my responsibilities were not limited to programming development, but also covered project management, architecture design, and team coordination:">身為專案組長兼全端工程師，我的職責不僅限於程式開發，更涵蓋了專案管理、架構設計和團隊協調等多個層面：</p>
+
+                        <ul class="responsibility-list">
+                            <li><strong data-zh="🎯 專案管理與規劃：" data-en="🎯 Project Management & Planning:">🎯 專案管理與規劃：</strong><span data-zh="制定開發時程、分配任務、監控進度，確保專案如期完成" data-en="Formulating development schedules, allocating tasks, monitoring progress, ensuring project completion on time">制定開發時程、分配任務、監控進度，確保專案如期完成</span></li>
+                            <li><strong data-zh="🏗️ 系統架構設計：" data-en="🏗️ System Architecture Design:">🏗️ 系統架構設計：</strong><span data-zh="設計整體技術架構、資料庫結構和API介面，奠定系統穩定基礎" data-en="Designing overall technical architecture, database structure, and API interfaces, laying a stable foundation for the system">設計整體技術架構、資料庫結構和API介面，奠定系統穩定基礎</span></li>
+                            <li><strong data-zh="💻 核心功能開發：" data-en="💻 Core Feature Development:">💻 核心功能開發：</strong><span data-zh="主導首頁管理、部落格系統、社群功能等關鍵模組的開發" data-en="Leading the development of key modules such as homepage management, blog system, and social features">主導首頁管理、部落格系統、社群功能等關鍵模組的開發</span></li>
+                            <li><strong data-zh="🔗 系統整合協調：" data-en="🔗 System Integration Coordination:">🔗 系統整合協調：</strong><span data-zh="協調前後端開發，整合各模組功能，解決跨模組相依性問題" data-en="Coordinating frontend and backend development, integrating module functions, solving cross-module dependency issues">協調前後端開發，整合各模組功能，解決跨模組相依性問題</span></li>
+                            <li><strong data-zh="⚡ 效能優化與部署：" data-en="⚡ Performance Optimization & Deployment:">⚡ 效能優化與部署：</strong><span data-zh="優化系統效能、整合第三方服務、協助部署上線流程" data-en="Optimizing system performance, integrating third-party services, assisting with deployment processes">優化系統效能、整合第三方服務、協助部署上線流程</span></li>
+                        </ul>
+                    </div>
+
+                    <!-- 技術架構深度解析 -->
+                    <div class="content-section">
+                        <h2 class="section-title" data-zh="技術架構深度解析" data-en="In-depth Technical Architecture Analysis">技術架構深度解析</h2>
+                        
+                        <h3 data-zh="前後端分離架構" data-en="Frontend-Backend Separation Architecture">前後端分離架構</h3>
+                        <p data-zh="採用現代化的前後端分離設計，Vue.js 負責用戶介面，ASP.NET Core 處理業務邏輯，通過 RESTful API 進行數據交換：" data-en="Adopting modern frontend-backend separation design, Vue.js handles user interface, ASP.NET Core processes business logic, with data exchange through RESTful API:">採用現代化的前後端分離設計，Vue.js 負責用戶介面，ASP.NET Core 處理業務邏輯，通過 RESTful API 進行數據交換：</p>
+
+                        <div class="code-block">
+<pre><code>// Vue.js 前端 API 呼叫範例
+const bannerApi = {
+  async getBanners(position) {
+    try {
+      const response = await axios.get(`/api/banners/${position}`);
+      return response.data;
+    } catch (error) {
+      console.error('獲取廣告資料失敗:', error);
+      throw error;
+    }
+  },
+  
+  async updateBanner(bannerId, bannerData) {
+    const response = await axios.put(`/api/banners/${bannerId}`, bannerData);
+    return response.data;
+  }
+};</code></pre>
+                        </div>
+
+                        <h3 data-zh="資料庫設計精華" data-en="Database Design Essence">資料庫設計精華</h3>
+                        <p data-zh="設計了包含60+資料表的完整電商資料庫，涵蓋會員系統、商品管理、訂單流程等核心業務邏輯：" data-en="Designed a complete e-commerce database with 60+ tables, covering core business logic including member system, product management, and order processes:">設計了包含60+資料表的完整電商資料庫，涵蓋會員系統、商品管理、訂單流程等核心業務邏輯：</p>
+
+                        <div class="code-block">
+<pre><code>// ASP.NET Core 控制器範例
+[ApiController]
+[Route("api/[controller]")]
+public class BannerController : ControllerBase
+{
+    private readonly IBannerService _bannerService;
+    
+    public BannerController(IBannerService bannerService)
+    {
+        _bannerService = bannerService;
+    }
+    
+    [HttpGet("{position}")]
+    public async Task&lt;IActionResult&gt; GetActiveBanners(string position)
+    {
+        var banners = await _bannerService.GetActiveBannersByPosition(position);
+        return Ok(banners.OrderBy(b => b.DisplayOrder));
+    }
+    
+    [HttpPost]
+    public async Task&lt;IActionResult&gt; CreateBanner([FromBody] BannerCreateDto dto)
+    {
+        var result = await _bannerService.CreateBannerAsync(dto);
+        return Ok(result);
+    }
+}</code></pre>
+                        </div>
+
+                        <h3 data-zh="第三方服務整合" data-en="Third-party Service Integration">第三方服務整合</h3>
+                        <p data-zh="整合多項現代化服務，提升平台功能完整性：" data-en="Integrating multiple modern services to enhance platform functionality:">整合多項現代化服務，提升平台功能完整性：</p>
+
+                        <div class="jade-features">
+                            <div class="feature-card">
+                                <div class="feature-icon">💳</div>
+                                <h4 data-zh="綠界金流 ECPay" data-en="ECPay Payment">綠界金流 ECPay</h4>
+                                <p data-zh="整合完整的金流解決方案，支援信用卡、ATM轉帳等多種付款方式" data-en="Integrated complete payment solution supporting credit cards, ATM transfers and other payment methods">整合完整的金流解決方案，支援信用卡、ATM轉帳等多種付款方式</p>
+                            </div>
+                            <div class="feature-card">
+                                <div class="feature-icon">☁️</div>
+                                <h4 data-zh="Cloudinary 圖床" data-en="Cloudinary Image Storage">Cloudinary 圖床</h4>
+                                <p data-zh="雲端圖片存儲和處理，自動優化圖片大小，提升載入速度" data-en="Cloud image storage and processing, automatic image optimization for improved loading speed">雲端圖片存儲和處理，自動優化圖片大小，提升載入速度</p>
+                            </div>
+                            <div class="feature-card">
+                                <div class="feature-icon">🤖</div>
+                                <h4 data-zh="OpenAI 智能客服" data-en="OpenAI Smart Customer Service">OpenAI 智能客服</h4>
+                                <p data-zh="整合AI客服系統，提供24小時自動回覆和智能問答服務" data-en="Integrated AI customer service system providing 24/7 automatic replies and intelligent Q&A services">整合AI客服系統，提供24小時自動回覆和智能問答服務</p>
+                            </div>
+                            <div class="feature-card">
+                                <div class="feature-icon">📧</div>
+                                <h4 data-zh="MailKit 郵件系統" data-en="MailKit Email System">MailKit 郵件系統</h4>
+                                <p data-zh="自動化郵件通知系統，處理訂單確認、密碼重設等功能" data-en="Automated email notification system handling order confirmations, password resets and other functions">自動化郵件通知系統，處理訂單確認、密碼重設等功能</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 核心功能實作 -->
+                    <div class="content-section">
+                        <h2 class="section-title" data-zh="核心功能實作詳解" data-en="Core Feature Implementation Details">核心功能實作詳解</h2>
+                        
+                        <h3 data-zh="1. 首頁管理系統" data-en="1. Homepage Management System">1. 首頁管理系統</h3>
+                        <p data-zh="開發了完整的首頁內容管理系統，支援動態廣告輪播、活動推廣等功能：" data-en="Developed a complete homepage content management system supporting dynamic advertising carousel, promotional activities and other functions:">開發了完整的首頁內容管理系統，支援動態廣告輪播、活動推廣等功能：</p>
+
+                        <ul>
+                            <li><strong data-zh="響應式廣告輪播：" data-en="Responsive Ad Carousel:">響應式廣告輪播：</strong><span data-zh="支援多種尺寸和位置的廣告展示，自動適配不同裝置" data-en="Supporting various sizes and positions of ad displays, automatically adapting to different devices">支援多種尺寸和位置的廣告展示，自動適配不同裝置</span></li>
+                            <li><strong data-zh="動態內容載入：" data-en="Dynamic Content Loading:">動態內容載入：</strong><span data-zh="使用 Vue.js 實現無刷新頁面更新，提升用戶體驗" data-en="Using Vue.js to implement page updates without refresh, improving user experience">使用 Vue.js 實現無刷新頁面更新，提升用戶體驗</span></li>
+                            <li><strong data-zh="內容排程管理：" data-en="Content Scheduling Management:">內容排程管理：</strong><span data-zh="整合 Hangfire 實現定時發布和內容更新" data-en="Integrating Hangfire for scheduled publishing and content updates">整合 Hangfire 實現定時發布和內容更新</span></li>
+                        </ul>
+
+                        <h3 data-zh="2. 部落格內容管理系統" data-en="2. Blog Content Management System">2. 部落格內容管理系統</h3>
+                        <p data-zh="建立了完整的 CMS 系統，支援官方文章的創建、編輯和發布：" data-en="Built a complete CMS system supporting creation, editing and publishing of official articles:">建立了完整的 CMS 系統，支援官方文章的創建、編輯和發布：</p>
+
+                        <div class="code-block">
+<pre><code>// 使用 Hangfire 實現文章排程發布
+[BackgroundJob]
+public async Task PublishScheduledPost(int postId)
+{
+    var post = await _postService.GetByIdAsync(postId);
+    if (post != null && post.ScheduledTime <= DateTime.Now)
+    {
+        post.Status = PostStatus.Published;
+        post.PublishedAt = DateTime.Now;
+        await _postService.UpdateAsync(post);
+        
+        // 發送通知郵件
+        await _emailService.NotifySubscribersAsync(post);
+    }
+}</code></pre>
+                        </div>
+
+                        <h3 data-zh="3. 社群互動功能" data-en="3. Social Interaction Features">3. 社群互動功能</h3>
+                        <p data-zh="打造了獨特的服飾社群生態，讓用戶能夠分享穿搭、互相交流：" data-en="Created a unique fashion community ecosystem where users can share outfits and interact with each other:">打造了獨特的服飾社群生態，讓用戶能夠分享穿搭、互相交流：</p>
+
+                        <ul>
+                            <li><strong data-zh="穿搭分享：" data-en="Outfit Sharing:">穿搭分享：</strong><span data-zh="會員可上傳穿搭照片，加入標籤和描述" data-en="Members can upload outfit photos with tags and descriptions">會員可上傳穿搭照片，加入標籤和描述</span></li>
+                            <li><strong data-zh="智能審核：" data-en="Smart Moderation:">智能審核：</strong><span data-zh="實現敏感詞過濾和內容審核機制" data-en="Implementing sensitive word filtering and content moderation mechanisms">實現敏感詞過濾和內容審核機制</span></li>
+                            <li><strong data-zh="互動功能：" data-en="Interactive Features:">互動功能：</strong><span data-zh="按讚、留言、分享等社群互動元素" data-en="Social interaction elements like likes, comments, and sharing">按讚、留言、分享等社群互動元素</span></li>
+                        </ul>
+                    </div>
+
+                    <!-- 團隊管理與協作 -->
+                    <div class="content-section">
+                        <h2 class="section-title" data-zh="團隊管理與協作經驗" data-en="Team Management & Collaboration Experience">團隊管理與協作經驗</h2>
+                        
+                        <h3 data-zh="挑戰與解決方案" data-en="Challenges & Solutions">挑戰與解決方案</h3>
+                        
+                        <div class="achievement-grid">
+                            <div class="achievement-card">
+                                <h5 data-zh="🎯 進度管控挑戰" data-en="🎯 Progress Control Challenge">🎯 進度管控挑戰</h5>
+                                <p><strong data-zh="問題：" data-en="Problem:">問題：</strong><span data-zh="6人團隊分工複雜，模組間依賴關係複雜" data-en="Complex division of labor among 6 team members, complex dependencies between modules">6人團隊分工複雜，模組間依賴關係複雜</span></p>
+                                <p><strong data-zh="解決：" data-en="Solution:">解決：</strong><span data-zh="建立每日站會制度，使用 Trello 進行任務追蹤" data-en="Established daily standup meetings, used Trello for task tracking">建立每日站會制度，使用 Trello 進行任務追蹤</span></p>
+                            </div>
+                            <div class="achievement-card">
+                                <h5 data-zh="🔗 模組整合挑戰" data-en="🔗 Module Integration Challenge">🔗 模組整合挑戰</h5>
+                                <p><strong data-zh="問題：" data-en="Problem:">問題：</strong><span data-zh="不同模組間 API 格式不統一，整合困難" data-en="Inconsistent API formats between modules, difficult integration">不同模組間 API 格式不統一，整合困難</span></p>
+                                <p><strong data-zh="解決：" data-en="Solution:">解決：</strong><span data-zh="制定統一的 API 設計規範，建立共用 DTO 類別" data-en="Established unified API design standards, created shared DTO classes">制定統一的 API 設計規範，建立共用 DTO 類別</span></p>
+                            </div>
+                            <div class="achievement-card">
+                                <h5 data-zh="📝 溝通協調挑戰" data-en="📝 Communication Coordination Challenge">📝 溝通協調挑戰</h5>
+                                <p><strong data-zh="問題：" data-en="Problem:">問題：</strong><span data-zh="團隊成員技術背景不同，溝通成本高" data-en="Team members with different technical backgrounds, high communication costs">團隊成員技術背景不同，溝通成本高</span></p>
+                                <p><strong data-zh="解決：" data-en="Solution:">解決：</strong><span data-zh="建立技術文件庫，定期進行技術分享會" data-en="Established technical documentation library, regular technical sharing sessions">建立技術文件庫，定期進行技術分享會</span></p>
+                            </div>
+                            <div class="achievement-card">
+                                <h5 data-zh="⏰ 時程壓力挑戰" data-en="⏰ Schedule Pressure Challenge">⏰ 時程壓力挑戰</h5>
+                                <p><strong data-zh="問題：" data-en="Problem:">問題：</strong><span data-zh="3個月開發期限緊迫，功能需求複雜" data-en="Tight 3-month development deadline, complex functional requirements">3個月開發期限緊迫，功能需求複雜</span></p>
+                                <p><strong data-zh="解決：" data-en="Solution:">解決：</strong><span data-zh="採用敏捷開發，分階段交付，優先開發核心功能" data-en="Adopted agile development, phased delivery, prioritized core functionality">採用敏捷開發，分階段交付，優先開發核心功能</span></p>
+                            </div>
+                        </div>
+
+                        <div class="highlight-box">
+                            <strong data-zh="管理心得：" data-en="Management Insights:">管理心得：</strong><span data-zh="成功的專案管理不僅需要技術能力，更需要良好的溝通技巧和團隊協調能力。透過建立明確的開發規範、定期的進度追蹤和有效的問題解決機制，我們成功在時限內完成了這個複雜的電商平台。" data-en="Successful project management requires not only technical capabilities, but also good communication skills and team coordination abilities. Through establishing clear development standards, regular progress tracking, and effective problem-solving mechanisms, we successfully completed this complex e-commerce platform within the deadline.">成功的專案管理不僅需要技術能力，更需要良好的溝通技巧和團隊協調能力。透過建立明確的開發規範、定期的進度追蹤和有效的問題解決機制，我們成功在時限內完成了這個複雜的電商平台。</span>
+                        </div>
+                    </div>
+
+                    <!-- 技術成就與學習 -->
+                    <div class="content-section">
+                        <h2 class="section-title" data-zh="技術成就與深度學習" data-en="Technical Achievements & Deep Learning">技術成就與深度學習</h2>
+                        
+                        <h3 data-zh="核心技術突破" data-en="Core Technical Breakthroughs">核心技術突破</h3>
+                        
+                        <ul class="responsibility-list">
+                            <li><strong data-zh="🏗️ 大型資料庫設計：" data-en="🏗️ Large Database Design:">🏗️ 大型資料庫設計：</strong><span data-zh="從零設計包含60+資料表的複雜電商資料庫，掌握了正規化設計和效能優化技巧" data-en="Designed complex e-commerce database with 60+ tables from scratch, mastered normalization design and performance optimization techniques">從零設計包含60+資料表的複雜電商資料庫，掌握了正規化設計和效能優化技巧</span></li>
+                            <li><strong data-zh="🔄 前後端整合：" data-en="🔄 Frontend-Backend Integration:">🔄 前後端整合：</strong><span data-zh="深入掌握 Vue.js 與 ASP.NET Core 的整合開發，理解現代 SPA 架構設計原則" data-en="Deeply mastered integration development of Vue.js and ASP.NET Core, understood modern SPA architecture design principles">深入掌握 Vue.js 與 ASP.NET Core 的整合開發，理解現代 SPA 架構設計原則</span></li>
+                            <li><strong data-zh="🌐 第三方服務整合：" data-en="🌐 Third-party Service Integration:">🌐 第三方服務整合：</strong><span data-zh="成功整合綠界金流、Cloudinary、OpenAI 等多項服務，具備完整的系統整合能力" data-en="Successfully integrated ECPay, Cloudinary, OpenAI and other services, possessing complete system integration capabilities">成功整合綠界金流、Cloudinary、OpenAI 等多項服務，具備完整的系統整合能力</span></li>
+                            <li><strong data-zh="⚡ 效能優化實踐：" data-en="⚡ Performance Optimization Practice:">⚡ 效能優化實踐：</strong><span data-zh="通過 CDN 部署、資料庫索引優化等手段，顯著提升系統響應速度" data-en="Significantly improved system response speed through CDN deployment, database index optimization and other methods">通過 CDN 部署、資料庫索引優化等手段，顯著提升系統響應速度</span></li>
+                        </ul>
+
+                        <h3 data-zh="軟實力成長" data-en="Soft Skills Growth">軟實力成長</h3>
+                        
+                        <div class="jade-features">
+                            <div class="feature-card">
+                                <div class="feature-icon">👥</div>
+                                <h4 data-zh="領導能力" data-en="Leadership Skills">領導能力</h4>
+                                <p data-zh="學會如何有效分配任務、激勵團隊成員，並在壓力下做出正確決策。" data-en="Learned how to effectively allocate tasks, motivate team members, and make correct decisions under pressure.">學會如何有效分配任務、激勵團隊成員，並在壓力下做出正確決策。</p>
+                            </div>
+                            <div class="feature-card">
+                                <div class="feature-icon">🗣️</div>
+                                <h4 data-zh="溝通技巧" data-en="Communication Skills">溝通技巧</h4>
+                                <p data-zh="提升了跨部門溝通能力，能夠將複雜的技術概念以簡單易懂的方式傳達。" data-en="Enhanced cross-departmental communication skills, able to convey complex technical concepts in simple and understandable ways.">提升了跨部門溝通能力，能夠將複雜的技術概念以簡單易懂的方式傳達。</p>
+                            </div>
+                            <div class="feature-card">
+                                <div class="feature-icon">🧩</div>
+                                <h4 data-zh="問題解決" data-en="Problem Solving">問題解決</h4>
+                                <p data-zh="培養了系統性思考能力，能夠快速識別問題根源並提出有效解決方案。" data-en="Developed systematic thinking abilities, able to quickly identify problem sources and propose effective solutions.">培養了系統性思考能力，能夠快速識別問題根源並提出有效解決方案。</p>
+                            </div>
+                            <div class="feature-card">
+                                <div class="feature-icon">📊</div>
+                                <h4 data-zh="專案管理" data-en="Project Management">專案管理</h4>
+                                <p data-zh="掌握了敏捷開發方法論，學會如何在時間壓力下確保專案品質。" data-en="Mastered agile development methodology, learned how to ensure project quality under time pressure.">掌握了敏捷開發方法論，學會如何在時間壓力下確保專案品質。</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 專案影響與價值 -->
+                    <div class="content-section">
+                        <h2 class="section-title" data-zh="專案影響與商業價值" data-en="Project Impact & Business Value">專案影響與商業價值</h2>
+                        
+                        <h3 data-zh="技術創新價值" data-en="Technical Innovation Value">技術創新價值</h3>
+                        <p data-zh="JADE 平台在技術實現上具有多項創新特色：" data-en="The JADE platform has multiple innovative features in technical implementation:">JADE 平台在技術實現上具有多項創新特色：</p>
+
+                        <ul>
+                            <li><strong data-zh="社群電商融合：" data-en="Social Commerce Integration:">社群電商融合：</strong><span data-zh="創新結合穿搭分享與商品推薦，打造獨特的購物體驗" data-en="Innovatively combining outfit sharing with product recommendations to create unique shopping experience">創新結合穿搭分享與商品推薦，打造獨特的購物體驗</span></li>
+                            <li><strong data-zh="智能化管理：" data-en="Intelligent Management:">智能化管理：</strong><span data-zh="整合 AI 客服、自動排程、即時通知等自動化功能" data-en="Integration of AI customer service, automated scheduling, real-time notifications and other automated functions">整合 AI 客服、自動排程、即時通知等自動化功能</span></li>
+                            <li><strong data-zh="多角色後台：" data-en="Multi-role Backend:">多角色後台：</strong><span data-zh="支援管理者、買家、賣家三套完整後台管理系統" data-en="Supporting three complete backend management systems for administrators, buyers, and sellers">支援管理者、買家、賣家三套完整後台管理系統</span></li>
+                            <li><strong data-zh="會員生態系統：" data-en="Member Ecosystem:">會員生態系統：</strong><span data-zh="建立 J 幣點數系統與自動等級升級機制" data-en="Establishing J-coin point system and automatic tier upgrade mechanism">建立 J 幣點數系統與自動等級升級機制</span></li>
+                        </ul>
+
+                        <h3 data-zh="商業模式創新" data-en="Business Model Innovation">商業模式創新</h3>
+                        <p data-zh="平台不僅在技術上有所突破，在商業模式上也有獨特的創新：" data-en="The platform not only achieves technical breakthroughs but also has unique innovations in business model:">平台不僅在技術上有所突破，在商業模式上也有獨特的創新：</p>
+
+                        <div class="stats-grid">
+                            <div class="stat-card">
+                                <div class="stat-number">6</div>
+                                <div class="stat-label" data-zh="大風格分類" data-en="Major Style Categories">大風格分類</div>
+                            </div>
+                            <div class="stat-card">
+                                <div class="stat-number">3</div>
+                                <div class="stat-label" data-zh="套後台系統" data-en="Backend Systems">套後台系統</div>
+                            </div>
+                            <div class="stat-card">
+                                <div class="stat-number">24/7</div>
+                                <div class="stat-label" data-zh="AI 客服服務" data-en="AI Customer Service">AI 客服服務</div>
+                            </div>
+                            <div class="stat-card">
+                                <div class="stat-number">100%</div>
+                                <div class="stat-label" data-zh="自動化流程" data-en="Automated Processes">自動化流程</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 未來展望與改進 -->
+                    <div class="content-section">
+                        <h2 class="section-title" data-zh="未來展望與改進計畫" data-en="Future Prospects & Improvement Plans">未來展望與改進計畫</h2>
+                        
+                        <p data-zh="基於目前的成果，我們規劃了以下改進方向：" data-en="Based on current achievements, we have planned the following improvement directions:">基於目前的成果，我們規劃了以下改進方向：</p>
+
+                        <div class="jade-features">
+                            <div class="feature-card">
+                                <div class="feature-icon">🚀</div>
+                                <h4 data-zh="效能優化" data-en="Performance Optimization">效能優化</h4>
+                                <p data-zh="引入 Redis 快取機制、CDN 全球部署，進一步提升系統響應速度和用戶體驗。" data-en="Introducing Redis caching mechanism and global CDN deployment to further improve system response speed and user experience.">引入 Redis 快取機制、CDN 全球部署，進一步提升系統響應速度和用戶體驗。</p>
+                            </div>
+                            <div class="feature-card">
+                                <div class="feature-icon">📱</div>
+                                <h4 data-zh="行動應用開發" data-en="Mobile App Development">行動應用開發</h4>
+                                <p data-zh="開發原生 iOS 和 Android 應用，提供更流暢的移動端購物體驗。" data-en="Developing native iOS and Android applications to provide smoother mobile shopping experience.">開發原生 iOS 和 Android 應用，提供更流暢的移動端購物體驗。</p>
+                            </div>
+                            <div class="feature-card">
+                                <div class="feature-icon">🤖</div>
+                                <h4 data-zh="AI 功能增強" data-en="Enhanced AI Features">AI 功能增強</h4>
+                                <p data-zh="整合機器學習推薦系統，提供個人化商品推薦和穿搭建議。" data-en="Integrating machine learning recommendation system to provide personalized product recommendations and outfit suggestions.">整合機器學習推薦系統，提供個人化商品推薦和穿搭建議。</p>
+                            </div>
+                            <div class="feature-card">
+                                <div class="feature-icon">🌐</div>
+                                <h4 data-zh="國際化擴展" data-en="Internationalization Expansion">國際化擴展</h4>
+                                <p data-zh="支援多語言和多貨幣，拓展到亞洲其他市場。" data-en="Supporting multiple languages and currencies, expanding to other Asian markets.">支援多語言和多貨幣，拓展到亞洲其他市場。</p>
+                            </div>
+                        </div>
+
+                        <div class="highlight-box">
+                            <strong data-zh="技術債務管理：" data-en="Technical Debt Management:">技術債務管理：</strong><span data-zh="雖然我們在有限時間內完成了功能開發，但仍有部分代碼需要重構優化。未來計劃導入更嚴格的代碼審查流程，提升代碼品質和可維護性。" data-en="Although we completed functional development within limited time, some code still needs refactoring and optimization. Future plans include introducing stricter code review processes to improve code quality and maintainability.">雖然我們在有限時間內完成了功能開發，但仍有部分代碼需要重構優化。未來計劃導入更嚴格的代碼審查流程，提升代碼品質和可維護性。</span>
+                        </div>
+                    </div>
+
+                    <!-- 個人成長與反思 -->
+                    <div class="content-section">
+                        <h2 class="section-title" data-zh="個人成長與深度反思" data-en="Personal Growth & Deep Reflection">個人成長與深度反思</h2>
+                        
+                        <h3 data-zh="最大的收穫" data-en="Greatest Gains">最大的收穫</h3>
+                        <p data-zh="這個專案對我而言不僅是技術能力的提升，更是職業生涯的重要轉捩點：" data-en="This project is not only an improvement in technical capabilities for me, but also an important turning point in my career:">這個專案對我而言不僅是技術能力的提升，更是職業生涯的重要轉捩點：</p>
+
+                        <ul class="responsibility-list">
+                            <li><strong data-zh="🎯 從開發者到領導者：" data-en="🎯 From Developer to Leader:">🎯 從開發者到領導者：</strong><span data-zh="學會了如何平衡技術實作與團隊管理，培養了領導能力" data-en="Learned how to balance technical implementation with team management, developed leadership skills">學會了如何平衡技術實作與團隊管理，培養了領導能力</span></li>
+                            <li><strong data-zh="🔧 全端思維建立：" data-en="🔧 Full-Stack Mindset Development:">🔧 全端思維建立：</strong><span data-zh="深度理解了現代 Web 開發的完整流程，具備端到端的解決問題能力" data-en="Deeply understood the complete process of modern web development, acquired end-to-end problem-solving capabilities">深度理解了現代 Web 開發的完整流程，具備端到端的解決問題能力</span></li>
+                            <li><strong data-zh="🤝 團隊協作精神：" data-en="🤝 Team Collaboration Spirit:">🤝 團隊協作精神：</strong><span data-zh="體驗了真正的團隊開發，學會了溝通、妥協和共同成長" data-en="Experienced real team development, learned communication, compromise, and mutual growth">體驗了真正的團隊開發，學會了溝通、妥協和共同成長</span></li>
+                            <li><strong data-zh="💡 商業思維培養：" data-en="💡 Business Thinking Development:">💡 商業思維培養：</strong><span data-zh="不只是寫程式，而是理解業務需求，提供有價值的技術解決方案" data-en="Not just writing code, but understanding business requirements and providing valuable technical solutions">不只是寫程式，而是理解業務需求，提供有價值的技術解決方案</span></li>
+                        </ul>
+
+                        <h3 data-zh="職涯定位的轉變" data-en="Career Positioning Transformation">職涯定位的轉變</h3>
+                        <p data-zh="通過這個專案，我清楚地認識到自己的職業發展方向：" data-en="Through this project, I clearly recognized my professional development direction:">通過這個專案，我清楚地認識到自己的職業發展方向：</p>
+
+                        <div class="jade-features">
+                            <div class="feature-card">
+                                <div class="feature-icon">🎯</div>
+                                <h4 data-zh="技術領導者" data-en="Technical Leader">技術領導者</h4>
+                                <p data-zh="不只是單純的程式開發者，而是能夠帶領團隊、制定技術方向的領導者。" data-en="Not just a simple programmer, but a leader who can lead teams and set technical directions.">不只是單純的程式開發者，而是能夠帶領團隊、制定技術方向的領導者。</p>
+                            </div>
+                            <div class="feature-card">
+                                <div class="feature-icon">🌉</div>
+                                <h4 data-zh="技術與商務的橋樑" data-en="Bridge between Technology and Business">技術與商務的橋樑</h4>
+                                <p data-zh="結合國際商務背景，能夠理解業務需求並轉化為技術解決方案。" data-en="Combining international business background, able to understand business requirements and transform them into technical solutions.">結合國際商務背景，能夠理解業務需求並轉化為技術解決方案。</p>
+                            </div>
+                            <div class="feature-card">
+                                <div class="feature-icon">🚀</div>
+                                <h4 data-zh="創新實踐者" data-en="Innovation Practitioner">創新實踐者</h4>
+                                <p data-zh="不滿足於現有解決方案，勇於嘗試新技術、新方法來解決複雜問題。" data-en="Not satisfied with existing solutions, brave to try new technologies and methods to solve complex problems.">不滿足於現有解決方案，勇於嘗試新技術、新方法來解決複雜問題。</p>
+                            </div>
+                        </div>
+
+                        <div class="highlight-box">
+                            <strong data-zh="最深刻的體悟：" data-en="Deepest Insight:">最深刻的體悟：</strong><span data-zh="優秀的軟體不僅需要精湛的技術，更需要對用戶需求的深度理解、團隊間的密切協作，以及對品質的不懈追求。這個專案讓我從一個「會寫程式的人」成長為「會解決問題的工程師」。" data-en="Excellent software not only requires superb technology, but also deep understanding of user needs, close collaboration between teams, and relentless pursuit of quality. This project transformed me from 'someone who can write code' to 'an engineer who can solve problems'.">優秀的軟體不僅需要精湛的技術，更需要對用戶需求的深度理解、團隊間的密切協作，以及對品質的不懈追求。這個專案讓我從一個「會寫程式的人」成長為「會解決問題的工程師」。</span>
+                        </div>
+                    </div>
+
+                    <!-- 技術社群分享 -->
+                    <div class="content-section">
+                        <h2 class="section-title" data-zh="總結與啟發" data-en="Summary & Inspiration">總結與啟發</h2>
+                        
+                        <p data-zh="JADE 專案不僅是一個電商平台，更是我技術生涯中的重要里程碑。它證明了結合扎實的技術基礎、良好的團隊協作和創新思維，能夠在有限時間內創造出具有實際商業價值的產品。" data-en="The JADE project is not only an e-commerce platform, but also an important milestone in my technical career. It proves that combining solid technical foundation, good team collaboration, and innovative thinking can create products with real business value within limited time.">JADE 專案不僅是一個電商平台，更是我技術生涯中的重要里程碑。它證明了結合扎實的技術基礎、良好的團隊協作和創新思維，能夠在有限時間內創造出具有實際商業價值的產品。</p>
+
+                        <p data-zh="對於其他開發者，我想分享的最重要觀點是：技術只是工具，真正重要的是如何運用技術來解決現實問題。在這個過程中，溝通能力、學習能力和適應能力往往比純粹的程式技巧更加重要。" data-en="For other developers, the most important point I want to share is: technology is just a tool, what really matters is how to use technology to solve real problems. In this process, communication skills, learning ability, and adaptability are often more important than pure programming skills.">對於其他開發者，我想分享的最重要觀點是：技術只是工具，真正重要的是如何運用技術來解決現實問題。在這個過程中，溝通能力、學習能力和適應能力往往比純粹的程式技巧更加重要。</p>
+
+                        <div class="achievement-grid">
+                            <div class="achievement-card">
+                                <h5 data-zh="💪 持續學習" data-en="💪 Continuous Learning">💪 持續學習</h5>
+                                <p data-zh="技術日新月異，保持學習熱忱和好奇心是成長的關鍵" data-en="Technology changes rapidly, maintaining learning enthusiasm and curiosity is key to growth">技術日新月異，保持學習熱忱和好奇心是成長的關鍵</p>
+                            </div>
+                            <div class="achievement-card">
+                                <h5 data-zh="🤝 重視協作" data-en="🤝 Value Collaboration">🤝 重視協作</h5>
+                                <p data-zh="單打獨鬥的時代已過，團隊協作才能創造更大價值" data-en="The era of working alone is over, team collaboration creates greater value">單打獨鬥的時代已過，團隊協作才能創造更大價值</p>
+                            </div>
+                            <div class="achievement-card">
+                                <h5 data-zh="🎯 關注用戶" data-en="🎯 Focus on Users">🎯 關注用戶</h5>
+                                <p data-zh="始終以用戶需求為中心，技術服務於解決實際問題" data-en="Always center on user needs, technology serves to solve real problems">始終以用戶需求為中心，技術服務於解決實際問題</p>
+                            </div>
+                            <div class="achievement-card">
+                                <h5 data-zh="🚀 擁抱挑戰" data-en="🚀 Embrace Challenges">🚀 擁抱挑戰</h5>
+                                <p data-zh="面對困難不退縮，每個挑戰都是成長的機會" data-en="Don't retreat from difficulties, every challenge is an opportunity for growth">面對困難不退縮，每個挑戰都是成長的機會</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 社群分享 -->
+                    <div class="social-share">
+                        <h4 data-zh="喜歡這篇技術分享嗎？歡迎分享討論！" data-en="Like this technical sharing? Welcome to share and discuss!">喜歡這篇技術分享嗎？歡迎分享討論！</h4>
+                        <div class="share-buttons">
+                            <a href="#" class="share-btn jade" onclick="shareToFacebook()">
+                                <i class="fab fa-facebook-f me-2"></i>Facebook
+                            </a>
+                            <a href="#" class="share-btn jade" onclick="shareToLinkedIn()">
+                                <i class="fab fa-linkedin-in me-2"></i>LinkedIn
+                            </a>
+                            <a href="#" class="share-btn jade" onclick="copyLink()">
+                                <i class="fas fa-link me-2"></i><span data-zh="複製連結" data-en="Copy Link">複製連結</span>
+                            </a>
+                        </div>
+                        <div class="share-buttons" style="margin-top: 1rem;">
+                            <a href="https://moonlit-klepon-a78f8c.netlify.app/" class="share-btn jade" target="_blank">
+                                <i class="fas fa-external-link-alt me-2"></i><span data-zh="查看 JADE 平台" data-en="View JADE Platform">查看 JADE 平台</span>
+                            </a>
+                            <a href="https://teambackend20250902150501-aug0dra8gmhucyhs.eastasia-01.azurewebsites.net" class="share-btn github" target="_blank">
+                                <i class="fas fa-cog me-2"></i><span data-zh="管理員後台" data-en="Admin Dashboard">管理員後台</span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- 文章導航 -->
+                    <nav class="article-navigation">
+                        <a href="flower-garden-game.html" class="nav-btn">
+                            <i class="fas fa-arrow-left"></i>
+                            <span data-zh="上一篇：種花遊戲開發" data-en="Previous: Flower Garden Game Development">上一篇：種花遊戲開發</span>
+                        </a>
+                        <a href="../blog.html" class="nav-btn">
+                            <span data-zh="回到部落格列表" data-en="Back to Blog List">回到部落格列表</span>
+                            <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 回到頂部按鈕 -->
+    <button id="backToTopBtn" data-zh="回到頂部" data-en="Back to Top" title="回到頂部">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+    
+    <script>
+        // 瀏覽次數統計系統
+        class ViewCountTracker {
+            constructor(articleId) {
+                this.articleId = articleId;
+                this.storageKey = `viewCount_${articleId}`;
+                this.sessionKey = `session_${articleId}`;
+                this.lastViewKey = `lastView_${articleId}`;
+                this.init();
+            }
+
+            init() {
+                if (this.isNewSession()) {
+                    this.incrementViewCount();
+                    this.recordSession();
+                }
+                this.displayViewCount();
+            }
+
+            isNewSession() {
+                const sessionId = sessionStorage.getItem(this.sessionKey);
+                const lastView = localStorage.getItem(this.lastViewKey);
+                const now = new Date().getTime();
+                
+                if (!sessionId || (lastView && (now - parseInt(lastView)) > 30 * 60 * 1000)) {
+                    return true;
+                }
+                return false;
+            }
+
+            incrementViewCount() {
+                let currentCount = parseInt(localStorage.getItem(this.storageKey)) || 0;
+                currentCount++;
+                localStorage.setItem(this.storageKey, currentCount.toString());
+                localStorage.setItem(this.lastViewKey, new Date().getTime().toString());
+            }
+
+            recordSession() {
+                const sessionId = Date.now().toString() + Math.random().toString(36).substr(2, 9);
+                sessionStorage.setItem(this.sessionKey, sessionId);
+            }
+
+            getViewCount() {
+                return parseInt(localStorage.getItem(this.storageKey)) || 0;
+            }
+
+            displayViewCount() {
+                const viewCountElement = document.getElementById('viewCount');
+                if (viewCountElement) {
+                    const count = this.getViewCount();
+                    viewCountElement.textContent = count.toLocaleString();
+                    
+                    viewCountElement.style.opacity = '0';
+                    setTimeout(() => {
+                        viewCountElement.style.transition = 'opacity 0.5s ease';
+                        viewCountElement.style.opacity = '1';
+                    }, 100);
+                }
+            }
+
+            reset() {
+                localStorage.removeItem(this.storageKey);
+                localStorage.removeItem(this.lastViewKey);
+                sessionStorage.removeItem(this.sessionKey);
+                this.displayViewCount();
+                console.log('瀏覽次數已重置');
+            }
+        }
+
+        // 語言切換功能
+        let currentLanguage = 'zh';
+        let isLanguageDropdownOpen = false;
+        
+        function toggleLanguageDropdown() {
+            const dropdown = document.getElementById('langDropdown');
+            isLanguageDropdownOpen = !isLanguageDropdownOpen;
+            
+            if (isLanguageDropdownOpen) {
+                dropdown.classList.add('show');
+            } else {
+                dropdown.classList.remove('show');
+            }
+        }
+        
+        function switchLanguage(lang) {
+            currentLanguage = lang;
+            const elements = document.querySelectorAll('[data-zh][data-en]');
+            
+            elements.forEach(element => {
+                const text = element.getAttribute('data-' + lang);
+                if (text) {
+                    // 更新按鈕文字內容
+                    if (element.tagName === 'BUTTON' && element.id === 'backToTopBtn') {
+                        element.setAttribute('title', text);
+                    } else {
+                        element.textContent = text;
+                    }
+                }
+            });
+            
+            // 更新語言選擇器顯示
+            const langDisplay = document.getElementById('current-lang');
+            langDisplay.textContent = lang === 'zh' ? '中文' : 'English';
+            
+            // 更新語言選項的活動狀態
+            const langOptions = document.querySelectorAll('.lang-option');
+            langOptions.forEach(option => {
+                option.classList.remove('active');
+                if ((lang === 'zh' && option.textContent.trim() === '中文') || 
+                    (lang === 'en' && option.textContent.trim() === 'English')) {
+                    option.classList.add('active');
+                }
+            });
+            
+            // 儲存語言偏好
+            localStorage.setItem('preferred-language', lang);
+            
+            // 更新頁面語言屬性
+            document.documentElement.lang = lang === 'zh' ? 'zh-TW' : 'en';
+            
+            // 關閉下拉選單
+            toggleLanguageDropdown();
+        }
+        
+        // 自動檢測用戶語言偏好
+        async function detectUserLanguage() {
+            const savedLang = localStorage.getItem('preferred-language');
+            if (savedLang) {
+                return savedLang;
+            }
+            
+            try {
+                const geoLang = await detectLanguageByGeolocation();
+                if (geoLang) {
+                    return geoLang;
+                }
+            } catch (error) {
+                console.log('地理位置檢測失敗，使用瀏覽器語言檢測');
+            }
+            
+            return detectBrowserLanguage();
+        }
+        
+        function detectBrowserLanguage() {
+            const language = navigator.language || navigator.userLanguage;
+            const languages = navigator.languages || [language];
+            
+            const chineseRegex = /^(zh|zh-TW|zh-CN|zh-HK|zh-SG)/i;
+            
+            for (let lang of languages) {
+                if (chineseRegex.test(lang)) {
+                    return 'zh';
+                }
+                if (lang.startsWith('en')) {
+                    return 'en';
+                }
+            }
+            
+            return 'zh';
+        }
+        
+        async function detectLanguageByGeolocation() {
+            try {
+                const response = await fetch('https://ipapi.co/json/', {
+                    timeout: 3000
+                });
+                
+                if (!response.ok) throw new Error('地理位置 API 請求失敗');
+                
+                const data = await response.json();
+                const country = data.country_code;
+                
+                const chineseRegions = ['TW', 'CN', 'HK', 'MO', 'SG'];
+                const englishRegions = ['US', 'GB', 'CA', 'AU', 'NZ', 'IE'];
+                
+                if (chineseRegions.includes(country)) {
+                    return 'zh';
+                } else if (englishRegions.includes(country)) {
+                    return 'en';
+                }
+                
+                return null;
+            } catch (error) {
+                return null;
+            }
+        }
+
+        // 分享功能
+        function shareToFacebook() {
+            const url = encodeURIComponent(window.location.href);
+            const title = encodeURIComponent(document.title);
+            window.open(`https://www.facebook.com/sharer/sharer.php?u=${url}`, '_blank');
+        }
+
+        function shareToLinkedIn() {
+            const url = encodeURIComponent(window.location.href);
+            const title = encodeURIComponent(document.title);
+            window.open(`https://www.linkedin.com/sharing/share-offsite/?url=${url}`, '_blank');
+        }
+
+        function copyLink() {
+            navigator.clipboard.writeText(window.location.href).then(() => {
+                alert(currentLanguage === 'zh' ? '連結已複製到剪貼簿！' : 'Link copied to clipboard!');
+            });
+        }
+
+        // 回到頂部按鈕功能
+        const backToTopBtn = document.getElementById('backToTopBtn');
+        window.addEventListener('scroll', function() {
+            if (window.scrollY > 200) {
+                backToTopBtn.style.display = 'block';
+            } else {
+                backToTopBtn.style.display = 'none';
+            }
+        });
+
+        backToTopBtn.addEventListener('click', function() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+         // 關閉語言下拉選單（點擊外部）
+        document.addEventListener('click', function(event) {
+            const languageSwitch = document.querySelector('.language-switch');
+            if (!languageSwitch.contains(event.target) && isLanguageDropdownOpen) {
+                toggleLanguageDropdown();
+            }
+        });
+
+        // 頁面載入時自動檢測語言和初始化
+        document.addEventListener('DOMContentLoaded', async function() {
+            try {
+                const detectedLang = await detectUserLanguage();
+                if (detectedLang !== 'zh') {
+                    switchLanguage(detectedLang);
+                }
+            } catch (error) {
+                switchLanguage('zh');
+            }
+            
+            // 初始化瀏覽次數追蹤
+            const tracker = new ViewCountTracker('flower-garden-game');
+            window.viewTracker = tracker;
+            console.log('💡 瀏覽次數追蹤已啟動 - flower-garden-game');
+            console.log('🔧 開發者工具: window.viewTracker.reset() - 重置瀏覽次數');
+            console.log('📊 當前瀏覽次數:', tracker.getViewCount());
+        });
+    </script>
+</body>
+</html>
