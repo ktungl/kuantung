@@ -439,15 +439,41 @@
 
         /* Footer */
         footer {
-            background: linear-gradient(135deg, var(--dream-dark-green), var(--dream-sage));
+            background: rgba(122, 132, 113, 0.85);
             color: white;
-            padding: 3rem 0;
-            margin-top: 5rem;
+            padding: 3rem 0 2rem 0;
+            text-align: center;
         }
 
         .view-count-small {
             font-size: 0.85rem;
             opacity: 0.8;
+        }
+
+        footer h5 {
+            color: #103d1b;
+            margin-bottom: 1rem;
+        }
+
+        footer p {
+            opacity: 0.8;
+            margin-bottom: 0.5rem;
+        }
+
+        footer a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        footer a:hover {
+            color: #103d1b;
+            text-decoration: underline;
+        }
+
+        footer hr {
+            border-color: rgba(255,255,255,0.2);
+            margin: 2rem 0 1rem 0;
         }
 
         /* 滾動指示器 */
@@ -1141,7 +1167,18 @@
                 </div>
                 <div class="col-md-6 text-md-end">
                     <h5><i class="fas fa-envelope me-2"></i><span data-zh="聯絡方式" data-en="Contact">聯絡方式</span></h5>
-                    <p class="mb-1" data-zh="歡迎透過作品集主頁聯繫我" data-en="Feel free to contact me through the portfolio homepage">歡迎透過作品集主頁聯繫我</p>
+                     <p class="mb-1">
+                        <i class="fas fa-envelope me-2"></i>
+                        <a href="mailto:liukuantung@gmail.com">liukuantung@gmail.com</a>
+                    </p>
+                    <p class="mb-1">
+                        <i class="fab fa-linkedin me-2"></i>
+                        <a href="https://www.linkedin.com/in/liukuantung/" target="_blank">LinkedIn</a>
+                    </p>
+                    <p class="mb-1">
+                        <i class="fab fa-github me-2"></i>
+                        <a href="https://github.com/ktungl" target="_blank">GitHub</a>
+                    </p>
                     <!-- 小巧的瀏覽次數顯示 -->
                     <p class="mb-0 view-count-small">
                         <i class="fas fa-eye me-2"></i>
